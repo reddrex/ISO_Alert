@@ -62,10 +62,15 @@ def test_por_temas(paginas):
     # Las antecesoras, al final de su grupo.
     assert ids.index("iso-iec-27701") < ids.index("iso-iec-13335") < ids.index("iso-iec-29100")
     assert ids.index("iso-iec-25040") < ids.index("iso-iec-9126")
+    # De menor a mayor número dentro de cada grupo.
+    square = ["iso-iec-25000", "iso-iec-25010", "iso-iec-25012", "iso-iec-25024", "iso-iec-25040"]
+    assert [i for i in ids if i in square] == square
+    ciclo = ["iso-iec-ieee-12207", "iso-iec-ieee-14764", "iso-iec-ieee-15288", "iso-iec-ieee-15289"]
+    assert ids[ids.index(ciclo[0]):ids.index(ciclo[0]) + 4] == ciclo
     # 25012 es de la categoría de datos pero se estudia en SQuaRE.
     assert '<a href="#iso-iec-25012">ISO/IEC 25012</a> (SQuaRE)' in md
     assert "\n\n" not in md[md.index('id="iso-iec-27001"'):md.index("</div>", md.index('id="iso-iec-27001"'))]
 
 
 def test_enlace_desde_la_tabla(paginas):
-    assert '<a href="../temas/#iso-iec-27001">Ver en «Por temas»</a>' in paginas["estado"]
+    assert '<a href="temas/#iso-iec-27001">Ver en «Por temas»</a>' in paginas["estado"]

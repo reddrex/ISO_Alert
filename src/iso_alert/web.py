@@ -125,8 +125,8 @@ class Vista:
             return f["categoria"].id if f["categoria"] else None
 
         def ordenar(grupo: list[dict]) -> list[dict]:
-            # Orden de normas.yaml, con las antecesoras e históricas al final.
-            return sorted(grupo, key=lambda f: f["estado"] in HISTORICAS)
+            # De menor a mayor número, con las antecesoras e históricas al final.
+            return sorted(grupo, key=lambda f: (f["estado"] in HISTORICAS, f["codigo_orden"]))
 
         temas = []
         for cat in self.config.categorias.values():

@@ -1,7 +1,7 @@
 {% from "_macros.j2" import estado, enlace, enlaces %}
 {% macro norma(f) -%}
 <div class="norma{% if f.estado.value in ('sustituida', 'anulada', 'no_publicada') %} norma--historica{% endif %}" id="{{ f.ancla }}">
-  <p class="norma__cabecera"><a class="norma__codigo" href="../estado/?texto={{ f.codigo | urlencode }}" title="Ver en la tabla de estado">{{ f.codigo }}</a> <span class="norma__nombre">{{ f.nombre }}</span> {{ estado(f.estado, f.subestado) }}</p>
+  <p class="norma__cabecera"><a class="norma__codigo" href="estado/?texto={{ f.codigo | urlencode }}" title="Ver en la tabla de estado">{{ f.codigo }}</a> <span class="norma__nombre">{{ f.nombre }}</span> {{ estado(f.estado, f.subestado) }}</p>
   {% if f.descripcion %}
   <p class="norma__descripcion">{{ f.descripcion }}</p>
   {% endif %}
@@ -38,7 +38,7 @@ hide:
 
 # Normas por temas
 
-Las {{ resumen.total }} normas del temario agrupadas por tema y, dentro de cada tema, por familias: normas con números distintos que se estudian juntas. Las normas antiguas aparecen al final del grupo de las que las sustituyeron.
+Las {{ resumen.total }} normas del temario agrupadas por tema y, dentro de cada tema, por familias: normas con números distintos que se estudian juntas. Dentro de cada grupo van de menor a mayor número; las normas antiguas aparecen al final del grupo de las que las sustituyeron.
 
 !!! note "Resumen orientativo"
     Las descripciones resumen para qué sirve cada norma, pero no sustituyen a su texto. El estado y las ediciones proceden de ISO{% if resumen.dato_fecha %} (datos del {{ resumen.dato_fecha }}){% endif %}; pulsa el código de una norma para ver su detalle en la [tabla de estado](estado.md).
