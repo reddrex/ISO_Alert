@@ -1,0 +1,120 @@
+{% from "_macros.j2" import estado, enlace, enlaces %}
+---
+title: Estado de las normas
+hide:
+  - navigation
+  - toc
+---
+
+# Estado de las normas
+
+{{ resumen.total }} normas citadas en el temario. Datos ISO{% if resumen.dato_fecha %} del {{ resumen.dato_fecha }}{% endif %}, comprobados el {{ resumen.comprobado }}. Pulsa el nombre de una norma para ver sus ediciones, partes y proyectos en marcha.
+
+!!! note "ISO va por delante de UNE"
+    La tabla muestra las ediciones **ISO**. La versión española (UNE) suele publicarse meses o años después, y el temario a veces cita una y a veces otra. Consulta la [guía](guia.md#que-diferencia-hay-entre-iso-y-une).
+
+<div class="filtros" id="filtros" hidden>
+  <label class="filtro filtro--texto">Buscar <input type="search" id="f-texto" placeholder="Código, nombre o título" autocomplete="off"></label>
+  <label class="filtro">Estado <select id="f-estado">
+    <option value="">Todos</option>
+    {% for e in estados %}
+    <option value="{{ e.value }}">{{ e.etiqueta }}</option>
+    {% endfor %}
+  </select></label>
+  <label class="filtro">Categoría <select id="f-categoria">
+    <option value="">Todas</option>
+    {% for c in categorias %}
+    <option value="{{ c.id }}">{{ c.nombre }}</option>
+    {% endfor %}
+  </select></label>
+  <label class="filtro">Familia <select id="f-familia">
+    <option value="">Todas</option>
+    {% for f in familias %}
+    <option value="{{ f.id }}">{{ f.corto }}</option>
+    {% endfor %}
+    <option value="-">Sin familia</option>
+  </select></label>
+  <label class="filtro filtro--check"><input type="checkbox" id="f-superada"> Solo ediciones del temario superadas</label>
+  <label class="filtro filtro--check"><input type="checkbox" id="f-agrupar"> Agrupar por familia</label>
+  <p class="filtros__contador" id="f-contador" aria-live="polite"></p>
+</div>
+
+<table id="tabla-normas">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Nombre</th>
+      <th class="col-sec">Título oficial (ISO)</th>
+      <th class="col-sec">Familia</th>
+      <th class="col-sec">Categoría</th>
+      <th>Estado</th>
+      <th>Edición vigente</th>
+      <th>Cita el temario</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for f in filas %}
+    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sin familia' }}" data-superada="{{ 1 if f.superada else 0 }}" data-texto="{{ f.texto }}">
+      <td class="codigo" data-sort="{{ f.codigo_orden }}">{{ f.codigo }}</td>
+      <td class="nombre">
+        <details class="detalle">
+          <summary>{{ f.nombre }}</summary>
+          <dl>
+            {% if f.titulo_en %}
+            <dt>Título oficial</dt><dd lang="en">{{ f.titulo_en }}</dd>
+            {% endif %}
+            <dt>Clasificación</dt><dd>{{ f.categoria.nombre if f.categoria else '' }}{% if f.familia %} · {{ f.familia.nombre }}{% endif %}</dd>
+            {% if f.alcance == "norma" %}
+            {% if f.vigentes %}
+            <dt>Edición vigente</dt><dd>{{ enlaces(f.vigentes) }}{% if f.suplementos %}, con {{ enlaces(f.suplementos) }}{% endif %}</dd>
+            {% endif %}
+            {% if f.en_desarrollo %}
+            <dt>Nueva edición en preparación</dt><dd>{% for x in f.en_desarrollo %}{{ enlace(x) }}, {{ x.fase }}{% if not loop.last %}; {% endif %}{% endfor %}</dd>
+            {% endif %}
+            {% if f.sustituida_por %}
+            <dt>Sustituida por</dt><dd>{{ enlaces(f.sustituida_por) }}</dd>
+            {% endif %}
+            {% else %}
+            <dt>{{ "Partes citadas en el temario" if f.partes.otras else "Partes" }}</dt>
+            <dd>
+              <ul class="partes">
+                {% for p in f.partes.citadas %}
+                <li><span class="parte">Parte {{ p.parte or "única" }}</span> {{ estado(p.estado, p.subestado) }}{% if p.ultima %} {{ enlace(p.ultima) }}{% endif %}{% if p.proyectos %} · en preparación: {% for x in p.proyectos %}{{ enlace(x) }} ({{ x.fase }}){% if not loop.last %}, {% endif %}{% endfor %}{% endif %}{% if p.sustituida_por %} · sustituida por {{ enlaces(p.sustituida_por) }}{% endif %}</li>
+                {% endfor %}
+              </ul>
+              {% if f.partes.otras %}
+              <details class="detalle detalle--otras">
+                <summary>Otras {{ f.partes.otras | length }} partes de la serie</summary>
+                <ul class="partes">
+                  {% for p in f.partes.otras %}
+                  <li><span class="parte">Parte {{ p.parte or "única" }}</span> {{ estado(p.estado, p.subestado) }}{% if p.ultima %} {{ enlace(p.ultima) }}{% endif %}</li>
+                  {% endfor %}
+                </ul>
+              </details>
+              {% endif %}
+            </dd>
+            {% endif %}
+            {% if f.edicion_citada %}
+            <dt>Edición que cita el temario</dt><dd>{{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "vigente" %}, que sigue vigente{% elif f.edicion_citada.resultado == "superada" %}, que ya no es la vigente{% else %}; no hay edición ISO de ese año (puede ser el año de la UNE){% endif %}</dd>
+            {% endif %}
+            {% if f.une %}
+            <dt>Norma UNE citada</dt><dd>{{ f.une }}</dd>
+            {% endif %}
+            {% if f.contexto %}
+            <dt>Nota</dt><dd>{{ f.contexto }}</dd>
+            {% endif %}
+          </dl>
+        </details>
+      </td>
+      <td class="col-sec titulo" lang="en">{{ f.titulo_en or "" }}</td>
+      <td class="col-sec">{{ f.familia.corto if f.familia else "" }}</td>
+      <td class="col-sec">{{ f.categoria.nombre if f.categoria else "" }}</td>
+      <td data-sort="{{ f.estado_orden }}">{{ estado(f.estado, f.subestado) }}</td>
+      <td class="vigente">{% if f.alcance == "serie" and f.partes.relevantes > 1 and f.partes.vigentes %}{{ f.partes.vigentes }} de {{ f.partes.relevantes }} partes vigentes{% elif f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% elif f.sustituida_por %}Sustituida por {{ enlace(f.sustituida_por[0]) }}{% if f.sustituida_por | length > 1 %} y {{ f.sustituida_por | length - 1 }} más{% endif %}{% else %}—{% endif %}</td>
+      <td data-sort="{{ f.edicion_citada.anio if f.edicion_citada else '' }}">{% if f.edicion_citada %}{{ f.edicion_citada.anio }}{% if f.superada %} <span class="superada">{{ "superada" if f.edicion_citada.resultado == "superada" else "no es ISO" }}</span>{% endif %}{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+*Datos: [ISO Open Data](https://www.iso.org/open-data.html), licencia ODC-By 1.0. Los títulos oficiales están en inglés porque así los publica ISO.*

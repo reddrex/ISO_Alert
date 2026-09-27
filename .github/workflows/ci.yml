@@ -20,7 +20,8 @@ jobs:
       - run: pip install -e ".[dev,web]"
       - name: Tests
         run: pytest
-      - name: Informe de validación con el extracto de tests
-        run: python -m iso_alert validar --fichero tests/fixtures/iso_subset.jsonl --minimo 0 --salida-json /tmp/validacion.json
-      - name: Build de la web
-        run: zensical build
+      - name: Web con el extracto de tests
+        run: |
+          python -m iso_alert actualizar --fichero tests/fixtures/iso_subset.jsonl --minimo 0 --datos /tmp/datos
+          python -m iso_alert web --datos /tmp/datos
+          zensical build

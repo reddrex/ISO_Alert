@@ -1,0 +1,11 @@
+{% macro estado(e, sub=None) -%}
+<span class="estado estado--{{ e.value }}">{{ e.etiqueta }}</span>{% if sub %} <span class="subestado">{{ sub.etiqueta }}</span>{% endif %}
+{%- endmacro %}
+
+{% macro enlace(x) -%}
+<a href="{{ x.url }}" title="Ficha en iso.org">{{ x.referencia }}</a>
+{%- endmacro %}
+
+{% macro enlaces(lista) -%}
+{% for x in lista %}{{ enlace(x) }}{% if not loop.last %}, {% endif %}{% endfor %}
+{%- endmacro %}

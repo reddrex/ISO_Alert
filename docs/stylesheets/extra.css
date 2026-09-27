@@ -43,3 +43,138 @@
   background: var(--md-primary-fg-color--dark);
   font-size: 0.7rem;
 }
+
+.subestado {
+  font-size: 0.8em;
+  color: var(--md-default-fg-color--light);
+  white-space: nowrap;
+}
+
+/* ---- Tabla de estado ---- */
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  align-items: flex-end;
+  margin: 1.2em 0 0.8em;
+  font-size: 0.7rem;
+}
+.filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--md-default-fg-color--light);
+}
+.filtro select,
+.filtro input[type="search"] {
+  font: inherit;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+  padding: 0.3rem 0.4rem;
+  min-width: 10rem;
+}
+.filtro--texto input { min-width: 15rem; }
+.filtro--check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--md-default-fg-color);
+}
+.filtros__contador {
+  margin: 0 0 0 auto;
+  font-weight: 600;
+}
+
+.md-typeset #tabla-normas { font-size: 0.68rem; }
+.md-typeset #tabla-normas td { vertical-align: top; }
+.md-typeset #tabla-normas .codigo {
+  font-family: var(--md-code-font-family);
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+.md-typeset #tabla-normas .vigente a { white-space: nowrap; }
+.md-typeset #tabla-normas .titulo {
+  color: var(--md-default-fg-color--light);
+  min-width: 14rem;
+}
+.md-typeset #tabla-normas tr.grupo th {
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  font-size: 0.75rem;
+  text-align: left;
+}
+.md-typeset #tabla-normas th[role="columnheader"] { cursor: pointer; }
+.md-typeset .superada {
+  font-weight: 600;
+  color: #9a3d12;
+}
+[data-md-color-scheme="slate"] .md-typeset .superada { color: #f0986a; }
+
+/* Detalle desplegable dentro de la celda del nombre: sin el aspecto de admonición. */
+.md-typeset details.detalle {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: none;
+  font-size: inherit;
+  overflow: visible;
+}
+.md-typeset details.detalle > summary {
+  padding: 0 0 0 1.1em;
+  margin: 0;
+  background: none;
+  border: 0;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+}
+.md-typeset details.detalle > summary::before { display: none; }
+.md-typeset details.detalle > summary::after {
+  left: 0;
+  right: auto;
+  top: 0.1em;
+  width: 0.9em;
+  height: 0.9em;
+  background-color: var(--md-default-fg-color--light);
+}
+.md-typeset details.detalle > dl { margin: 0.5em 0 0.2em 1.1em; }
+.md-typeset details.detalle dt { font-weight: 600; margin-top: 0.4em; }
+.md-typeset details.detalle dd { margin: 0 0 0 0; }
+.md-typeset details.detalle--otras > summary { font-weight: 400; }
+.md-typeset details.detalle--otras { margin-top: 0.3em; }
+
+/* Detalle abierto en una fila a todo el ancho (con JavaScript). */
+.md-typeset #tabla-normas tr.fila-detalle > td {
+  background: var(--md-default-fg-color--lightest);
+  padding: 0.6rem 1rem 0.8rem 2.2rem;
+}
+.md-typeset #tabla-normas tr.fila-detalle dl {
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) 1fr;
+  gap: 0.35rem 1.2rem;
+  margin: 0;
+}
+.md-typeset #tabla-normas tr.fila-detalle dt { margin: 0; font-weight: 600; }
+.md-typeset #tabla-normas tr.fila-detalle dd { margin: 0; }
+@media screen and (max-width: 44.9375em) {
+  .md-typeset #tabla-normas tr.fila-detalle dl { grid-template-columns: 1fr; gap: 0.1rem; }
+  .md-typeset #tabla-normas tr.fila-detalle dt { margin-top: 0.4em; }
+}
+.md-typeset ul.partes { margin: 0.2em 0; padding-left: 0; list-style: none; }
+.md-typeset ul.partes li { margin: 0.15em 0; margin-left: 0; }
+.md-typeset ul.partes .parte { display: inline-block; min-width: 4.5em; }
+
+
+/* En pantallas estrechas, las columnas secundarias pasan al detalle. */
+@media screen and (max-width: 59.9375em) {
+  .md-typeset #tabla-normas .col-sec { display: none; }
+  .filtros__contador { margin-left: 0; width: 100%; }
+}
+@media screen and (max-width: 29.9375em) {
+  .filtro, .filtro--texto input, .filtro select { width: 100%; }
+}

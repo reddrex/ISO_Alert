@@ -9,12 +9,12 @@ Herramienta que vigila las normas técnicas ISO/IEC (y, más adelante, sus adopc
 
 ## Estado del proyecto
 
-En desarrollo. Ya funcionan la comprobación de la lista de normas contra el dataset de ISO y el [informe de validación](https://reddrex.github.io/ISO_Alert/validacion/). Faltan la vigilancia diaria y los avisos. El plan completo está en [PLAN.md](PLAN.md).
+En desarrollo. La web ya muestra el [estado de cada norma](https://reddrex.github.io/ISO_Alert/estado/) con los datos de ISO del día y el [informe de validación](https://reddrex.github.io/ISO_Alert/validacion/) de la lista. Faltan el historial de cambios y los avisos. El plan completo está en [PLAN.md](PLAN.md).
 
 ## Cómo suscribirse (cuando estén activos los avisos)
 
-- **GitHub:** *Watch* → *Custom* → *Issues*. Se abre un Issue por cada edición nueva o anulación.
-- **RSS/Atom:** `https://reddrex.github.io/ISO_Alert/feed.xml`.
+- **GitHub:** *Watch* → *Custom* → *Issues*. Se abre un Issue por cada edición nueva, modificación o anulación de las normas y partes citadas en el temario.
+- **RSS/Atom:** un feed general (`https://reddrex.github.io/ISO_Alert/feed.xml`) y uno por norma, para seguir solo las que te interesen.
 
 No se recogen emails ni datos personales.
 
@@ -24,9 +24,10 @@ No se recogen emails ni datos personales.
 python -m venv .venv
 .venv/bin/pip install -e ".[dev,web]"      # en Windows: .venv\Scripts\pip
 
-python -m iso_alert validar                # descarga el dataset ISO (~80 MB) y genera el informe
-python -m iso_alert validar --sin-descarga # reutiliza la descarga de .cache/
-zensical serve                             # web en http://localhost:8000
+python -m iso_alert actualizar                # descarga el dataset ISO (~80 MB) → data/estado.json y data/validacion.json
+python -m iso_alert actualizar --sin-descarga # reutiliza la descarga de .cache/
+python -m iso_alert web                       # data/ → páginas generadas en docs/
+zensical serve                                # web en http://localhost:8000
 
 pytest                                     # tests con un extracto real del dataset
 pytest -m lento                            # tests sobre el dataset completo

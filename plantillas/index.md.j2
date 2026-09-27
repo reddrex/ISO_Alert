@@ -1,0 +1,46 @@
+{% from "_macros.j2" import estado, enlace %}
+---
+title: Inicio
+hide:
+  - navigation
+  - toc
+---
+
+# Vigilancia de normas TIC
+
+Estado de las {{ resumen.total }} normas ISO citadas en el temario del Cuerpo Superior de Sistemas y Tecnologías de la Información de la Administración del Estado (TIC A1). No es una fuente oficial.
+
+Datos ISO{% if resumen.dato_fecha %} del **{{ resumen.dato_fecha }}**{% endif %}, comprobados el **{{ resumen.comprobado }}**.
+
+## Resumen
+
+<table>
+  <thead><tr><th>Estado</th><th>Normas</th></tr></thead>
+  <tbody>
+    {% for e, n in resumen.por_estado if n %}
+    <tr><td><a href="estado/?estado={{ e.value }}">{{ estado(e) }}</a></td><td>{{ n }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if resumen.revision_periodica %}
+Además, {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.revision_periodica == 1 else "normas vigentes están" }} en revisión periódica, que casi siempre acaba en confirmación.
+{% endif %}
+
+[Ver la tabla completa](estado.md){ .md-button .md-button--primary } [Cómo leer una norma](guia.md){ .md-button }
+
+{% if resumen.superadas %}
+## Ediciones del temario que ya no son las vigentes
+
+El temario cita estas ediciones, pero ISO ya ha publicado otra más reciente.
+
+| Norma | Cita el temario | Edición ISO vigente |
+|---|---|---|
+{% for f in resumen.superadas %}
+| {{ f.codigo }} · {{ f.nombre }} | {{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "no_existe" %} (año de la UNE){% endif %} | {% if f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% else %}—{% endif %} |
+{% endfor %}
+{% endif %}
+
+## Avisos
+
+La web se actualiza a diario con los datos de ISO. El historial de cambios y los avisos por Issue y por RSS se activarán próximamente.

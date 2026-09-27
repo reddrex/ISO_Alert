@@ -6,7 +6,9 @@ __pycache__/
 .cache/
 site/
 
-# Páginas generadas a partir de data/ en cada build
+# Páginas generadas a partir de data/ en cada build (python -m iso_alert web)
+docs/index.md
+docs/estado.md
 docs/validacion.md
 
 # Brief original (contexto personal; no se publica)
