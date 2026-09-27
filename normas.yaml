@@ -4,7 +4,16 @@
 # Campos de cada norma:
 #   codigo          identificador ISO sin año (lo que se busca en el dataset)
 #   nombre          nombre descriptivo en español para la web (el título oficial sale del dataset ISO)
-#   descripcion     qué es y para qué sirve, en 1-3 frases (página "Por temas")
+#   resumen         qué es, en una línea
+#   concepto        palabra clave para recordarla dentro de su familia (27001 = sistema, 27002 = controles…)
+#   pregunta        pregunta que responde la norma
+#   descripcion     para qué sirve, en 1-3 frases
+#   naturaleza      requisitos | vocabulario | guia | modelo | procesos | metodo | especificacion | informe
+#   certificable    true si una organización puede certificarse con ella (o con su parte 1)
+#   temas           números de los temas del temario que la citan (ver temario.yaml)
+#   claves          datos que conviene recordar para el examen
+#   relaciones      {tipo, norma}: relación con otra norma vigilada (la inversa se muestra sola)
+#   partes_descripcion  texto de las partes que el temario cita por separado
 #   alcance         norma = solo ese documento | serie = todas sus partes (-1, -2…)
 #   familia         id de la familia o grupo de estudio al que pertenece (ver bloque "familias")
 #   partes_citadas  partes que menciona el temario (informativo)
@@ -28,7 +37,8 @@ familias:
     nombre: "Familia ISO/IEC 27000 — Seguridad de la información"
     corto: "ISO/IEC 27000"
     categoria: seguridad
-    descripcion: "Normas para gestionar la seguridad de la información mediante un sistema de gestión (SGSI). La ISO/IEC 27001 fija los requisitos del SGSI y es la norma certificable; la ISO/IEC 27002 desarrolla los controles de su Anexo A, y el resto aporta el vocabulario común, la gestión de riesgos o guías para ámbitos concretos como la nube o la privacidad. La antigua serie ISO/IEC 13335 es su antecesora."
+    descripcion: "Familia de normas de seguridad de la información. Conjunto de normas sobre gestión de la seguridad de la información, controles, riesgos y ámbitos especializados como cloud y privacidad."
+    temas: [38, 43, 47, 48, 71, 82, 125]
   - id: privacidad-29100
     nombre: "Privacidad: marco ISO/IEC 29100 y normas relacionadas"
     corto: "Privacidad"
@@ -65,13 +75,15 @@ familias:
     nombre: "Familia ISO/IEC 330xx — Evaluación de procesos (sucesora de SPICE)"
     corto: "ISO/IEC 330xx"
     categoria: ingenieria-software
-    descripcion: "Marco para evaluar la capacidad de los procesos de una organización y su madurez. Sustituyó a la serie ISO/IEC 15504 (SPICE): la 33001 aporta los conceptos y la terminología, la 33002 los requisitos para realizar una evaluación, y normas como la 33063 ofrecen modelos de evaluación para procesos concretos, en este caso las pruebas de software."
+    descripcion: "Familia de normas para la evaluación de procesos. Desarrolla modelos, requisitos y métodos para evaluar la capacidad de los procesos, continuando el enfoque de SPICE."
+    temas: [71, 76, 96, 98]
   # --- calidad-software ---
   - id: square
     nombre: "SQuaRE (ISO/IEC 25000) — Requisitos y evaluación de la calidad de sistemas y software"
     corto: "SQuaRE"
     categoria: calidad-software
-    descripcion: "SQuaRE (Systems and software Quality Requirements and Evaluation) agrupa las normas ISO/IEC 25000 a 25099 sobre la calidad de productos software y de datos: modelos de calidad (25010 para el producto, 25012 para los datos), medición (25024 y otras de la división 2502n) y evaluación (25040). Sustituyó a la ISO/IEC 9126 (modelo de calidad) y a la ISO/IEC 14598 (evaluación del producto), que el temario cita como antecesoras."
+    descripcion: "Familia SQuaRE de calidad de sistemas y productos software. Familia destinada a especificar, medir y evaluar la calidad de sistemas y productos software."
+    temas: [28, 44, 91, 96]
   # --- metricas ---
   - id: tamano-funcional
     nombre: "Medición del tamaño funcional del software (marco y métodos)"
@@ -83,7 +95,8 @@ familias:
     nombre: "Familia ISO 9000 — Gestión de la calidad"
     corto: "ISO 9000"
     categoria: calidad
-    descripcion: "Normas de gestión de la calidad del comité ISO/TC 176. La ISO 9000 recoge los fundamentos, los principios de la gestión de la calidad y el vocabulario; la ISO 9001, los requisitos del sistema de gestión de la calidad, que es la norma certificable; y la ISO 9004, una guía para ir más allá y lograr el éxito sostenido. La ISO 9003 es una norma histórica que desapareció al integrarse en la ISO 9001:2000."
+    descripcion: "Familia de normas de gestión de la calidad. Proporciona fundamentos, vocabulario, requisitos y directrices para gestionar y mejorar la calidad en las organizaciones."
+    temas: [22, 35, 38, 103]
   # --- biometria ---
   - id: bioapi
     nombre: "BioAPI — Interfaz biométrica y normas asociadas"
@@ -116,7 +129,8 @@ familias:
     nombre: "Familia ISO 30300 — Sistemas de gestión para los documentos"
     corto: "ISO 30300"
     categoria: documental
-    descripcion: "Sistemas de gestión para los documentos (SGD), con la misma estructura que otras normas de sistemas de gestión como la ISO 9001 o la ISO/IEC 27001. La ISO 30300 aporta los fundamentos y el vocabulario, la ISO 30301 los requisitos, que son certificables, y la ISO 30302 la guía de implantación."
+    descripcion: "Sistemas de gestión para documentos y registros. Define un marco de sistemas de gestión orientado a dirigir y controlar las actividades relacionadas con documentos y registros."
+    temas: [46, 104]
   - id: conservacion
     nombre: "Conservación a largo plazo de la información digital"
     corto: "Conservación"
@@ -140,541 +154,1241 @@ familias:
     categoria: iot
     descripcion: "Normas del comité ISO/IEC JTC 1/SC 41 sobre Internet de las cosas: vocabulario común (20924, que desde 2024 incluye los gemelos digitales), arquitectura de referencia (30141) e interoperabilidad entre sistemas IoT (21823)."
 
+# Áreas del mapa de estudio: agrupan las categorías y dan color a cada bloque.
+areas:
+  - id: calidad
+    nombre: "Calidad"
+  - id: seguridad
+    nombre: "Seguridad y privacidad"
+  - id: identidad
+    nombre: "Identidad y biometría"
+  - id: software
+    nombre: "Software"
+  - id: datos
+    nombre: "Datos"
+  - id: gestion
+    nombre: "Gobierno, servicios y proyectos"
+  - id: documentacion
+    nombre: "Documentación"
+  - id: interaccion
+    nombre: "Interacción"
+  - id: redes
+    nombre: "Redes e IoT"
+
 categorias:
   - id: seguridad
     nombre: "Seguridad, privacidad y continuidad"
+    area: seguridad
   - id: gobierno-ti
     nombre: "Gobierno de TI"
+    area: gestion
   - id: datos
     nombre: "Gobierno y calidad de datos"
+    area: datos
   - id: ingenieria-software
     nombre: "Ingeniería de software"
+    area: software
   - id: calidad-software
     nombre: "Calidad del software"
+    area: software
   - id: metricas
     nombre: "Medición del tamaño funcional"
+    area: software
   - id: servicios-ti
     nombre: "Servicios de TI"
+    area: gestion
   - id: calidad
     nombre: "Calidad, auditoría y medio ambiente"
+    area: calidad
   - id: proyectos
     nombre: "Gestión de proyectos"
+    area: gestion
   - id: biometria
     nombre: "Biometría"
+    area: identidad
   - id: bd-comercio
     nombre: "Bases de datos y comercio electrónico"
+    area: datos
   - id: documental
     nombre: "Gestión documental y preservación"
+    area: documentacion
   - id: usabilidad
     nombre: "Ergonomía, usabilidad y accesibilidad"
+    area: interaccion
   - id: sam-drm
     nombre: "Activos software y DRM"
+    area: gestion
   - id: redes
     nombre: "Redes y directorios"
+    area: redes
   - id: iot
     nombre: "IoT y ciudades inteligentes"
+    area: redes
 
 normas:
   # --- Gobierno y calidad de datos ---
   - codigo: ISO 8000
     nombre: "Calidad de datos (datos maestros, de transacciones y de ingeniería)"
-    descripcion: "Serie sobre la calidad de los datos y de la información: conceptos y medición (parte 8), gestión de la calidad de datos con un modelo de referencia de procesos y la evaluación de la madurez (partes 60 a 62) y calidad de los datos maestros y su intercambio (partes 100 a 150)."
+    resumen: "Familia de normas sobre calidad y gestión de datos."
+    concepto: "calidad de datos maestros"
+    pregunta: "¿Cómo aseguro la calidad de los datos maestros?"
+    descripcion: "Aborda distintos aspectos de la calidad y gestión de datos, incluyendo datos maestros, intercambio de datos, metadatos y procesos relacionados con la calidad."
     alcance: serie
     partes_citadas: ["1", "2", "8", "60", "61", "62", "100-150", "311"]
     categoria: datos
+    naturaleza: modelo
+    temas: [71, 76]
+    claves:
+      - "Partes clave: 8 (conceptos y medición), 61 (modelo de procesos de gestión de la calidad de datos) y 100 a 150 (datos maestros)."
   - codigo: ISO/IEC 38505
     nombre: "Gobierno del dato"
-    descripcion: "Aplica los principios y el modelo de la ISO/IEC 38500 al gobierno del dato: cómo el órgano de gobierno supervisa el valor, los riesgos y las restricciones del uso de los datos (parte 1). La parte 2 relaciona ese gobierno con la gestión de datos."
+    resumen: "Gobierno de datos."
+    concepto: "gobierno del dato"
+    pregunta: "¿Cómo gobierno los datos?"
+    descripcion: "Familia relacionada con el gobierno de los datos dentro del marco general de gobierno de TI."
     familia: gobierno-ti
     alcance: serie
     partes_citadas: ["1", "TR 2"]
     categoria: datos
+    naturaleza: guia
+    temas: [71, 76]
+    claves:
+      - "Aplica el modelo de la ISO/IEC 38500 al gobierno del dato (parte 1); la parte 2 lo relaciona con la gestión de datos."
+    relaciones:
+      - {tipo: aplica, norma: "ISO/IEC 38500"}
   - codigo: ISO/IEC 25012
     nombre: "Modelo de calidad de datos"
-    descripcion: "Modelo de calidad de los datos: define 15 características (exactitud, completitud, consistencia, actualidad…), clasificadas según sean inherentes a los datos o dependan del sistema."
+    resumen: "Modelo de calidad de los datos."
+    concepto: "calidad de los datos"
+    pregunta: "¿Qué son datos de calidad?"
+    descripcion: "Define características para describir y evaluar la calidad de los datos, como exactitud, completitud, consistencia, actualidad y accesibilidad."
     familia: square
     alcance: norma
     categoria: datos
+    naturaleza: modelo
+    temas: [28, 71, 76]
+    claves:
+      - "Quince características de calidad de los datos, clasificadas en inherentes y dependientes del sistema."
+    relaciones:
+      - {tipo: complementa, norma: "ISO 8000"}
   - codigo: ISO/IEC 25024
     nombre: "Medición de la calidad de los datos"
-    descripcion: "Define medidas para evaluar de forma cuantitativa las características del modelo de calidad de datos de la ISO/IEC 25012."
+    resumen: "Medición de la calidad de los datos."
+    concepto: "medir la calidad de los datos"
+    pregunta: "¿Cómo mido la calidad de los datos?"
+    descripcion: "Define medidas para cuantificar las características de calidad de los datos."
     familia: square
     alcance: norma
     categoria: datos
+    naturaleza: metodo
+    temas: [71, 76]
+    claves:
+      - "Medidas cuantitativas para las características de la ISO/IEC 25012."
+    relaciones:
+      - {tipo: mide, norma: "ISO/IEC 25012"}
 
   # --- Gobierno de TI ---
   - codigo: ISO/IEC 38500
     nombre: "Gobierno corporativo de las TI"
-    descripcion: "Principios para que el órgano de gobierno (consejo de administración, alta dirección) evalúe, dirija y supervise el uso de las TI en la organización. Distingue el gobierno de las TI de su gestión. Es una guía, no certificable."
+    resumen: "Gobierno corporativo de las tecnologías de la información."
+    concepto: "gobierno de las TI"
+    pregunta: "¿Cómo dirige la alta dirección el uso de las TI?"
+    descripcion: "Proporciona principios y orientación para evaluar, dirigir y supervisar el uso actual y futuro de las TI."
     familia: gobierno-ti
     alcance: norma
     categoria: gobierno-ti
+    naturaleza: guia
+    temas: [22]
+    claves:
+      - "Distingue el gobierno de las TI (órgano de gobierno) de su gestión."
+      - "Modelo Evaluar-Dirigir-Supervisar."
+      - "Es una guía, no certificable."
 
   # --- Seguridad, privacidad, riesgos y continuidad ---
   - codigo: ISO/IEC 27000
     nombre: "SGSI: visión general y vocabulario"
+    resumen: "Visión general y vocabulario de los sistemas de gestión de la seguridad de la información."
+    concepto: "seguridad (vocabulario)"
+    pregunta: "¿Qué significa cada término de la familia 27000?"
     descripcion: "Visión general de los sistemas de gestión de la seguridad de la información y términos y definiciones que usa toda la familia 27000."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
+    naturaleza: vocabulario
+    claves:
+      - "Visión general y vocabulario de toda la familia; no contiene requisitos."
+    relaciones:
+      - {tipo: vocabulario_de, norma: "ISO/IEC 27001"}
   - codigo: ISO/IEC 27001
     nombre: "SGSI: requisitos"
-    descripcion: "Requisitos para establecer, implantar, mantener y mejorar un SGSI. Es la norma certificable de la familia. Su Anexo A enumera los 93 controles de referencia de la ISO/IEC 27002:2022. La modificación de 2024 añade la consideración del cambio climático."
+    resumen: "Requisitos de un Sistema de Gestión de Seguridad de la Información (SGSI)."
+    concepto: "sistema (SGSI)"
+    pregunta: "¿Cómo gestiono la seguridad?"
+    descripcion: "Define los requisitos para establecer, implementar, mantener y mejorar un SGSI basado en la gestión de riesgos de seguridad de la información."
     familia: iso-27000
     alcance: norma
     une: UNE-EN ISO/IEC 27001
     categoria: seguridad
+    naturaleza: requisitos
+    certificable: true
+    temas: [38, 43, 47, 48, 71, 82, 105, 125]
+    claves:
+      - "Es la norma certificable de la familia 27000."
+      - "Su Anexo A recoge los 93 controles de la ISO/IEC 27002:2022, agrupados en cuatro temas: organizativos, de personas, físicos y tecnológicos."
+      - "Sigue la estructura armonizada de los sistemas de gestión (cláusulas 4 a 10, ciclo de mejora continua)."
+      - "La modificación Amd 1:2024 añade la consideración del cambio climático."
   - codigo: ISO/IEC 27002
     nombre: "Controles de seguridad de la información (buenas prácticas)"
-    descripcion: "Guía de buenas prácticas con los controles de seguridad de la información (93 en la edición de 2022, agrupados en organizativos, de personas, físicos y tecnológicos) y cómo implantarlos. No es certificable."
+    resumen: "Guía de controles de seguridad de la información."
+    concepto: "controles"
+    pregunta: "¿Qué controles puedo aplicar?"
+    descripcion: "Proporciona un catálogo de controles y buenas prácticas para tratar riesgos de seguridad de la información."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
+    naturaleza: guia
+    temas: [38, 47, 71, 82, 125]
+    claves:
+      - "No es certificable: es una guía de controles."
+      - "Edición de 2022: 93 controles en cuatro temas (37 organizativos, 8 de personas, 14 físicos y 34 tecnológicos), frente a los 114 controles en 14 dominios de la edición de 2013."
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC 27001"}
   - codigo: ISO/IEC 27005
     nombre: "Gestión de riesgos de seguridad de la información"
-    descripcion: "Guía para gestionar los riesgos de seguridad de la información dentro de un SGSI: identificación, análisis, evaluación y tratamiento del riesgo. Se apoya en la ISO 31000."
+    resumen: "Gestión de riesgos de seguridad de la información."
+    concepto: "riesgos"
+    pregunta: "¿Cómo gestiono los riesgos?"
+    descripcion: "Proporciona orientación para aplicar la gestión de riesgos específicamente al ámbito de la seguridad de la información."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
+    naturaleza: guia
+    temas: [47, 82]
+    claves:
+      - "Guía, no certificable."
+      - "Aplica el proceso de la ISO 31000 a la seguridad de la información: identificación, análisis, evaluación y tratamiento del riesgo."
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC 27001"}
+      - {tipo: se_apoya_en, norma: "ISO 31000"}
+      - {tipo: sustituye, norma: "ISO/IEC 13335"}
   - codigo: ISO/IEC 27017
     nombre: "Controles de seguridad para servicios en la nube"
-    descripcion: "Controles de seguridad para servicios en la nube basados en la ISO/IEC 27002, con orientaciones tanto para el proveedor como para el cliente del servicio."
+    resumen: "Controles de seguridad para servicios cloud."
+    concepto: "cloud"
+    pregunta: "¿Cómo adapto los controles al cloud?"
+    descripcion: "Proporciona controles y orientación específicos para la seguridad de servicios en la nube."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
+    naturaleza: guia
+    temas: [125]
+    claves:
+      - "Parte de la ISO/IEC 27002 y añade orientaciones para el proveedor y para el cliente de servicios en la nube."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC 27002"}
   - codigo: ISO/IEC 27018
     nombre: "Protección de datos personales (PII) en nube pública"
-    descripcion: "Guía para proteger los datos personales en nubes públicas cuando el proveedor actúa como encargado del tratamiento."
+    resumen: "Protección de información personal en nubes públicas."
+    concepto: "PII en cloud"
+    pregunta: "¿Cómo protejo los datos personales en la nube pública?"
+    descripcion: "Proporciona controles y buenas prácticas para proteger información personal identificable procesada en servicios de nube pública."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
+    naturaleza: guia
+    temas: [71, 125]
+    claves:
+      - "Se aplica cuando el proveedor de nube pública actúa como encargado del tratamiento de datos personales."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC 27002"}
   - codigo: ISO/IEC 27701
     nombre: "Sistema de gestión de la privacidad de la información (SGPI)"
-    descripcion: "Requisitos y orientaciones para un sistema de gestión de la privacidad de la información (SGPI), aplicable a responsables y encargados del tratamiento de datos personales. Desde la edición de 2025 es una norma de sistema de gestión independiente de la ISO/IEC 27001 y certificable por sí misma."
+    resumen: "Sistema de gestión de información de privacidad."
+    concepto: "privacidad (SGPI)"
+    pregunta: "¿Cómo gestiono la privacidad?"
+    descripcion: "Extiende el enfoque de los sistemas de gestión de seguridad de la información hacia la gestión de la privacidad y la información personal."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
+    naturaleza: requisitos
+    certificable: true
+    temas: [71, 76, 82]
+    claves:
+      - "Sistema de gestión de la privacidad de la información (SGPI) para responsables y encargados del tratamiento."
+      - "Desde la edición de 2025 es una norma de sistema de gestión independiente y certificable por sí misma; antes era una extensión de la ISO/IEC 27001."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC 27001"}
   - codigo: ISO/IEC 29100
     nombre: "Marco de privacidad"
-    descripcion: "Marco común de privacidad para los sistemas TIC que tratan datos personales: terminología, actores y sus funciones, y principios de privacidad."
+    resumen: "Marco de privacidad."
+    concepto: "principios de privacidad"
+    pregunta: "¿Qué principios de privacidad hay que respetar?"
+    descripcion: "Define conceptos, terminología y principios generales para la protección de la privacidad y la información personal."
     familia: privacidad-29100
     alcance: norma
     categoria: seguridad
+    naturaleza: modelo
+    temas: [71, 76]
+    claves:
+      - "Define los principios de privacidad, la terminología y los actores: titular de los datos, responsable, encargado y tercero."
   - codigo: ISO/IEC 29151
     nombre: "Código de prácticas para la protección de datos personales"
-    descripcion: "Controles y orientaciones para proteger los datos personales, que amplían los de la ISO/IEC 27002 con los específicos de privacidad."
+    resumen: "Controles para la protección de información personal."
+    concepto: "controles para datos personales"
+    pregunta: "¿Qué controles protegen los datos personales?"
+    descripcion: "Proporciona controles y buenas prácticas para proteger información personal identificable."
     familia: privacidad-29100
     alcance: norma
     categoria: seguridad
+    naturaleza: guia
+    temas: [71, 76]
+    claves:
+      - "Amplía los controles de la ISO/IEC 27002 con controles específicos de protección de datos personales."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC 27002"}
   - codigo: ISO/IEC 29134
     nombre: "Evaluación de impacto en la privacidad"
-    descripcion: "Guía para realizar evaluaciones de impacto en la privacidad (EIPD): proceso y estructura del informe."
+    resumen: "Evaluaciones de impacto de privacidad."
+    concepto: "evaluación de impacto"
+    pregunta: "¿Cómo evalúo el impacto en la privacidad?"
+    descripcion: "Proporciona directrices para identificar y evaluar riesgos para la privacidad asociados a tratamientos de información personal."
     familia: privacidad-29100
     alcance: norma
     categoria: seguridad
+    naturaleza: guia
+    temas: [71, 76]
+    claves:
+      - "Guía útil para la evaluación de impacto relativa a la protección de datos (EIPD) que exige el RGPD en los tratamientos de alto riesgo."
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC 29100"}
   - codigo: ISO/IEC 20889
     nombre: "Técnicas de desidentificación de datos"
-    descripcion: "Terminología y clasificación de las técnicas de desidentificación de datos (seudonimización, generalización, aleatorización…) y de sus propiedades."
+    resumen: "Desidentificación de datos."
+    concepto: "desidentificación"
+    pregunta: "¿Cómo reduzco la posibilidad de identificar a las personas?"
+    descripcion: "Establece terminología y un marco para técnicas destinadas a reducir la posibilidad de identificar personas a partir de datos."
     familia: privacidad-29100
     alcance: norma
     categoria: seguridad
+    naturaleza: modelo
+    temas: [71, 76]
+    claves:
+      - "Clasifica técnicas como la seudonimización, la generalización, la aleatorización o el enmascaramiento, y modelos formales como el k-anonimato o la privacidad diferencial."
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC 29100"}
   - codigo: ISO 31700
     nombre: "Privacidad desde el diseño para bienes y servicios de consumo"
+    resumen: "Privacidad desde el diseño en bienes y servicios de consumo."
+    concepto: "privacidad desde el diseño"
+    pregunta: "¿Cómo diseño productos de consumo que respeten la privacidad?"
     descripcion: "Requisitos de alto nivel de privacidad desde el diseño para bienes y servicios de consumo que tratan datos personales (parte 1), con casos de uso (parte 2)."
     familia: privacidad-29100
     alcance: serie
     categoria: seguridad
     contexto: "El temario la cita como ISO/DIS 31700 (borrador); se publicó en 2023 como ISO 31700-1 e ISO/TR 31700-2"
+    naturaleza: requisitos
+    temas: [82]
+    claves:
+      - "Publicada en 2023 como ISO 31700-1 (requisitos) e ISO/TR 31700-2 (casos de uso); el temario la cita como borrador ISO/DIS 31700."
+    relaciones:
+      - {tipo: aplica, norma: "ISO/IEC 29100"}
   - codigo: ISO/IEC 29115
     nombre: "Garantía de autenticación de entidades (niveles de identificación electrónica)"
+    resumen: "Marco de garantía de la autenticación de entidades."
+    concepto: "niveles de garantía (LoA)"
+    pregunta: "¿Cuánta confianza da una autenticación?"
     descripcion: "Marco de garantía de la autenticación de entidades: define cuatro niveles de garantía (LoA 1 a 4) y los criterios y amenazas de cada fase del proceso de identificación y autenticación."
     alcance: norma
     categoria: seguridad
     contexto: "El temario la cita como ISO 29115"
+    naturaleza: modelo
+    temas: [81]
+    claves:
+      - "Cuatro niveles de garantía de la autenticación, de LoA1 (bajo) a LoA4 (muy alto)."
+      - "Relacionado con los niveles de seguridad bajo, sustancial y alto del reglamento eIDAS."
   - codigo: ISO/IEC 15408
     nombre: "Common Criteria: criterios de evaluación de la seguridad TI"
-    descripcion: "Criterios Comunes (Common Criteria) para evaluar la seguridad de productos TIC: modelo general (parte 1), componentes funcionales de seguridad (parte 2) y componentes de garantía, con los niveles EAL (parte 3)."
+    resumen: "Common Criteria para evaluación de seguridad."
+    concepto: "criterios de evaluación (CC)"
+    pregunta: "¿Qué seguridad ofrece un producto TIC?"
+    descripcion: "Define criterios para especificar y evaluar las propiedades de seguridad de productos y sistemas de tecnologías de la información."
     familia: common-criteria
     alcance: serie
     partes_citadas: ["1", "2", "3"]
     categoria: seguridad
+    naturaleza: metodo
+    temas: [38, 81]
+    claves:
+      - "Common Criteria: parte 1, modelo general; parte 2, requisitos funcionales de seguridad; parte 3, requisitos de garantía."
+      - "Los niveles de garantía de evaluación van de EAL1 a EAL7."
+      - "En España certifica el Organismo de Certificación del Centro Criptológico Nacional."
   - codigo: ISO/IEC 18045
     nombre: "CEM: metodología de evaluación de la seguridad TI"
-    descripcion: "Metodología común de evaluación (CEM): cómo deben realizar los laboratorios la evaluación de seguridad según la ISO/IEC 15408."
+    resumen: "Metodología de evaluación Common Criteria."
+    concepto: "metodología de evaluación (CEM)"
+    pregunta: "¿Cómo evalúa un laboratorio un producto?"
+    descripcion: "Define la metodología utilizada por los evaluadores para realizar evaluaciones conforme a ISO/IEC 15408."
     familia: common-criteria
     alcance: norma
     categoria: seguridad
+    naturaleza: metodo
+    temas: [38, 81]
+    claves:
+      - "CEM: la metodología que siguen los laboratorios para evaluar según Common Criteria."
+    relaciones:
+      - {tipo: metodologia_de, norma: "ISO/IEC 15408"}
   - codigo: ISO/IEC 13335
     nombre: "Gestión de la seguridad de las TIC (serie antigua)"
-    descripcion: "Antigua serie de directrices para gestionar la seguridad de las TIC (conceptos, planificación, técnicas y selección de salvaguardas). Está anulada: sus contenidos pasaron sobre todo a la ISO/IEC 27005 y a la ISO/IEC 27033-1 (seguridad de redes)."
+    resumen: "Guías históricas de gestión de seguridad de TI."
+    concepto: "antecesora (GMITS)"
+    pregunta: "¿Cómo se gestionaba la seguridad TIC antes de la familia 27000?"
+    descripcion: "Familia histórica sobre conceptos, gestión y planificación de la seguridad de TI y antecedente de la familia ISO/IEC 27000."
     familia: iso-27000
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5"]
     categoria: seguridad
     contexto: "Serie anulada; sus contenidos pasaron a ISO/IEC 27005 e ISO/IEC 27033-1"
+    naturaleza: guia
+    temas: [38]
+    claves:
+      - "Antecesora de la familia 27000 (las antiguas GMITS); está anulada."
+      - "Sus contenidos pasaron a la ISO/IEC 27005 (riesgos) y a la ISO/IEC 27033-1 (seguridad de redes)."
   - codigo: ISO 31000
     nombre: "Gestión del riesgo: directrices"
+    resumen: "Directrices para la gestión del riesgo."
+    concepto: "riesgo en general"
+    pregunta: "¿Cómo gestiono cualquier riesgo?"
     descripcion: "Directrices para gestionar cualquier tipo de riesgo en cualquier organización: principios, marco de referencia y proceso de gestión del riesgo. No es certificable."
     familia: riesgo-continuidad
     alcance: norma
     categoria: seguridad
+    naturaleza: guia
+    temas: [47, 128]
+    claves:
+      - "Directrices, no certificable."
+      - "Tres bloques: principios, marco de referencia y proceso de gestión del riesgo."
+      - "Es la base de otras normas de riesgo, como la ISO/IEC 27005."
   - codigo: ISO 22301
     nombre: "Sistema de gestión de la continuidad del negocio (SGCN)"
-    descripcion: "Requisitos de un sistema de gestión de la continuidad del negocio (SGCN) para prepararse ante interrupciones, responder a ellas y recuperarse. Es certificable."
+    resumen: "Sistema de gestión de continuidad del negocio."
+    concepto: "continuidad (SGCN)"
+    pregunta: "¿Cómo sigo funcionando ante una interrupción?"
+    descripcion: "Establece requisitos para preparar, establecer, implantar, operar, mantener y mejorar un sistema de gestión de continuidad del negocio."
     familia: riesgo-continuidad
     alcance: norma
     edicion_citada: "2012"
     categoria: seguridad
+    naturaleza: requisitos
+    certificable: true
+    temas: [128]
+    claves:
+      - "Certificable."
+      - "Dentro del sistema se realizan el análisis de impacto en el negocio (BIA) y la evaluación de riesgos, y se definen las estrategias y los planes de continuidad."
   - codigo: ISO/IEC 17065
     nombre: "Requisitos para organismos que certifican productos, procesos y servicios"
+    resumen: "Requisitos para los organismos que certifican productos, procesos y servicios."
+    concepto: "acreditación de certificadores"
+    pregunta: "¿Qué debe cumplir quien certifica productos y servicios?"
     descripcion: "Requisitos para los organismos que certifican productos, procesos y servicios. Es la norma con la que ENAC acredita, por ejemplo, a las entidades que certifican la conformidad con el ENS."
     alcance: norma
     une: UNE-EN ISO/IEC 17065
     categoria: seguridad
     contexto: "Acreditación por ENAC de entidades certificadoras del ENS"
+    naturaleza: requisitos
+    temas: [48, 50]
+    claves:
+      - "No certifica organizaciones: fija los requisitos de los organismos que certifican productos, procesos y servicios."
+      - "ENAC acredita según esta norma a las entidades que certifican la conformidad con el ENS."
 
   # --- Ingeniería de software y ciclo de vida ---
   - codigo: ISO/IEC/IEEE 12207
     nombre: "Procesos del ciclo de vida del software"
-    descripcion: "Procesos del ciclo de vida del software (de acuerdo, organizativos, de gestión técnica y técnicos), desde la concepción hasta la retirada. Comparte estructura con la ISO/IEC/IEEE 15288."
+    resumen: "Procesos del ciclo de vida del software."
+    concepto: "ciclo de vida del software"
+    pregunta: "¿Qué procesos tiene la vida del software?"
+    descripcion: "Define procesos, actividades y tareas aplicables a adquisición, suministro, desarrollo, operación, mantenimiento y retirada del software."
     familia: ciclo-vida
     alcance: norma
     edicion_citada: "2017"
     categoria: ingenieria-software
+    naturaleza: procesos
+    temas: [86, 98, 101]
+    claves:
+      - "Grupos de procesos: de acuerdo, organizativos habilitadores, de gestión técnica y técnicos."
+      - "Comparte la estructura de procesos con la ISO/IEC/IEEE 15288."
+    relaciones:
+      - {tipo: complementa, norma: "ISO/IEC/IEEE 15288"}
   - codigo: ISO/IEC/IEEE 15288
     nombre: "Procesos del ciclo de vida de los sistemas"
-    descripcion: "Procesos del ciclo de vida de los sistemas, formados por hardware, software, personas y procedimientos. Es la norma de referencia de la que deriva la estructura de la 12207."
+    resumen: "Procesos del ciclo de vida de sistemas."
+    concepto: "ciclo de vida del sistema"
+    pregunta: "¿Qué procesos tiene la vida de un sistema?"
+    descripcion: "Define un marco de procesos para el ciclo de vida de sistemas completos, desde su concepción hasta su operación, mantenimiento y retirada."
     familia: ciclo-vida
     alcance: norma
     categoria: ingenieria-software
+    naturaleza: procesos
+    temas: [86]
+    claves:
+      - "Procesos del ciclo de vida de sistemas completos (hardware, software, personas y procedimientos)."
+      - "Es la norma de referencia de la que deriva la estructura de la 12207."
   - codigo: ISO/IEC/IEEE 15289
     nombre: "Contenido de la documentación del ciclo de vida"
-    descripcion: "Contenido de los elementos de información (documentos) que producen los procesos de la 12207 y la 15288: planes, especificaciones, informes, procedimientos…"
+    resumen: "Contenido de la información del ciclo de vida."
+    concepto: "documentación de cada proceso"
+    pregunta: "¿Qué documentos produce cada proceso?"
+    descripcion: "Define los elementos de información y documentación que pueden producirse y utilizarse durante los procesos del ciclo de vida de sistemas y software."
     familia: ciclo-vida
     alcance: norma
     categoria: ingenieria-software
     contexto: "El temario la cita como ISO/IEC 15289; es ISO/IEC/IEEE desde la edición de 2011"
+    naturaleza: procesos
+    temas: [86]
+    claves:
+      - "Define el contenido de los elementos de información (planes, especificaciones, informes…) de los procesos de la 12207 y la 15288."
+    relaciones:
+      - {tipo: complementa, norma: "ISO/IEC/IEEE 12207"}
+      - {tipo: complementa, norma: "ISO/IEC/IEEE 15288"}
   - codigo: ISO/IEC/IEEE 14764
     nombre: "Mantenimiento del software"
-    descripcion: "Proceso de mantenimiento del software y sus tipos (correctivo, preventivo, adaptativo, perfectivo…), como desarrollo del proceso de mantenimiento de la ISO/IEC/IEEE 12207."
+    resumen: "Mantenimiento de software."
+    concepto: "mantenimiento"
+    pregunta: "¿Cómo mantengo el software?"
+    descripcion: "Proporciona orientación para implementar el proceso de mantenimiento del software y sus diferentes tipos y actividades."
     familia: ciclo-vida
     alcance: norma
     edicion_citada: "2006"
     categoria: ingenieria-software
     contexto: "El temario la cita como ISO/IEC 14764:2006; es ISO/IEC/IEEE desde la edición de 2022"
+    naturaleza: procesos
+    temas: [101]
+    claves:
+      - "Tipos de mantenimiento: correctivo, preventivo, adaptativo y perfectivo, entre otros."
+      - "Desarrolla el proceso de mantenimiento de la ISO/IEC/IEEE 12207."
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC/IEEE 12207"}
   - codigo: ISO/IEC 15504
     nombre: "SPICE: evaluación de procesos software"
-    descripcion: "SPICE: antigua serie para evaluar la capacidad y la madurez de los procesos software. Fue sustituida por la familia ISO/IEC 330xx."
+    resumen: "Evaluación de procesos software (SPICE)."
+    concepto: "SPICE (antecesora)"
+    pregunta: "¿Cómo se evaluaban los procesos antes de la familia 330xx?"
+    descripcion: "Proporcionó un marco para evaluar la capacidad de procesos software y constituye el antecedente de la familia ISO/IEC 33000."
     familia: iso-33000
     alcance: serie
     categoria: ingenieria-software
     contexto: "SPICE; el temario la relaciona con la serie 33000"
+    naturaleza: metodo
+    temas: [98]
+    claves:
+      - "SPICE; sustituida por la familia ISO/IEC 330xx."
+      - "Niveles de capacidad de los procesos de 0 a 5."
   - codigo: ISO/IEC 33001
     nombre: "Evaluación de procesos: conceptos y terminología"
+    resumen: "Conceptos y terminología de la evaluación de procesos."
+    concepto: "conceptos de evaluación"
+    pregunta: "¿Qué es evaluar un proceso?"
     descripcion: "Conceptos y terminología de la evaluación de procesos y visión general de la familia 330xx."
     familia: iso-33000
     alcance: norma
     categoria: ingenieria-software
+    naturaleza: vocabulario
+    claves:
+      - "Conceptos y terminología de la evaluación de procesos; presenta la familia 330xx."
+    relaciones:
+      - {tipo: vocabulario_de, norma: "ISO/IEC 33002"}
+      - {tipo: sustituye, norma: "ISO/IEC 15504"}
   - codigo: ISO/IEC 33002
     nombre: "Evaluación de procesos: requisitos para realizarla"
+    resumen: "Requisitos para realizar evaluaciones de procesos."
+    concepto: "requisitos de la evaluación"
+    pregunta: "¿Cómo se hace una evaluación de procesos fiable?"
     descripcion: "Requisitos para planificar y realizar una evaluación de procesos de forma que sus resultados sean fiables y comparables."
     familia: iso-33000
     alcance: norma
     categoria: ingenieria-software
+    naturaleza: requisitos
+    claves:
+      - "Requisitos para que una evaluación de procesos sea fiable y comparable."
+    relaciones:
+      - {tipo: sustituye, norma: "ISO/IEC 15504"}
   - codigo: ISO/IEC 33063
     nombre: "Modelo de evaluación de procesos de pruebas de software"
-    descripcion: "Modelo de evaluación de procesos para las pruebas de software, basado en los procesos de prueba de la ISO/IEC/IEEE 29119-2."
+    resumen: "Modelo de evaluación de procesos para pruebas de software."
+    concepto: "evaluación de las pruebas"
+    pregunta: "¿Cómo de maduros son mis procesos de prueba?"
+    descripcion: "Aplica el enfoque de evaluación de procesos de ISO/IEC 33000 al ámbito de las pruebas de software."
     familia: iso-33000
     alcance: norma
     categoria: ingenieria-software
+    naturaleza: metodo
+    temas: [96, 98]
+    claves:
+      - "Modelo de evaluación de los procesos de prueba de la ISO/IEC/IEEE 29119-2."
+    relaciones:
+      - {tipo: evalua, norma: "ISO/IEC/IEEE 29119"}
   - codigo: ISO/IEC/IEEE 29119
     nombre: "Pruebas de software"
-    descripcion: "Serie sobre pruebas de software: conceptos (parte 1), procesos de prueba (parte 2), documentación (parte 3), técnicas de diseño de pruebas (parte 4) y pruebas dirigidas por palabras clave (parte 5)."
+    resumen: "Familia de normas de pruebas de software."
+    concepto: "pruebas de software"
+    pregunta: "¿Cómo planifico, diseño y documento las pruebas?"
+    descripcion: "Establece un marco común para planificar, diseñar, ejecutar y documentar pruebas de software."
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5"]
     categoria: ingenieria-software
+    naturaleza: procesos
+    temas: [96]
+    claves:
+      - "Partes: 1 conceptos, 2 procesos de prueba, 3 documentación de pruebas, 4 técnicas de diseño de pruebas y 5 pruebas dirigidas por palabras clave."
+      - "La parte 3 sustituyó a la antigua IEEE 829 de documentación de pruebas."
   - codigo: ISO/IEC 29110
     nombre: "Perfiles de ingeniería de software para entidades muy pequeñas (pymes)"
-    descripcion: "Perfiles de ciclo de vida y guías de ingeniería de software y de sistemas adaptados a entidades muy pequeñas (VSE, de hasta 25 personas)."
+    resumen: "Normas y guías para entidades muy pequeñas de ingeniería de software."
+    concepto: "entidades muy pequeñas"
+    pregunta: "¿Cómo aplica un equipo pequeño la ingeniería de software?"
+    descripcion: "Adapta prácticas de ingeniería y gestión de software a organizaciones o equipos muy pequeños."
     alcance: serie
     categoria: ingenieria-software
+    naturaleza: procesos
+    temas: [98]
+    claves:
+      - "Para entidades muy pequeñas (VSE): organizaciones o equipos de hasta 25 personas."
+      - "Perfiles progresivos: de entrada, básico, intermedio y avanzado."
+    relaciones:
+      - {tipo: aplica, norma: "ISO/IEC/IEEE 12207"}
   - codigo: ISO/IEC/IEEE 29148
     nombre: "Ingeniería de requisitos"
-    descripcion: "Procesos de ingeniería de requisitos a lo largo del ciclo de vida y contenido de sus documentos, como la especificación de requisitos software (SRS)."
+    resumen: "Ingeniería de requisitos."
+    concepto: "ingeniería de requisitos"
+    pregunta: "¿Cómo obtengo y especifico los requisitos?"
+    descripcion: "Establece procesos y buenas prácticas para identificar, analizar, especificar, validar y gestionar requisitos."
     familia: requisitos
     alcance: norma
     categoria: ingenieria-software
     contexto: "El temario la cita como ISO/IEC 29148; es ISO/IEC/IEEE desde la edición de 2011"
+    naturaleza: procesos
+    temas: [91]
+    claves:
+      - "Documentos de requisitos: especificación de requisitos de las partes interesadas (StRS), del sistema (SyRS) y del software (SRS)."
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC/IEEE 15288"}
+      - {tipo: desarrolla, norma: "ISO/IEC/IEEE 12207"}
   - codigo: ISO/IEC TR 24766
     nombre: "Evaluación de herramientas de ingeniería de requisitos"
-    descripcion: "Informe técnico con las capacidades que deben ofrecer las herramientas de ingeniería de requisitos; sirve para evaluarlas y seleccionarlas."
+    resumen: "Herramientas de ingeniería de requisitos."
+    concepto: "herramientas de requisitos"
+    pregunta: "¿Qué debe ofrecer una herramienta de requisitos?"
+    descripcion: "Se relaciona con las características y evaluación de herramientas destinadas a apoyar las actividades de ingeniería de requisitos."
     familia: requisitos
     alcance: norma
     categoria: ingenieria-software
+    naturaleza: informe
+    temas: [91]
+    claves:
+      - "Informe técnico: capacidades de las herramientas de ingeniería de requisitos."
+    relaciones:
+      - {tipo: complementa, norma: "ISO/IEC/IEEE 29148"}
   - codigo: ISO/IEC 14102
     nombre: "Evaluación y selección de herramientas CASE"
-    descripcion: "Guía para evaluar y seleccionar herramientas CASE (ingeniería de software asistida por ordenador)."
+    resumen: "Evaluación y selección de herramientas CASE."
+    concepto: "herramientas CASE"
+    pregunta: "¿Cómo elijo una herramienta CASE?"
+    descripcion: "Proporciona orientación para evaluar y seleccionar herramientas de ingeniería de software asistida por ordenador."
     alcance: norma
     categoria: ingenieria-software
     contexto: "El temario la cita como ISO 14102"
+    naturaleza: guia
+    temas: [91]
+    claves:
+      - "Evaluación y selección de herramientas CASE."
   - codigo: ISO 10007
     nombre: "Gestión de la configuración"
-    descripcion: "Directrices de gestión de la configuración: planificación, identificación, control de cambios, contabilidad del estado y auditoría de la configuración. Pertenece al comité de calidad ISO/TC 176."
+    resumen: "Directrices para la gestión de la configuración."
+    concepto: "gestión de la configuración"
+    pregunta: "¿Cómo controlo versiones y cambios?"
+    descripcion: "Proporciona orientación sobre identificación de elementos de configuración, control de cambios, estado de configuración y auditorías."
     alcance: norma
     edicion_citada: "2017"
     categoria: ingenieria-software
+    naturaleza: guia
+    temas: [100, 102]
+    claves:
+      - "Actividades: planificación, identificación de la configuración, control de cambios, contabilidad del estado y auditoría de la configuración."
+      - "Es del comité de calidad ISO/TC 176."
+    relaciones:
+      - {tipo: complementa, norma: "ISO/IEC/IEEE 12207"}
 
   # --- Calidad del software ---
   - codigo: ISO/IEC 25000
     nombre: "SQuaRE: guía general"
+    resumen: "Guía de la serie SQuaRE."
+    concepto: "guía de SQuaRE"
+    pregunta: "¿Cómo se organiza SQuaRE?"
     descripcion: "Guía de SQuaRE: presenta la arquitectura de la serie, sus divisiones (gestión, modelo, medición, requisitos y evaluación de la calidad) y los términos comunes."
     familia: square
     alcance: norma
     categoria: calidad-software
+    naturaleza: vocabulario
+    claves:
+      - "Divisiones de SQuaRE: 2500n (gestión de la calidad), 2501n (modelo), 2502n (medición), 2503n (requisitos) y 2504n (evaluación)."
   - codigo: ISO/IEC 25010
     nombre: "Modelo de calidad del producto software"
-    descripcion: "Modelo de calidad del producto. La edición de 2023 define nueve características: adecuación funcional, eficiencia de desempeño, compatibilidad, capacidad de interacción, fiabilidad, seguridad, mantenibilidad, flexibilidad y protección (safety). La calidad en uso pasó a la ISO/IEC 25019."
+    resumen: "Modelo de calidad de sistemas y productos software."
+    concepto: "calidad del producto"
+    pregunta: "¿Qué es un software de calidad?"
+    descripcion: "Define características de calidad que permiten describir y evaluar la calidad de un sistema o producto software."
     familia: square
     alcance: norma
     categoria: calidad-software
+    naturaleza: modelo
+    temas: [44, 91]
+    claves:
+      - "Edición de 2023: nueve características (adecuación funcional, eficiencia de desempeño, compatibilidad, capacidad de interacción, fiabilidad, seguridad, mantenibilidad, flexibilidad y protección)."
+      - "La calidad en uso pasó a la ISO/IEC 25019."
+      - "Sustituye al modelo de la ISO/IEC 9126-1, que tenía seis características."
+    relaciones:
+      - {tipo: sustituye, norma: "ISO/IEC 9126"}
   - codigo: ISO/IEC 25040
     nombre: "Proceso de evaluación de la calidad"
-    descripcion: "Marco y proceso para evaluar la calidad de un producto: establecer los requisitos de la evaluación, especificarla, diseñarla, ejecutarla y cerrarla."
+    resumen: "Proceso de evaluación de la calidad."
+    concepto: "evaluar la calidad"
+    pregunta: "¿Cómo evalúo la calidad de un producto?"
+    descripcion: "Define un proceso para realizar evaluaciones de calidad de productos y sistemas software."
     familia: square
     alcance: norma
     categoria: calidad-software
+    naturaleza: metodo
+    temas: [71, 76]
+    claves:
+      - "Proceso de evaluación: establecer los requisitos, especificar, diseñar, ejecutar y concluir la evaluación."
+      - "Sustituye a la serie ISO/IEC 14598."
+    relaciones:
+      - {tipo: evalua, norma: "ISO/IEC 25010"}
+      - {tipo: sustituye, norma: "ISO/IEC 14598"}
   - codigo: ISO/IEC 9126
     nombre: "Calidad del producto software (antecesora de SQuaRE)"
-    descripcion: "Antiguo modelo de calidad del producto software, con seis características: funcionalidad, fiabilidad, usabilidad, eficiencia, mantenibilidad y portabilidad. Sustituida por la ISO/IEC 25010."
+    resumen: "Modelo histórico de calidad del software."
+    concepto: "modelo de calidad (antecesora)"
+    pregunta: "¿Cómo se definía la calidad del software antes de SQuaRE?"
+    descripcion: "Definió un modelo de características de calidad del software y constituye un antecedente directo de ISO/IEC 25010."
     familia: square
     alcance: serie
     partes_citadas: ["1"]
     categoria: calidad-software
     contexto: "Citada como antecesora de la serie 25000"
+    naturaleza: modelo
+    temas: [44]
+    claves:
+      - "Seis características: funcionalidad, fiabilidad, usabilidad, eficiencia, mantenibilidad y portabilidad."
+      - "Sustituida por la ISO/IEC 25010."
   - codigo: ISO/IEC 14598
     nombre: "Evaluación del producto software (antecesora de SQuaRE)"
+    resumen: "Evaluación del producto software (histórica)."
+    concepto: "evaluación del producto (antecesora)"
+    pregunta: "¿Cómo se evaluaba el producto antes de SQuaRE?"
     descripcion: "Antigua serie sobre el proceso de evaluación del producto software. Sustituida por las normas de evaluación de SQuaRE (ISO/IEC 25040 y siguientes)."
     familia: square
     alcance: serie
     categoria: calidad-software
     contexto: "Citada como antecesora de la serie 25000"
+    naturaleza: metodo
+    temas: [98]
+    claves:
+      - "Sustituida por la ISO/IEC 25040 y el resto de normas de evaluación de SQuaRE."
 
   # --- Medición del tamaño funcional ---
   - codigo: ISO/IEC 14143
     nombre: "Medición del tamaño funcional: marco general"
-    descripcion: "Define los conceptos de la medición del tamaño funcional y los requisitos que debe cumplir un método para ser conforme (parte 1); el resto de partes tratan su verificación y un modelo de referencia."
+    resumen: "Familia sobre medición del tamaño funcional del software."
+    concepto: "marco de medición"
+    pregunta: "¿Qué es medir el tamaño funcional?"
+    descripcion: "Establece conceptos, principios y requisitos relacionados con la medición del tamaño funcional del software."
     familia: tamano-funcional
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5"]
     categoria: metricas
+    naturaleza: metodo
+    temas: [99]
+    claves:
+      - "Parte 1: conceptos de la medición del tamaño funcional y requisitos de un método conforme."
+      - "COSMIC, IFPUG y NESMA (y también Mark II y FiSMA) son métodos conformes con esta norma."
   - codigo: ISO/IEC 19761
     nombre: "Método COSMIC de medición del tamaño funcional"
-    descripcion: "Método COSMIC de medición del tamaño funcional: cuenta los movimientos de datos (entradas, salidas, lecturas y escrituras) en unidades CFP. Sirve también para software de tiempo real."
+    resumen: "Método COSMIC de medición funcional."
+    concepto: "COSMIC"
+    pregunta: "¿Cómo mido el tamaño con movimientos de datos?"
+    descripcion: "Especifica COSMIC, método de medición del tamaño funcional basado en movimientos de datos a través de los límites del sistema."
     familia: tamano-funcional
     alcance: norma
     categoria: metricas
     contexto: "COSMIC"
+    naturaleza: metodo
+    temas: [99]
+    claves:
+      - "Cuatro tipos de movimientos de datos: entrada (E), salida (X), lectura (R) y escritura (W)."
+      - "Unidad: CFP (COSMIC Function Point)."
+      - "Aplicable también a software de tiempo real y embebido."
+    relaciones:
+      - {tipo: metodo_conforme_a, norma: "ISO/IEC 14143"}
   - codigo: ISO/IEC 20926
     nombre: "Método IFPUG de puntos de función"
-    descripcion: "Método IFPUG de análisis de puntos de función: cuenta funciones de datos (ILF, EIF) y transaccionales (EI, EO, EQ)."
+    resumen: "Método IFPUG de puntos de función."
+    concepto: "IFPUG"
+    pregunta: "¿Cómo mido el tamaño con puntos de función?"
+    descripcion: "Formaliza el método de puntos de función de IFPUG para medir el tamaño funcional del software."
     familia: tamano-funcional
     alcance: norma
     categoria: metricas
     contexto: "IFPUG"
+    naturaleza: metodo
+    temas: [99]
+    claves:
+      - "Funciones de datos (ILF, EIF) y transaccionales (EI, EO, EQ)."
+      - "La norma recoge los puntos de función sin ajustar: el factor de ajuste (VAF) queda fuera."
+    relaciones:
+      - {tipo: metodo_conforme_a, norma: "ISO/IEC 14143"}
   - codigo: ISO/IEC 24570
     nombre: "Método NESMA de puntos de función"
-    descripcion: "Método NESMA de puntos de función, variante del de IFPUG muy usada en Europa, que incluye técnicas de estimación temprana (indicativa y estimada)."
+    resumen: "Método NESMA de puntos de función."
+    concepto: "NESMA"
+    pregunta: "¿Cómo estimo pronto el tamaño con puntos de función?"
+    descripcion: "Recoge el método NESMA para la medición del tamaño funcional mediante puntos de función."
     familia: tamano-funcional
     alcance: norma
     categoria: metricas
     contexto: "NESMA"
+    naturaleza: metodo
+    temas: [99]
+    claves:
+      - "Variante de IFPUG muy usada en Europa."
+      - "Incluye técnicas de estimación temprana: recuento indicativo y estimado."
+    relaciones:
+      - {tipo: metodo_conforme_a, norma: "ISO/IEC 14143"}
+      - {tipo: complementa, norma: "ISO/IEC 20926"}
 
   # --- Gestión de servicios de TI ---
   - codigo: ISO/IEC 20000
     nombre: "Gestión de servicios de TI"
-    descripcion: "Gestión de servicios de TI. La parte 1 fija los requisitos de un sistema de gestión del servicio (SGS) y es certificable; las demás son guías de aplicación, de definición del alcance y de implantación. Está alineada con las buenas prácticas de ITIL."
+    resumen: "Familia de normas de gestión de servicios de TI."
+    concepto: "servicios de TI (SGS)"
+    pregunta: "¿Cómo gestiono los servicios de TI?"
+    descripcion: "Establece un marco para planificar, diseñar, prestar, gestionar, controlar y mejorar servicios de tecnologías de la información."
     alcance: serie
     partes_citadas: ["1", "2", "3", "5"]
     categoria: servicios-ti
+    naturaleza: requisitos
+    certificable: true
+    temas: [22, 106]
+    claves:
+      - "La parte 1 es certificable: requisitos del sistema de gestión del servicio (SGS)."
+      - "Alineada con las buenas prácticas de ITIL."
+    partes_descripcion:
+      "1": "Requisitos de un sistema de gestión de servicios de TI. Define los requisitos para establecer, implementar, mantener y mejorar un sistema de gestión de servicios."
+      "2": "Guía para la aplicación de un sistema de gestión de servicios. Proporciona orientación práctica para interpretar y aplicar los requisitos de ISO/IEC 20000-1."
+      "3": "Guía sobre el alcance y aplicabilidad de ISO/IEC 20000-1. Ayuda a determinar el alcance de un sistema de gestión de servicios y la aplicabilidad de sus requisitos."
+      "5": "Guía de implementación de un sistema de gestión de servicios. Proporciona orientación para planificar y ejecutar la implantación de un sistema de gestión de servicios."
   - codigo: ISO/IEC 30105
     nombre: "Procesos del ciclo de vida de servicios habilitados por TI (externalización)"
-    descripcion: "Procesos del ciclo de vida de los servicios habilitados por TI y de la externalización de procesos de negocio (ITES-BPO): requisitos de los procesos, modelo de evaluación y guías."
+    resumen: "Procesos de servicios habilitados por TI."
+    concepto: "externalización (ITES-BPO)"
+    pregunta: "¿Cómo gestiono servicios de negocio externalizados?"
+    descripcion: "Define procesos para la prestación y gestión de servicios de negocio habilitados por TI, especialmente en contextos de externalización."
     alcance: serie
     categoria: servicios-ti
+    naturaleza: procesos
+    temas: [22]
+    claves:
+      - "Servicios habilitados por TI y externalización de procesos de negocio (ITES-BPO)."
 
   # --- Calidad, auditoría, medio ambiente y proyectos ---
   - codigo: ISO 9000
     nombre: "Gestión de la calidad: fundamentos y vocabulario"
+    resumen: "Fundamentos y vocabulario de la gestión de la calidad."
+    concepto: "vocabulario y principios"
+    pregunta: "¿Qué es la calidad y qué principios la guían?"
     descripcion: "Fundamentos y vocabulario de la gestión de la calidad, incluidos los siete principios de la gestión de la calidad (enfoque al cliente, liderazgo, compromiso de las personas, enfoque a procesos, mejora, toma de decisiones basada en la evidencia y gestión de las relaciones)."
     familia: iso-9000
     alcance: norma
     edicion_citada: "2015"
     une: UNE-EN ISO 9000
     categoria: calidad
+    naturaleza: vocabulario
+    claves:
+      - "Siete principios de la gestión de la calidad: enfoque al cliente, liderazgo, compromiso de las personas, enfoque a procesos, mejora, toma de decisiones basada en la evidencia y gestión de las relaciones."
+    relaciones:
+      - {tipo: vocabulario_de, norma: "ISO 9001"}
   - codigo: ISO 9001
     nombre: "Sistemas de gestión de la calidad: requisitos"
-    descripcion: "Requisitos de un sistema de gestión de la calidad. Es la norma certificable de la familia y la norma de sistemas de gestión más implantada."
+    resumen: "Requisitos de un sistema de gestión de la calidad."
+    concepto: "sistema (SGC)"
+    pregunta: "¿Cómo gestiono la calidad?"
+    descripcion: "Define los requisitos para establecer, mantener y mejorar un sistema de gestión de la calidad."
     familia: iso-9000
     alcance: norma
     edicion_citada: "2015"
     une: UNE-EN ISO 9001
     categoria: calidad
+    naturaleza: requisitos
+    certificable: true
+    temas: [22, 35, 38, 103]
+    claves:
+      - "Norma certificable de la familia 9000."
+      - "Estructura armonizada (cláusulas 4 a 10), enfoque a procesos y pensamiento basado en riesgos."
+    relaciones:
+      - {tipo: sustituye, norma: "ISO 9003"}
   - codigo: ISO 9004
     nombre: "Gestión para el éxito sostenido de una organización"
-    descripcion: "Guía para mejorar el desempeño y lograr el éxito sostenido de la organización, más allá de los requisitos de la ISO 9001. Incluye una herramienta de autoevaluación. No es certificable."
+    resumen: "Directrices para mejorar el desempeño y alcanzar el éxito sostenido."
+    concepto: "éxito sostenido"
+    pregunta: "¿Cómo voy más allá de la ISO 9001?"
+    descripcion: "Proporciona orientación para mejorar el desempeño global de una organización, más allá de los requisitos de ISO 9001."
     familia: iso-9000
     alcance: norma
     edicion_citada: "2018"
     une: UNE-EN ISO 9004
     categoria: calidad
+    naturaleza: guia
+    temas: [22, 103]
+    claves:
+      - "No certificable; incluye una herramienta de autoevaluación."
+      - "El temario la relaciona con el modelo EFQM."
+    relaciones:
+      - {tipo: complementa, norma: "ISO 9001"}
   - codigo: ISO 9003
     nombre: "Aseguramiento de la calidad en inspección y ensayos finales (histórica)"
-    descripcion: "Norma histórica de aseguramiento de la calidad limitada a la inspección y los ensayos finales. Se anuló en 2000, cuando las ISO 9002 y 9003 se integraron en la ISO 9001:2000."
+    resumen: "Modelo histórico de aseguramiento de la calidad mediante inspección y ensayos finales."
+    concepto: "inspección final (histórica)"
+    pregunta: "¿Cómo se aseguraba la calidad inspeccionando solo el producto final?"
+    descripcion: "Se centraba en la inspección y los ensayos del producto terminado y forma parte de la evolución histórica de la familia ISO 9000."
     familia: iso-9000
     alcance: norma
     categoria: calidad
     contexto: "Citada como parte histórica de la familia 9000"
+    naturaleza: requisitos
+    temas: [22]
+    claves:
+      - "Desapareció en 2000, al integrarse las ISO 9002 y 9003 en la ISO 9001:2000."
   - codigo: ISO 19011
     nombre: "Directrices para la auditoría de sistemas de gestión"
-    descripcion: "Directrices para auditar cualquier sistema de gestión (calidad, seguridad, medio ambiente…): principios de auditoría, gestión del programa de auditorías, realización de auditorías y competencia de los auditores."
+    resumen: "Directrices para la auditoría de sistemas de gestión."
+    concepto: "auditoría"
+    pregunta: "¿Cómo audito un sistema de gestión?"
+    descripcion: "Establece principios de auditoría y orientación para gestionar programas de auditoría, realizar auditorías y evaluar la competencia de los auditores."
     alcance: norma
     categoria: calidad
+    naturaleza: guia
+    temas: [22, 38, 103]
+    claves:
+      - "Sirve para auditar cualquier sistema de gestión."
+      - "Cubre los principios de auditoría, la gestión del programa de auditoría, la realización de auditorías y la competencia de los auditores."
+    relaciones:
+      - {tipo: audita, norma: "ISO 9001"}
+      - {tipo: audita, norma: "ISO 14001"}
+      - {tipo: audita, norma: "ISO/IEC 27001"}
+      - {tipo: audita, norma: "ISO 22301"}
   - codigo: ISO 14001
     nombre: "Sistemas de gestión ambiental"
-    descripcion: "Requisitos de un sistema de gestión ambiental, con orientaciones para su uso. Es certificable."
+    resumen: "Requisitos de un sistema de gestión ambiental."
+    concepto: "medio ambiente (SGA)"
+    pregunta: "¿Cómo gestiono el impacto ambiental?"
+    descripcion: "Define los requisitos para establecer un sistema que permita gestionar los aspectos ambientales y mejorar el desempeño ambiental."
     alcance: norma
     categoria: calidad
     contexto: "El temario menciona la familia ISO 14000 en general"
+    naturaleza: requisitos
+    certificable: true
+    temas: [35]
+    claves:
+      - "Certificable; misma estructura armonizada que la ISO 9001."
   - codigo: ISO 21500
     nombre: "Gestión de proyectos"
-    descripcion: "Contexto y conceptos de la dirección de proyectos, programas y carteras de proyectos. Es el marco general de las normas ISO de dirección de proyectos."
+    resumen: "Directrices sobre la gestión de proyectos."
+    concepto: "dirección de proyectos"
+    pregunta: "¿Qué conceptos rigen la dirección de proyectos?"
+    descripcion: "Proporciona conceptos y orientación general para la dirección y gestión de proyectos."
     alcance: norma
     categoria: proyectos
+    naturaleza: guia
+    temas: [35]
+    claves:
+      - "Contexto y conceptos de la dirección de proyectos, programas y carteras."
+      - "Marco general de las normas ISO de dirección de proyectos."
 
   # --- Biometría e identificación ---
   - codigo: ISO/IEC 2382-37
     nombre: "Vocabulario de biometría"
-    descripcion: "Vocabulario de biometría: términos y definiciones normalizados (reconocimiento biométrico, verificación, identificación, muestra, plantilla…)."
+    resumen: "Terminología biométrica."
+    concepto: "vocabulario biométrico"
+    pregunta: "¿Qué significa cada término de biometría?"
+    descripcion: "Establece conceptos y terminología comunes relacionados con la biometría."
     alcance: norma
     categoria: biometria
+    naturaleza: vocabulario
+    temas: [81, 84]
+    claves:
+      - "Distingue la verificación (comparación uno a uno) de la identificación (uno a varios)."
+    relaciones:
+      - {tipo: vocabulario_de, norma: "ISO/IEC 19784"}
+      - {tipo: vocabulario_de, norma: "ISO/IEC 19794"}
   - codigo: ISO/IEC 19784
     nombre: "BioAPI: interfaz de programación biométrica"
-    descripcion: "BioAPI: interfaz de programación de aplicaciones biométricas que permite usar sensores y algoritmos de distintos fabricantes (parte 1), con interfaces para archivos de datos biométricos (parte 2) y para sensores (parte 4)."
+    resumen: "BioAPI."
+    concepto: "BioAPI"
+    pregunta: "¿Cómo usa una aplicación un sensor biométrico?"
+    descripcion: "Define interfaces y elementos para facilitar la interoperabilidad entre aplicaciones y tecnologías biométricas."
     familia: bioapi
     alcance: serie
     partes_citadas: ["1", "2", "4"]
     categoria: biometria
     contexto: "BioAPI"
+    naturaleza: especificacion
+    temas: [81, 84]
+    claves:
+      - "BioAPI: parte 1, especificación; parte 2, archivos de datos biométricos; parte 4, sensores."
   - codigo: ISO/IEC 19785
     nombre: "CBEFF: formato común de intercambio de datos biométricos"
-    descripcion: "CBEFF (marco común de formatos de intercambio biométrico): estructura que envuelve los datos biométricos con metadatos como el tipo, el formato o la protección aplicada."
+    resumen: "CBEFF: Common Biometric Exchange Formats Framework."
+    concepto: "envoltorio CBEFF"
+    pregunta: "¿Cómo se empaquetan los datos biométricos?"
+    descripcion: "Define un marco para estructurar e intercambiar información biométrica de forma interoperable."
     familia: formatos-biometricos
     alcance: serie
     categoria: biometria
     contexto: "CBEFF"
+    naturaleza: especificacion
+    temas: [81, 84]
+    claves:
+      - "CBEFF encapsula los datos biométricos con metadatos: tipo, formato, protección aplicada…"
+    relaciones:
+      - {tipo: encapsula, norma: "ISO/IEC 19794"}
+      - {tipo: encapsula, norma: "ISO/IEC 39794"}
   - codigo: ISO/IEC 19794
     nombre: "Formatos de intercambio de datos biométricos (huella, rostro, iris…)"
-    descripcion: "Formatos de intercambio de datos biométricos, con una parte por modalidad (huella dactilar, cara, iris, firma, venas…). Se está sustituyendo por la ISO/IEC 39794."
+    resumen: "Formatos de intercambio de datos biométricos."
+    concepto: "formatos por modalidad"
+    pregunta: "¿Cómo se codifica una huella o una cara?"
+    descripcion: "Define formatos normalizados para representar y almacenar distintos tipos de datos biométricos."
     familia: formatos-biometricos
     alcance: serie
     categoria: biometria
     contexto: "Se vigila también su sucesora, la serie ISO/IEC 39794"
+    naturaleza: especificacion
+    temas: [81, 84]
+    claves:
+      - "Una parte por modalidad: huella (minucias, imagen, patrón), cara, iris, firma, venas…"
+      - "Se sustituye progresivamente por la ISO/IEC 39794."
   - codigo: ISO/IEC 39794
     nombre: "Formatos extensibles de intercambio de datos biométricos (sucesora de la 19794)"
+    resumen: "Formatos extensibles de intercambio de datos biométricos."
+    concepto: "formatos extensibles"
+    pregunta: "¿Cuál es la nueva generación de formatos biométricos?"
     descripcion: "Nueva generación de formatos de intercambio biométrico, extensibles y con codificación ASN.1 y XML, que sustituye a la ISO/IEC 19794. Es la base de la nueva generación de pasaportes electrónicos de la OACI."
     familia: formatos-biometricos
     alcance: serie
     categoria: biometria
     contexto: "No la cita el temario; se añade por ser la nueva generación de la ISO/IEC 19794"
+    naturaleza: especificacion
+    temas: [81, 84]
+    claves:
+      - "Formatos extensibles con codificación ASN.1 y XML."
+      - "Base de la nueva generación de pasaportes electrónicos de la OACI."
+    relaciones:
+      - {tipo: sustituye, norma: "ISO/IEC 19794"}
   - codigo: ISO/IEC 19795
     nombre: "Ensayos de rendimiento biométrico"
-    descripcion: "Principios y métodos para probar e informar del rendimiento de los sistemas biométricos: tasas de error (falsa aceptación, falso rechazo…) y escenarios de prueba."
+    resumen: "Evaluación del rendimiento de sistemas biométricos."
+    concepto: "rendimiento y errores"
+    pregunta: "¿Cómo mido los errores de un sistema biométrico?"
+    descripcion: "Establece principios y métodos para medir y evaluar el rendimiento de sistemas biométricos."
     alcance: serie
     categoria: biometria
+    naturaleza: metodo
+    temas: [81, 84]
+    claves:
+      - "Tasas de error: falsa aceptación (FMR/FAR) y falso rechazo (FNMR/FRR)."
   - codigo: ISO/IEC 24708
     nombre: "Protocolo de interoperabilidad BioAPI"
-    descripcion: "Protocolo de interoperabilidad de BioAPI (BIP): permite usar la interfaz BioAPI entre equipos distintos a través de la red."
+    resumen: "Protocolo de interoperabilidad de BioAPI (BIP)."
+    concepto: "BioAPI en red"
+    pregunta: "¿Cómo uso BioAPI a través de la red?"
+    descripcion: "Define el protocolo que permite usar la interfaz BioAPI entre sistemas distintos a través de la red, facilitando la interoperabilidad entre sistemas biométricos."
     familia: bioapi
     alcance: norma
     categoria: biometria
+    naturaleza: especificacion
+    temas: [81, 84]
+    claves:
+      - "BIP: permite usar BioAPI entre equipos a través de la red."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC 19784"}
   - codigo: ISO/IEC 24709
     nombre: "Pruebas de conformidad de BioAPI"
-    descripcion: "Métodos de prueba para comprobar que una implementación cumple la especificación BioAPI."
+    resumen: "Conformidad de BioAPI."
+    concepto: "conformidad de BioAPI"
+    pregunta: "¿Cómo compruebo que se cumple BioAPI?"
+    descripcion: "Se ocupa de la conformidad y las pruebas relacionadas con implementaciones de BioAPI."
     familia: bioapi
     alcance: serie
     categoria: biometria
+    naturaleza: metodo
+    temas: [81, 84]
+    claves:
+      - "Pruebas de conformidad con la especificación BioAPI."
+    relaciones:
+      - {tipo: prueba, norma: "ISO/IEC 19784"}
   - codigo: ISO/IEC 24761
     nombre: "Contexto de autenticación biométrica"
-    descripcion: "Contexto de autenticación biométrica (ACBio): cómo puede el verificador comprobar la fiabilidad de los procesos biométricos realizados en un equipo remoto."
+    resumen: "Información de contexto para autenticación biométrica."
+    concepto: "contexto de autenticación"
+    pregunta: "¿Me puedo fiar de un proceso biométrico remoto?"
+    descripcion: "Se ocupa de información contextual asociada a procesos de autenticación biométrica."
     alcance: norma
     categoria: biometria
+    naturaleza: especificacion
+    temas: [81, 84]
+    claves:
+      - "ACBio: permite al verificador comprobar la fiabilidad de un proceso biométrico realizado en un equipo remoto."
   - codigo: ISO 19092
     nombre: "Seguridad biométrica en servicios financieros"
-    descripcion: "Marco de seguridad para usar la biometría en la autenticación de clientes de servicios financieros."
+    resumen: "Biometría en servicios financieros."
+    concepto: "biometría en banca"
+    pregunta: "¿Cómo uso la biometría con seguridad en servicios financieros?"
+    descripcion: "Aborda el uso de tecnologías biométricas en determinados servicios financieros y los aspectos de seguridad asociados."
     alcance: norma
     categoria: biometria
+    naturaleza: especificacion
+    temas: [81, 84]
+    claves:
+      - "Marco de seguridad para la autenticación biométrica en servicios financieros."
 
   # --- Bases de datos y comercio electrónico ---
   - codigo: ISO/IEC 9075
     nombre: "Lenguaje de bases de datos SQL"
-    descripcion: "Norma del lenguaje de bases de datos SQL, dividida en partes: marco general, fundamentos (el núcleo del lenguaje), rutinas, SQL/XML, matrices multidimensionales, consultas sobre grafos (SQL/PGQ)…"
+    resumen: "Estándar internacional del lenguaje SQL."
+    concepto: "SQL"
+    pregunta: "¿Cómo se define el lenguaje SQL?"
+    descripcion: "Define la especificación normalizada del lenguaje SQL, incluyendo su sintaxis, semántica y capacidades para trabajar con bases de datos relacionales."
     familia: sql
     alcance: serie
     categoria: bd-comercio
     contexto: "SQL"
+    naturaleza: especificacion
+    temas: [64]
+    claves:
+      - "La parte 2 (Foundation) es el núcleo del lenguaje."
+      - "Entre las partes recientes está SQL/PGQ (consultas sobre grafos, parte 16)."
   - codigo: ISO/IEC 13249
     nombre: "SQL/MM: paquetes multimedia y de aplicación"
-    descripcion: "SQL/MM: paquetes de tipos y funciones sobre SQL para datos multimedia y de aplicación: búsqueda de texto completo, datos espaciales, imágenes fijas y minería de datos."
+    resumen: "SQL/MM."
+    concepto: "SQL multimedia"
+    pregunta: "¿Cómo trato en SQL texto, datos espaciales o imágenes?"
+    descripcion: "Extiende SQL con especificaciones para tipos y aplicaciones multimedia, espaciales, minería de datos y otros dominios especializados."
     familia: sql
     alcance: serie
     categoria: bd-comercio
     contexto: "SQL/MM"
+    naturaleza: especificacion
+    temas: [64]
+    claves:
+      - "SQL/MM: texto completo, datos espaciales, imagen fija y minería de datos."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC 9075"}
   - codigo: ISO 9735
     nombre: "UN/EDIFACT: sintaxis de intercambio electrónico de datos"
-    descripcion: "Reglas de sintaxis de UN/EDIFACT, el estándar de Naciones Unidas para el intercambio electrónico de datos (EDI) en la administración, el comercio y el transporte."
+    resumen: "Sintaxis de UN/EDIFACT."
+    concepto: "sintaxis EDIFACT"
+    pregunta: "¿Cómo se escribe un mensaje EDI?"
+    descripcion: "Define reglas sintácticas para estructurar mensajes de intercambio electrónico de datos en UN/EDIFACT."
     familia: edi
     alcance: serie
     categoria: bd-comercio
     contexto: "UN/EDIFACT"
+    naturaleza: especificacion
+    temas: [78]
+    claves:
+      - "Sintaxis de UN/EDIFACT, el estándar EDI de Naciones Unidas."
+    relaciones:
+      - {tipo: se_apoya_en, norma: "ISO 7372"}
   - codigo: ISO 7372
     nombre: "Directorio de elementos de datos comerciales (UNTDED)"
+    resumen: "Directorio de elementos de datos comerciales (UNTDED)."
+    concepto: "diccionario de datos comerciales"
+    pregunta: "¿Qué significa cada dato de un mensaje comercial?"
     descripcion: "Directorio de elementos de datos comerciales de Naciones Unidas (UNTDED): nombres, definiciones y formatos de los datos que se usan en documentos y mensajes comerciales."
     familia: edi
     alcance: norma
     categoria: bd-comercio
     contexto: "UNTDED"
+    naturaleza: especificacion
+    temas: [78]
+    claves:
+      - "UNTDED: directorio de elementos de datos comerciales que usa UN/EDIFACT."
   # Excluido: "ISO/TC 154" es un comité técnico, no una norma.
 
   # --- Gestión documental y preservación ---
   - codigo: ISO 15489
     nombre: "Gestión de documentos: conceptos y principios"
-    descripcion: "Norma básica de gestión de documentos: conceptos y principios para crear, capturar y gestionar los documentos como prueba de las actividades de la organización (parte 1)."
+    resumen: "Gestión de documentos y registros."
+    concepto: "principios de gestión documental"
+    pregunta: "¿Qué es gestionar documentos?"
+    descripcion: "Establece conceptos y principios para crear, capturar, gestionar y conservar documentos auténticos, fiables, íntegros y utilizables."
     familia: gestion-documentos
     alcance: serie
     partes_citadas: ["1", "TR 2"]
     une: UNE-ISO 15489
     categoria: documental
+    naturaleza: guia
+    temas: [46, 104]
+    claves:
+      - "Norma básica de gestión de documentos: conceptos y principios (parte 1)."
+      - "Características de un documento: autenticidad, fiabilidad, integridad y disponibilidad."
   - codigo: ISO 30300
     nombre: "Sistemas de gestión para los documentos: fundamentos y vocabulario"
+    resumen: "Fundamentos y vocabulario de los sistemas de gestión para los documentos."
+    concepto: "vocabulario del SGD"
+    pregunta: "¿Qué términos usa el sistema de gestión para los documentos?"
     descripcion: "Fundamentos y vocabulario de la gestión de documentos y de los sistemas de gestión para los documentos."
     familia: iso-30300
     alcance: norma
     une: UNE-ISO 30300
     categoria: documental
+    naturaleza: vocabulario
+    claves:
+      - "Fundamentos y vocabulario de los sistemas de gestión para los documentos."
+    relaciones:
+      - {tipo: vocabulario_de, norma: "ISO 30301"}
   - codigo: ISO 30301
     nombre: "Sistemas de gestión para los documentos: requisitos"
-    descripcion: "Requisitos de un sistema de gestión para los documentos. Es la norma certificable de la familia."
+    resumen: "Requisitos de sistemas de gestión para documentos."
+    concepto: "sistema (SGD)"
+    pregunta: "¿Cómo gestiono los documentos como un sistema?"
+    descripcion: "Establece los requisitos de un sistema de gestión orientado a dirigir y controlar los procesos documentales de una organización."
     familia: iso-30300
     alcance: norma
     une: UNE-ISO 30301
     categoria: documental
+    naturaleza: requisitos
+    certificable: true
+    temas: [46, 104]
+    claves:
+      - "Certificable: requisitos del sistema de gestión para los documentos, con la estructura común de las normas de sistemas de gestión."
+    relaciones:
+      - {tipo: se_apoya_en, norma: "ISO 15489"}
   - codigo: ISO 30302
     nombre: "Sistemas de gestión para los documentos: guía de implantación"
-    descripcion: "Guía para implantar un sistema de gestión para los documentos conforme a la ISO 30301."
+    resumen: "Guía de implementación de sistemas de gestión para documentos."
+    concepto: "implantación"
+    pregunta: "¿Cómo implanto el sistema de gestión para los documentos?"
+    descripcion: "Proporciona orientación para implementar un sistema de gestión documental conforme al enfoque de ISO 30301."
     familia: iso-30300
     alcance: norma
     une: UNE-ISO 30302
     categoria: documental
+    naturaleza: guia
+    temas: [104]
+    claves:
+      - "Guía de implantación de la ISO 30301."
+    relaciones:
+      - {tipo: guia_de, norma: "ISO 30301"}
   # ISO 30303 e ISO 30304 no existen en el dataset ISO (ni como proyecto). Se retoman
   # en la fase 2 si aparecen como normas UNE en el BOE.
   # - codigo: ISO 30303
@@ -691,181 +1405,397 @@ normas:
   #   categoria: documental
   - codigo: ISO/TR 13028
     nombre: "Directrices para la digitalización de documentos"
-    descripcion: "Directrices para digitalizar documentos en papel u otros soportes de forma que la copia digital sea fiable y pueda sustituir al original."
+    resumen: "Directrices para la digitalización de documentos."
+    concepto: "digitalización"
+    pregunta: "¿Cómo digitalizo con garantías?"
+    descripcion: "Proporciona recomendaciones para planificar y realizar procesos de digitalización y gestionar adecuadamente los objetos digitales resultantes."
     familia: gestion-documentos
     alcance: norma
     une: UNE-ISO/TR 13028
     categoria: documental
+    naturaleza: informe
+    temas: [83]
+    claves:
+      - "Informe técnico con directrices para digitalizar documentos."
+    relaciones:
+      - {tipo: complementa, norma: "ISO 15489"}
   - codigo: ISO/TR 18492
     nombre: "Conservación a largo plazo de la información basada en documentos electrónicos"
-    descripcion: "Orientaciones prácticas para conservar a largo plazo la información de los documentos electrónicos, manteniendo su autenticidad y legibilidad frente a la obsolescencia tecnológica."
+    resumen: "Conservación a largo plazo de información electrónica."
+    concepto: "conservación a largo plazo"
+    pregunta: "¿Cómo evito que la información se vuelva ilegible?"
+    descripcion: "Proporciona orientación para preservar información electrónica durante largos periodos manteniendo su accesibilidad y utilidad."
     familia: conservacion
     alcance: norma
     edicion_citada: "2005"
     une: UNE-ISO/TR 18492
     categoria: documental
+    naturaleza: informe
+    temas: [49, 105]
+    claves:
+      - "Estrategias de conservación a largo plazo frente a la obsolescencia tecnológica."
+    relaciones:
+      - {tipo: complementa, norma: "ISO 14721"}
   - codigo: ISO 23081
     nombre: "Metadatos para la gestión de documentos"
-    descripcion: "Metadatos para la gestión de documentos: principios sobre qué metadatos crear, cuándo y para qué a lo largo de la vida del documento (parte 1)."
+    resumen: "Metadatos para la gestión de documentos y registros."
+    concepto: "metadatos"
+    pregunta: "¿Qué metadatos acompañan a un documento?"
+    descripcion: "Establece principios y conceptos para gestionar metadatos asociados a documentos, registros y procesos documentales."
     familia: gestion-documentos
     alcance: serie
     partes_citadas: ["1"]
     une: UNE-ISO 23081
     categoria: documental
+    naturaleza: guia
+    temas: [49, 104]
+    claves:
+      - "Metadatos para la gestión de documentos; la parte 1 fija los principios."
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO 15489"}
   - codigo: ISO/TR 26122
     nombre: "Análisis de los procesos de trabajo para la gestión de documentos"
-    descripcion: "Análisis de los procesos de trabajo de la organización para identificar qué documentos deben crearse y capturarse y cómo gestionarlos."
+    resumen: "Análisis de procesos de trabajo para la gestión documental."
+    concepto: "análisis de procesos"
+    pregunta: "¿Qué documentos genera cada proceso de trabajo?"
+    descripcion: "Proporciona orientación para analizar procesos de trabajo con el fin de identificar cómo se crean, reciben y gestionan documentos."
     familia: gestion-documentos
     alcance: norma
     une: UNE-ISO/TR 26122
     categoria: documental
+    naturaleza: informe
+    temas: [49]
+    claves:
+      - "Análisis funcional y análisis secuencial de los procesos de trabajo."
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO 15489"}
   - codigo: ISO 14721
     nombre: "OAIS: modelo de referencia de archivo abierto"
-    descripcion: "OAIS (Open Archival Information System): modelo de referencia de un sistema de archivo para conservar información digital a largo plazo, con sus funciones y sus paquetes de información (SIP, AIP y DIP)."
+    resumen: "Modelo OAIS de preservación digital."
+    concepto: "archivo digital (OAIS)"
+    pregunta: "¿Cómo funciona un archivo digital a largo plazo?"
+    descripcion: "Define el modelo de referencia Open Archival Information System para conservar información digital a largo plazo y facilitar su acceso futuro."
     familia: conservacion
     alcance: norma
     une: UNE-ISO 14721
     categoria: documental
     contexto: "OAIS"
+    naturaleza: modelo
+    temas: [46, 104]
+    claves:
+      - "Paquetes de información: de envío (SIP), de archivo (AIP) y de difusión (DIP)."
+      - "Entidades funcionales: ingesta, almacenamiento, gestión de datos, administración, planificación de la preservación y acceso."
   - codigo: ISO 19005
     nombre: "PDF/A: formato para conservación a largo plazo"
-    descripcion: "PDF/A: subconjunto del formato PDF pensado para la conservación a largo plazo (sin dependencias externas y con las fuentes incrustadas). La parte 1 (PDF/A-1) se basa en PDF 1.4; las posteriores admiten más funciones."
+    resumen: "PDF/A para preservación digital."
+    concepto: "PDF/A"
+    pregunta: "¿En qué formato conservo un documento?"
+    descripcion: "Familia de formatos PDF específicamente diseñada para la preservación a largo plazo de documentos electrónicos."
     familia: conservacion
     alcance: serie
     partes_citadas: ["1"]
     edicion_citada: "2005"
     categoria: documental
     contexto: "PDF/A"
+    naturaleza: especificacion
+    temas: [105]
+    claves:
+      - "PDF/A-1 (basado en PDF 1.4), PDF/A-2, PDF/A-3 (admite ficheros incrustados) y PDF/A-4."
+      - "Obliga a incrustar las fuentes y prohíbe dependencias externas."
+    relaciones:
+      - {tipo: complementa, norma: "ISO 14721"}
   - codigo: ISO 15801
     nombre: "Fiabilidad de la información almacenada electrónicamente"
-    descripcion: "Requisitos y orientaciones para que la información almacenada electrónicamente sea fiable y digna de confianza, en especial cuando ha de servir como prueba. Hasta 2026 era un informe técnico (ISO/TR 15801)."
+    resumen: "Fiabilidad de información almacenada electrónicamente."
+    concepto: "fiabilidad de la información"
+    pregunta: "¿Cómo demuestro que la información almacenada es fiable?"
+    descripcion: "Proporciona recomendaciones para garantizar la fiabilidad y confianza en información almacenada electrónicamente."
     familia: conservacion
     alcance: norma
     edicion_citada: "2004"
     categoria: documental
     contexto: "El temario cita ISO/TR 15801:2004; desde 2026 es norma internacional (ISO 15801)"
+    naturaleza: guia
+    temas: [105]
+    claves:
+      - "Hasta 2026 era un informe técnico (ISO/TR 15801); ahora es norma internacional."
+    relaciones:
+      - {tipo: complementa, norma: "ISO/TR 18492"}
   - codigo: ISO 26102
     nombre: "Conservación prolongada de documentos electrónicos"
+    resumen: "Proyecto de norma sobre conservación de documentos electrónicos que no llegó a publicarse."
+    concepto: "proyecto cancelado"
     descripcion: "Proyecto de norma sobre la conservación prolongada de documentos electrónicos que nunca llegó a publicarse: se canceló en la fase de comité."
     familia: conservacion
     alcance: norma
     categoria: documental
     contexto: "El temario la cita como ISO/NP 26102; el proyecto se canceló (ISO/DTR 26102, etapa 30.98) y nunca llegó a publicarse"
+    naturaleza: guia
+    temas: [105]
+    claves:
+      - "El proyecto se canceló (ISO/DTR 26102, etapa 30.98): nunca se publicó."
 
   # --- Ergonomía, usabilidad y accesibilidad ---
   - codigo: ISO 9241
     nombre: "Ergonomía de la interacción persona-sistema"
-    descripcion: "Serie de ergonomía de la interacción persona-sistema. La parte que cita el temario, la 9241-210, describe el diseño centrado en las personas para sistemas interactivos: comprender el contexto de uso, especificar los requisitos, producir soluciones de diseño y evaluarlas, de forma iterativa."
+    resumen: "Familia sobre ergonomía de la interacción persona-sistema."
+    concepto: "usabilidad y diseño centrado en las personas"
+    pregunta: "¿Qué es la usabilidad y cómo diseño pensando en las personas?"
+    descripcion: "Amplia familia que aborda ergonomía, usabilidad, interacción, interfaces y diseño centrado en las personas."
     familia: ergonomia
     alcance: serie
-    partes_citadas: ["210"]
+    partes_citadas: ["11", "210"]
     categoria: usabilidad
+    naturaleza: especificacion
+    temas: [44, 94]
+    claves:
+      - "Parte 11: definición de usabilidad (eficacia, eficiencia y satisfacción en un contexto de uso especificado)."
+      - "Parte 210: diseño centrado en las personas; sustituyó a la ISO 13407."
+    relaciones:
+      - {tipo: sustituye, norma: "ISO 13407"}
+      - {tipo: sustituye, norma: "ISO 13406"}
+    partes_descripcion:
+      "11": "Usabilidad de sistemas interactivos. Proporciona conceptos y orientación para comprender, especificar y evaluar la usabilidad."
+      "210": "Diseño centrado en las personas. Define principios y actividades para aplicar un enfoque de diseño centrado en las personas durante el ciclo de vida de sistemas interactivos."
   - codigo: ISO 13407
     nombre: "Diseño centrado en el usuario (histórica)"
-    descripcion: "Antigua norma sobre los procesos de diseño centrado en el usuario para sistemas interactivos. Sustituida por la ISO 9241-210."
+    resumen: "Proceso de diseño centrado en el usuario."
+    concepto: "diseño centrado en el usuario (antecesora)"
+    pregunta: "¿Cómo se definía el diseño centrado en el usuario antes de la ISO 9241-210?"
+    descripcion: "Estableció principios y actividades para incorporar las necesidades y características de los usuarios al diseño de sistemas interactivos."
     familia: ergonomia
     alcance: norma
     categoria: usabilidad
     contexto: "El temario indica que la sustituyó la ISO 9241-210"
+    naturaleza: guia
+    temas: [44]
+    claves:
+      - "Sustituida por la ISO 9241-210."
   - codigo: ISO 13406
     nombre: "Ergonomía de pantallas planas (histórica)"
-    descripcion: "Antiguos requisitos ergonómicos para trabajar con pantallas planas. Sustituida por las partes de la serie 300 de la ISO 9241."
+    resumen: "Requisitos ergonómicos para pantallas de visualización."
+    concepto: "pantallas planas (antecesora)"
+    pregunta: "¿Qué requisitos ergonómicos tenían las pantallas planas?"
+    descripcion: "Trata aspectos ergonómicos relacionados con pantallas de visualización y condiciones de uso."
     familia: ergonomia
     alcance: serie
     categoria: usabilidad
+    naturaleza: requisitos
+    temas: [94]
+    claves:
+      - "Sustituida por la serie 300 de la ISO 9241."
   - codigo: ISO/IEC 10741
     nombre: "Interacción de diálogo: control del cursor"
-    descripcion: "Interacción de diálogo en las interfaces de usuario: requisitos para el control del cursor en la edición de texto (parte 1)."
+    resumen: "Interacción de diálogo: control del cursor."
+    concepto: "control del cursor"
+    pregunta: "¿Cómo debe comportarse el cursor al editar texto?"
+    descripcion: "Define requisitos para el control del cursor en la edición de texto dentro de las interfaces de usuario."
     familia: interfaces
     alcance: serie
     categoria: usabilidad
+    naturaleza: especificacion
+    temas: [94]
+    claves:
+      - "Parte 1: control del cursor en la edición de texto."
   - codigo: ISO/IEC 11581
     nombre: "Iconos e iconografía de interfaz"
-    descripcion: "Iconos de interfaz de usuario: requisitos generales y símbolos y funciones de los iconos de uso común."
+    resumen: "Símbolos y objetos de interfaz de usuario."
+    concepto: "iconos"
+    pregunta: "¿Cómo se diseñan los iconos de una interfaz?"
+    descripcion: "Familia de normas sobre iconos, símbolos y objetos utilizados en interfaces de usuario."
     familia: interfaces
     alcance: serie
     categoria: usabilidad
+    naturaleza: especificacion
+    temas: [94]
+    claves:
+      - "Iconos de interfaz: requisitos generales y símbolos de uso común."
   - codigo: ISO 11064
     nombre: "Diseño ergonómico de centros de control"
-    descripcion: "Principios y requisitos ergonómicos para diseñar centros de control (salas de operaciones y de supervisión): disposición, puestos de trabajo, pantallas y entorno."
+    resumen: "Diseño ergonómico de centros de control."
+    concepto: "centros de control"
+    pregunta: "¿Cómo diseño una sala de control?"
+    descripcion: "Familia de normas sobre diseño de centros de control, puestos de trabajo, distribución física, interfaces y factores humanos."
     alcance: serie
     categoria: usabilidad
+    naturaleza: guia
+    temas: [94]
+    claves:
+      - "Diseño ergonómico de centros de control: disposición, puestos de trabajo, pantallas y entorno."
   - codigo: ISO/IEC 40500
     nombre: "Pautas de accesibilidad al contenido web (WCAG)"
-    descripcion: "Adopción como norma ISO/IEC de las Pautas de Accesibilidad para el Contenido Web (WCAG) del W3C. La edición de 2025 corresponde a las WCAG 2.2."
+    resumen: "Norma internacional que adopta las WCAG del W3C."
+    concepto: "accesibilidad web (WCAG)"
+    pregunta: "¿Cómo hago accesible una web?"
+    descripcion: "Adopta las Web Content Accessibility Guidelines del W3C como norma de accesibilidad del contenido web. La edición de 2012 recogía las WCAG 2.0 y la de 2025, las WCAG 2.2."
     alcance: norma
     categoria: usabilidad
     contexto: "WCAG como norma ISO"
+    naturaleza: especificacion
+    temas: [44]
+    claves:
+      - "Adopción ISO/IEC de las WCAG del W3C."
+      - "Edición de 2012: WCAG 2.0; edición de 2025: WCAG 2.2."
+    relaciones:
+      - {tipo: complementa, norma: "ISO 9241"}
 
   # --- Activos software y DRM ---
   - codigo: ISO/IEC 19770
     nombre: "Gestión de activos de software (SAM)"
-    descripcion: "Gestión de activos de TI y de software (SAM): requisitos del sistema de gestión de activos de TI (parte 1), etiquetas de identificación de software SWID (parte 2), derechos de uso (parte 3), medición del uso de recursos (parte 4) y visión general y vocabulario (parte 5)."
+    resumen: "Gestión de activos de tecnologías de la información."
+    concepto: "activos y licencias (SAM)"
+    pregunta: "¿Qué software tengo y con qué licencias?"
+    descripcion: "Familia de normas para gestionar activos TI durante su ciclo de vida, incluyendo inventario, licencias, cumplimiento y activos software."
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5"]
     categoria: sam-drm
+    naturaleza: requisitos
+    certificable: true
+    temas: [43]
+    claves:
+      - "Parte 1: requisitos del sistema de gestión de activos de TI (certificable)."
+      - "Parte 2: etiquetas de identificación de software (SWID)."
   - codigo: ISO/IEC 21000-5
     nombre: "MPEG-21 REL: lenguaje de expresión de derechos"
-    descripcion: "Lenguaje de expresión de derechos (REL) de MPEG-21: permite expresar, de forma que lo entienda una máquina, qué derechos tiene cada usuario sobre un contenido digital. Es una base de los sistemas de gestión de derechos digitales (DRM)."
+    resumen: "MPEG-21 Rights Expression Language."
+    concepto: "derechos digitales (REL)"
+    pregunta: "¿Cómo expreso los derechos sobre un contenido digital?"
+    descripcion: "Parte de MPEG-21 dedicada a expresar y gestionar derechos sobre contenidos digitales."
     alcance: norma
     categoria: sam-drm
     contexto: "MPEG-21 REL"
+    naturaleza: especificacion
+    temas: [43]
+    claves:
+      - "REL de MPEG-21: expresa derechos sobre contenidos digitales; es base de la gestión de derechos digitales (DRM)."
 
   # --- Redes y directorios ---
   - codigo: ISO/IEC 7498
     nombre: "Modelo de referencia OSI"
-    descripcion: "Modelo de referencia OSI: las siete capas de la interconexión de sistemas abiertos (parte 1) y el marco de gestión OSI (parte 4). Equivale a las recomendaciones X.200 y X.700 de la UIT-T."
+    resumen: "Modelo de referencia OSI."
+    concepto: "modelo OSI"
+    pregunta: "¿En qué capas se organiza la comunicación?"
+    descripcion: "Define el modelo conceptual de interconexión de sistemas abiertos basado en siete capas."
     alcance: serie
     partes_citadas: ["1", "4"]
     categoria: redes
     contexto: "Modelo OSI (X.200) y gestión OSI (X.700)"
+    naturaleza: modelo
+    temas: [111]
+    claves:
+      - "Siete capas: física, enlace de datos, red, transporte, sesión, presentación y aplicación."
+      - "Equivale a la recomendación X.200 de la UIT-T; la parte 4 (gestión OSI), a la X.700."
   - codigo: ISO/IEC 11801
     nombre: "Cableado estructurado"
-    descripcion: "Cableado estructurado genérico: requisitos generales (parte 1) y requisitos específicos para oficinas, entornos industriales, viviendas, centros de datos y servicios distribuidos del edificio (partes 2 a 6)."
+    resumen: "Cableado genérico para instalaciones de telecomunicaciones."
+    concepto: "cableado estructurado"
+    pregunta: "¿Cómo se cablea un edificio?"
+    descripcion: "Define arquitectura, requisitos de rendimiento y principios del cableado estructurado para redes y servicios de telecomunicaciones."
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5", "6"]
     categoria: redes
+    naturaleza: especificacion
+    temas: [108, 110]
+    claves:
+      - "Partes: 1 general, 2 oficinas, 3 entornos industriales, 4 viviendas, 5 centros de datos y 6 servicios distribuidos del edificio."
+    relaciones:
+      - {tipo: complementa, norma: "ISO/IEC/IEEE 8802"}
   - codigo: ISO/IEC/IEEE 8802
     nombre: "Redes de área local (adopción de IEEE 802)"
-    descripcion: "Adopción por ISO/IEC de las normas IEEE 802 de redes de área local y metropolitana: Ethernet (8802-3), puentes y VLAN (8802-1Q) y control de acceso a la red basado en puertos (8802-1X)."
+    resumen: "Familia de normas de redes LAN y MAN."
+    concepto: "redes locales (IEEE 802)"
+    pregunta: "¿Cómo funcionan Ethernet y las VLAN?"
+    descripcion: "Familia de normas relacionada con redes de área local y metropolitana y con tecnologías del ámbito IEEE 802."
     alcance: serie
     partes_citadas: ["1Q", "1X", "3"]
     categoria: redes
     contexto: "El temario cita 'ISO 8802' e 'ISO/IEC 802.1/802.3'. La antigua parte 1 era un informe técnico anulado; las normas IEEE 802.1 se adoptan como partes 8802-1Q (puentes y VLAN), 8802-1X (control de acceso por puerto), etc."
+    naturaleza: especificacion
+    temas: [50]
+    claves:
+      - "8802-3: Ethernet (IEEE 802.3); 8802-1Q: puentes y VLAN (IEEE 802.1Q); 8802-1X: control de acceso por puerto (IEEE 802.1X)."
+      - "Corresponden a las capas física y de enlace del modelo OSI."
+    relaciones:
+      - {tipo: se_situa_en, norma: "ISO/IEC 7498"}
+    partes_descripcion:
+      "1Q": "Familia de estándares sobre arquitectura y gestión de redes LAN/MAN. Incluye estándares relacionados con puentes, VLAN, control de acceso, gestión y seguridad en redes IEEE 802."
+      "1X": "Familia de estándares sobre arquitectura y gestión de redes LAN/MAN. Incluye estándares relacionados con puentes, VLAN, control de acceso, gestión y seguridad en redes IEEE 802."
+      "3": "Ethernet. Familia de estándares que especifica tecnologías Ethernet para redes LAN."
   - codigo: ISO/IEC 9594
     nombre: "Servicios de directorio (X.500)"
-    descripcion: "Servicio de directorio (serie X.500 de la UIT-T): modelos, protocolos y servicios del directorio. La parte 8 corresponde a X.509, el marco de certificados de clave pública."
+    resumen: "Familia X.500 de servicios de directorio."
+    concepto: "directorio X.500 y certificados X.509"
+    pregunta: "¿Cómo se organiza un directorio y sus certificados?"
+    descripcion: "Define modelos y protocolos para servicios de directorio distribuidos y constituye la base conceptual de X.500."
     alcance: serie
     categoria: redes
     contexto: "X.500"
+    naturaleza: especificacion
+    temas: [117]
+    claves:
+      - "Serie X.500 de directorio; la parte 8 es X.509, el marco de certificados de clave pública."
+    relaciones:
+      - {tipo: se_situa_en, norma: "ISO/IEC 7498"}
 
   # --- IoT y ciudades inteligentes ---
   - codigo: ISO/IEC 20924
     nombre: "IoT: vocabulario"
-    descripcion: "Vocabulario de Internet de las cosas y, desde la edición de 2024, de los gemelos digitales."
+    resumen: "Conceptos y terminología del Internet de las Cosas."
+    concepto: "vocabulario IoT"
+    pregunta: "¿Qué significa cada término de IoT?"
+    descripcion: "Proporciona vocabulario y conceptos fundamentales para sistemas de Internet de las Cosas."
     familia: iot
     alcance: norma
     edicion_citada: "2018"
     categoria: iot
+    naturaleza: vocabulario
+    temas: [117]
+    claves:
+      - "Vocabulario de IoT y, desde 2024, de gemelos digitales."
+    relaciones:
+      - {tipo: vocabulario_de, norma: "ISO/IEC 30141"}
   - codigo: ISO/IEC 30141
     nombre: "IoT: arquitectura de referencia"
-    descripcion: "Arquitectura de referencia de IoT: características comunes, modelos conceptuales y vistas de la arquitectura de un sistema IoT."
+    resumen: "Arquitectura de referencia para Internet de las Cosas."
+    concepto: "arquitectura IoT"
+    pregunta: "¿Cómo se estructura un sistema IoT?"
+    descripcion: "Define una arquitectura de referencia común para estructurar sistemas IoT mediante modelos, conceptos y perspectivas."
     familia: iot
     alcance: norma
     edicion_citada: "2018"
     categoria: iot
+    naturaleza: modelo
+    temas: [117]
+    claves:
+      - "Arquitectura de referencia de IoT."
   - codigo: ISO/IEC 21823
     nombre: "IoT: interoperabilidad"
-    descripcion: "Interoperabilidad de sistemas IoT: marco general (parte 1) que distingue las facetas de transporte, sintáctica, semántica, de comportamiento y de políticas."
+    resumen: "Interoperabilidad de sistemas IoT."
+    concepto: "interoperabilidad IoT"
+    pregunta: "¿Cómo se entienden sistemas IoT distintos?"
+    descripcion: "Aborda distintos aspectos de la interoperabilidad entre dispositivos, sistemas y plataformas de Internet de las Cosas."
     familia: iot
     alcance: serie
     partes_citadas: ["1"]
     categoria: iot
+    naturaleza: modelo
+    temas: [117]
+    claves:
+      - "Facetas de la interoperabilidad: transporte, sintáctica, semántica, de comportamiento y de políticas."
+    relaciones:
+      - {tipo: complementa, norma: "ISO/IEC 30141"}
   - codigo: ISO 37120
     nombre: "Ciudades sostenibles: indicadores de servicios urbanos y calidad de vida"
+    resumen: "Indicadores de servicios urbanos y calidad de vida para ciudades sostenibles."
+    concepto: "indicadores de ciudad"
+    pregunta: "¿Cómo mido una ciudad sostenible?"
     descripcion: "Indicadores normalizados para medir los servicios urbanos y la calidad de vida en ciudades sostenibles (economía, educación, energía, medio ambiente, gobierno…)."
     alcance: norma
     edicion_citada: "2015"
     une: UNE-ISO 37120
     categoria: iot
     contexto: "El año 2015 es el de la UNE-ISO 37120; las ediciones ISO son de 2014 y 2018"
+    naturaleza: modelo
+    temas: [117]
+    claves:
+      - "Indicadores de servicios urbanos y calidad de vida para ciudades sostenibles."

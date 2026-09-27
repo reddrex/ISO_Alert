@@ -49,3 +49,28 @@ def test_duplicados():
     datos["normas"].append(dict(datos["normas"][0]))
     with pytest.raises(ConfigError, match="duplicado"):
         validar(datos)
+
+
+def test_temario_y_relaciones(config):
+    assert len(config.temario) == 38
+    assert config.temario[47].titulo.startswith("Seguridad de sistemas (1)")
+    n = next(n for n in config.normas if n.codigo == "ISO/IEC 27002")
+    assert ("desarrolla", "ISO/IEC 27001") in [(r.tipo, r.norma) for r in n.relaciones]
+    assert sum(n.certificable for n in config.normas) == 8
+    assert all(n.naturaleza for n in config.normas)
+    assert len(config.areas) == 9 and all(c.area for c in config.categorias.values())
+    assert all(n.concepto for n in config.normas)
+    assert config.temario[47].asociacion[0] == ("ISO 31000", "riesgo en general")
+
+
+@pytest.mark.parametrize("cambios,mensaje", [
+    ({"relaciones": [{"tipo": "inventada", "norma": "ISO 9001"}]}, "relación no válida"),
+    ({"relaciones": [{"tipo": "amplia", "norma": "ISO 1"}]}, "no está en normas.yaml"),
+    ({"temas": [999]}, "no está en temario.yaml"),
+    ({"naturaleza": "otra"}, "naturaleza"),
+])
+def test_errores_didacticos(cambios, mensaje):
+    datos = _datos(**cambios)
+    datos["temario"] = [{"numero": 22, "titulo": "Calidad"}]
+    with pytest.raises(ConfigError, match=mensaje):
+        validar(datos)

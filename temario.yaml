@@ -1,0 +1,283 @@
+# Temas del temario TIC A1 que citan normas ISO/UNE.
+# Fuente: oposicion_tic_a1.xlsx (hoja Temario), vía ISO_normas_TIC_A1_definitivo.json.
+# «relacion» explica cómo se relacionan las normas dentro del tema; «asociacion» es la cadena
+# de lo general a lo específico que conviene recordar para el examen.
+
+temas:
+  - numero: 22
+    titulo: "La calidad en los servicios públicos y el papel de las TIC en su modernización. La legislación en materia de sociedad de la información y administración electrónica en España y Europa."
+    relacion: "El tema trata la calidad en la Administración, y las normas que cita son de sistemas de gestión. La familia ISO 9000 es el eje: la ISO 9001 fija los requisitos certificables, la ISO 9004 orienta hacia el éxito sostenido y la ISO 19011 sirve para auditar esos sistemas. La misma lógica se aplica a los servicios de TI con la ISO/IEC 20000 (y la ISO/IEC 30105 para servicios externalizados), mientras que la ISO/IEC 38500 añade el gobierno de las TI por parte de la dirección. La ISO 9003 aparece como antecedente histórico."
+    asociacion:
+      - {norma: "ISO 9001", idea: "requisitos del sistema de gestión de la calidad"}
+      - {norma: "ISO 9004", idea: "ir más allá: éxito sostenido"}
+      - {norma: "ISO 19011", idea: "cómo se audita ese sistema"}
+      - {norma: "ISO/IEC 20000", idea: "la misma lógica aplicada a los servicios de TI"}
+      - {norma: "ISO/IEC 38500", idea: "la dirección gobierna las TI"}
+  - numero: 28
+    titulo: "Definición, estructura, y dimensionamiento eficiente de los sistemas de información."
+    relacion: "Al definir y dimensionar un sistema de información, SQuaRE aporta el vocabulario para fijar sus requisitos de calidad; en particular, la ISO/IEC 25012 define qué significa que los datos del sistema sean de calidad."
+    asociacion:
+      - {norma: "ISO/IEC 25000", idea: "SQuaRE: calidad de sistemas y software"}
+      - {norma: "ISO/IEC 25012", idea: "calidad de los datos del sistema"}
+  - numero: 35
+    titulo: "Dirección y gestión de proyectos de tecnologías de la información. Planificación estratégica, gestión de recursos, seguimiento de proyectos, toma de decisiones."
+    relacion: "En la dirección de proyectos TIC, la ISO 21500 es la referencia específica de gestión de proyectos. Las normas de sistemas de gestión (ISO 9001 para la calidad e ISO 14001 para el medio ambiente) son marcos con los que el proyecto debe ser coherente: comparten estructura y ciclo de mejora continua."
+    asociacion:
+      - {norma: "ISO 21500", idea: "dirección de proyectos"}
+      - {norma: "ISO 9001", idea: "calidad de la organización y del proyecto"}
+      - {norma: "ISO 14001", idea: "impacto ambiental"}
+  - numero: 38
+    titulo: "Auditoría informática. Concepto y contenidos. Administración, planeamiento, organización, infraestructura técnica y prácticas operativas."
+    relacion: "La auditoría compara lo auditado con un referente, y aquí los referentes son normas: la ISO/IEC 27001 (requisitos del SGSI) y su catálogo de controles, la ISO/IEC 27002, para la seguridad; la ISO 9001 para la calidad, y la ISO 19011 para el propio proceso de auditoría de cualquier sistema de gestión. Common Criteria (ISO/IEC 15408, con su metodología ISO/IEC 18045) cubre la evaluación de productos, y la ISO/IEC 13335 es la antecesora de la familia 27000."
+    asociacion:
+      - {norma: "ISO 19011", idea: "cómo se audita"}
+      - {norma: "ISO/IEC 27001", idea: "referente de seguridad: el SGSI"}
+      - {norma: "ISO/IEC 27002", idea: "controles que se verifican"}
+      - {norma: "ISO 9001", idea: "referente de calidad"}
+      - {norma: "ISO/IEC 15408", idea: "evaluación de productos"}
+      - {norma: "ISO/IEC 18045", idea: "metodología de esa evaluación"}
+  - numero: 43
+    titulo: "La protección jurídica de los programas de ordenador. Los medios de comprobación de la legalidad y control del software."
+    relacion: "Para comprobar la legalidad del software, la ISO/IEC 19770 (gestión de activos de TI y de software) permite inventariar lo instalado y conciliarlo con las licencias. La ISO/IEC 21000-5 (MPEG-21 REL) expresa los derechos sobre contenidos digitales, base de la gestión de derechos digitales, y la familia 27000 aporta controles relacionados, como el inventario de activos."
+    asociacion:
+      - {norma: "ISO/IEC 19770", idea: "inventario de software y licencias"}
+      - {norma: "ISO/IEC 21000-5", idea: "derechos sobre contenidos digitales"}
+      - {norma: "ISO/IEC 27001", idea: "controles sobre los activos"}
+  - numero: 44
+    titulo: "Accesibilidad y usabilidad. W3C. Diseño universal. Diseño web adaptativo."
+    relacion: "La usabilidad y la accesibilidad se abordan desde tres normas: la serie ISO 9241 define la usabilidad (parte 11) y el diseño centrado en las personas (parte 210, que sustituyó a la ISO 13407); la ISO/IEC 40500 adopta las WCAG del W3C como norma de accesibilidad, y los modelos de calidad del producto (la antigua ISO/IEC 9126 y su sucesora, la ISO/IEC 25010 de SQuaRE) incluyen la usabilidad, hoy «capacidad de interacción», como característica de calidad."
+    asociacion:
+      - {norma: "ISO 9241", idea: "usabilidad (parte 11) y diseño centrado en las personas (parte 210)"}
+      - {norma: "ISO 13407", idea: "antecesora de la ISO 9241-210"}
+      - {norma: "ISO/IEC 40500", idea: "accesibilidad web (WCAG)"}
+      - {norma: "ISO/IEC 25010", idea: "la usabilidad como característica de calidad"}
+      - {norma: "ISO/IEC 9126", idea: "modelo de calidad anterior"}
+  - numero: 46
+    titulo: "Interoperabilidad de sistemas (2). Las Normas Técnicas de Interoperabilidad. Interoperabilidad de los documentos y expedientes electrónicos y normas para el intercambio de datos entre Administraciones Públicas."
+    relacion: "La interoperabilidad de documentos y expedientes se apoya en las normas de gestión documental: la ISO 15489 fija los principios, la familia ISO 30300 (con la ISO 30301 certificable) los organiza como sistema de gestión y la ISO 14721 (OAIS) describe cómo conservarlos en un archivo digital. Las Normas Técnicas de Interoperabilidad españolas las toman como referencia."
+    asociacion:
+      - {norma: "ISO 15489", idea: "principios de la gestión documental"}
+      - {norma: "ISO 30301", idea: "sistema de gestión para los documentos"}
+      - {norma: "ISO 14721", idea: "archivo digital a largo plazo"}
+  - numero: 47
+    titulo: "Seguridad de sistemas (1). Análisis y gestión de riesgos. Herramientas."
+    relacion: "La ISO 31000 da el marco general para gestionar cualquier riesgo y la ISO/IEC 27005 lo aplica a la seguridad de la información. Dentro de un SGSI, la ISO/IEC 27001 exige evaluar y tratar los riesgos, y los controles para tratarlos se eligen del catálogo de la ISO/IEC 27002."
+    asociacion:
+      - {norma: "ISO 31000", idea: "riesgo en general"}
+      - {norma: "ISO/IEC 27005", idea: "riesgo específico de seguridad"}
+      - {norma: "ISO/IEC 27001", idea: "SGSI donde se gestiona ese riesgo"}
+      - {norma: "ISO/IEC 27002", idea: "controles para tratar el riesgo"}
+  - numero: 48
+    titulo: "Seguridad de sistemas (2). El Esquema Nacional de Seguridad. Adecuación al ENS. Estrategia Nacional de Seguridad. CCN-STIC."
+    relacion: "El ENS es la norma legal española, pero guarda relación con la familia 27000: muchas de sus medidas tienen equivalente en los controles de la ISO/IEC 27002, y una organización puede tener a la vez un SGSI certificado según la ISO/IEC 27001. La conformidad con el ENS la certifican entidades acreditadas por ENAC según la ISO/IEC 17065."
+    asociacion:
+      - {norma: "ISO/IEC 27001", idea: "SGSI compatible con el ENS"}
+      - {norma: "ISO/IEC 27002", idea: "controles equivalentes a medidas del ENS"}
+      - {norma: "ISO/IEC 17065", idea: "acreditación de quien certifica el ENS"}
+  - numero: 49
+    titulo: "Infraestructuras, servicios comunes y compartidos para la interoperabilidad entre Administraciones públicas. Cl@ve, la Carpeta Ciudadana, el Sistema de Interconexión de Registros, la Plataforma de Intermediación de Datos, y otros servicios."
+    relacion: "En la gestión de los documentos que se intercambian entre Administraciones intervienen normas de apoyo: la ISO 23081 define los metadatos que acompañan a los documentos, la ISO/TR 26122 cómo analizar los procesos de trabajo que los generan y la ISO/TR 18492 cómo conservarlos a largo plazo."
+    asociacion:
+      - {norma: "ISO 23081", idea: "metadatos de los documentos"}
+      - {norma: "ISO/TR 26122", idea: "procesos que generan los documentos"}
+      - {norma: "ISO/TR 18492", idea: "conservación a largo plazo"}
+  - numero: 50
+    titulo: "Organizaciones internacionales y nacionales de normalización. Pruebas de conformidad y certificación. El establecimiento de servicios de pruebas de conformidad."
+    relacion: "Es el tema sobre la normalización en sí. Un buen ejemplo es cómo ISO/IEC adopta normas de otros organismos: las IEEE 802 de redes locales se publican como ISO/IEC/IEEE 8802 (IEEE 802.1Q como 8802-1Q, 802.3 como 8802-3). En la certificación, la ISO/IEC 17065 fija los requisitos de los organismos que certifican productos, procesos y servicios."
+    asociacion:
+      - {norma: "ISO/IEC/IEEE 8802", idea: "normas IEEE adoptadas por ISO/IEC"}
+      - {norma: "ISO/IEC 17065", idea: "requisitos de los certificadores"}
+  - numero: 64
+    titulo: "El modelo relacional. El lenguaje SQL. Normas y estándares para la interoperabilidad entre gestores de bases de datos relacionales."
+    relacion: "La ISO/IEC 9075 es la norma del lenguaje SQL, con la que los gestores de bases de datos relacionales declaran su grado de conformidad. La ISO/IEC 13249 (SQL/MM) la amplía con tipos para texto, datos espaciales, imágenes y minería de datos."
+    asociacion:
+      - {norma: "ISO/IEC 9075", idea: "lenguaje SQL"}
+      - {norma: "ISO/IEC 13249", idea: "SQL para multimedia y datos espaciales"}
+  - numero: 71
+    titulo: "Ciencia de datos. Ciclo de vida de los procesos de modelado de datos (ETL, preprocesado, modelado, validación, MLops). Fundamentos estadísticos. Herramientas y lenguajes. Visualización de datos."
+    relacion: "En ciencia de datos las normas cubren la calidad de los datos (ISO 8000 y el modelo de la ISO/IEC 25012, con sus medidas en la ISO/IEC 25024 y su evaluación en la ISO/IEC 25040), su gobierno (ISO/IEC 38505) y la privacidad al tratarlos: principios de la ISO/IEC 29100, controles de la 29151, evaluación de impacto de la 29134, desidentificación de la 20889 y sistema de gestión de la 27701. La familia 27000 aporta la seguridad de los datos, y la familia 330xx permite evaluar la madurez de los procesos."
+    asociacion:
+      - {norma: "ISO 8000", idea: "calidad de los datos maestros"}
+      - {norma: "ISO/IEC 25012", idea: "modelo de calidad de los datos"}
+      - {norma: "ISO/IEC 25024", idea: "medir esa calidad"}
+      - {norma: "ISO/IEC 38505", idea: "gobierno del dato"}
+      - {norma: "ISO/IEC 29100", idea: "principios de privacidad"}
+      - {norma: "ISO/IEC 20889", idea: "desidentificar los datos"}
+      - {norma: "ISO/IEC 27701", idea: "gestionar la privacidad"}
+  - numero: 76
+    titulo: "Estrategia del dato. Gobierno del dato, gestión del dato y gestión de la calidad del dato. Tecnologías y estándares para descripción de catálogos y conjuntos de datos: semánticas y ontologías."
+    relacion: "La estrategia del dato combina gobierno (ISO/IEC 38505, que aplica la ISO/IEC 38500 al dato), calidad (ISO 8000 y la ISO/IEC 25012, medida con la 25024 y evaluada con la 25040) y privacidad (la ISO/IEC 29100 y las normas que la desarrollan: 29151, 29134, 20889 y el sistema de gestión 27701). La familia 330xx permite evaluar la madurez de los procesos de gestión del dato."
+    asociacion:
+      - {norma: "ISO/IEC 38505", idea: "gobierno del dato"}
+      - {norma: "ISO 8000", idea: "calidad de los datos maestros"}
+      - {norma: "ISO/IEC 25012", idea: "modelo de calidad de los datos"}
+      - {norma: "ISO/IEC 25024", idea: "medir esa calidad"}
+      - {norma: "ISO/IEC 25040", idea: "evaluarla"}
+      - {norma: "ISO/IEC 29100", idea: "principios de privacidad"}
+  - numero: 78
+    titulo: "Comercio electrónico. Mecanismos de pago. Gestión del negocio. Factura electrónica. Pasarelas de pago."
+    relacion: "El intercambio electrónico de datos comerciales (EDI) se basa en UN/EDIFACT: la ISO 9735 fija la sintaxis de los mensajes y la ISO 7372 el directorio de elementos de datos que contienen."
+    asociacion:
+      - {norma: "ISO 9735", idea: "sintaxis del mensaje EDI"}
+      - {norma: "ISO 7372", idea: "diccionario de los datos del mensaje"}
+  - numero: 81
+    titulo: "Identificación y firma electrónica (2) Prestación de servicios públicos y privados. Infraestructura de clave pública (PKI). Mecanismos de identificación y firma: «Smart Cards», DNI electrónico, mecanismos biométricos."
+    relacion: "La identificación electrónica se apoya en marcos de garantía como la ISO/IEC 29115 (niveles LoA). Para la biometría, la ISO/IEC 2382-37 fija el vocabulario; la ISO/IEC 19794 y su sucesora, la 39794, los formatos de los datos, que se encapsulan con CBEFF (19785); BioAPI (19784, con 24708 y 24709) la interfaz de programación; la 19795 mide el rendimiento, y la 24761 y la ISO 19092 tratan la seguridad de la autenticación. Common Criteria (ISO/IEC 15408 y 18045) evalúa la seguridad de productos como las tarjetas inteligentes."
+    asociacion:
+      - {norma: "ISO/IEC 29115", idea: "niveles de garantía de la identificación"}
+      - {norma: "ISO/IEC 2382-37", idea: "vocabulario biométrico"}
+      - {norma: "ISO/IEC 19794", idea: "formato de los datos biométricos"}
+      - {norma: "ISO/IEC 39794", idea: "nueva generación de esos formatos"}
+      - {norma: "ISO/IEC 19785", idea: "envoltorio CBEFF"}
+      - {norma: "ISO/IEC 19784", idea: "interfaz BioAPI"}
+      - {norma: "ISO/IEC 15408", idea: "evaluación de tarjetas y dispositivos"}
+  - numero: 82
+    titulo: "Adaptación de aplicaciones y entornos a los requisitos de la normativa de protección de datos según los niveles de seguridad. Herramientas de cifrado y auditoría."
+    relacion: "Para adaptar aplicaciones a la normativa de protección de datos, la ISO/IEC 27701 extiende el enfoque del SGSI (ISO/IEC 27001) a la privacidad, la ISO/IEC 27005 orienta el análisis de riesgos y la ISO/IEC 27002 aporta los controles de seguridad. La ISO 31700 lleva la privacidad desde el diseño a los productos de consumo."
+    asociacion:
+      - {norma: "ISO/IEC 27701", idea: "gestión de la privacidad"}
+      - {norma: "ISO/IEC 27005", idea: "análisis de riesgos"}
+      - {norma: "ISO/IEC 27002", idea: "controles de seguridad"}
+      - {norma: "ISO 31700", idea: "privacidad desde el diseño"}
+  - numero: 83
+    titulo: "El tratamiento de imágenes. Tecnologías de digitalización y de impresión. Impresión 3D."
+    relacion: "La ISO/TR 13028 da las pautas para digitalizar documentos con garantías: planificación, calidad de la imagen y gestión de los ficheros resultantes para que la copia sea fiable."
+    asociacion:
+      - {norma: "ISO/TR 13028", idea: "digitalización con garantías"}
+  - numero: 84
+    titulo: "Reconocimiento óptico de caracteres (OCR, ICR). Reconocimiento biométrico."
+    relacion: "Son las mismas normas biométricas que en el tema 81, vistas desde el reconocimiento: vocabulario (ISO/IEC 2382-37), formatos de datos (19794 y su sucesora 39794, encapsulados con CBEFF, 19785), interfaz BioAPI (19784, 24708 y 24709), medición del rendimiento (19795) y seguridad (24761 e ISO 19092)."
+    asociacion:
+      - {norma: "ISO/IEC 2382-37", idea: "vocabulario biométrico"}
+      - {norma: "ISO/IEC 19794", idea: "formatos de los datos"}
+      - {norma: "ISO/IEC 19785", idea: "envoltorio CBEFF"}
+      - {norma: "ISO/IEC 19784", idea: "interfaz BioAPI"}
+      - {norma: "ISO/IEC 19795", idea: "rendimiento y tasas de error"}
+  - numero: 86
+    titulo: "El ciclo de vida de los sistemas de información. Modelos del ciclo de vida."
+    relacion: "El ciclo de vida se normaliza en dos niveles: la ISO/IEC/IEEE 15288 para sistemas completos y la ISO/IEC/IEEE 12207 para el software, que comparte su estructura de procesos. La ISO/IEC/IEEE 15289 fija qué documentación produce cada proceso."
+    asociacion:
+      - {norma: "ISO/IEC/IEEE 15288", idea: "ciclo de vida del sistema"}
+      - {norma: "ISO/IEC/IEEE 12207", idea: "ciclo de vida del software"}
+      - {norma: "ISO/IEC/IEEE 15289", idea: "documentación de cada proceso"}
+  - numero: 91
+    titulo: "Análisis de aspectos no funcionales: rendimiento, seguridad, privacidad."
+    relacion: "Los aspectos no funcionales se describen con el modelo de calidad del producto de la ISO/IEC 25010 (SQuaRE): eficiencia de desempeño, seguridad, fiabilidad… Para recogerlos como requisitos, la ISO/IEC/IEEE 29148 define la ingeniería de requisitos, y la ISO/IEC TR 24766 y la ISO/IEC 14102 orientan en la elección de herramientas que la soportan."
+    asociacion:
+      - {norma: "ISO/IEC 25010", idea: "características no funcionales"}
+      - {norma: "ISO/IEC/IEEE 29148", idea: "especificarlas como requisitos"}
+      - {norma: "ISO/IEC TR 24766", idea: "herramientas de requisitos"}
+  - numero: 94
+    titulo: "La elaboración de prototipos en el desarrollo de sistemas. Diseño de interfaces de aplicaciones."
+    relacion: "Para el diseño de interfaces, la serie ISO 9241 recoge la ergonomía de la interacción; la ISO/IEC 10741 (control del cursor) y la ISO/IEC 11581 (iconos) tratan elementos concretos, y la ISO 11064 el diseño de centros de control. La ISO 13406, de pantallas planas, es un antecedente absorbido por la serie 9241."
+    asociacion:
+      - {norma: "ISO 9241", idea: "ergonomía de la interacción"}
+      - {norma: "ISO/IEC 10741", idea: "control del cursor"}
+      - {norma: "ISO/IEC 11581", idea: "iconos"}
+      - {norma: "ISO 11064", idea: "centros de control"}
+  - numero: 96
+    titulo: "Procesos de pruebas y garantía de calidad en el desarrollo de software. Planificación, estrategia de pruebas y estándares. Niveles, técnicas y herramientas de pruebas de software. Criterios de aceptación de software."
+    relacion: "La ISO/IEC/IEEE 29119 es la norma de pruebas de software: conceptos, procesos, documentación y técnicas. Para evaluar la madurez de esos procesos de prueba se usa la ISO/IEC 33063, un modelo de evaluación de la familia 330xx, y SQuaRE aporta los criterios de calidad del producto que las pruebas verifican."
+    asociacion:
+      - {norma: "ISO/IEC/IEEE 29119", idea: "pruebas de software"}
+      - {norma: "ISO/IEC 33063", idea: "madurez de los procesos de prueba"}
+      - {norma: "ISO/IEC 25010", idea: "calidad que las pruebas verifican"}
+  - numero: 98
+    titulo: "Métricas y evaluación de la calidad del software. La implantación de la función de calidad."
+    relacion: "La calidad se mide con dos enfoques: la del producto (SQuaRE, que sustituyó a la ISO/IEC 9126 y a la 14598) y la capacidad de los procesos, con la familia ISO/IEC 330xx (sucesora de SPICE, ISO/IEC 15504) y modelos concretos como la 33063. La ISO/IEC/IEEE 12207 define los procesos que se evalúan, y la ISO/IEC 29110 adapta todo ello a entidades muy pequeñas."
+    asociacion:
+      - {norma: "ISO/IEC 25010", idea: "calidad del producto"}
+      - {norma: "ISO/IEC 33002", idea: "evaluación de los procesos"}
+      - {norma: "ISO/IEC 15504", idea: "SPICE, su antecesora"}
+      - {norma: "ISO/IEC 29110", idea: "adaptación a entidades muy pequeñas"}
+  - numero: 99
+    titulo: "La estimación de recursos y esfuerzo en el desarrollo de sistemas de información."
+    relacion: "La estimación del esfuerzo parte del tamaño funcional. La ISO/IEC 14143 define qué es medirlo y cuándo un método es conforme, y los métodos normalizados son COSMIC (ISO/IEC 19761), IFPUG (ISO/IEC 20926) y NESMA (ISO/IEC 24570)."
+    asociacion:
+      - {norma: "ISO/IEC 14143", idea: "qué es el tamaño funcional"}
+      - {norma: "ISO/IEC 19761", idea: "método COSMIC"}
+      - {norma: "ISO/IEC 20926", idea: "método IFPUG"}
+      - {norma: "ISO/IEC 24570", idea: "método NESMA"}
+  - numero: 100
+    titulo: "La migración de aplicaciones en el marco de procesos de ajuste dimensional y por obsolescencia técnica. Gestión de la configuración y de versiones. Gestión de entornos."
+    relacion: "En la migración de aplicaciones, la ISO 10007 aporta la gestión de la configuración: saber qué versión de cada elemento compone el sistema y controlar los cambios durante la migración."
+    asociacion:
+      - {norma: "ISO 10007", idea: "gestión de la configuración durante la migración"}
+  - numero: 101
+    titulo: "Mantenimiento de sistemas. Mantenimiento predictivo, adaptativo y correctivo. Planificación y gestión del mantenimiento."
+    relacion: "El mantenimiento es uno de los procesos del ciclo de vida de la ISO/IEC/IEEE 12207, y la ISO/IEC/IEEE 14764 lo desarrolla con sus tipos (correctivo, preventivo, adaptativo y perfectivo) y actividades."
+    asociacion:
+      - {norma: "ISO/IEC/IEEE 12207", idea: "el mantenimiento como proceso del ciclo de vida"}
+      - {norma: "ISO/IEC/IEEE 14764", idea: "tipos y actividades de mantenimiento"}
+  - numero: 102
+    titulo: "Gestión de cambios en proyectos de desarrollo de software. Gestión de la configuración y de versiones. Gestión de entornos."
+    relacion: "La ISO 10007 es la norma de gestión de la configuración: identificación de los elementos, control de cambios, registro del estado y auditorías de la configuración."
+    asociacion:
+      - {norma: "ISO 10007", idea: "gestión de la configuración y control de cambios"}
+  - numero: 103
+    titulo: "La calidad en los servicios de información. El Modelo EFQM y la Guía para los servicios ISO 9004."
+    relacion: "La ISO 9004, que el título del tema cita expresamente, orienta hacia el éxito sostenido más allá de los requisitos de la ISO 9001, en una línea cercana al modelo EFQM. La ISO 19011 sirve para auditar el sistema de gestión de la calidad."
+    asociacion:
+      - {norma: "ISO 9001", idea: "requisitos del sistema de gestión de la calidad"}
+      - {norma: "ISO 9004", idea: "éxito sostenido, cerca del modelo EFQM"}
+      - {norma: "ISO 19011", idea: "auditoría del sistema"}
+  - numero: 104
+    titulo: "Gestión documental. Gestión de contenidos. Tecnologías CMS y DMS de alta implantación."
+    relacion: "La gestión documental se articula con la ISO 15489 (principios), la familia ISO 30300 (sistema de gestión, con los requisitos en la ISO 30301 y la guía de implantación en la ISO 30302), la ISO 23081 (metadatos) y la ISO 14721 (OAIS) para el archivo a largo plazo."
+    asociacion:
+      - {norma: "ISO 15489", idea: "principios"}
+      - {norma: "ISO 30301", idea: "sistema de gestión"}
+      - {norma: "ISO 30302", idea: "implantación"}
+      - {norma: "ISO 23081", idea: "metadatos"}
+      - {norma: "ISO 14721", idea: "archivo OAIS"}
+  - numero: 105
+    titulo: "Sistemas de recuperación de la información. Políticas, procedimientos y métodos para la conservación de la información."
+    relacion: "Para conservar la información, la ISO/TR 18492 da la estrategia general, la ISO 19005 (PDF/A) el formato de los documentos y la ISO 15801 los requisitos para que la información almacenada sea fiable. La seguridad de la información conservada se gestiona con la ISO/IEC 27001, y la ISO 26102 es un proyecto que no llegó a publicarse."
+    asociacion:
+      - {norma: "ISO/TR 18492", idea: "estrategia de conservación"}
+      - {norma: "ISO 19005", idea: "formato PDF/A"}
+      - {norma: "ISO 15801", idea: "fiabilidad de la información"}
+      - {norma: "ISO/IEC 27001", idea: "seguridad de lo conservado"}
+  - numero: 106
+    titulo: "Planificación y control de las TIC: gestión de servicios e infraestructuras TIC, gestión del valor de las TIC. Acuerdos de nivel de servicio. Gestión de incidencias. Bases conceptuales de ITIL y CoBIT, objetivos de control y métricas."
+    relacion: "La ISO/IEC 20000 es la norma de gestión de servicios de TI, alineada con ITIL: la parte 1 fija los requisitos certificables del sistema de gestión del servicio, y las partes 2, 3 y 5 orientan sobre su aplicación, su alcance y su implantación."
+    asociacion:
+      - {norma: "ISO/IEC 20000", idea: "gestión de servicios de TI, alineada con ITIL"}
+  - numero: 108
+    titulo: "Redes de telecomunicaciones. Conceptos. Medios de transmisión. Conmutación de circuitos y paquetes. Protocolos de encaminamiento. Infraestructuras de acceso. Interconexión de redes. Calidad de servicio."
+    relacion: "La ISO/IEC 11801 normaliza el cableado estructurado genérico, el medio físico sobre el que se construyen las redes."
+    asociacion:
+      - {norma: "ISO/IEC 11801", idea: "cableado estructurado"}
+  - numero: 110
+    titulo: "Sistemas de cableado y equipos de interconexión de redes."
+    relacion: "La ISO/IEC 11801 normaliza el cableado estructurado genérico: arquitectura, subsistemas y clases de rendimiento, con partes específicas para oficinas, entornos industriales, viviendas y centros de datos."
+    asociacion:
+      - {norma: "ISO/IEC 11801", idea: "cableado estructurado"}
+  - numero: 111
+    titulo: "El modelo de referencia de interconexión de sistemas abiertos (OSI) de ISO: arquitectura, capas, interfaces, protocolos, direccionamiento y encaminamiento."
+    relacion: "La ISO/IEC 7498 es el propio modelo de referencia OSI: sus siete capas (parte 1) y el marco de gestión (parte 4)."
+    asociacion:
+      - {norma: "ISO/IEC 7498", idea: "modelo OSI de siete capas"}
+  - numero: 117
+    titulo: "La transformación digital e industria 4.0: ciudades inteligentes. Internet de las Cosas (IoT)."
+    relacion: "El IoT tiene su vocabulario (ISO/IEC 20924), su arquitectura de referencia (ISO/IEC 30141) y un marco de interoperabilidad (ISO/IEC 21823). Para las ciudades inteligentes, la ISO 37120 define indicadores de servicios urbanos. El temario cita también los servicios de directorio X.500 (ISO/IEC 9594), cuya parte 8 (X.509) es la base de los certificados que identifican dispositivos y servicios."
+    asociacion:
+      - {norma: "ISO/IEC 20924", idea: "vocabulario IoT"}
+      - {norma: "ISO/IEC 30141", idea: "arquitectura de referencia"}
+      - {norma: "ISO/IEC 21823", idea: "interoperabilidad"}
+      - {norma: "ISO 37120", idea: "indicadores de ciudad sostenible"}
+      - {norma: "ISO/IEC 9594", idea: "directorio y certificados X.509"}
+  - numero: 125
+    titulo: "La seguridad en redes. Tipos de ataques y herramientas para su prevención: cortafuegos, control de accesos e intrusiones, técnicas criptográficas, etc. Medidas específicas para las comunicaciones móviles."
+    relacion: "En la seguridad de redes, la ISO/IEC 27001 y su catálogo de controles, la ISO/IEC 27002, incluyen controles de seguridad de redes y comunicaciones, y la ISO/IEC 27017 y la 27018 los extienden a los servicios en la nube."
+    asociacion:
+      - {norma: "ISO/IEC 27001", idea: "SGSI"}
+      - {norma: "ISO/IEC 27002", idea: "controles de seguridad de redes"}
+      - {norma: "ISO/IEC 27017", idea: "controles para cloud"}
+      - {norma: "ISO/IEC 27018", idea: "datos personales en cloud"}
+  - numero: 128
+    titulo: "La gestión de la continuidad del negocio. Planes de Continuidad y Contingencia del Negocio."
+    relacion: "La ISO 22301 fija los requisitos del sistema de gestión de la continuidad del negocio, dentro del cual se elaboran los planes de continuidad. El análisis de riesgos que lo alimenta sigue la ISO 31000."
+    asociacion:
+      - {norma: "ISO 31000", idea: "riesgo en general"}
+      - {norma: "ISO 22301", idea: "sistema de gestión de la continuidad del negocio"}

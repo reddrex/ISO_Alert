@@ -9,8 +9,15 @@ site/
 # Páginas generadas a partir de data/ en cada build (python -m iso_alert web)
 docs/index.md
 docs/estado.md
-docs/temas.md
+docs/familias/
+docs/temario.md
+docs/comparativas.md
+docs/normas/
 docs/validacion.md
 
 # Brief original (contexto personal; no se publica)
 BRIEF_vigilancia_normas.md
+
+# Datos de trabajo del temario (fuente de los temas; no se publican)
+ISO_normas_TIC_A1_definitivo.json
+info_normas.json

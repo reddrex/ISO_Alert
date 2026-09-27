@@ -91,7 +91,7 @@ def test_serie_con_una_parte_vigente(res):
 
 def test_serie_limitada_a_partes_citadas(res):
     r = res("ISO 9241")
-    assert [l.parte for l in r.relevantes] == ["210"]
+    assert [l.parte for l in r.relevantes] == ["11", "210"]
     assert len(r.lineas) > 50
 
 
