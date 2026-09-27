@@ -6,8 +6,11 @@ from iso_alert.config import ConfigError, validar
 def test_normas_yaml_real(config):
     assert len(config.normas) == 99
     assert not any(n.revisar for n in config.normas)
-    assert len(config.familias) == 10
+    assert len(config.familias) == 21
     assert config.familias["square"].corto == "SQuaRE"
+    assert all(f.categoria and f.descripcion for f in config.familias.values())
+    assert all(n.descripcion for n in config.normas)
+    assert config.familias["ciclo-vida"].categoria == "ingenieria-software"
     assert len(config.categorias) == 16
     assert {n.categoria for n in config.normas} == set(config.categorias)
     n = next(n for n in config.normas if n.codigo == "ISO/IEC 2382-37")

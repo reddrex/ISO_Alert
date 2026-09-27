@@ -12,7 +12,7 @@ from .referencias import ReferenciaInvalida, parse
 
 ALCANCES = {"norma", "serie"}
 CAMPOS = {
-    "codigo", "nombre", "alcance", "familia", "partes_citadas", "edicion_citada",
+    "codigo", "nombre", "descripcion", "alcance", "familia", "partes_citadas", "edicion_citada",
     "une", "categoria", "contexto", "revisar",
 }
 
@@ -28,6 +28,8 @@ class Familia:
     id: str
     nombre: str
     corto: str
+    categoria: str | None = None  # tema en el que se muestra en «Por temas»
+    descripcion: str | None = None
 
 
 @dataclass(frozen=True)
@@ -44,6 +46,7 @@ class Norma:
     categoria: str
     numero: str
     parte: str | None
+    descripcion: str | None = None
     familia: str | None = None
     partes_citadas: tuple[str, ...] = ()
     edicion_citada: str | None = None
@@ -67,15 +70,6 @@ def cargar(ruta: str | Path) -> Config:
 
 def validar(datos: dict) -> Config:
     errores: list[str] = []
-    familias: dict[str, Familia] = {}
-    for i, fam in enumerate(datos.get("familias") or []):
-        if not fam.get("id") or not fam.get("nombre"):
-            errores.append(f"familias[{i}]: faltan 'id' o 'nombre'")
-            continue
-        if fam["id"] in familias:
-            errores.append(f"familia duplicada: {fam['id']}")
-        familias[fam["id"]] = Familia(fam["id"], fam["nombre"], fam.get("corto") or fam["nombre"])
-
     categorias: dict[str, Categoria] = {}
     for i, cat in enumerate(datos.get("categorias") or []):
         if not cat.get("id") or not cat.get("nombre"):
@@ -84,6 +78,20 @@ def validar(datos: dict) -> Config:
         if cat["id"] in categorias:
             errores.append(f"categoría duplicada: {cat['id']}")
         categorias[cat["id"]] = Categoria(cat["id"], cat["nombre"])
+
+    familias: dict[str, Familia] = {}
+    for i, fam in enumerate(datos.get("familias") or []):
+        if not fam.get("id") or not fam.get("nombre"):
+            errores.append(f"familias[{i}]: faltan 'id' o 'nombre'")
+            continue
+        if fam["id"] in familias:
+            errores.append(f"familia duplicada: {fam['id']}")
+        if fam.get("categoria") and categorias and fam["categoria"] not in categorias:
+            errores.append(f"familia {fam['id']}: categoría '{fam['categoria']}' no existe")
+        familias[fam["id"]] = Familia(
+            fam["id"], fam["nombre"], fam.get("corto") or fam["nombre"],
+            fam.get("categoria"), fam.get("descripcion"),
+        )
 
     normas: list[Norma] = []
     vistos: set[str] = set()
@@ -123,6 +131,7 @@ def validar(datos: dict) -> Config:
         normas.append(Norma(
             codigo=codigo,
             nombre=n.get("nombre", ""),
+            descripcion=n.get("descripcion"),
             alcance=n.get("alcance", ""),
             categoria=n.get("categoria", ""),
             numero=ref.numero,
