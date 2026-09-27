@@ -1,0 +1,105 @@
+# Guía rápida: cómo leer una norma técnica
+
+Esta guía explica lo básico para entender los códigos de las normas que aparecen en el temario y en esta web. No es una fuente oficial.
+
+## ¿Qué es una norma técnica?
+
+Es un documento que recoge una forma acordada de hacer algo: requisitos, buenas prácticas, vocabulario o métodos de ensayo. Las elaboran comités de expertos por consenso.
+
+Por sí mismas son **voluntarias**. Se vuelven obligatorias solo cuando una ley, un reglamento o un contrato las exige.
+
+Dentro de las normas hay dos tipos que conviene distinguir para el examen:
+
+- **Normas de requisitos**, como ISO/IEC 27001, ISO 9001 o ISO 22301. Dicen lo que se *debe* cumplir y permiten que una organización se **certifique**.
+- **Normas de guía o buenas prácticas**, como ISO/IEC 27002 o ISO 9004. Dicen lo que *conviene* hacer y **no son certificables**.
+
+## ¿Quién hace cada norma?
+
+| Organismo | Ámbito | Qué significa en el código |
+|---|---|---|
+| **ISO** (Organización Internacional de Normalización) | Internacional, casi todos los sectores | `ISO 9001` |
+| **IEC** (Comisión Electrotécnica Internacional) | Internacional, electrotecnia y electrónica | `IEC 60601` |
+| **ISO/IEC JTC 1** | Comité conjunto de ISO e IEC para tecnologías de la información | `ISO/IEC 27001`: casi todas las normas TIC llevan este doble prefijo |
+| **IEEE** | Asociación profesional internacional de ingenieros | `ISO/IEC/IEEE 12207`: normas elaboradas junto con ISO/IEC |
+| **CEN / CENELEC** | Organismos europeos de normalización | `EN`: norma europea |
+| **UNE** (Asociación Española de Normalización) | Organismo de normalización de España | `UNE`: norma española |
+
+Una aclaración sobre UNE y AENOR: hasta 2017 ambas cosas estaban en la misma entidad, AENOR. Ese año se separaron. Hoy **UNE** elabora y publica las normas y **AENOR** es una empresa de certificación.
+
+## ¿Qué diferencia hay entre ISO y UNE?
+
+UNE publica normas propias, pero sobre todo **adopta** normas internacionales y europeas, normalmente traducidas al español. El prefijo del código indica el camino que ha seguido cada norma:
+
+- **`UNE-ISO/IEC 20000-1`**: España adopta directamente la norma ISO/IEC.
+- **`UNE-EN ISO/IEC 27001`**: la norma ISO/IEC se adoptó primero como norma europea (EN) y después como norma española. Cuando una norma se convierte en EN, los países europeos están obligados a adoptarla y a retirar las normas nacionales que la contradigan.
+
+El contenido técnico es el mismo, pero **las fechas no coinciden**. La versión española suele salir meses o años después, así que es normal ver `ISO/IEC 27001:2022` y `UNE-EN ISO/IEC 27001:2023`. Por eso esta web muestra las dos: cuando ISO publica una edición nueva, sabes que la UNE llegará después.
+
+## Cómo leer un código
+
+Tomemos como ejemplo `UNE-EN ISO/IEC 27001:2023`:
+
+- `UNE`: es una norma española.
+- `EN`: que viene de una norma europea.
+- `ISO/IEC`: que a su vez procede de ISO e IEC (el comité conjunto de TI).
+- `27001`: el número de la norma.
+- `:2023`: el año de esta edición.
+
+Otros elementos que te puedes encontrar en un código:
+
+- **Parte**, como `-1` en `ISO/IEC 20000-1`. Algunas normas se dividen en varios documentos que comparten número: la parte 1 suele contener los requisitos y el resto guías o aspectos concretos.
+- **Tipo de documento**, como el `TR` de `ISO/TR 13028`. Los principales son:
+  - `IS`: norma internacional. Es el tipo normal y no suele escribirse.
+  - `TS`: especificación técnica. Es un acuerdo menos maduro que una norma.
+  - `TR`: informe técnico. Es informativo y no contiene requisitos.
+- **Modificación**, como `ISO/IEC 27001:2022/Amd 1:2024`. Es un documento que cambia partes de una edición sin publicar una nueva. En las normas UNE aparece como `/1M`.
+- **Corrección** (`Cor`): arregla errores de redacción, no de contenido.
+- **Borrador**, que se reconoce por prefijos como `NP`, `WD`, `CD`, `DIS` o `FDIS` (por ejemplo, `ISO/DIS 31700`). Indica que la norma **todavía no está publicada** y se encuentra en alguna fase de su elaboración.
+
+## Parte, serie y familia
+
+Esta es la parte que más confunde, porque **ni siquiera el uso oficial es del todo consistente** y el temario mezcla los términos. En esta web los usamos así:
+
+- **Norma multiparte o serie**: un mismo número dividido en partes. Por ejemplo, ISO/IEC 20000-1, 20000-2, 20000-3… Cuando vigilamos una serie, vigilamos todas sus partes.
+- **Familia**: un grupo de normas **con números distintos** que tratan el mismo tema y se diseñan para usarse juntas. Por ejemplo:
+  - la **familia ISO/IEC 27000**: 27000 (vocabulario), 27001 (requisitos), 27002 (controles), 27005 (riesgos), 27701 (privacidad)…;
+  - la **familia ISO 9000**: 9000 (vocabulario), 9001 (requisitos), 9004 (éxito sostenido);
+  - **SQuaRE**, las normas ISO/IEC 25000 a 25099, sobre calidad del software y de los datos.
+
+Una regla práctica: si solo cambia lo que va **detrás del guion**, es la misma norma en varias partes. Si cambia **el número**, son normas distintas, aunque pertenezcan a la misma familia.
+
+## Cómo evoluciona una norma
+
+Toda norma ISO publicada se revisa **como mínimo cada cinco años** (revisión sistemática). El resultado puede ser:
+
+- **Confirmarla**: sigue vigente sin cambios. Es lo más habitual.
+- **Revisarla**: se prepara una edición nueva, que sustituirá a la actual cuando se publique.
+- **Modificarla**: se publica una modificación (`Amd`) sin cambiar de edición.
+- **Anularla**: deja de estar vigente.
+
+En esta web, cada norma aparece en uno de estos estados:
+
+| Estado en la web | Qué significa |
+|---|---|
+| **Vigente** | Publicada y en uso. |
+| **En revisión** | Se ha decidido preparar una edición nueva o ya hay un borrador en marcha. Conviene estar atento. |
+| **Sustituida** | Hay una edición o norma nueva que la reemplaza. |
+| **Anulada** | Ya no está vigente. |
+| **No publicada** | El temario la cita, pero nunca llegó a publicarse: se quedó en proyecto o se canceló. |
+
+Algunas normas vigentes llevan además una nota discreta:
+
+- **Revisión periódica**: le toca la revisión quinquenal. Casi siempre acaba en confirmación, no hace falta preocuparse.
+- **Anulación propuesta**: el comité ha propuesto anularla, pero todavía no se ha decidido. Sigue vigente mientras tanto.
+
+Cuando ISO publica una edición nueva, la anterior pasa a **sustituida**. Las **modificaciones** (`Amd`) no cambian el estado: se indican junto a la edición vigente.
+
+Algunas normas del temario aparecen como **anuladas o sustituidas a propósito**, como ISO/IEC 9126, ISO 13407 o ISO/IEC 15504. El temario las cita como antecesoras de las normas actuales. Que estén anuladas no es un error de la web.
+
+## ¿Por qué no se puede leer la norma aquí?
+
+Las normas ISO y UNE están protegidas por derechos de autor y son de pago. Esta web solo muestra **metadatos públicos**: código, título, estado y fechas. Para consultar el contenido, las normas UNE se pueden comprar o consultar en la tienda de UNE, y a veces hay acceso a través de bibliotecas universitarias.
+
+---
+
+*Fuentes de los datos: ISO Open Data (licencia ODC-By 1.0) y Boletín Oficial del Estado. Esta web no es una fuente oficial; ante cualquier duda, consulta el organismo correspondiente.*

@@ -1,0 +1,60 @@
+site_name: Vigilancia de normas TIC
+site_description: Estado y cambios de las normas ISO y UNE citadas en el temario de la oposición TIC A1. No es una fuente oficial.
+site_url: https://reddrex.github.io/ISO_Alert/
+repo_url: https://github.com/reddrex/ISO_Alert
+repo_name: reddrex/ISO_Alert
+copyright: Datos ISO Open Data (ODC-By 1.0) · No es una fuente oficial
+
+theme:
+  name: material
+  variant: classic
+  language: es
+  custom_dir: overrides
+  font:
+    text: Source Sans 3
+    code: IBM Plex Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Inicio: index.md
+  - Guía: guia.md
+  - Validación: validacion.md
+  - Acerca de: acerca.md
