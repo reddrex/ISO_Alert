@@ -1,0 +1,60 @@
+{% from "_macros.j2" import aviso %}
+{% macro ref(x) -%}[{{ x.codigo }}](../normas/{{ x.ancla }}.md){%- endmacro %}
+---
+title: "Tema {{ t.tema.numero }}. {{ t.tema.titulo | titulo_corto }}"
+hide:
+  - navigation
+---
+
+[Mapa](../index.md) › [Temas](index.md) › Tema {{ t.tema.numero }}
+{: .migas }
+
+# Tema {{ t.tema.numero }}. {{ t.tema.titulo | titulo_corto }}
+
+{% if (t.tema.titulo | titulo_corto) != t.tema.titulo.rstrip(".") %}
+<p class="ficha__nombre">{{ t.tema.titulo }}</p>
+
+{% endif %}
+{% if t.asociacion %}
+## Asociación para el examen
+
+De lo general a lo específico:
+
+<ol class="cadena">
+{% for x, idea in t.asociacion %}
+<li class="area--{{ x.area.id if x.area else 'ninguna' }}"><a href="../normas/{{ x.ancla }}/">{{ x.codigo }}</a><span class="cadena__idea">{{ idea }}</span></li>
+{% endfor %}
+</ol>
+
+{% endif %}
+## Normas del tema
+
+| Norma | Qué es | Pregunta que responde |
+|---|---|---|
+{% for x in t.normas %}
+| <span class="marca area--{{ x.area.id if x.area else 'ninguna' }}" title="{{ x.area.nombre if x.area else '' }}" aria-hidden="true"></span>{{ ref(x) }} {{ aviso(x.estado, x.subestado) }} | {{ x.nombre }} | {{ x.pregunta or "—" }} |
+{% endfor %}
+
+{% for g in t.familias %}
+El tema cita además la **[{{ g.familia.nombre }}](../familias/{{ g.familia.id }}.md)** en conjunto: {% for x in g.normas %}{{ ref(x) }}{% if not loop.last %}, {% endif %}{% endfor %}.
+
+{% endfor %}
+{% if t.tema.relacion or t.diagrama %}
+## Cómo encajan
+
+{% if t.tema.relacion %}
+{{ t.tema.relacion }}
+
+{% endif %}
+{% if t.diagrama %}
+```mermaid
+{{ t.diagrama | safe }}
+```
+
+{% endif %}
+{% endif %}
+<nav class="paginacion" aria-label="Otros temas">{% if anterior %}<a href="{{ anterior.tema.numero }}/" rel="prev">← Tema {{ anterior.tema.numero }}</a>{% else %}<span></span>{% endif %}{% if siguiente %}<a href="{{ siguiente.tema.numero }}/" rel="next">Tema {{ siguiente.tema.numero }} →</a>{% endif %}</nav>
+
+---
+
+*Las explicaciones son orientativas y no sustituyen al estudio del tema ni al texto de las normas. El color indica el área de cada norma en el [mapa](../index.md).*

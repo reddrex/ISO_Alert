@@ -2,6 +2,11 @@
 <span class="estado estado--{{ e.value }}">{{ e.etiqueta }}</span>{% if sub %} <span class="subestado">{{ sub.etiqueta }}</span>{% endif %}
 {%- endmacro %}
 
+{# En las páginas de estudio solo se destacan los estados que requieren atención. #}
+{% macro aviso(e, sub=None) -%}
+{% if e.value != "vigente" or sub %}{{ estado(e, sub) }}{% endif %}
+{%- endmacro %}
+
 {% macro enlace(x) -%}
 <a href="{{ x.url }}" title="Ficha en iso.org">{{ x.referencia }}</a>
 {%- endmacro %}

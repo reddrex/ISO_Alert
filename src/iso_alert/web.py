@@ -22,6 +22,7 @@ HISTORICAS = {Estado.SUSTITUIDA, Estado.ANULADA, Estado.NO_PUBLICADA}
 # Carpetas de docs/ con una página por norma y por familia; se regeneran enteras en cada build.
 FICHAS = "normas"
 FAMILIAS = "familias"
+TEMARIO = "temario"
 
 
 def ancla(codigo: str) -> str:
@@ -226,8 +227,12 @@ class Vista:
         if f["familia"]:
             hermanas = [x for x in ordenar([y for y in filas if y["familia"] and y["familia"].id == f["familia"].id])
                         if x["codigo"] != f["codigo"]]
+        cadena = self.miembros(f["familia"], filas) if f["familia"] else []
+        pos = next((i for i, x in enumerate(cadena) if x["codigo"] == f["codigo"]), None)
         return {
-            "cadena": self.miembros(f["familia"], filas) if f["familia"] else [],
+            "cadena": cadena,
+            "anterior": cadena[pos - 1] if pos else None,
+            "siguiente": cadena[pos + 1] if pos is not None and pos + 1 < len(cadena) else None,
             "relaciones": relaciones,
             "diagrama": self.diagrama(list(dict.fromkeys(vecinas)), filas, destacada=f["codigo"]),
             "historia": historia,
@@ -279,17 +284,29 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path) -> list[
     salidas = {
         docs / "index.md": env.get_template("index.md.j2").render(**ctx),
         docs / "estado.md": env.get_template("estado.md.j2").render(**ctx),
-        docs / "temario.md": env.get_template("temario.md.j2").render(**ctx),
+        docs / TEMARIO / "index.md": env.get_template("temario.md.j2").render(**ctx),
         docs / "comparativas.md": env.get_template("comparativas.md.j2").render(**ctx),
         docs / "validacion.md": informe.a_markdown(validacion),
     }
-    for carpeta in (docs / FICHAS, docs / FAMILIAS):
+    for carpeta in (docs / FICHAS, docs / FAMILIAS, docs / TEMARIO):
         if carpeta.exists():
             shutil.rmtree(carpeta)
+    viejo = docs / "temario.md"  # antes, una sola página con todos los temas
+    if viejo.exists():
+        viejo.unlink()
     plantilla_ficha = env.get_template("ficha.md.j2")
     for f in filas:
         salidas[docs / FICHAS / f"{f['ancla']}.md"] = plantilla_ficha.render(
             f=f, **vista.ficha(f, por_codigo, filas), **ctx,
+        )
+    plantilla_tema = env.get_template("tema.md.j2")
+    temas = ctx["temario"]
+    for i, t in enumerate(temas):
+        salidas[docs / TEMARIO / f"{t['tema'].numero}.md"] = plantilla_tema.render(
+            t=t,
+            anterior=temas[i - 1] if i > 0 else None,
+            siguiente=temas[i + 1] if i + 1 < len(temas) else None,
+            **ctx,
         )
     plantilla_familia = env.get_template("familia.md.j2")
     for fam in config.familias.values():

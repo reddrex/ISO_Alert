@@ -65,9 +65,8 @@ extra_javascript:
 
 nav:
   - Mapa: index.md
-  - Por tema del temario: temario.md
+  - Temas: temario/index.md
   - Comparativas: comparativas.md
   - Estado: estado.md
   - Guía: guia.md
-  - Validación: validacion.md
   - Acerca de: acerca.md

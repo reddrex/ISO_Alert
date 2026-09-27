@@ -25,3 +25,4 @@ jobs:
           python -m iso_alert actualizar --fichero tests/fixtures/iso_subset.jsonl --minimo 0 --datos /tmp/datos
           python -m iso_alert web --datos /tmp/datos
           zensical build
+          python scripts/comprobar_enlaces.py

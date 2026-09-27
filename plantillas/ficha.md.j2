@@ -6,53 +6,34 @@ hide:
   - navigation
 ---
 
-# {{ f.codigo }} · {{ f.nombre }}
+[Mapa](../index.md){% if f.area %} › [{{ f.area.nombre }}](../index.md#area-{{ f.area.id }}){% endif %}{% if f.familia %} › [{{ f.familia.corto }}](../familias/{{ f.familia.id }}.md){% endif %} › {{ f.codigo }}
+{: .migas }
 
-<p class="ficha__estado">{{ estado(f.estado, f.subestado) }}{% if f.naturaleza %} <span class="ficha__tipo">{{ f.naturaleza }}{% if f.certificable %} · certificable{% endif %}</span>{% endif %}</p>
+# {{ f.codigo }}
 
+<p class="ficha__nombre">{{ f.nombre }}</p>
+
+<p class="ficha__meta">{{ estado(f.estado, f.subestado) }}{% if f.naturaleza %} <span>{{ f.naturaleza }}{% if f.certificable %} · <strong>certificable</strong>{% endif %}</span>{% endif %}{% if f.alcance == "norma" and f.vigentes %} <span>Edición vigente: {{ enlace(f.vigentes[-1]) }}{% if f.suplementos %} + {{ f.suplementos | length }} modificación{{ "es" if f.suplementos | length > 1 else "" }}{% endif %}</span>{% endif %}</p>
+
+{% if f.pregunta %}
+<p class="ficha__pregunta"><span>Pregunta que responde</span>{{ f.pregunta }}</p>
+
+{% endif %}
 {% if f.resumen %}
 **{{ f.resumen }}** {{ f.descripcion or "" }}
 {% elif f.descripcion %}
 {{ f.descripcion }}
 {% endif %}
 
-{% if f.pregunta %}
-<p class="ficha__pregunta">Pregunta que responde: <strong>{{ f.pregunta }}</strong></p>
+{% if f.superada %}
+!!! warning "El temario cita la edición de {{ f.edicion_citada.anio }}"
+    {% if f.edicion_citada.resultado == "superada" %}Esa edición ya no es la vigente{% else %}No hay edición ISO de ese año; probablemente es el año de la versión UNE{% endif %}{% if f.vigentes %}: la vigente es {{ enlace(f.vigentes[-1]) }}{% endif %}.
 
 {% endif %}
 {% if cadena | length > 1 %}
-<p class="cadena-linea">Para recordarla en su familia: {% for x in cadena %}{% if x.concepto %}{% if x.codigo == f.codigo %}<strong class="actual">{{ x.codigo.split(' ')[-1] }} = {{ x.concepto }}</strong>{% else %}<a href="../{{ x.ancla }}/" class="{{ 'historica' if x.historica else '' }}">{{ x.codigo.split(' ')[-1] }} = {{ x.concepto }}</a>{% endif %}{% if not loop.last %} <span aria-hidden="true">→</span> {% endif %}{% endif %}{% endfor %}</p>
+<p class="cadena-linea"><span class="cadena-linea__titulo">Para recordarla en su familia</span>{% for x in cadena %}{% if x.concepto %}{% if x.codigo == f.codigo %}<strong class="actual">{{ x.codigo.split(' ')[-1] }} = {{ x.concepto }}</strong>{% else %}<a href="{{ x.ancla }}/" class="{{ 'historica' if x.historica else '' }}">{{ x.codigo.split(' ')[-1] }} = {{ x.concepto }}</a>{% endif %}{% if not loop.last %} <span aria-hidden="true">→</span> {% endif %}{% endif %}{% endfor %}</p>
 
 {% endif %}
-
-| | |
-|---|---|
-{% if f.alcance == "norma" %}
-| Edición vigente | {% if f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% if f.suplementos %}, con {{ enlaces(f.suplementos) }}{% endif %}{% elif f.sustituida_por %}Sustituida por {{ enlaces(f.sustituida_por) }}{% else %}No publicada{% endif %} |
-{% if f.en_desarrollo %}
-| Nueva edición en preparación | {% for x in f.en_desarrollo %}{{ enlace(x) }}, {{ x.fase }}{% if not loop.last %}; {% endif %}{% endfor %} |
-{% endif %}
-{% else %}
-| Partes | {% if f.partes.vigentes %}{{ f.partes.vigentes }} de {{ f.partes.relevantes }} {{ "partes citadas" if f.partes.otras else "partes" }} vigentes{% elif f.sustituida_por %}Sustituida por {{ enlaces(f.sustituida_por) }}{% else %}Sin partes vigentes{% endif %} |
-{% endif %}
-{% if f.edicion_citada %}
-| Edición que cita el temario | {{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "vigente" %}, que sigue vigente{% elif f.edicion_citada.resultado == "superada" %}, que <strong>ya no es la vigente</strong>{% else %}: no hay edición ISO de ese año (puede ser el de la UNE){% endif %} |
-{% endif %}
-{% if f.familia %}
-| Familia | [{{ f.familia.nombre }}](../familias/{{ f.familia.id }}.md) |
-{% endif %}
-{% if f.area %}
-| Área del mapa | <span class="marca area--{{ f.area.id }}" aria-hidden="true"></span>{{ f.area.nombre }}{% if f.categoria %} · {{ f.categoria.nombre }}{% endif %} |
-{% endif %}
-{% if f.titulo_en %}
-| Título oficial (ISO) | <span lang="en">{{ f.titulo_en }}</span> |
-{% endif %}
-{% if f.une %}
-| Norma UNE que cita el temario | {{ f.une }} |
-{% endif %}
-
-<p class="ficha__enlaces"><a href="../estado/?texto={{ f.codigo | urlencode }}">Ver en la tabla de estado</a></p>
-
 {% if f.claves %}
 ## Claves para el examen
 
@@ -62,18 +43,22 @@ hide:
 
 {% endif %}
 {% if f.temas or f.temas_familia %}
-## En el temario
+## Dónde aparece en el temario
 
 {% for t in f.temas %}
-- [Tema {{ t.numero }}](../temario.md#tema-{{ t.numero }}). {{ t.titulo }}
+- [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md)
 {% endfor %}
 {% for t in f.temas_familia %}
-- [Tema {{ t.numero }}](../temario.md#tema-{{ t.numero }}). {{ t.titulo }} *(cita la familia {{ f.familia.corto }} en conjunto)*
+- [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md) *(cita la familia {{ f.familia.corto }} en conjunto)*
 {% endfor %}
 
 {% endif %}
-{% if relaciones or hermanas %}
+{% if relaciones %}
 ## Relación con otras normas
+
+{% for frase, normas in relaciones %}
+- **{{ frase }}:** {% for x in normas %}{{ ref(x) }} · {{ x.concepto or x.nombre }}{% if not loop.last %}; {% endif %}{% endfor +%}
+{% endfor %}
 
 {% if diagrama %}
 ```mermaid
@@ -81,13 +66,6 @@ hide:
 ```
 
 {% endif %}
-{% for frase, normas in relaciones %}
-- **{{ frase }}:** {% for x in normas %}{{ ref(x) }} ({{ x.nombre }}){% if not loop.last %}; {% endif %}{% endfor +%}
-{% endfor %}
-{% if hermanas %}
-- **Otras normas de {{ f.familia.corto }}:** {% for x in hermanas %}{{ ref(x) }}{% if not loop.last %}, {% endif %}{% endfor +%}
-{% endif %}
-
 {% endif %}
 {% if f.alcance == "serie" and f.partes %}
 ## Partes
@@ -105,24 +83,52 @@ hide:
 
 {% endif %}
 {% endif %}
-{% if historia %}
-## Historia de ediciones
+## Ficha técnica
 
+| | |
+|---|---|
 {% if f.alcance == "norma" %}
-{% for x in historia.values() | first %}
-- {{ x.anio or "—" }} · <a href="{{ x.url }}">{{ x.referencia }}</a> · {{ x.estado }}
-{% endfor %}
+| Edición vigente | {% if f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% if f.suplementos %}, con {{ enlaces(f.suplementos) }}{% endif %}{% elif f.sustituida_por %}Sustituida por {{ enlaces(f.sustituida_por) }}{% else %}No publicada{% endif %} |
+{% if f.en_desarrollo %}
+| Nueva edición en preparación | {% for x in f.en_desarrollo %}{{ enlace(x) }}, {{ x.fase }}{% if not loop.last %}; {% endif %}{% endfor %} |
+{% endif %}
 {% else %}
+| Partes | {% if f.partes.vigentes %}{{ f.partes.vigentes }} de {{ f.partes.relevantes }} {{ "partes citadas" if f.partes.otras else "partes" }} vigentes{% elif f.sustituida_por %}Sustituida por {{ enlaces(f.sustituida_por) }}{% else %}Sin partes vigentes{% endif %} |
+{% endif %}
+{% if f.edicion_citada %}
+| Edición que cita el temario | {{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "vigente" %}, que sigue vigente{% elif f.edicion_citada.resultado == "superada" %}, que ya no es la vigente{% else %}: no hay edición ISO de ese año (puede ser el de la UNE){% endif %} |
+{% endif %}
+{% if f.titulo_en %}
+| Título oficial (ISO, en inglés) | <span lang="en">{{ f.titulo_en }}</span> |
+{% endif %}
+{% if f.une %}
+| Norma UNE que cita el temario | {{ f.une }} |
+{% endif %}
+{% if f.familia %}
+| Familia | [{{ f.familia.nombre }}](../familias/{{ f.familia.id }}.md) |
+{% endif %}
+{% if f.area %}
+| Área y materia | <span class="marca area--{{ f.area.id }}" aria-hidden="true"></span>{{ f.area.nombre }}{% if f.categoria %} · {{ f.categoria.nombre }}{% endif %} |
+{% endif %}
+| Estado en la tabla | <a href="../estado/?texto={{ f.codigo | urlencode }}">Ver en la tabla de estado</a> |
+
+{% if historia %}
+??? note "Historia de ediciones"
 {% for parte, lista in historia.items() %}
-??? note "Parte {{ parte or 'única' }}"
+{% if f.alcance == "serie" %}
+    **Parte {{ parte or "única" }}**
+
+{% endif %}
 {% for x in lista %}
     - {{ x.anio or "—" }} · <a href="{{ x.url }}">{{ x.referencia }}</a> · {{ x.estado }}
 {% endfor %}
 
 {% endfor %}
 {% endif %}
+{% if anterior or siguiente %}
+<nav class="paginacion" aria-label="Otras normas de la familia">{% if anterior %}<a href="{{ anterior.ancla }}/" rel="prev">← {{ anterior.codigo }}</a>{% else %}<span></span>{% endif %}{% if siguiente %}<a href="{{ siguiente.ancla }}/" rel="next">{{ siguiente.codigo }} →</a>{% endif %}</nav>
 
 {% endif %}
 ---
 
-*Estado y ediciones: [ISO Open Data](https://www.iso.org/open-data.html) (ODC-By 1.0){% if resumen.dato_fecha %}, datos del {{ resumen.dato_fecha }}{% endif %}. Los textos son de elaboración propia y no sustituyen a la norma.*
+*Estado y ediciones: [ISO Open Data](https://www.iso.org/open-data.html) (ODC-By 1.0){% if resumen.dato_fecha %}, datos del {{ resumen.dato_fecha }}{% endif %}. Los textos son orientativos y no sustituyen a la norma.*

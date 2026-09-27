@@ -110,7 +110,7 @@ hide:
             <dt>Norma UNE citada</dt><dd>{{ f.une }}</dd>
             {% endif %}
             {% if f.temas or f.temas_familia %}
-            <dt>Temas del temario</dt><dd>{% for t in f.temas + f.temas_familia %}<a href="temario/#tema-{{ t.numero }}">{{ t.numero }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</dd>
+            <dt>Temas del temario</dt><dd>{% for t in f.temas + f.temas_familia %}<a href="temario/{{ t.numero }}/">{{ t.numero }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</dd>
             {% endif %}
             {% if f.contexto %}
             <dt>Nota</dt><dd>{{ f.contexto }}</dd>

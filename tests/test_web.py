@@ -11,18 +11,23 @@ def paginas(config, indice, tmp_path_factory):
     docs = tmp_path_factory.mktemp("docs")
     web.generar(estado.construir(config, indice, None), informe.construir(config, indice, None), config, docs)
     paginas = {p.stem: p.read_text(encoding="utf-8") for p in docs.glob("*.md")}
-    for carpeta in (web.FICHAS, web.FAMILIAS):
-        paginas[carpeta if carpeta != web.FICHAS else "fichas"] = {
-            p.stem: p.read_text(encoding="utf-8") for p in (docs / carpeta).glob("*.md")
-        }
+    for clave, carpeta in (("fichas", web.FICHAS), ("familias", web.FAMILIAS), ("temario", web.TEMARIO)):
+        paginas[clave] = {p.stem: p.read_text(encoding="utf-8") for p in (docs / carpeta).glob("*.md")}
     return paginas
 
 
+CARPETAS = ("fichas", "familias", "temario")
+
+
 def test_paginas_generadas(paginas):
-    assert set(paginas) == {"index", "estado", "temario", "comparativas", "validacion", "fichas", "familias"}
+    assert set(paginas) == {"index", "estado", "comparativas", "validacion", *CARPETAS}
     assert len(paginas["familias"]) == 21
+    assert len(paginas["temario"]) == 39  # índice + 38 temas
     for nombre, texto in paginas.items():
-        if nombre not in ("fichas", "familias"):
+        if nombre not in CARPETAS:
+            assert texto.startswith("---\n")
+    for carpeta in CARPETAS:
+        for texto in paginas[carpeta].values():
             assert texto.startswith("---\n")
 
 
@@ -86,7 +91,10 @@ def test_familias(paginas):
     posiciones = [cadena.index(f"<strong>{n}</strong>") for n in orden]
     assert posiciones == sorted(posiciones)  # por número, con la antecesora al final
     assert "<strong>27001</strong> = sistema (SGSI)" in cadena
-    assert "| [ISO/IEC 27002](../normas/iso-iec-27002.md)<br>" in fam and "¿Qué controles puedo aplicar?" in fam
+    assert "| [ISO/IEC 27002](../normas/iso-iec-27002.md) <br>" in fam and "¿Qué controles puedo aplicar?" in fam
+    # Solo se destacan los estados que requieren atención.
+    assert "estado--vigente" not in fam and "estado--sustituida" in fam
+    assert fam.split("\n---\n", 1)[1].lstrip().startswith("[Mapa](../index.md) › [Seguridad y privacidad]")
     ciclo = paginas["familias"]["ciclo-vida"]
     orden = ["12207", "14764", "15288", "15289"]
     posiciones = [ciclo.index(f"<strong>{n}</strong>") for n in orden]
@@ -94,11 +102,10 @@ def test_familias(paginas):
 
 
 def test_asociacion(paginas):
-    md = paginas["temario"]
-    tema47 = md[md.index("{ #tema-47 }"):md.index("{ #tema-48 }")]
+    tema47 = paginas["temario"]["47"]
     cadena = tema47[tema47.index('<ol class="cadena">'):tema47.index("</ol>")]
     assert "\n\n" not in cadena
-    codigos = re.findall(r'<a href="normas/[^"]+">([^<]+)</a>', cadena)
+    codigos = re.findall(r'<a href="\.\./normas/[^"]+">([^<]+)</a>', cadena)
     assert codigos == ["ISO 31000", "ISO/IEC 27005", "ISO/IEC 27001", "ISO/IEC 27002"]
     assert "riesgo en general" in cadena
 
@@ -114,10 +121,15 @@ def test_fichas(paginas):
     f = fichas["iso-iec-27001"]
     assert f.startswith('---\ntitle: "ISO/IEC 27001 · SGSI: requisitos"')
     assert "## Claves para el examen" in f and "93 controles" in f
-    assert "- [Tema 47](../temario.md#tema-47). Seguridad de sistemas (1)." in f
-    assert "- **Desarrollada por:** [ISO/IEC 27002](iso-iec-27002.md)" in f
+    assert "- [Tema 47 · Seguridad de sistemas (1)](../temario/47.md)" in f
+    assert "- **Desarrollada por:** [ISO/IEC 27002](iso-iec-27002.md) · controles" in f
     assert "```mermaid\ngraph LR" in f
-    assert "ISO/IEC 27001:2013</a> · Anulada" in f
+    assert '??? note "Historia de ediciones"' in f and "ISO/IEC 27001:2013</a> · Anulada" in f
+    assert '<p class="ficha__pregunta"><span>Pregunta que responde</span>¿Cómo gestiono la seguridad?</p>' in f
+    # Enlaces HTML entre fichas: relativos a la carpeta normas/ (Zensical añade el «../»).
+    assert '<a href="iso-iec-27000/"' in f and 'href="../iso-iec-27000/"' not in f
+    assert '<a href="iso-iec-27000/" rel="prev">' in f and '<a href="iso-iec-27002/" rel="next">' in f
+    assert "[Mapa](../index.md) › [Seguridad y privacidad](../index.md#area-seguridad) › [ISO/IEC 27000]" in f
     # Cada elemento de lista en su propia línea (trim_blocks no debe pegarlos).
     assert ")- **" not in f
     # Series: partes citadas con la descripción del temario.
@@ -127,12 +139,15 @@ def test_fichas(paginas):
 
 
 def test_temario(paginas, config):
-    md = paginas["temario"]
-    assert md.count("{ #tema-") == len(config.temario) == 38
-    tema47 = md[md.index("{ #tema-47 }"):md.index("{ #tema-48 }")]
+    indice = paginas["temario"]["index"]
+    assert len(re.findall(r"^\| \[\d+\]\(\d+\.md\)", indice, re.M)) == len(config.temario) == 38
+    tema47 = paginas["temario"]["47"]
     for codigo in ("iso-iec-27001", "iso-iec-27002", "iso-iec-27005", "iso-31000"):
-        assert f"(normas/{codigo}.md)" in tema47
+        assert f"(../normas/{codigo}.md)" in tema47
+    assert "¿Cómo gestiono los riesgos?" in tema47  # pregunta de cada norma en la tabla
     assert "ISO/IEC 27017" not in tema47.split("```")[1]  # el diagrama solo usa las citadas una a una
+    assert '<a href="46/" rel="prev">' in tema47 and '<a href="48/" rel="next">' in tema47
+    assert "estado--vigente" not in tema47 and "estado--en_revision" in tema47  # ISO 31000
 
 
 def test_comparativas(paginas):

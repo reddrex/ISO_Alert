@@ -35,6 +35,8 @@ jobs:
         run: python -m iso_alert web
       - name: Build
         run: zensical build
+      - name: Enlaces internos
+        run: python scripts/comprobar_enlaces.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

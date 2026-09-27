@@ -66,7 +66,7 @@ def generar_web(args) -> int:
     datos = Path(args.datos)
     leer = lambda nombre: json.loads((datos / nombre).read_text(encoding="utf-8"))  # noqa: E731
     rutas = web.generar(leer("estado.json"), leer("validacion.json"), config, Path(args.docs))
-    carpetas = (web.FICHAS, web.FAMILIAS)
+    carpetas = (web.FICHAS, web.FAMILIAS, web.TEMARIO)
     for ruta in rutas:
         if ruta.parent.name not in carpetas:
             print(f"→ {ruta}")
