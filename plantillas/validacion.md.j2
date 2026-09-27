@@ -1,0 +1,89 @@
+{% macro estado(n) -%}
+<span class="estado estado--{{ n.estado }}">{{ n.estado_txt }}</span>{% if n.subestado_txt %} · {{ n.subestado_txt }}{% endif %}
+{%- endmacro %}
+{% macro enlaces(lista) -%}
+{% for e in lista %}[{{ e.referencia }}]({{ e.url }}){% if not loop.last %}, {% endif %}{% endfor %}
+{%- endmacro %}
+---
+title: Informe de validación
+---
+
+# Informe de validación
+
+Comprobación de la lista de normas vigiladas (`normas.yaml`) contra el dataset ISO Open Data.
+{% if i.fuente %}
+Datos ISO{% if i.fuente.last_modified %} del {{ i.fuente.last_modified[:10] }}{% endif %} ({{ "{:,}".format(i.fuente.registros).replace(",", ".") }} registros). Informe generado el {{ i.generado[:10] }}.
+{% else %}
+Informe generado el {{ i.generado[:10] }}.
+{% endif %}
+
+!!! note "Qué es esto"
+    La lista de normas sale de una extracción automática del temario. Este informe indica qué entradas se han encontrado en el dataset ISO, su estado actual y si la edición que cita el temario sigue vigente. No es una fuente oficial.
+
+## Resumen
+
+| | Normas |
+|---|---:|
+{% for clave, n in i.resumen.por_estado | dictsort %}
+| {{ etiquetas[clave] }} | {{ n }} |
+{% endfor %}
+| **Total** | **{{ i.resumen.total }}** |
+
+- Entradas con incidencias o sugerencias: **{{ i.resumen.con_sugerencias }}**
+- Entradas marcadas para revisar en `normas.yaml`: **{{ i.resumen.con_revisar }}**
+- Ediciones citadas por el temario que ya no son la vigente: **{{ i.resumen.ediciones_superadas }}**
+
+## Requieren atención
+
+{% for n in i.normas if n.sugerencias or n.revisar %}
+### {{ n.codigo }}
+
+{{ n.nombre }} · {{ estado(n) }}
+
+{% if n.revisar %}
+- **Duda en `normas.yaml`:** {{ n.revisar }}
+{% endif %}
+{% if n.vigentes %}
+- **Vigente:** {{ enlaces(n.vigentes[-3:]) }}{% if n.vigentes | length > 3 %} y {{ n.vigentes | length - 3 }} más{% endif %}
+
+{% endif %}
+{% if n.en_desarrollo %}
+- **En desarrollo:** {{ enlaces(n.en_desarrollo[:3]) }}
+{% endif %}
+{% if n.partes and n.partes.detalle_citadas %}
+- **Partes citadas:** {% for p in n.partes.detalle_citadas %}{{ p.parte }}: {{ p.estado_txt }}{% if p.referencia %} ({{ p.referencia }}){% endif %}{% if not loop.last %} · {% endif %}{% endfor %}
+
+{% endif %}
+{% if n.sustituida_por %}
+- **Sustituida por:** {{ enlaces(n.sustituida_por[:4]) }}
+{% endif %}
+{% for nota in n.notas %}
+- {{ nota }}
+{% endfor %}
+{% if n.candidatos %}
+- **Normas cercanas del mismo comité:** {{ enlaces(n.candidatos) }}
+{% endif %}
+{% for s in n.sugerencias %}
+- **Sugerencia:** {{ s }}
+{% endfor %}
+
+{% endfor %}
+## Ediciones citadas por el temario
+
+| Norma | Cita el temario | Vigente | Resultado |
+|---|---|---|---|
+{% for n in i.normas if n.edicion_citada %}
+| {{ n.codigo }} | {{ n.edicion_citada.anio }} | {{ n.edicion_citada.vigentes | join(", ") or "—" }} | {% if n.edicion_citada.resultado == "vigente" %}Sigue vigente{% elif n.edicion_citada.resultado == "superada" %}**Superada**{% else %}**No existe edición ISO de ese año**{% endif %} |
+{% endfor %}
+
+## Todas las normas
+
+| Código | Nombre | Estado | Edición vigente | En desarrollo |
+|---|---|---|---|---|
+{% for n in i.normas %}
+| {{ n.codigo }} | {{ n.nombre | celda }} | {{ estado(n) }} | {% if n.vigentes %}{{ enlaces(n.vigentes[-2:]) }}{% if n.vigentes | length > 2 %} (+{{ n.vigentes | length - 2 }}){% endif %}{% elif n.sustituida_por %}Sustituida por {{ enlaces(n.sustituida_por[:2]) }}{% else %}—{% endif %} | {{ enlaces(n.en_desarrollo[:2]) or "—" }} |
+{% endfor %}
+
+---
+
+*Fuente: [ISO Open Data](https://www.iso.org/open-data.html), licencia ODC-By 1.0. Los títulos oficiales y las etapas proceden de ISO.*
