@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
@@ -15,6 +16,13 @@ PLANTILLAS = Path(__file__).resolve().parents[2] / "plantillas"
 
 # Orden de los estados en filtros, resúmenes y al ordenar la columna Estado.
 ORDEN_ESTADOS = [Estado.VIGENTE, Estado.EN_REVISION, Estado.SUSTITUIDA, Estado.ANULADA, Estado.NO_PUBLICADA]
+# En «Por temas», las normas en estos estados se muestran al final de su grupo.
+HISTORICAS = {Estado.SUSTITUIDA, Estado.ANULADA, Estado.NO_PUBLICADA}
+
+
+def ancla(codigo: str) -> str:
+    """«ISO/IEC 27001» → «iso-iec-27001»."""
+    return re.sub(r"[^a-z0-9]+", "-", codigo.lower()).strip("-")
 
 
 def _entorno() -> Environment:
@@ -72,7 +80,9 @@ class Vista:
             filas.append({
                 "codigo": n.codigo,
                 "codigo_orden": f"{int(n.numero):06d}-{n.parte or ''}",
+                "ancla": ancla(n.codigo),
                 "nombre": n.nombre,
+                "descripcion": n.descripcion,
                 "alcance": n.alcance,
                 "titulo_en": d["titulo_en"],
                 "familia": fam,
@@ -107,6 +117,35 @@ class Vista:
             "sustituida_por": [self.e(i) for i in p["sustituida_por"]],
         }
 
+    def temas(self, filas: list[dict]) -> list[dict]:
+        """Normas agrupadas por tema y, dentro de cada tema, por familia."""
+        def tema_de(f: dict) -> str | None:
+            if f["familia"] and f["familia"].categoria:
+                return f["familia"].categoria
+            return f["categoria"].id if f["categoria"] else None
+
+        def ordenar(grupo: list[dict]) -> list[dict]:
+            # Orden de normas.yaml, con las antecesoras e históricas al final.
+            return sorted(grupo, key=lambda f: f["estado"] in HISTORICAS)
+
+        temas = []
+        for cat in self.config.categorias.values():
+            del_tema = [f for f in filas if tema_de(f) == cat.id]
+            grupos = []
+            for fam in self.config.familias.values():
+                normas = [f for f in del_tema if f["familia"] and f["familia"].id == fam.id]
+                if normas:
+                    grupos.append({"familia": fam, "normas": ordenar(normas)})
+            sueltas = ordenar([f for f in del_tema if not f["familia"]])
+            # Normas de este tema que se estudian en una familia de otro tema.
+            ver_tambien = [
+                f for f in filas
+                if f["categoria"] and f["categoria"].id == cat.id and tema_de(f) != cat.id
+            ]
+            if grupos or sueltas:
+                temas.append({"categoria": cat, "grupos": grupos, "sueltas": sueltas, "ver_tambien": ver_tambien})
+        return temas
+
     def resumen(self, filas: list[dict]) -> dict:
         iso = self.estado["fuentes"]["iso"] or {}
         return {
@@ -129,10 +168,12 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path) -> list[
         "familias": list(config.familias.values()),
         "categorias": list(config.categorias.values()),
         "estados": ORDEN_ESTADOS,
+        "temas": vista.temas(filas),
     }
     salidas = {
         docs / "index.md": env.get_template("index.md.j2").render(**ctx),
         docs / "estado.md": env.get_template("estado.md.j2").render(**ctx),
+        docs / "temas.md": env.get_template("temas.md.j2").render(**ctx),
         docs / "validacion.md": informe.a_markdown(validacion),
     }
     for ruta, texto in salidas.items():

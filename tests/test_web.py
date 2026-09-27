@@ -14,7 +14,7 @@ def paginas(config, indice, tmp_path_factory):
 
 
 def test_paginas_generadas(paginas):
-    assert set(paginas) == {"index", "estado", "validacion"}
+    assert set(paginas) == {"index", "estado", "temas", "validacion"}
     for texto in paginas.values():
         assert texto.startswith("---\n")
 
@@ -51,3 +51,21 @@ def test_escapado(config, indice, tmp_path):
     web.generar(estado.construir(config, indice, None), informe.construir(config, indice, None), config, tmp_path)
     md = (tmp_path / "estado.md").read_text(encoding="utf-8")
     assert "&lt;b&gt;x&lt;/b&gt;" in md and "<b>x</b>" not in md
+
+
+def test_por_temas(paginas):
+    md = paginas["temas"]
+    ids = re.findall(r'<div class="norma[^"]*" id="([^"]+)"', md)
+    assert len(ids) == 99 and len(set(ids)) == 99  # cada norma, una vez
+    assert "### Familia ISO/IEC 27000 — Seguridad de la información" in md
+    assert "### Procesos del ciclo de vida de sistemas y software" in md
+    # Las antecesoras, al final de su grupo.
+    assert ids.index("iso-iec-27701") < ids.index("iso-iec-13335") < ids.index("iso-iec-29100")
+    assert ids.index("iso-iec-25040") < ids.index("iso-iec-9126")
+    # 25012 es de la categoría de datos pero se estudia en SQuaRE.
+    assert '<a href="#iso-iec-25012">ISO/IEC 25012</a> (SQuaRE)' in md
+    assert "\n\n" not in md[md.index('id="iso-iec-27001"'):md.index("</div>", md.index('id="iso-iec-27001"'))]
+
+
+def test_enlace_desde_la_tabla(paginas):
+    assert '<a href="../temas/#iso-iec-27001">Ver en «Por temas»</a>' in paginas["estado"]
