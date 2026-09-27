@@ -1,0 +1,51 @@
+{% from "_macros.j2" import estado, enlace %}
+{% macro ref(x) -%}[{{ x.codigo }}](../normas/{{ x.ancla }}.md){%- endmacro %}
+---
+title: "{{ g.familia.nombre }}"
+hide:
+  - navigation
+---
+
+# {{ g.familia.nombre }}
+
+{% if g.area %}
+<p class="ficha__area"><span class="marca area--{{ g.area.id }}" aria-hidden="true"></span>{{ g.area.nombre }}</p>
+
+{% endif %}
+{% if g.familia.descripcion %}
+{{ g.familia.descripcion }}
+
+{% endif %}
+## Para recordarla
+
+<p class="cadena-linea">{% for x in g.normas %}{% if x.concepto %}<a href="../normas/{{ x.ancla }}/" class="{{ 'historica' if x.historica else '' }}"><strong>{{ x.codigo.split(' ')[-1] }}</strong> = {{ x.concepto }}</a>{% if not loop.last %} <span aria-hidden="true">→</span> {% endif %}{% endif %}{% endfor %}</p>
+
+## Qué pregunta responde cada norma
+
+| Norma | Pregunta que responde | Estado | Edición vigente |
+|---|---|---|---|
+{% for x in g.normas %}
+| {{ ref(x) }}<br>{{ x.nombre }} | {{ x.pregunta or "—" }} | {{ estado(x.estado, x.subestado) }} | {% if x.vigentes %}{{ enlace(x.vigentes[-1]) }}{% elif x.sustituida_por %}Sustituida por {{ enlace(x.sustituida_por[0]) }}{% else %}—{% endif %} |
+{% endfor %}
+
+{% if g.diagrama %}
+## Cómo se relacionan
+
+```mermaid
+{{ g.diagrama | safe }}
+```
+
+Las normas con borde discontinuo son antecesoras ya sustituidas. En la ficha de cada norma están todas sus relaciones, también con normas de otras familias.
+
+{% endif %}
+{% if g.temas %}
+## En el temario
+
+{% for t in g.temas %}
+- [Tema {{ t.numero }}](../temario.md#tema-{{ t.numero }}). {{ t.titulo }}{{ " *(cita la familia en conjunto)*" if t.numero in g.temas_familia else "" }}
+{% endfor %}
+
+{% endif %}
+---
+
+*[Volver al mapa](../index.md). Estado y ediciones: [ISO Open Data](https://www.iso.org/open-data.html) (ODC-By 1.0).*

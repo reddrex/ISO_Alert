@@ -1,0 +1,115 @@
+{% macro n(codigo) -%}{% set x = por_codigo[codigo] %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){%- endmacro %}
+{% macro ed(codigo, parte=None) -%}{% set x = por_codigo[codigo] %}{% if parte %}{% set ps = (x.partes.citadas + x.partes.otras) | selectattr("parte", "equalto", parte) | list %}{{ ps[0].ultima.anio if ps and ps[0].ultima else "—" }}{% elif x.vigentes %}{{ x.vigentes[-1].anio }}{% else %}—{% endif %}{%- endmacro %}
+---
+title: Comparativas
+hide:
+  - navigation
+---
+
+# Comparativas
+
+Tablas para ver de un vistazo qué tienen en común las normas y en qué se diferencian. Los años de edición se actualizan con los datos de ISO.
+
+## Normas de sistemas de gestión
+
+Varias normas del temario definen un **sistema de gestión**: el conjunto de políticas, procesos y responsabilidades con que una organización gestiona un ámbito (la calidad, la seguridad, la continuidad…). Todas comparten la **estructura armonizada** de ISO, así que tienen las mismas cláusulas y se pueden integrar en un único sistema:
+
+| Cláusula | Contenido | Ciclo de mejora |
+|---|---|---|
+| 4 | Contexto de la organización | Planificar |
+| 5 | Liderazgo | Planificar |
+| 6 | Planificación (riesgos y oportunidades, objetivos) | Planificar |
+| 7 | Apoyo (recursos, competencia, documentación) | Planificar |
+| 8 | Operación | Hacer |
+| 9 | Evaluación del desempeño (seguimiento, auditoría interna, revisión por la dirección) | Verificar |
+| 10 | Mejora | Actuar |
+
+Las cláusulas 1 a 3 son el objeto, las referencias normativas y los términos. Con esa estructura común, estas son las normas de requisitos, todas certificables:
+
+| Norma | Sistema de gestión | Qué gestiona | Edición vigente |
+|---|---|---|---|
+| {{ n("ISO 9001") }} | SGC | Calidad | {{ ed("ISO 9001") }} |
+| {{ n("ISO 14001") }} | SGA | Medio ambiente | {{ ed("ISO 14001") }} |
+| {{ n("ISO/IEC 27001") }} | SGSI | Seguridad de la información | {{ ed("ISO/IEC 27001") }} |
+| {{ n("ISO/IEC 27701") }} | SGPI | Privacidad de la información | {{ ed("ISO/IEC 27701") }} |
+| {{ n("ISO 22301") }} | SGCN | Continuidad del negocio | {{ ed("ISO 22301") }} |
+| {{ n("ISO/IEC 20000") }}-1 | SGS | Servicios de TI | {{ ed("ISO/IEC 20000", "1") }} |
+| {{ n("ISO 30301") }} | SGD | Documentos | {{ ed("ISO 30301") }} |
+| {{ n("ISO/IEC 19770") }}-1 | Sistema de gestión de activos de TI | Activos de TI y licencias | {{ ed("ISO/IEC 19770", "1") }} |
+
+Para auditar cualquiera de ellos se usa la {{ n("ISO 19011") }}. Quien certifica estos sistemas son organismos acreditados; los que certifican productos, procesos y servicios se acreditan según la {{ n("ISO/IEC 17065") }}.
+
+## Requisitos, guías y vocabulario
+
+En cada ámbito suele haber una norma de **requisitos** (lo que se *debe* cumplir, certificable), varias **guías** (lo que *conviene* hacer) y una de **vocabulario**. Confundirlas es un error habitual.
+
+| Ámbito | Requisitos (certificable) | Guías y directrices | Vocabulario y fundamentos |
+|---|---|---|---|
+| Calidad | {{ n("ISO 9001") }} | {{ n("ISO 9004") }}, {{ n("ISO 19011") }} | {{ n("ISO 9000") }} |
+| Seguridad de la información | {{ n("ISO/IEC 27001") }} | {{ n("ISO/IEC 27002") }}, {{ n("ISO/IEC 27005") }}, {{ n("ISO/IEC 27017") }}, {{ n("ISO/IEC 27018") }} | {{ n("ISO/IEC 27000") }} |
+| Privacidad | {{ n("ISO/IEC 27701") }} | {{ n("ISO/IEC 29151") }}, {{ n("ISO/IEC 29134") }} | {{ n("ISO/IEC 29100") }} |
+| Riesgo y continuidad | {{ n("ISO 22301") }} | {{ n("ISO 31000") }} | — |
+| Servicios de TI | {{ n("ISO/IEC 20000") }}-1 | {{ n("ISO/IEC 20000") }}-2, -3 y -5 | — |
+| Documentos | {{ n("ISO 30301") }} | {{ n("ISO 30302") }}, {{ n("ISO 15489") }} | {{ n("ISO 30300") }} |
+| Activos de TI | {{ n("ISO/IEC 19770") }}-1 | — | {{ n("ISO/IEC 19770") }}-5 |
+| Medio ambiente | {{ n("ISO 14001") }} | — | — |
+| Gobierno de las TI y del dato | — | {{ n("ISO/IEC 38500") }}, {{ n("ISO/IEC 38505") }} | — |
+| Proyectos | — | {{ n("ISO 21500") }} | — |
+
+## Qué tipo de documento es cada norma
+
+No todas las normas son de requisitos o guías: muchas son modelos, métodos o especificaciones técnicas.
+
+{% for clave, etiqueta in naturalezas.items() %}
+{% set grupo = filas | selectattr("naturaleza", "equalto", etiqueta) | list %}
+{% if grupo %}
+??? note "{{ etiqueta }} ({{ grupo | length }})"
+    {%+ for x in grupo | sort(attribute="codigo_orden") %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if x.certificable %} (certificable){% endif %}{% if not loop.last %} · {% endif %}{% endfor +%}
+
+{% endif %}
+{% endfor %}
+
+## Modelos de calidad del producto: ISO/IEC 9126 frente a ISO/IEC 25010
+
+La {{ n("ISO/IEC 25010") }} sustituyó al modelo de la {{ n("ISO/IEC 9126") }}. Las características han cambiado de nombre y de número entre ediciones:
+
+| ISO/IEC 9126-1 (2001) | ISO/IEC 25010 (2011) | ISO/IEC 25010 (2023) |
+|---|---|---|
+| Funcionalidad | Adecuación funcional | Adecuación funcional |
+| Eficiencia | Eficiencia de desempeño | Eficiencia de desempeño |
+| — | Compatibilidad | Compatibilidad |
+| Usabilidad | Usabilidad | Capacidad de interacción |
+| Fiabilidad | Fiabilidad | Fiabilidad |
+| *(subcaracterística de la funcionalidad)* | Seguridad | Seguridad |
+| Mantenibilidad | Mantenibilidad | Mantenibilidad |
+| Portabilidad | Portabilidad | Flexibilidad |
+| — | — | Protección (*safety*) |
+| **6 características** | **8 características** | **9 características** |
+
+La calidad en uso, que la 25010 de 2011 incluía como segundo modelo, pasó en 2023 a la ISO/IEC 25019.
+
+## Métodos de medición del tamaño funcional
+
+Los tres métodos son conformes con la {{ n("ISO/IEC 14143") }}, que define qué es medir el tamaño funcional.
+
+| | COSMIC | IFPUG | NESMA |
+|---|---|---|---|
+| Norma | {{ n("ISO/IEC 19761") }} | {{ n("ISO/IEC 20926") }} | {{ n("ISO/IEC 24570") }} |
+| Qué cuenta | Movimientos de datos: entradas, salidas, lecturas y escrituras | Funciones de datos (ILF, EIF) y transaccionales (EI, EO, EQ) | Las mismas que IFPUG, con reglas propias |
+| Unidad | CFP (COSMIC Function Point) | Punto de función | Punto de función |
+| Tipo de software | Gestión, tiempo real y embebido | Sobre todo de gestión | Sobre todo de gestión |
+| Estimación temprana | — | — | Recuento indicativo y estimado |
+
+Las normas ISO de IFPUG y NESMA recogen los puntos de función **sin ajustar**: el factor de ajuste (VAF) no forma parte de la norma.
+
+## Códigos ISO y UNE
+
+La versión española de una norma suele publicarse después que la ISO, a veces pasando antes por una norma europea (EN). Estas son las normas para las que el temario cita el código UNE:
+
+| Norma UNE citada | Norma ISO | Edición ISO vigente |
+|---|---|---|
+{% for x in filas if x.une %}
+| {{ x.une }} | [{{ x.codigo }}](normas/{{ x.ancla }}.md) | {{ ed(x.codigo) }} |
+{% endfor %}
+
+Cómo se lee el prefijo: `UNE-ISO` es una adopción directa de la norma ISO; `UNE-EN ISO`, una adopción de la versión europea. Consulta la [guía](guia.md) para más detalle.

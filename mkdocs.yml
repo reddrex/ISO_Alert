@@ -48,7 +48,11 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
 
@@ -60,8 +64,9 @@ extra_javascript:
   - javascripts/estado.js
 
 nav:
-  - Inicio: index.md
-  - Por temas: temas.md
+  - Mapa: index.md
+  - Por tema del temario: temario.md
+  - Comparativas: comparativas.md
   - Estado: estado.md
   - Guía: guia.md
   - Validación: validacion.md

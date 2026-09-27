@@ -16,6 +16,7 @@ document$.subscribe(function () {
     texto: document.getElementById("f-texto"),
     estado: document.getElementById("f-estado"),
     categoria: document.getElementById("f-categoria"),
+    tema: document.getElementById("f-tema"),
     familia: document.getElementById("f-familia"),
     superada: document.getElementById("f-superada"),
     agrupar: document.getElementById("f-agrupar")
@@ -25,7 +26,7 @@ document$.subscribe(function () {
 
   // Estado inicial desde la URL.
   var params = new URLSearchParams(location.search);
-  ["texto", "estado", "categoria", "familia"].forEach(function (k) {
+  ["texto", "estado", "categoria", "tema", "familia"].forEach(function (k) {
     if (params.has(k)) campos[k].value = params.get(k);
   });
   campos.superada.checked = params.get("superada") === "1";
@@ -77,6 +78,7 @@ document$.subscribe(function () {
         (!texto || normalizar(f.dataset.texto).indexOf(texto) !== -1) &&
         (!campos.estado.value || f.dataset.estado === campos.estado.value) &&
         (!campos.categoria.value || f.dataset.categoria === campos.categoria.value) &&
+        (!campos.tema.value || (" " + f.dataset.temas + " ").indexOf(" " + campos.tema.value + " ") !== -1) &&
         (!campos.familia.value || f.dataset.familia === campos.familia.value) &&
         (!campos.superada.checked || f.dataset.superada === "1");
       f.hidden = !ok;
@@ -114,7 +116,7 @@ document$.subscribe(function () {
 
   function guardarEnUrl() {
     var p = new URLSearchParams();
-    ["texto", "estado", "categoria", "familia"].forEach(function (k) {
+    ["texto", "estado", "categoria", "tema", "familia"].forEach(function (k) {
       if (campos[k].value) p.set(k, campos[k].value.trim());
     });
     if (campos.superada.checked) p.set("superada", "1");
@@ -134,7 +136,7 @@ document$.subscribe(function () {
   });
 
   campos.texto.addEventListener("input", aplicar);
-  ["estado", "categoria", "familia", "superada", "agrupar"].forEach(function (k) {
+  ["estado", "categoria", "tema", "familia", "superada", "agrupar"].forEach(function (k) {
     campos[k].addEventListener("change", aplicar);
   });
   aplicar();

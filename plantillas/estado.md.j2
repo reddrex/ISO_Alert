@@ -27,6 +27,12 @@ hide:
     <option value="{{ c.id }}">{{ c.nombre }}</option>
     {% endfor %}
   </select></label>
+  <label class="filtro">Tema del temario <select id="f-tema">
+    <option value="">Todos</option>
+    {% for t in temario %}
+    <option value="{{ t.tema.numero }}">{{ t.tema.numero }}. {{ t.tema.titulo | titulo_corto | truncate(60) }}</option>
+    {% endfor %}
+  </select></label>
   <label class="filtro">Familia <select id="f-familia">
     <option value="">Todas</option>
     {% for f in familias %}
@@ -54,14 +60,14 @@ hide:
   </thead>
   <tbody>
     {% for f in filas %}
-    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sin familia' }}" data-superada="{{ 1 if f.superada else 0 }}" data-texto="{{ f.texto }}">
+    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sin familia' }}" data-superada="{{ 1 if f.superada else 0 }}" data-temas="{{ (f.temas + f.temas_familia) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
       <td class="codigo" data-sort="{{ f.codigo_orden }}">{{ f.codigo }}</td>
       <td class="nombre">
         <details class="detalle">
           <summary>{{ f.nombre }}</summary>
           <dl>
             {% if f.descripcion %}
-            <dt>Qué es</dt><dd>{{ f.descripcion }} <a href="temas/#{{ f.ancla }}">Ver en «Por temas»</a></dd>
+            <dt>Qué es</dt><dd>{% if f.resumen %}{{ f.resumen }} {% endif %}{{ f.descripcion }} <a href="{{ f.ficha }}">Ficha completa</a></dd>
             {% endif %}
             {% if f.titulo_en %}
             <dt>Título oficial</dt><dd lang="en">{{ f.titulo_en }}</dd>
@@ -102,6 +108,9 @@ hide:
             {% endif %}
             {% if f.une %}
             <dt>Norma UNE citada</dt><dd>{{ f.une }}</dd>
+            {% endif %}
+            {% if f.temas or f.temas_familia %}
+            <dt>Temas del temario</dt><dd>{% for t in f.temas + f.temas_familia %}<a href="temario/#tema-{{ t.numero }}">{{ t.numero }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</dd>
             {% endif %}
             {% if f.contexto %}
             <dt>Nota</dt><dd>{{ f.contexto }}</dd>

@@ -9,7 +9,7 @@ Herramienta que vigila las normas técnicas ISO/IEC (y, más adelante, sus adopc
 
 ## Estado del proyecto
 
-En desarrollo. La web ya muestra el [estado de cada norma](https://reddrex.github.io/ISO_Alert/estado/) con los datos de ISO del día y el [informe de validación](https://reddrex.github.io/ISO_Alert/validacion/) de la lista. Faltan el historial de cambios y los avisos. El plan completo está en [PLAN.md](PLAN.md).
+En desarrollo. La web ya muestra el [estado de cada norma](https://reddrex.github.io/ISO_Alert/estado/) con los datos de ISO del día, una capa de estudio (un [mapa](https://reddrex.github.io/ISO_Alert/) de áreas y familias, las [normas de cada tema del temario](https://reddrex.github.io/ISO_Alert/temario/) y [comparativas](https://reddrex.github.io/ISO_Alert/comparativas/)), una página por familia y por norma y el [informe de validación](https://reddrex.github.io/ISO_Alert/validacion/) de la lista. Faltan el historial de cambios y los avisos. El plan completo está en [PLAN.md](PLAN.md).
 
 ## Cómo suscribirse (cuando estén activos los avisos)
 
@@ -33,7 +33,7 @@ pytest                                     # tests con un extracto real del data
 pytest -m lento                            # tests sobre el dataset completo
 ```
 
-La lista de normas vigiladas está en [`normas.yaml`](normas.yaml). La cabecera del fichero documenta sus campos.
+La lista de normas vigiladas está en [`normas.yaml`](normas.yaml), con sus textos de estudio, relaciones y temas del temario; la cabecera del fichero documenta sus campos. Los temas del temario están en [`temario.yaml`](temario.yaml).
 
 ## Fuentes y atribución
 

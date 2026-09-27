@@ -179,34 +179,137 @@
   .filtro, .filtro--texto input, .filtro select { width: 100%; }
 }
 
-/* ---- Por temas ---- */
+/* ---- Fichas ---- */
 
-.md-typeset .grupo__descripcion {
-  color: var(--md-default-fg-color--light);
-  max-width: 48rem;
-}
-.md-typeset .norma {
-  margin: 0.9em 0;
-  padding: 0.1em 0 0.1em 0.8rem;
-  border-left: 3px solid var(--md-primary-fg-color);
-  max-width: 48rem;
-}
-.md-typeset .norma p { margin: 0.25em 0; }
-.md-typeset .norma__cabecera { line-height: 1.5; }
-.md-typeset .norma__codigo {
-  font-family: var(--md-code-font-family);
-  font-size: 0.9em;
-  font-weight: 600;
-  margin-right: 0.3em;
-  white-space: nowrap;
-}
-.md-typeset .norma__nombre { font-weight: 600; margin-right: 0.3em; }
-.md-typeset .norma__meta {
+.md-typeset .ficha__estado { margin-top: -0.4em; }
+.md-typeset .ficha__tipo {
   font-size: 0.85em;
   color: var(--md-default-fg-color--light);
+  margin-left: 0.4em;
 }
-.md-typeset .norma--historica { border-left-color: var(--md-default-fg-color--lighter); }
-.md-typeset .norma--historica .norma__nombre { font-weight: 400; }
-.md-typeset .ver-tambien { font-size: 0.85em; color: var(--md-default-fg-color--light); }
-[data-md-color-scheme="slate"] .md-typeset .norma { border-left-color: var(--md-accent-fg-color); }
-[data-md-color-scheme="slate"] .md-typeset .norma--historica { border-left-color: var(--md-default-fg-color--lighter); }
+.md-typeset .ficha__enlaces { font-size: 0.85em; }
+
+/* Diagramas de relaciones: centrados y sin desbordar en móvil. */
+.md-typeset .mermaid { text-align: center; overflow-x: auto; }
+
+/* Tablas de datos sin encabezado (fichas): se oculta la fila de cabecera vacía. */
+.md-typeset table:has(thead th:first-child:empty) thead { display: none; }
+
+/* ---- Áreas del mapa: color + nombre, nunca solo color ---- */
+
+.area--calidad       { --area: #1f5fa8; }
+.area--seguridad     { --area: #b3261e; }
+.area--identidad     { --area: #8e3a80; }
+.area--software      { --area: #2e7d32; }
+.area--datos         { --area: #8a6100; }
+.area--gestion       { --area: #00796b; }
+.area--documentacion { --area: #5b3fa8; }
+.area--interaccion   { --area: #c25100; }
+.area--redes         { --area: #6d4c41; }
+[data-md-color-scheme="slate"] .area--calidad       { --area: #7fb0e8; }
+[data-md-color-scheme="slate"] .area--seguridad     { --area: #f08a84; }
+[data-md-color-scheme="slate"] .area--identidad     { --area: #d68bc8; }
+[data-md-color-scheme="slate"] .area--software      { --area: #7cc47f; }
+[data-md-color-scheme="slate"] .area--datos         { --area: #e0b650; }
+[data-md-color-scheme="slate"] .area--gestion       { --area: #5cc2b0; }
+[data-md-color-scheme="slate"] .area--documentacion { --area: #b39ddb; }
+[data-md-color-scheme="slate"] .area--interaccion   { --area: #f5a25d; }
+[data-md-color-scheme="slate"] .area--redes         { --area: #bcaaa4; }
+
+.md-typeset .marca {
+  display: inline-block;
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 2px;
+  background: var(--area, var(--md-default-fg-color--lighter));
+  margin-right: 0.45em;
+  vertical-align: 0.05em;
+}
+.md-typeset .ficha__area { color: var(--md-default-fg-color--light); font-size: 0.85em; margin-top: -0.4em; }
+
+/* Mapa */
+.md-typeset .mapa {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1rem;
+  margin: 1.5em 0;
+}
+.md-typeset .mapa__area {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-top: 5px solid var(--area);
+  border-radius: 0.2rem;
+  padding: 0.6rem 0.8rem 0.8rem;
+}
+.md-typeset .mapa__titulo {
+  margin: 0 0 0.5em;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--area);
+  letter-spacing: 0;
+}
+.md-typeset a.mapa__familia {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  margin: 0 -0.5rem 0.2rem;
+  border-radius: 0.2rem;
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+.md-typeset a.mapa__familia:hover,
+.md-typeset a.mapa__familia:focus { background: var(--md-default-fg-color--lightest); }
+.md-typeset .mapa__nombre { display: block; font-weight: 600; font-size: 0.75rem; }
+.md-typeset .mapa__normas {
+  display: block;
+  font-family: var(--md-code-font-family);
+  font-size: 0.62rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .mapa__normas .historica,
+.md-typeset .cadena-linea .historica { opacity: 0.6; }
+.md-typeset .mapa__sueltas {
+  margin: 0.4em 0 0;
+  font-size: 0.68rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Asociación para el examen: cadena vertical de lo general a lo específico */
+.md-typeset ol.cadena {
+  list-style: none;
+  margin: 0.4em 0 1em;
+  padding: 0;
+  max-width: 34rem;
+}
+.md-typeset ol.cadena li {
+  margin: 0 0 1.3em;
+  padding: 0.35rem 0.7rem;
+  border-left: 4px solid var(--area, var(--md-default-fg-color--lighter));
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 0 0.2rem 0.2rem 0;
+  position: relative;
+}
+.md-typeset ol.cadena li:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  left: 1.1rem;
+  bottom: -1.3em;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset ol.cadena li a { font-weight: 600; margin-right: 0.6em; white-space: nowrap; }
+.md-typeset .cadena__idea { color: var(--md-default-fg-color); }
+
+.md-typeset .cadena-linea { line-height: 1.9; }
+.md-typeset .cadena-linea .actual { background: var(--md-accent-fg-color--transparent); padding: 0.05em 0.3em; border-radius: 0.2rem; }
+.md-typeset .ficha__pregunta { font-size: 0.95em; }
+
+/* Selector «Ir al tema» */
+.md-typeset .salto select {
+  font: inherit;
+  font-size: 0.75rem;
+  margin-left: 0.4em;
+  padding: 0.25rem 0.4rem;
+  max-width: 100%;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+}

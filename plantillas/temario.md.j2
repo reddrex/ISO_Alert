@@ -1,0 +1,63 @@
+{% from "_macros.j2" import estado %}
+{% macro ref(x) -%}[{{ x.codigo }}](normas/{{ x.ancla }}.md){%- endmacro %}
+{% macro marca(x) -%}{% if x.area %}<span class="marca area--{{ x.area.id }}" title="{{ x.area.nombre }}" aria-hidden="true"></span>{% endif %}{%- endmacro %}
+---
+title: Normas por tema del temario
+hide:
+  - navigation
+---
+
+# ¿Qué normas tengo que saber para cada tema?
+
+Los {{ temario | length }} temas del temario TIC A1 que citan normas técnicas. Para cada uno: las normas que cita, una **asociación para el examen** que las ordena de lo general a lo específico y cómo encajan entre sí.
+
+<form class="salto"><label>Ir al tema <select onchange="if (this.value) location.hash = 'tema-' + this.value">
+<option value="">Elige un tema…</option>
+{% for t in temario %}
+<option value="{{ t.tema.numero }}">{{ t.tema.numero }}. {{ t.tema.titulo | titulo_corto | truncate(70) }}</option>
+{% endfor %}
+</select></label></form>
+
+!!! note "Resumen orientativo"
+    Las asociaciones y explicaciones ayudan a situar cada norma en el tema, pero no sustituyen al estudio del tema ni al texto de las normas. El color indica el área de la norma en el [mapa](index.md); en los diagramas, las normas con borde discontinuo son antecesoras ya sustituidas.
+
+{% for t in temario %}
+## Tema {{ t.tema.numero }}. {{ t.tema.titulo | titulo_corto }} { #tema-{{ t.tema.numero }} }
+
+{% if (t.tema.titulo | titulo_corto) != t.tema.titulo.rstrip(".") %}
+*{{ t.tema.titulo }}*
+
+{% endif %}
+**Normas del tema**
+
+{% for x in t.normas %}
+- {{ marca(x) }}{{ ref(x) }} · {{ x.nombre }} {{ estado(x.estado, x.subestado) }}{{ (" — " ~ x.resumen) if x.resumen else "" }}
+{% endfor %}
+{% for g in t.familias %}
+- **[{{ g.familia.nombre }}](familias/{{ g.familia.id }}.md)**, citada en conjunto: {% for x in g.normas %}{{ ref(x) }}{% if not loop.last %}, {% endif %}{% endfor +%}
+{% endfor %}
+
+{% if t.asociacion %}
+**Asociación para el examen**
+
+<ol class="cadena">
+{% for x, idea in t.asociacion %}
+<li class="area--{{ x.area.id if x.area else 'ninguna' }}"><a href="{{ x.ficha }}">{{ x.codigo }}</a><span class="cadena__idea">{{ idea }}</span></li>
+{% endfor %}
+</ol>
+
+{% endif %}
+{% if t.tema.relacion %}
+**Cómo encajan.** {{ t.tema.relacion }}
+
+{% endif %}
+{% if t.diagrama %}
+```mermaid
+{{ t.diagrama | safe }}
+```
+
+{% endif %}
+{% endfor %}
+---
+
+*Fuente de los temas: temario de la oposición TIC A1. Estado de las normas: [ISO Open Data](https://www.iso.org/open-data.html), licencia ODC-By 1.0.*

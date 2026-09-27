@@ -65,8 +65,14 @@ def generar_web(args) -> int:
     config = cfg.cargar(args.normas)
     datos = Path(args.datos)
     leer = lambda nombre: json.loads((datos / nombre).read_text(encoding="utf-8"))  # noqa: E731
-    for ruta in web.generar(leer("estado.json"), leer("validacion.json"), config, Path(args.docs)):
-        print(f"→ {ruta}")
+    rutas = web.generar(leer("estado.json"), leer("validacion.json"), config, Path(args.docs))
+    carpetas = (web.FICHAS, web.FAMILIAS)
+    for ruta in rutas:
+        if ruta.parent.name not in carpetas:
+            print(f"→ {ruta}")
+    for carpeta in carpetas:
+        n = sum(1 for r in rutas if r.parent.name == carpeta)
+        print(f"→ {n} páginas en {Path(args.docs) / carpeta}")
     return 0
 
 

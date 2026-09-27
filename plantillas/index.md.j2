@@ -1,18 +1,39 @@
 {% from "_macros.j2" import estado, enlace %}
 ---
-title: Inicio
+title: Mapa de normas
 hide:
   - navigation
   - toc
 ---
 
-# Vigilancia de normas TIC
+# Mapa de normas ISO del temario TIC A1
 
-Estado de las {{ resumen.total }} normas ISO citadas en el temario del Cuerpo Superior de Sistemas y Tecnologías de la Información de la Administración del Estado (TIC A1). No es una fuente oficial.
+Las {{ resumen.total }} normas técnicas que cita el temario, agrupadas en áreas y familias. La idea es no estudiarlas como una lista, sino como una red: cada familia tiene un concepto común, cada norma responde a una pregunta y muchas aparecen en varios temas. Pulsa una familia para ver cómo encajan sus normas.
 
-Datos ISO{% if resumen.dato_fecha %} del **{{ resumen.dato_fecha }}**{% endif %}, comprobados el **{{ resumen.comprobado }}**.
+<div class="mapa">
+{% for b in mapa %}
+<section class="mapa__area area--{{ b.area.id }}">
+<h2 class="mapa__titulo">{{ b.area.nombre }}</h2>
+{% for g in b.familias %}
+<a class="mapa__familia" href="familias/{{ g.familia.id }}/">
+<span class="mapa__nombre">{{ g.familia.corto }}</span>
+<span class="mapa__normas">{% for x in g.normas %}<span class="{{ 'historica' if x.historica else '' }}">{{ x.codigo.split(' ')[-1] }}</span>{% if not loop.last %} · {% endif %}{% endfor %}</span>
+</a>
+{% endfor %}
+{% if b.sueltas %}
+<p class="mapa__sueltas">{{ "Otras normas:" if b.familias else "Normas:" }} {% for x in b.sueltas %}<a href="{{ x.ficha }}" title="{{ x.nombre }}">{{ x.codigo }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+{% endif %}
+</section>
+{% endfor %}
+</div>
 
-## Resumen
+También puedes estudiar en el sentido contrario, partiendo del temario: [¿qué normas tengo que saber para cada tema?](temario.md)
+
+[Normas por tema del temario](temario.md){ .md-button .md-button--primary } [Comparativas](comparativas.md){ .md-button } [Cómo leer una norma](guia.md){ .md-button }
+
+## Seguimiento de cambios
+
+Web no oficial. Datos ISO{% if resumen.dato_fecha %} del **{{ resumen.dato_fecha }}**{% endif %}, comprobados el **{{ resumen.comprobado }}**.
 
 <table>
   <thead><tr><th>Estado</th><th>Normas</th></tr></thead>
@@ -24,23 +45,19 @@ Datos ISO{% if resumen.dato_fecha %} del **{{ resumen.dato_fecha }}**{% endif %}
 </table>
 
 {% if resumen.revision_periodica %}
-Además, {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.revision_periodica == 1 else "normas vigentes están" }} en revisión periódica, que casi siempre acaba en confirmación.
+Además, {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.revision_periodica == 1 else "normas vigentes están" }} en revisión periódica, que casi siempre acaba en confirmación. La [tabla de estado](estado.md) permite filtrar todas las normas por estado, tema, materia o familia.
 {% endif %}
 
-[Estudiar por temas](temas.md){ .md-button .md-button--primary } [Tabla de estado](estado.md){ .md-button } [Cómo leer una norma](guia.md){ .md-button }
-
 {% if resumen.superadas %}
-## Ediciones del temario que ya no son las vigentes
+### Ediciones del temario que ya no son las vigentes
 
 El temario cita estas ediciones, pero ISO ya ha publicado otra más reciente.
 
 | Norma | Cita el temario | Edición ISO vigente |
 |---|---|---|
 {% for f in resumen.superadas %}
-| {{ f.codigo }} · {{ f.nombre }} | {{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "no_existe" %} (año de la UNE){% endif %} | {% if f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% else %}—{% endif %} |
+| [{{ f.codigo }}](normas/{{ f.ancla }}.md) · {{ f.nombre }} | {{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "no_existe" %} (año de la UNE){% endif %} | {% if f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% else %}—{% endif %} |
 {% endfor %}
 {% endif %}
-
-## Avisos
 
 La web se actualiza a diario con los datos de ISO. El historial de cambios y los avisos por Issue y por RSS se activarán próximamente.

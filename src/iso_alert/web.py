@@ -3,26 +3,35 @@
 from __future__ import annotations
 
 import re
+import shutil
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
-from . import informe
+from . import didactico, informe
 from . import modelo as m
-from .config import Config
+from .config import NATURALEZAS, Config
 from .modelo import Estado, Subestado
 
 PLANTILLAS = Path(__file__).resolve().parents[2] / "plantillas"
 
 # Orden de los estados en filtros, resúmenes y al ordenar la columna Estado.
 ORDEN_ESTADOS = [Estado.VIGENTE, Estado.EN_REVISION, Estado.SUSTITUIDA, Estado.ANULADA, Estado.NO_PUBLICADA]
-# En «Por temas», las normas en estos estados se muestran al final de su grupo.
+# En las páginas de estudio, las normas en estos estados se muestran al final de su grupo.
 HISTORICAS = {Estado.SUSTITUIDA, Estado.ANULADA, Estado.NO_PUBLICADA}
+# Carpetas de docs/ con una página por norma y por familia; se regeneran enteras en cada build.
+FICHAS = "normas"
+FAMILIAS = "familias"
 
 
 def ancla(codigo: str) -> str:
     """«ISO/IEC 27001» → «iso-iec-27001»."""
     return re.sub(r"[^a-z0-9]+", "-", codigo.lower()).strip("-")
+
+
+def titulo_corto(titulo: str) -> str:
+    """Primera frase del título de un tema del temario."""
+    return re.split(r"(?<=[a-z\)])\.\s", titulo, maxsplit=1)[0].rstrip(".")
 
 
 def _entorno() -> Environment:
@@ -34,16 +43,18 @@ def _entorno() -> Environment:
         lstrip_blocks=True,
         keep_trailing_newline=True,
     )
+    env.filters["titulo_corto"] = titulo_corto
     return env
 
 
 class Vista:
-    """Datos de estado.json preparados para las plantillas."""
+    """Datos de estado.json y normas.yaml preparados para las plantillas."""
 
     def __init__(self, estado: dict, config: Config):
         self.estado = estado
         self.config = config
         self.ent = estado["entregables"]
+        self.aristas = didactico.aristas(config)
 
     def e(self, i: int) -> dict:
         d = self.ent[str(i)]
@@ -59,6 +70,7 @@ class Vista:
 
     def filas(self) -> list[dict]:
         orden_familia = {f: i for i, f in enumerate(self.config.familias)}
+        temario = self.config.temario
         filas = []
         for n in self.config.normas:
             d = self.estado["normas"][n.codigo]
@@ -67,30 +79,48 @@ class Vista:
             vigentes = [self.e(i) for i in d["vigentes"]]
             fam = self.config.familias.get(n.familia) if n.familia else None
             cat = self.config.categorias.get(n.categoria)
+            # Área del mapa: la de la familia si la tiene (25012 se estudia en SQuaRE, área Software).
+            cat_mapa = self.config.categorias.get(fam.categoria) if fam and fam.categoria else cat
+            area = self.config.areas.get(cat_mapa.area) if cat_mapa and cat_mapa.area else None
             ed = d["edicion_citada"]
             partes = None
             if d["partes"] is not None:
-                todas = [self._parte(p) for p in d["partes"]]
+                desc_partes = dict(n.partes_descripcion)
+                todas = [self._parte(p, desc_partes) for p in d["partes"]]
                 partes = {
                     "citadas": [p for p in todas if p["citada"]] if d["partes_citadas"] else todas,
                     "otras": [p for p in todas if not p["citada"]] if d["partes_citadas"] else [],
                     "vigentes": sum(1 for p in todas if p["citada"] and p["vigente"]),
                     "relevantes": sum(1 for p in todas if p["citada"]),
                 }
+            temas_familia = [t for t in (fam.temas if fam else ()) if t not in n.temas]
             filas.append({
                 "codigo": n.codigo,
                 "codigo_orden": f"{int(n.numero):06d}-{n.parte or ''}",
                 "ancla": ancla(n.codigo),
+                "ficha": f"{FICHAS}/{ancla(n.codigo)}/",
                 "nombre": n.nombre,
+                "resumen": n.resumen,
+                "concepto": n.concepto,
+                "pregunta": n.pregunta,
+                "area": area,
                 "descripcion": n.descripcion,
+                "naturaleza": NATURALEZAS.get(n.naturaleza) if n.naturaleza else None,
+                "certificable": n.certificable,
+                "claves": list(n.claves),
+                "temas": [temario[t] for t in sorted(n.temas) if t in temario],
+                "temas_familia": [temario[t] for t in sorted(temas_familia) if t in temario],
                 "alcance": n.alcance,
+                "numero": n.numero,
                 "titulo_en": d["titulo_en"],
                 "familia": fam,
+                "familia_pagina": f"{FAMILIAS}/{fam.id}/" if fam else None,
                 "familia_orden": orden_familia.get(n.familia, len(orden_familia)),
                 "categoria": cat,
                 "estado": estado,
                 "estado_orden": ORDEN_ESTADOS.index(estado) if estado in ORDEN_ESTADOS else 9,
                 "subestado": sub,
+                "historica": estado in HISTORICAS,
                 "vigentes": vigentes,
                 "en_desarrollo": [self.e(i) for i in d["en_desarrollo"]],
                 "sustituida_por": [self.e(i) for i in d["sustituida_por"]],
@@ -100,11 +130,13 @@ class Vista:
                 "superada": bool(ed and ed["resultado"] != "vigente"),
                 "une": n.une,
                 "contexto": n.contexto,
-                "texto": " ".join(filter(None, [n.codigo, n.nombre, d["titulo_en"], n.contexto, n.une])).lower(),
+                "texto": " ".join(filter(None, [
+                    n.codigo, n.nombre, n.resumen, d["titulo_en"], n.contexto, n.une,
+                ])).lower(),
             })
         return filas
 
-    def _parte(self, p: dict) -> dict:
+    def _parte(self, p: dict, descripciones: dict[str, str]) -> dict:
         ultima = self.e(p["ultima"]) if p["ultima"] else None
         return {
             "parte": p["parte"],
@@ -113,38 +145,94 @@ class Vista:
             "subestado": Subestado(p["subestado"]) if p["subestado"] else None,
             "vigente": p["vigente"] is not None,
             "ultima": ultima,
+            "titulo_parte": _titulo_parte(ultima["titulo_en"]) if ultima else None,
+            "descripcion": descripciones.get(p["parte"]),
             "proyectos": [self.e(i) for i in p["proyectos"]],
             "sustituida_por": [self.e(i) for i in p["sustituida_por"]],
         }
 
-    def temas(self, filas: list[dict]) -> list[dict]:
-        """Normas agrupadas por tema y, dentro de cada tema, por familia."""
-        def tema_de(f: dict) -> str | None:
-            if f["familia"] and f["familia"].categoria:
-                return f["familia"].categoria
-            return f["categoria"].id if f["categoria"] else None
+    def _historicas(self, filas: list[dict]) -> set[str]:
+        return {f["codigo"] for f in filas if f["historica"]}
 
-        def ordenar(grupo: list[dict]) -> list[dict]:
-            # De menor a mayor número, con las antecesoras e históricas al final.
-            return sorted(grupo, key=lambda f: (f["estado"] in HISTORICAS, f["codigo_orden"]))
+    def diagrama(self, codigos: list[str], filas: list[dict], destacada: str | None = None) -> str | None:
+        return didactico.diagrama(codigos, self.aristas, self._historicas(filas), destacada)
 
-        temas = []
-        for cat in self.config.categorias.values():
-            del_tema = [f for f in filas if tema_de(f) == cat.id]
-            grupos = []
+    def miembros(self, fam, filas: list[dict]) -> list[dict]:
+        return ordenar([f for f in filas if f["familia"] and f["familia"].id == fam.id])
+
+    def familia(self, fam, filas: list[dict]) -> dict:
+        normas = self.miembros(fam, filas)
+        cat = self.config.categorias.get(fam.categoria) if fam.categoria else None
+        numeros = set(fam.temas) | {t.numero for f in normas for t in f["temas"]}
+        return {
+            "familia": fam,
+            "area": self.config.areas.get(cat.area) if cat and cat.area else None,
+            "normas": normas,
+            "diagrama": self.diagrama([f["codigo"] for f in normas], filas),
+            "temas": [self.config.temario[t] for t in sorted(numeros) if t in self.config.temario],
+            "temas_familia": set(fam.temas),
+        }
+
+    def mapa(self, filas: list[dict]) -> list[dict]:
+        """Áreas del mapa de estudio con sus familias y sus normas sin familia."""
+        bloques = []
+        for area in self.config.areas.values():
+            familias = []
             for fam in self.config.familias.values():
-                normas = [f for f in del_tema if f["familia"] and f["familia"].id == fam.id]
-                if normas:
-                    grupos.append({"familia": fam, "normas": ordenar(normas)})
-            sueltas = ordenar([f for f in del_tema if not f["familia"]])
-            # Normas de este tema que se estudian en una familia de otro tema.
-            ver_tambien = [
-                f for f in filas
-                if f["categoria"] and f["categoria"].id == cat.id and tema_de(f) != cat.id
-            ]
-            if grupos or sueltas:
-                temas.append({"categoria": cat, "grupos": grupos, "sueltas": sueltas, "ver_tambien": ver_tambien})
-        return temas
+                cat = self.config.categorias.get(fam.categoria) if fam.categoria else None
+                if cat and cat.area == area.id:
+                    familias.append({"familia": fam, "normas": self.miembros(fam, filas)})
+            sueltas = ordenar([f for f in filas if not f["familia"] and f["area"] and f["area"].id == area.id])
+            if familias or sueltas:
+                bloques.append({"area": area, "familias": familias, "sueltas": sueltas})
+        return bloques
+
+    def temario(self, filas: list[dict]) -> list[dict]:
+        """Temas del temario con las familias y normas que citan."""
+        resultado = []
+        for tema in sorted(self.config.temario.values(), key=lambda t: t.numero):
+            familias = []
+            for fam in self.config.familias.values():
+                if tema.numero in fam.temas:
+                    familias.append({"familia": fam, "normas": ordenar([
+                        f for f in filas if f["familia"] and f["familia"].id == fam.id
+                    ])})
+            # Normas citadas una a una (aunque su familia también se cite en conjunto).
+            normas = ordenar([f for f in filas if any(t.numero == tema.numero for t in f["temas"])])
+            codigos = [f["codigo"] for f in normas]
+            if len(codigos) < 2:  # el tema solo cita familias: el diagrama las muestra enteras
+                codigos += [f["codigo"] for g in familias for f in g["normas"] if f["codigo"] not in codigos]
+            por_codigo = {f["codigo"]: f for f in filas}
+            resultado.append({
+                "tema": tema,
+                "familias": familias,
+                "normas": normas,
+                "asociacion": [(por_codigo[c], idea) for c, idea in tema.asociacion if c in por_codigo],
+                "diagrama": self.diagrama(codigos, filas),
+            })
+        return resultado
+
+    def ficha(self, f: dict, por_codigo: dict[str, dict], filas: list[dict]) -> dict:
+        relaciones = [
+            (frase, [por_codigo[c] for c in codigos])
+            for frase, codigos in didactico.relaciones_de(f["codigo"], self.aristas)
+        ]
+        vecinas = [f["codigo"]] + [c["codigo"] for _, cs in relaciones for c in cs]
+        historia = didactico.historia(f["codigo"], f["numero"], self.ent)
+        if f["alcance"] == "serie" and f["partes"]:
+            relevantes = [p["parte"] for p in f["partes"]["citadas"]]
+            historia = {p: historia[p] for p in relevantes if p in historia}
+        hermanas = []
+        if f["familia"]:
+            hermanas = [x for x in ordenar([y for y in filas if y["familia"] and y["familia"].id == f["familia"].id])
+                        if x["codigo"] != f["codigo"]]
+        return {
+            "cadena": self.miembros(f["familia"], filas) if f["familia"] else [],
+            "relaciones": relaciones,
+            "diagrama": self.diagrama(list(dict.fromkeys(vecinas)), filas, destacada=f["codigo"]),
+            "historia": historia,
+            "hermanas": hermanas,
+        }
 
     def resumen(self, filas: list[dict]) -> dict:
         iso = self.estado["fuentes"]["iso"] or {}
@@ -158,24 +246,56 @@ class Vista:
         }
 
 
+def _titulo_parte(titulo: str | None) -> str | None:
+    """«… — Part 1: Service management system requirements» → «Service management system requirements»."""
+    if not titulo:
+        return None
+    encontrado = re.search(r"Part\s+[\w-]+\s*:\s*(.+)$", titulo)
+    return encontrado[1] if encontrado else titulo
+
+
+def ordenar(grupo: list[dict]) -> list[dict]:
+    """De menor a mayor número, con las antecesoras e históricas al final."""
+    return sorted(grupo, key=lambda f: (f["historica"], f["codigo_orden"]))
+
+
 def generar(estado: dict, validacion: dict, config: Config, docs: Path) -> list[Path]:
     env = _entorno()
     vista = Vista(estado, config)
     filas = vista.filas()
+    por_codigo = {f["codigo"]: f for f in filas}
     ctx = {
         "filas": filas,
+        "por_codigo": por_codigo,
         "resumen": vista.resumen(filas),
         "familias": list(config.familias.values()),
         "categorias": list(config.categorias.values()),
+        "temario": vista.temario(filas),
         "estados": ORDEN_ESTADOS,
-        "temas": vista.temas(filas),
+        "naturalezas": NATURALEZAS,
+        "mapa": vista.mapa(filas),
+        "areas": list(config.areas.values()),
     }
     salidas = {
         docs / "index.md": env.get_template("index.md.j2").render(**ctx),
         docs / "estado.md": env.get_template("estado.md.j2").render(**ctx),
-        docs / "temas.md": env.get_template("temas.md.j2").render(**ctx),
+        docs / "temario.md": env.get_template("temario.md.j2").render(**ctx),
+        docs / "comparativas.md": env.get_template("comparativas.md.j2").render(**ctx),
         docs / "validacion.md": informe.a_markdown(validacion),
     }
+    for carpeta in (docs / FICHAS, docs / FAMILIAS):
+        if carpeta.exists():
+            shutil.rmtree(carpeta)
+    plantilla_ficha = env.get_template("ficha.md.j2")
+    for f in filas:
+        salidas[docs / FICHAS / f"{f['ancla']}.md"] = plantilla_ficha.render(
+            f=f, **vista.ficha(f, por_codigo, filas), **ctx,
+        )
+    plantilla_familia = env.get_template("familia.md.j2")
+    for fam in config.familias.values():
+        salidas[docs / FAMILIAS / f"{fam.id}.md"] = plantilla_familia.render(
+            g=vista.familia(fam, filas), **ctx,
+        )
     for ruta, texto in salidas.items():
         ruta.parent.mkdir(parents=True, exist_ok=True)
         ruta.write_text(texto, encoding="utf-8")
