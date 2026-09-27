@@ -1,0 +1,598 @@
+# Normas vigiladas — extraídas del temario y validadas contra ISO Open Data
+# el 2026-09-27 (ver data/validacion.json).
+#
+# Campos de cada norma:
+#   codigo          identificador ISO sin año (lo que se busca en el dataset)
+#   nombre          nombre descriptivo en español para la web (el título oficial sale del dataset ISO)
+#   alcance         norma = solo ese documento | serie = todas sus partes (-1, -2…)
+#   familia         id de la familia a la que pertenece (ver bloque "familias")
+#   partes_citadas  partes que menciona el temario (informativo)
+#   edicion_citada  año de la edición que cita el temario
+#   une             código UNE cuando el temario lo cita
+#   categoria       bloque temático para filtrar en la web
+#   contexto        nota para humanos
+#   revisar         duda pendiente; se borra al resolverla
+#
+# Las familias solo agrupan y dan nombre en la web: NO amplían lo que se vigila.
+
+familias:
+  - id: iso-27000
+    nombre: "Familia ISO/IEC 27000 — Seguridad de la información"
+  - id: square
+    nombre: "SQuaRE (ISO/IEC 25000) — Requisitos y evaluación de la calidad de sistemas y software"
+  - id: iso-9000
+    nombre: "Familia ISO 9000 — Gestión de la calidad"
+  - id: iso-30300
+    nombre: "Familia ISO 30300 — Sistemas de gestión para los documentos"
+  - id: iso-33000
+    nombre: "Familia ISO/IEC 330xx — Evaluación de procesos (sucesora de SPICE)"
+  - id: privacidad-29100
+    nombre: "Marco de privacidad ISO/IEC 29100 y normas relacionadas"
+  - id: common-criteria
+    nombre: "Common Criteria (ISO/IEC 15408) y su metodología de evaluación (ISO/IEC 18045)"
+  - id: bioapi
+    nombre: "BioAPI — Interfaz biométrica y normas asociadas"
+  - id: tamano-funcional
+    nombre: "Medición del tamaño funcional del software (marco y métodos)"
+  - id: iot
+    nombre: "Internet de las cosas (IoT)"
+
+normas:
+  # --- Gobierno y calidad de datos ---
+  - codigo: ISO 8000
+    nombre: "Calidad de datos (datos maestros, de transacciones y de ingeniería)"
+    alcance: serie
+    partes_citadas: ["1", "2", "8", "60", "61", "62", "100-150", "311"]
+    categoria: datos
+  - codigo: ISO/IEC 38505
+    nombre: "Gobierno del dato"
+    alcance: serie
+    partes_citadas: ["1", "TR 2"]
+    categoria: datos
+  - codigo: ISO/IEC 25012
+    nombre: "Modelo de calidad de datos"
+    familia: square
+    alcance: norma
+    categoria: datos
+  - codigo: ISO/IEC 25024
+    nombre: "Medición de la calidad de los datos"
+    familia: square
+    alcance: norma
+    categoria: datos
+
+  # --- Gobierno de TI ---
+  - codigo: ISO/IEC 38500
+    nombre: "Gobierno corporativo de las TI"
+    alcance: norma
+    categoria: gobierno-ti
+
+  # --- Seguridad, privacidad, riesgos y continuidad ---
+  - codigo: ISO/IEC 27000
+    nombre: "SGSI: visión general y vocabulario"
+    familia: iso-27000
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 27001
+    nombre: "SGSI: requisitos"
+    familia: iso-27000
+    alcance: norma
+    une: UNE-EN ISO/IEC 27001
+    categoria: seguridad
+  - codigo: ISO/IEC 27002
+    nombre: "Controles de seguridad de la información (buenas prácticas)"
+    familia: iso-27000
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 27005
+    nombre: "Gestión de riesgos de seguridad de la información"
+    familia: iso-27000
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 27017
+    nombre: "Controles de seguridad para servicios en la nube"
+    familia: iso-27000
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 27018
+    nombre: "Protección de datos personales (PII) en nube pública"
+    familia: iso-27000
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 27701
+    nombre: "Sistema de gestión de la privacidad de la información (SGPI)"
+    familia: iso-27000
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 29100
+    nombre: "Marco de privacidad"
+    familia: privacidad-29100
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 29151
+    nombre: "Código de prácticas para la protección de datos personales"
+    familia: privacidad-29100
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 29134
+    nombre: "Evaluación de impacto en la privacidad"
+    familia: privacidad-29100
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 20889
+    nombre: "Técnicas de desidentificación de datos"
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO 31700
+    nombre: "Privacidad desde el diseño para bienes y servicios de consumo"
+    alcance: serie
+    categoria: seguridad
+    contexto: "El temario la cita como ISO/DIS 31700 (borrador); se publicó en 2023 como ISO 31700-1 e ISO/TR 31700-2"
+  - codigo: ISO/IEC 29115
+    nombre: "Garantía de autenticación de entidades (niveles de identificación electrónica)"
+    alcance: norma
+    categoria: seguridad
+    contexto: "El temario la cita como ISO 29115"
+  - codigo: ISO/IEC 15408
+    nombre: "Common Criteria: criterios de evaluación de la seguridad TI"
+    familia: common-criteria
+    alcance: serie
+    partes_citadas: ["1", "2", "3"]
+    categoria: seguridad
+  - codigo: ISO/IEC 18045
+    nombre: "CEM: metodología de evaluación de la seguridad TI"
+    familia: common-criteria
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO/IEC 13335
+    nombre: "Gestión de la seguridad de las TIC (serie antigua)"
+    alcance: serie
+    partes_citadas: ["1", "2", "3", "4", "5"]
+    categoria: seguridad
+    contexto: "Serie anulada; sus contenidos pasaron a ISO/IEC 27005 e ISO/IEC 27033-1"
+  - codigo: ISO 31000
+    nombre: "Gestión del riesgo: directrices"
+    alcance: norma
+    categoria: seguridad
+  - codigo: ISO 22301
+    nombre: "Sistema de gestión de la continuidad del negocio (SGCN)"
+    alcance: norma
+    edicion_citada: "2012"
+    categoria: seguridad
+  - codigo: ISO/IEC 17065
+    nombre: "Requisitos para organismos que certifican productos, procesos y servicios"
+    alcance: norma
+    une: UNE-EN ISO/IEC 17065
+    categoria: seguridad
+    contexto: "Acreditación por ENAC de entidades certificadoras del ENS"
+
+  # --- Ingeniería de software y ciclo de vida ---
+  - codigo: ISO/IEC/IEEE 12207
+    nombre: "Procesos del ciclo de vida del software"
+    alcance: norma
+    edicion_citada: "2017"
+    categoria: ingenieria-software
+  - codigo: ISO/IEC/IEEE 15288
+    nombre: "Procesos del ciclo de vida de los sistemas"
+    alcance: norma
+    categoria: ingenieria-software
+  - codigo: ISO/IEC/IEEE 15289
+    nombre: "Contenido de la documentación del ciclo de vida"
+    alcance: norma
+    categoria: ingenieria-software
+    contexto: "El temario la cita como ISO/IEC 15289; es ISO/IEC/IEEE desde la edición de 2011"
+  - codigo: ISO/IEC/IEEE 14764
+    nombre: "Mantenimiento del software"
+    alcance: norma
+    edicion_citada: "2006"
+    categoria: ingenieria-software
+    contexto: "El temario la cita como ISO/IEC 14764:2006; es ISO/IEC/IEEE desde la edición de 2022"
+  - codigo: ISO/IEC 15504
+    nombre: "SPICE: evaluación de procesos software"
+    alcance: serie
+    categoria: ingenieria-software
+    contexto: "SPICE; el temario la relaciona con la serie 33000"
+  - codigo: ISO/IEC 33001
+    nombre: "Evaluación de procesos: conceptos y terminología"
+    familia: iso-33000
+    alcance: norma
+    categoria: ingenieria-software
+  - codigo: ISO/IEC 33002
+    nombre: "Evaluación de procesos: requisitos para realizarla"
+    familia: iso-33000
+    alcance: norma
+    categoria: ingenieria-software
+  - codigo: ISO/IEC 33063
+    nombre: "Modelo de evaluación de procesos de pruebas de software"
+    familia: iso-33000
+    alcance: norma
+    categoria: ingenieria-software
+  - codigo: ISO/IEC/IEEE 29119
+    nombre: "Pruebas de software"
+    alcance: serie
+    partes_citadas: ["1", "2", "3", "4", "5"]
+    categoria: ingenieria-software
+  - codigo: ISO/IEC 29110
+    nombre: "Perfiles de ingeniería de software para entidades muy pequeñas (pymes)"
+    alcance: serie
+    categoria: ingenieria-software
+  - codigo: ISO/IEC/IEEE 29148
+    nombre: "Ingeniería de requisitos"
+    alcance: norma
+    categoria: ingenieria-software
+    contexto: "El temario la cita como ISO/IEC 29148; es ISO/IEC/IEEE desde la edición de 2011"
+  - codigo: ISO/IEC TR 24766
+    nombre: "Evaluación de herramientas de ingeniería de requisitos"
+    alcance: norma
+    categoria: ingenieria-software
+  - codigo: ISO/IEC 14102
+    nombre: "Evaluación y selección de herramientas CASE"
+    alcance: norma
+    categoria: ingenieria-software
+    contexto: "El temario la cita como ISO 14102"
+  - codigo: ISO 10007
+    nombre: "Gestión de la configuración"
+    alcance: norma
+    edicion_citada: "2017"
+    categoria: ingenieria-software
+
+  # --- Calidad del software ---
+  - codigo: ISO/IEC 25000
+    nombre: "SQuaRE: guía general"
+    familia: square
+    alcance: norma
+    categoria: calidad-software
+  - codigo: ISO/IEC 25010
+    nombre: "Modelo de calidad del producto software"
+    familia: square
+    alcance: norma
+    categoria: calidad-software
+  - codigo: ISO/IEC 25040
+    nombre: "Proceso de evaluación de la calidad"
+    familia: square
+    alcance: norma
+    categoria: calidad-software
+  - codigo: ISO/IEC 9126
+    nombre: "Calidad del producto software (antecesora de SQuaRE)"
+    alcance: serie
+    partes_citadas: ["1"]
+    categoria: calidad-software
+    contexto: "Citada como antecesora de la serie 25000"
+  - codigo: ISO/IEC 14598
+    nombre: "Evaluación del producto software (antecesora de SQuaRE)"
+    alcance: serie
+    categoria: calidad-software
+    contexto: "Citada como antecesora de la serie 25000"
+
+  # --- Medición del tamaño funcional ---
+  - codigo: ISO/IEC 14143
+    nombre: "Medición del tamaño funcional: marco general"
+    familia: tamano-funcional
+    alcance: serie
+    partes_citadas: ["1", "2", "3", "4", "5"]
+    categoria: metricas
+  - codigo: ISO/IEC 19761
+    nombre: "Método COSMIC de medición del tamaño funcional"
+    familia: tamano-funcional
+    alcance: norma
+    categoria: metricas
+    contexto: "COSMIC"
+  - codigo: ISO/IEC 20926
+    nombre: "Método IFPUG de puntos de función"
+    familia: tamano-funcional
+    alcance: norma
+    categoria: metricas
+    contexto: "IFPUG"
+  - codigo: ISO/IEC 24570
+    nombre: "Método NESMA de puntos de función"
+    familia: tamano-funcional
+    alcance: norma
+    categoria: metricas
+    contexto: "NESMA"
+
+  # --- Gestión de servicios de TI ---
+  - codigo: ISO/IEC 20000
+    nombre: "Gestión de servicios de TI"
+    alcance: serie
+    partes_citadas: ["1", "2", "3", "5"]
+    categoria: servicios-ti
+  - codigo: ISO/IEC 30105
+    nombre: "Procesos del ciclo de vida de servicios habilitados por TI (externalización)"
+    alcance: serie
+    categoria: servicios-ti
+
+  # --- Calidad, auditoría, medio ambiente y proyectos ---
+  - codigo: ISO 9000
+    nombre: "Gestión de la calidad: fundamentos y vocabulario"
+    familia: iso-9000
+    alcance: norma
+    edicion_citada: "2015"
+    une: UNE-EN ISO 9000
+    categoria: calidad
+  - codigo: ISO 9001
+    nombre: "Sistemas de gestión de la calidad: requisitos"
+    familia: iso-9000
+    alcance: norma
+    edicion_citada: "2015"
+    une: UNE-EN ISO 9001
+    categoria: calidad
+  - codigo: ISO 9004
+    nombre: "Gestión para el éxito sostenido de una organización"
+    familia: iso-9000
+    alcance: norma
+    edicion_citada: "2018"
+    une: UNE-EN ISO 9004
+    categoria: calidad
+  - codigo: ISO 9003
+    nombre: "Aseguramiento de la calidad en inspección y ensayos finales (histórica)"
+    familia: iso-9000
+    alcance: norma
+    categoria: calidad
+    contexto: "Citada como parte histórica de la familia 9000"
+  - codigo: ISO 19011
+    nombre: "Directrices para la auditoría de sistemas de gestión"
+    alcance: norma
+    categoria: calidad
+  - codigo: ISO 14001
+    nombre: "Sistemas de gestión ambiental"
+    alcance: norma
+    categoria: calidad
+    contexto: "El temario menciona la familia ISO 14000 en general"
+  - codigo: ISO 21500
+    nombre: "Gestión de proyectos"
+    alcance: norma
+    categoria: proyectos
+
+  # --- Biometría e identificación ---
+  - codigo: ISO/IEC 2382-37
+    nombre: "Vocabulario de biometría"
+    alcance: norma
+    categoria: biometria
+  - codigo: ISO/IEC 19784
+    nombre: "BioAPI: interfaz de programación biométrica"
+    familia: bioapi
+    alcance: serie
+    partes_citadas: ["1", "2", "4"]
+    categoria: biometria
+    contexto: "BioAPI"
+  - codigo: ISO/IEC 19785
+    nombre: "CBEFF: formato común de intercambio de datos biométricos"
+    alcance: serie
+    categoria: biometria
+    contexto: "CBEFF"
+  - codigo: ISO/IEC 19794
+    nombre: "Formatos de intercambio de datos biométricos (huella, rostro, iris…)"
+    alcance: serie
+    categoria: biometria
+    contexto: "Se vigila también su sucesora, la serie ISO/IEC 39794"
+  - codigo: ISO/IEC 39794
+    nombre: "Formatos extensibles de intercambio de datos biométricos (sucesora de la 19794)"
+    alcance: serie
+    categoria: biometria
+    contexto: "No la cita el temario; se añade por ser la nueva generación de la ISO/IEC 19794"
+  - codigo: ISO/IEC 19795
+    nombre: "Ensayos de rendimiento biométrico"
+    alcance: serie
+    categoria: biometria
+  - codigo: ISO/IEC 24708
+    nombre: "Protocolo de interoperabilidad BioAPI"
+    familia: bioapi
+    alcance: norma
+    categoria: biometria
+  - codigo: ISO/IEC 24709
+    nombre: "Pruebas de conformidad de BioAPI"
+    familia: bioapi
+    alcance: serie
+    categoria: biometria
+  - codigo: ISO/IEC 24761
+    nombre: "Contexto de autenticación biométrica"
+    alcance: norma
+    categoria: biometria
+  - codigo: ISO 19092
+    nombre: "Seguridad biométrica en servicios financieros"
+    alcance: norma
+    categoria: biometria
+
+  # --- Bases de datos y comercio electrónico ---
+  - codigo: ISO/IEC 9075
+    nombre: "Lenguaje de bases de datos SQL"
+    alcance: serie
+    categoria: bd-comercio
+    contexto: "SQL"
+  - codigo: ISO/IEC 13249
+    nombre: "SQL/MM: paquetes multimedia y de aplicación"
+    alcance: serie
+    categoria: bd-comercio
+    contexto: "SQL/MM"
+  - codigo: ISO 9735
+    nombre: "UN/EDIFACT: sintaxis de intercambio electrónico de datos"
+    alcance: serie
+    categoria: bd-comercio
+    contexto: "UN/EDIFACT"
+  - codigo: ISO 7372
+    nombre: "Directorio de elementos de datos comerciales (UNTDED)"
+    alcance: norma
+    categoria: bd-comercio
+    contexto: "UNTDED"
+  # Excluido: "ISO/TC 154" es un comité técnico, no una norma.
+
+  # --- Gestión documental y preservación ---
+  - codigo: ISO 15489
+    nombre: "Gestión de documentos: conceptos y principios"
+    alcance: serie
+    partes_citadas: ["1", "TR 2"]
+    une: UNE-ISO 15489
+    categoria: documental
+  - codigo: ISO 30300
+    nombre: "Sistemas de gestión para los documentos: fundamentos y vocabulario"
+    familia: iso-30300
+    alcance: norma
+    une: UNE-ISO 30300
+    categoria: documental
+  - codigo: ISO 30301
+    nombre: "Sistemas de gestión para los documentos: requisitos"
+    familia: iso-30300
+    alcance: norma
+    une: UNE-ISO 30301
+    categoria: documental
+  - codigo: ISO 30302
+    nombre: "Sistemas de gestión para los documentos: guía de implantación"
+    familia: iso-30300
+    alcance: norma
+    une: UNE-ISO 30302
+    categoria: documental
+  # ISO 30303 e ISO 30304 no existen en el dataset ISO (ni como proyecto). Se retoman
+  # en la fase 2 si aparecen como normas UNE en el BOE.
+  # - codigo: ISO 30303
+  #   nombre: "Sistemas de gestión para los documentos: requisitos para organismos de auditoría"
+  #   familia: iso-30300
+  #   alcance: norma
+  #   une: UNE-ISO 30303
+  #   categoria: documental
+  # - codigo: ISO 30304
+  #   nombre: "Sistemas de gestión para los documentos: evaluación"
+  #   familia: iso-30300
+  #   alcance: norma
+  #   une: UNE-ISO 30304
+  #   categoria: documental
+  - codigo: ISO/TR 13028
+    nombre: "Directrices para la digitalización de documentos"
+    alcance: norma
+    une: UNE-ISO/TR 13028
+    categoria: documental
+  - codigo: ISO/TR 18492
+    nombre: "Conservación a largo plazo de la información basada en documentos electrónicos"
+    alcance: norma
+    edicion_citada: "2005"
+    une: UNE-ISO/TR 18492
+    categoria: documental
+  - codigo: ISO 23081
+    nombre: "Metadatos para la gestión de documentos"
+    alcance: serie
+    partes_citadas: ["1"]
+    une: UNE-ISO 23081
+    categoria: documental
+  - codigo: ISO/TR 26122
+    nombre: "Análisis de los procesos de trabajo para la gestión de documentos"
+    alcance: norma
+    une: UNE-ISO/TR 26122
+    categoria: documental
+  - codigo: ISO 14721
+    nombre: "OAIS: modelo de referencia de archivo abierto"
+    alcance: norma
+    une: UNE-ISO 14721
+    categoria: documental
+    contexto: "OAIS"
+  - codigo: ISO 19005
+    nombre: "PDF/A: formato para conservación a largo plazo"
+    alcance: serie
+    partes_citadas: ["1"]
+    edicion_citada: "2005"
+    categoria: documental
+    contexto: "PDF/A"
+  - codigo: ISO 15801
+    nombre: "Fiabilidad de la información almacenada electrónicamente"
+    alcance: norma
+    edicion_citada: "2004"
+    categoria: documental
+    contexto: "El temario cita ISO/TR 15801:2004; desde 2026 es norma internacional (ISO 15801)"
+  - codigo: ISO 26102
+    nombre: "Conservación prolongada de documentos electrónicos"
+    alcance: norma
+    categoria: documental
+    contexto: "El temario la cita como ISO/NP 26102; el proyecto se canceló (ISO/DTR 26102, etapa 30.98) y nunca llegó a publicarse"
+
+  # --- Ergonomía, usabilidad y accesibilidad ---
+  - codigo: ISO 9241
+    nombre: "Ergonomía de la interacción persona-sistema"
+    alcance: serie
+    partes_citadas: ["210"]
+    categoria: usabilidad
+  - codigo: ISO 13407
+    nombre: "Diseño centrado en el usuario (histórica)"
+    alcance: norma
+    categoria: usabilidad
+    contexto: "El temario indica que la sustituyó la ISO 9241-210"
+  - codigo: ISO 13406
+    nombre: "Ergonomía de pantallas planas (histórica)"
+    alcance: serie
+    categoria: usabilidad
+  - codigo: ISO/IEC 10741
+    nombre: "Interacción de diálogo: control del cursor"
+    alcance: serie
+    categoria: usabilidad
+  - codigo: ISO/IEC 11581
+    nombre: "Iconos e iconografía de interfaz"
+    alcance: serie
+    categoria: usabilidad
+  - codigo: ISO 11064
+    nombre: "Diseño ergonómico de centros de control"
+    alcance: serie
+    categoria: usabilidad
+  - codigo: ISO/IEC 40500
+    nombre: "Pautas de accesibilidad al contenido web (WCAG)"
+    alcance: norma
+    categoria: usabilidad
+    contexto: "WCAG como norma ISO"
+
+  # --- Activos software y DRM ---
+  - codigo: ISO/IEC 19770
+    nombre: "Gestión de activos de software (SAM)"
+    alcance: serie
+    partes_citadas: ["1", "2", "3", "4", "5"]
+    categoria: sam-drm
+  - codigo: ISO/IEC 21000-5
+    nombre: "MPEG-21 REL: lenguaje de expresión de derechos"
+    alcance: norma
+    categoria: sam-drm
+    contexto: "MPEG-21 REL"
+
+  # --- Redes y directorios ---
+  - codigo: ISO/IEC 7498
+    nombre: "Modelo de referencia OSI"
+    alcance: serie
+    partes_citadas: ["1", "4"]
+    categoria: redes
+    contexto: "Modelo OSI (X.200) y gestión OSI (X.700)"
+  - codigo: ISO/IEC 11801
+    nombre: "Cableado estructurado"
+    alcance: serie
+    partes_citadas: ["1", "2", "3", "4", "5", "6"]
+    categoria: redes
+  - codigo: ISO/IEC/IEEE 8802
+    nombre: "Redes de área local (adopción de IEEE 802)"
+    alcance: serie
+    partes_citadas: ["1Q", "1X", "3"]
+    categoria: redes
+    contexto: "El temario cita 'ISO 8802' e 'ISO/IEC 802.1/802.3'. La antigua parte 1 era un informe técnico anulado; las normas IEEE 802.1 se adoptan como partes 8802-1Q (puentes y VLAN), 8802-1X (control de acceso por puerto), etc."
+  - codigo: ISO/IEC 9594
+    nombre: "Servicios de directorio (X.500)"
+    alcance: serie
+    categoria: redes
+    contexto: "X.500"
+
+  # --- IoT y ciudades inteligentes ---
+  - codigo: ISO/IEC 20924
+    nombre: "IoT: vocabulario"
+    familia: iot
+    alcance: norma
+    edicion_citada: "2018"
+    categoria: iot
+  - codigo: ISO/IEC 30141
+    nombre: "IoT: arquitectura de referencia"
+    familia: iot
+    alcance: norma
+    edicion_citada: "2018"
+    categoria: iot
+  - codigo: ISO/IEC 21823
+    nombre: "IoT: interoperabilidad"
+    familia: iot
+    alcance: serie
+    partes_citadas: ["1"]
+    categoria: iot
+  - codigo: ISO 37120
+    nombre: "Ciudades sostenibles: indicadores de servicios urbanos y calidad de vida"
+    alcance: norma
+    edicion_citada: "2015"
+    une: UNE-ISO 37120
+    categoria: iot
+    contexto: "El año 2015 es el de la UNE-ISO 37120; las ediciones ISO son de 2014 y 2018"

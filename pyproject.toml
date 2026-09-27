@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "iso-alert"
+version = "0.1.0"
+description = "Vigilancia de normas ISO/UNE citadas en el temario de la oposición TIC A1"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "pyyaml>=6",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+web = ["zensical==0.0.65"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+iso-alert = "iso_alert.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["lento: tests que usan el dataset ISO completo (descarga ~80 MB)"]
+addopts = "-m 'not lento'"

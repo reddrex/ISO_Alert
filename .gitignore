@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.cache/
+site/
+
+# Páginas generadas a partir de data/ en cada build
+docs/validacion.md
+
+# Brief original (contexto personal; no se publica)
+BRIEF_vigilancia_normas.md
