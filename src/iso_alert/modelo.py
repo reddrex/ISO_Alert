@@ -53,8 +53,24 @@ SE_REVISARA = 9092
 ANULACION_PROPUESTA = {9099, 9520, 9560}
 
 
+FASES = {
+    0: "fase preliminar",
+    10: "fase de propuesta",
+    20: "fase preparatoria",
+    30: "fase de comité",
+    40: "consulta pública",
+    50: "fase de aprobación",
+    60: "en publicación",
+}
+
+
 def etapa_txt(etapa: int) -> str:
     return f"{etapa // 100:02d}.{etapa % 100:02d}"
+
+
+def fase_proyecto(etapa: int) -> str:
+    """Descripción en español de la etapa de un proyecto, p. ej. «fase de comité (30.60)»."""
+    return f"{FASES.get(etapa // 100, 'en elaboración')} ({etapa_txt(etapa)})"
 
 
 def cancelado(etapa: int) -> bool:

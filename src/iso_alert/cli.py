@@ -1,4 +1,8 @@
-"""Línea de órdenes: ``python -m iso_alert validar``."""
+"""Línea de órdenes.
+
+    python -m iso_alert actualizar   # dataset ISO → data/estado.json y data/validacion.json
+    python -m iso_alert web          # data/ → páginas generadas en docs/
+"""
 
 from __future__ import annotations
 
@@ -8,7 +12,7 @@ import sys
 from pathlib import Path
 
 from . import config as cfg
-from . import informe
+from . import estado, informe, web
 from .fuentes import iso
 from .resolver import Indice
 
@@ -17,7 +21,7 @@ CACHE = RAIZ / ".cache" / "iso_deliverables_metadata.jsonl"
 CACHE_META = CACHE.with_suffix(".meta.json")
 
 
-def _obtener_dataset(args) -> tuple[Path, iso.Descarga | None]:
+def _obtener_dataset(args) -> tuple[Path, iso.Descarga]:
     if args.fichero:
         ruta = Path(args.fichero)
         return ruta, iso.Descarga(ruta, str(ruta), None, None, iso.sha256_de(ruta), ruta.stat().st_size)
@@ -35,23 +39,34 @@ def _obtener_dataset(args) -> tuple[Path, iso.Descarga | None]:
     return d.ruta, d
 
 
-def validar(args) -> int:
+def _escribir_json(ruta: Path, datos: dict) -> None:
+    ruta.parent.mkdir(parents=True, exist_ok=True)
+    ruta.write_text(json.dumps(datos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def actualizar(args) -> int:
     config = cfg.cargar(args.normas)
     ruta, descarga = _obtener_dataset(args)
     indice = Indice(iso.leer(ruta, minimo=args.minimo))
-    datos = informe.construir(config, indice, descarga)
+    datos_estado = estado.construir(config, indice, descarga)
+    datos_validacion = informe.construir(config, indice, descarga)
+    datos = Path(args.datos)
+    _escribir_json(datos / "estado.json", datos_estado)
+    _escribir_json(datos / "validacion.json", datos_validacion)
 
-    salida_json = Path(args.salida_json)
-    salida_json.parent.mkdir(parents=True, exist_ok=True)
-    salida_json.write_text(json.dumps(datos, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    salida_md = Path(args.salida_md)
-    salida_md.parent.mkdir(parents=True, exist_ok=True)
-    salida_md.write_text(informe.a_markdown(datos), encoding="utf-8")
-
-    r = datos["resumen"]
+    r = datos_validacion["resumen"]
     print(f"{r['total']} normas · {r['por_estado']}")
     print(f"{r['con_sugerencias']} con sugerencias · {r['ediciones_superadas']} ediciones citadas superadas")
-    print(f"→ {salida_json}\n→ {salida_md}")
+    print(f"{len(datos_estado['entregables'])} entregables vigilados → {datos / 'estado.json'}")
+    return 0
+
+
+def generar_web(args) -> int:
+    config = cfg.cargar(args.normas)
+    datos = Path(args.datos)
+    leer = lambda nombre: json.loads((datos / nombre).read_text(encoding="utf-8"))  # noqa: E731
+    for ruta in web.generar(leer("estado.json"), leer("validacion.json"), config, Path(args.docs)):
+        print(f"→ {ruta}")
     return 0
 
 
@@ -59,14 +74,19 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="iso_alert", description="Vigilancia de normas ISO/UNE")
     sub = p.add_subparsers(dest="orden", required=True)
 
-    v = sub.add_parser("validar", help="genera el informe de validación de normas.yaml")
-    v.add_argument("--normas", default="normas.yaml")
-    v.add_argument("--fichero", help="JSONL local en lugar de descargar")
-    v.add_argument("--sin-descarga", action="store_true", help="reutiliza .cache/ si existe")
-    v.add_argument("--minimo", type=int, default=iso.MIN_REGISTROS, help=argparse.SUPPRESS)
-    v.add_argument("--salida-json", default="data/validacion.json")
-    v.add_argument("--salida-md", default="docs/validacion.md")
-    v.set_defaults(func=validar)
+    a = sub.add_parser("actualizar", help="descarga el dataset ISO y calcula el estado de las normas")
+    a.add_argument("--normas", default="normas.yaml")
+    a.add_argument("--datos", default="data", help="carpeta de salida de estado.json y validacion.json")
+    a.add_argument("--fichero", help="JSONL local en lugar de descargar")
+    a.add_argument("--sin-descarga", action="store_true", help="reutiliza .cache/ si existe")
+    a.add_argument("--minimo", type=int, default=iso.MIN_REGISTROS, help=argparse.SUPPRESS)
+    a.set_defaults(func=actualizar)
+
+    w = sub.add_parser("web", help="genera las páginas del sitio a partir de data/")
+    w.add_argument("--normas", default="normas.yaml")
+    w.add_argument("--datos", default="data")
+    w.add_argument("--docs", default="docs")
+    w.set_defaults(func=generar_web)
 
     args = p.parse_args(argv)
     try:

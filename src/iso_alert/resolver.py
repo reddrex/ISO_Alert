@@ -138,6 +138,7 @@ class Resultado:
     codigo_actual: str | None = None  # si difiere del de normas.yaml
     partes_no_encontradas: list[str] = field(default_factory=list)
     notas: list[str] = field(default_factory=list)
+    entregables: list[Entregable] = field(default_factory=list)  # todos los del alcance, suplementos incluidos
 
 
 def _linea(indice: Indice, parte: str | None, grupo: list[Entregable], supl: list[Entregable]) -> Linea:
@@ -199,6 +200,10 @@ def resolver(norma: Norma, indice: Indice) -> Resultado:
     lineas.sort(key=lambda l: _orden_parte(l.parte))
 
     res = Resultado(norma, Estado.NO_ENCONTRADA, None, lineas, [])
+    res.entregables = sorted(
+        [e for g in grupos.values() for e in g] + [s for ss in supl_por_parte.values() for s in ss],
+        key=lambda e: e.id,
+    )
     if not todos:
         res.notas.append(f"No hay ningún registro con el número {norma.numero} en el dataset ISO.")
         return res
