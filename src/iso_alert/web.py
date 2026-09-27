@@ -106,6 +106,7 @@ class Vista:
                 "pregunta": n.pregunta,
                 "area": area,
                 "descripcion": n.descripcion,
+                "ejemplo": n.ejemplo,
                 "naturaleza": NATURALEZAS.get(n.naturaleza) if n.naturaleza else None,
                 "certificable": n.certificable,
                 "claves": list(n.claves),

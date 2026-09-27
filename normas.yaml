@@ -8,6 +8,7 @@
 #   concepto        palabra clave para recordarla dentro de su familia (27001 = sistema, 27002 = controles…)
 #   pregunta        pregunta que responde la norma
 #   descripcion     para qué sirve, en 1-3 frases
+#   ejemplo         situación concreta en la que se aplica la norma
 #   naturaleza      requisitos | vocabulario | guia | modelo | procesos | metodo | especificacion | informe
 #   certificable    true si una organización puede certificarse con ella (o con su parte 1)
 #   temas           números de los temas del temario que la citan (ver temario.yaml)
@@ -233,6 +234,7 @@ normas:
     concepto: "calidad de datos maestros"
     pregunta: "¿Cómo aseguro la calidad de los datos maestros?"
     descripcion: "Aborda distintos aspectos de la calidad y gestión de datos, incluyendo datos maestros, intercambio de datos, metadatos y procesos relacionados con la calidad."
+    ejemplo: "Para unificar los datos de proveedores de varios departamentos, se definen reglas de calidad de datos maestros y un proceso de mejora según la ISO 8000."
     alcance: serie
     partes_citadas: ["1", "2", "8", "60", "61", "62", "100-150", "311"]
     categoria: datos
@@ -246,6 +248,7 @@ normas:
     concepto: "gobierno del dato"
     pregunta: "¿Cómo gobierno los datos?"
     descripcion: "Familia relacionada con el gobierno de los datos dentro del marco general de gobierno de TI."
+    ejemplo: "Una comunidad autónoma crea una oficina del dato que define quién decide sobre cada conjunto de datos y cómo se supervisa su uso, aplicando la ISO/IEC 38505."
     familia: gobierno-ti
     alcance: serie
     partes_citadas: ["1", "TR 2"]
@@ -262,6 +265,7 @@ normas:
     concepto: "calidad de los datos"
     pregunta: "¿Qué son datos de calidad?"
     descripcion: "Define características para describir y evaluar la calidad de los datos, como exactitud, completitud, consistencia, actualidad y accesibilidad."
+    ejemplo: "Al revisar el registro de empresas, se detectan datos incompletos y desactualizados; la ISO/IEC 25012 da las características (completitud, actualidad…) para describir el problema."
     familia: square
     alcance: norma
     categoria: datos
@@ -277,6 +281,7 @@ normas:
     concepto: "medir la calidad de los datos"
     pregunta: "¿Cómo mido la calidad de los datos?"
     descripcion: "Define medidas para cuantificar las características de calidad de los datos."
+    ejemplo: "Para medir la completitud del registro, se calcula el porcentaje de registros con todos los campos obligatorios rellenos, con una medida de la ISO/IEC 25024."
     familia: square
     alcance: norma
     categoria: datos
@@ -294,6 +299,7 @@ normas:
     concepto: "gobierno de las TI"
     pregunta: "¿Cómo dirige la alta dirección el uso de las TI?"
     descripcion: "Proporciona principios y orientación para evaluar, dirigir y supervisar el uso actual y futuro de las TI."
+    ejemplo: "El comité de dirección de un ministerio evalúa las propuestas de inversión en TI, fija prioridades y supervisa que los proyectos aporten el valor esperado, siguiendo la ISO/IEC 38500."
     familia: gobierno-ti
     alcance: norma
     categoria: gobierno-ti
@@ -311,6 +317,7 @@ normas:
     concepto: "seguridad (vocabulario)"
     pregunta: "¿Qué significa cada término de la familia 27000?"
     descripcion: "Visión general de los sistemas de gestión de la seguridad de la información y términos y definiciones que usa toda la familia 27000."
+    ejemplo: "Antes de redactar la política de seguridad, el equipo de un ministerio acuerda qué entiende por «activo», «amenaza» o «riesgo residual» usando las definiciones de la ISO/IEC 27000."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
@@ -325,6 +332,7 @@ normas:
     concepto: "sistema (SGSI)"
     pregunta: "¿Cómo gestiono la seguridad?"
     descripcion: "Define los requisitos para establecer, implementar, mantener y mejorar un SGSI basado en la gestión de riesgos de seguridad de la información."
+    ejemplo: "Una agencia estatal implanta un SGSI para sus servicios en línea y una entidad acreditada lo audita y le concede el certificado ISO/IEC 27001."
     familia: iso-27000
     alcance: norma
     une: UNE-EN ISO/IEC 27001
@@ -343,6 +351,7 @@ normas:
     concepto: "controles"
     pregunta: "¿Qué controles puedo aplicar?"
     descripcion: "Proporciona un catálogo de controles y buenas prácticas para tratar riesgos de seguridad de la información."
+    ejemplo: "Al tratar el riesgo de robo de portátiles, el responsable de seguridad elige del catálogo de la ISO/IEC 27002 controles como el cifrado de dispositivos y la gestión de activos."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
@@ -359,6 +368,7 @@ normas:
     concepto: "riesgos"
     pregunta: "¿Cómo gestiono los riesgos?"
     descripcion: "Proporciona orientación para aplicar la gestión de riesgos específicamente al ámbito de la seguridad de la información."
+    ejemplo: "Antes de migrar la sede electrónica, el organismo identifica amenazas y vulnerabilidades, estima la probabilidad y el impacto de cada riesgo y decide cuáles tratar, siguiendo la ISO/IEC 27005."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
@@ -377,6 +387,7 @@ normas:
     concepto: "cloud"
     pregunta: "¿Cómo adapto los controles al cloud?"
     descripcion: "Proporciona controles y orientación específicos para la seguridad de servicios en la nube."
+    ejemplo: "Al contratar un servicio de correo en la nube, la Administración revisa qué controles corresponden al proveedor y cuáles al cliente según la ISO/IEC 27017."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
@@ -392,6 +403,7 @@ normas:
     concepto: "PII en cloud"
     pregunta: "¿Cómo protejo los datos personales en la nube pública?"
     descripcion: "Proporciona controles y buenas prácticas para proteger información personal identificable procesada en servicios de nube pública."
+    ejemplo: "Un proveedor de nube pública que aloja datos de ciudadanos por encargo de un ayuntamiento aplica la ISO/IEC 27018 para no usarlos con otros fines y notificar las brechas."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
@@ -407,6 +419,7 @@ normas:
     concepto: "privacidad (SGPI)"
     pregunta: "¿Cómo gestiono la privacidad?"
     descripcion: "Extiende el enfoque de los sistemas de gestión de seguridad de la información hacia la gestión de la privacidad y la información personal."
+    ejemplo: "Un hospital amplía su sistema de gestión para cubrir la privacidad de los datos de pacientes y obtiene la certificación ISO/IEC 27701."
     familia: iso-27000
     alcance: norma
     categoria: seguridad
@@ -424,6 +437,7 @@ normas:
     concepto: "principios de privacidad"
     pregunta: "¿Qué principios de privacidad hay que respetar?"
     descripcion: "Define conceptos, terminología y principios generales para la protección de la privacidad y la información personal."
+    ejemplo: "Al diseñar un registro de solicitantes de ayudas, el equipo repasa los principios de la ISO/IEC 29100, como la minimización de datos y la limitación de la finalidad."
     familia: privacidad-29100
     alcance: norma
     categoria: seguridad
@@ -437,6 +451,7 @@ normas:
     concepto: "controles para datos personales"
     pregunta: "¿Qué controles protegen los datos personales?"
     descripcion: "Proporciona controles y buenas prácticas para proteger información personal identificable."
+    ejemplo: "Además de los controles de seguridad generales, el organismo aplica los controles específicos de la ISO/IEC 29151 para los datos personales de su padrón."
     familia: privacidad-29100
     alcance: norma
     categoria: seguridad
@@ -452,6 +467,7 @@ normas:
     concepto: "evaluación de impacto"
     pregunta: "¿Cómo evalúo el impacto en la privacidad?"
     descripcion: "Proporciona directrices para identificar y evaluar riesgos para la privacidad asociados a tratamientos de información personal."
+    ejemplo: "Antes de poner en marcha un sistema de videovigilancia con reconocimiento de matrículas, se realiza una evaluación de impacto en la privacidad siguiendo la ISO/IEC 29134."
     familia: privacidad-29100
     alcance: norma
     categoria: seguridad
@@ -467,6 +483,7 @@ normas:
     concepto: "desidentificación"
     pregunta: "¿Cómo reduzco la posibilidad de identificar a las personas?"
     descripcion: "Establece terminología y un marco para técnicas destinadas a reducir la posibilidad de identificar personas a partir de datos."
+    ejemplo: "Para publicar datos abiertos de sanidad, se aplican técnicas de la ISO/IEC 20889, como la generalización de edades y la supresión de códigos postales poco frecuentes."
     familia: privacidad-29100
     alcance: norma
     categoria: seguridad
@@ -482,6 +499,7 @@ normas:
     concepto: "privacidad desde el diseño"
     pregunta: "¿Cómo diseño productos de consumo que respeten la privacidad?"
     descripcion: "Requisitos de alto nivel de privacidad desde el diseño para bienes y servicios de consumo que tratan datos personales (parte 1), con casos de uso (parte 2)."
+    ejemplo: "Un fabricante de altavoces inteligentes configura por defecto la opción más protectora de la privacidad y explica al usuario qué datos recoge, como pide la ISO 31700."
     familia: privacidad-29100
     alcance: serie
     categoria: seguridad
@@ -498,6 +516,7 @@ normas:
     concepto: "niveles de garantía (LoA)"
     pregunta: "¿Cuánta confianza da una autenticación?"
     descripcion: "Marco de garantía de la autenticación de entidades: define cuatro niveles de garantía (LoA 1 a 4) y los criterios y amenazas de cada fase del proceso de identificación y autenticación."
+    ejemplo: "Un servicio público exige un nivel de garantía alto para trámites sensibles (con certificado o DNI electrónico) y uno más bajo para consultar información."
     alcance: norma
     categoria: seguridad
     contexto: "El temario la cita como ISO 29115"
@@ -512,6 +531,7 @@ normas:
     concepto: "criterios de evaluación (CC)"
     pregunta: "¿Qué seguridad ofrece un producto TIC?"
     descripcion: "Define criterios para especificar y evaluar las propiedades de seguridad de productos y sistemas de tecnologías de la información."
+    ejemplo: "El fabricante de la tarjeta del DNI electrónico somete el chip a una evaluación Common Criteria para demostrar un nivel de garantía EAL concreto."
     familia: common-criteria
     alcance: serie
     partes_citadas: ["1", "2", "3"]
@@ -528,6 +548,7 @@ normas:
     concepto: "metodología de evaluación (CEM)"
     pregunta: "¿Cómo evalúa un laboratorio un producto?"
     descripcion: "Define la metodología utilizada por los evaluadores para realizar evaluaciones conforme a ISO/IEC 15408."
+    ejemplo: "Un laboratorio acreditado evalúa un cortafuegos siguiendo la metodología de la ISO/IEC 18045 y emite su informe para la certificación."
     familia: common-criteria
     alcance: norma
     categoria: seguridad
@@ -559,6 +580,7 @@ normas:
     concepto: "riesgo en general"
     pregunta: "¿Cómo gestiono cualquier riesgo?"
     descripcion: "Directrices para gestionar cualquier tipo de riesgo en cualquier organización: principios, marco de referencia y proceso de gestión del riesgo. No es certificable."
+    ejemplo: "Una consejería aplica el proceso de la ISO 31000 para gestionar tanto riesgos tecnológicos como financieros o reputacionales de un gran proyecto."
     familia: riesgo-continuidad
     alcance: norma
     categoria: seguridad
@@ -574,6 +596,7 @@ normas:
     concepto: "continuidad (SGCN)"
     pregunta: "¿Cómo sigo funcionando ante una interrupción?"
     descripcion: "Establece requisitos para preparar, establecer, implantar, operar, mantener y mejorar un sistema de gestión de continuidad del negocio."
+    ejemplo: "Un organismo que gestiona pagos a ciudadanos identifica sus procesos críticos, define cuánto tiempo pueden estar parados y prepara planes de continuidad según la ISO 22301."
     familia: riesgo-continuidad
     alcance: norma
     edicion_citada: "2012"
@@ -590,6 +613,7 @@ normas:
     concepto: "acreditación de certificadores"
     pregunta: "¿Qué debe cumplir quien certifica productos y servicios?"
     descripcion: "Requisitos para los organismos que certifican productos, procesos y servicios. Es la norma con la que ENAC acredita, por ejemplo, a las entidades que certifican la conformidad con el ENS."
+    ejemplo: "ENAC evalúa a una entidad de certificación según la ISO/IEC 17065 antes de que pueda certificar sistemas conforme al ENS."
     alcance: norma
     une: UNE-EN ISO/IEC 17065
     categoria: seguridad
@@ -607,6 +631,7 @@ normas:
     concepto: "ciclo de vida del software"
     pregunta: "¿Qué procesos tiene la vida del software?"
     descripcion: "Define procesos, actividades y tareas aplicables a adquisición, suministro, desarrollo, operación, mantenimiento y retirada del software."
+    ejemplo: "Un pliego de contratación de desarrollo de software exige que el proveedor siga los procesos de la ISO/IEC/IEEE 12207, desde los requisitos hasta la retirada."
     familia: ciclo-vida
     alcance: norma
     edicion_citada: "2017"
@@ -624,6 +649,7 @@ normas:
     concepto: "ciclo de vida del sistema"
     pregunta: "¿Qué procesos tiene la vida de un sistema?"
     descripcion: "Define un marco de procesos para el ciclo de vida de sistemas completos, desde su concepción hasta su operación, mantenimiento y retirada."
+    ejemplo: "En el desarrollo de un sistema de gestión de tráfico, con hardware, software y operadores, el proyecto organiza sus procesos técnicos y de gestión según la ISO/IEC/IEEE 15288."
     familia: ciclo-vida
     alcance: norma
     categoria: ingenieria-software
@@ -638,6 +664,7 @@ normas:
     concepto: "documentación de cada proceso"
     pregunta: "¿Qué documentos produce cada proceso?"
     descripcion: "Define los elementos de información y documentación que pueden producirse y utilizarse durante los procesos del ciclo de vida de sistemas y software."
+    ejemplo: "El jefe de proyecto usa la ISO/IEC/IEEE 15289 para decidir qué contenido debe tener el plan de proyecto y la especificación de requisitos."
     familia: ciclo-vida
     alcance: norma
     categoria: ingenieria-software
@@ -655,6 +682,7 @@ normas:
     concepto: "mantenimiento"
     pregunta: "¿Cómo mantengo el software?"
     descripcion: "Proporciona orientación para implementar el proceso de mantenimiento del software y sus diferentes tipos y actividades."
+    ejemplo: "El contrato de mantenimiento de una aplicación distingue el mantenimiento correctivo (errores), el adaptativo (cambios normativos) y el perfectivo (mejoras), como describe la ISO/IEC/IEEE 14764."
     familia: ciclo-vida
     alcance: norma
     edicion_citada: "2006"
@@ -688,6 +716,7 @@ normas:
     concepto: "conceptos de evaluación"
     pregunta: "¿Qué es evaluar un proceso?"
     descripcion: "Conceptos y terminología de la evaluación de procesos y visión general de la familia 330xx."
+    ejemplo: "Antes de evaluar a sus proveedores, el organismo forma a los evaluadores en los conceptos de capacidad y madurez de procesos de la ISO/IEC 33001."
     familia: iso-33000
     alcance: norma
     categoria: ingenieria-software
@@ -703,6 +732,7 @@ normas:
     concepto: "requisitos de la evaluación"
     pregunta: "¿Cómo se hace una evaluación de procesos fiable?"
     descripcion: "Requisitos para planificar y realizar una evaluación de procesos de forma que sus resultados sean fiables y comparables."
+    ejemplo: "Una evaluación de la capacidad de los procesos de un proveedor se planifica y documenta según los requisitos de la ISO/IEC 33002 para que sus resultados sean comparables."
     familia: iso-33000
     alcance: norma
     categoria: ingenieria-software
@@ -717,6 +747,7 @@ normas:
     concepto: "evaluación de las pruebas"
     pregunta: "¿Cómo de maduros son mis procesos de prueba?"
     descripcion: "Aplica el enfoque de evaluación de procesos de ISO/IEC 33000 al ámbito de las pruebas de software."
+    ejemplo: "Un centro de pruebas evalúa la madurez de sus procesos de prueba con el modelo de la ISO/IEC 33063 y obtiene un plan de mejora."
     familia: iso-33000
     alcance: norma
     categoria: ingenieria-software
@@ -732,6 +763,7 @@ normas:
     concepto: "pruebas de software"
     pregunta: "¿Cómo planifico, diseño y documento las pruebas?"
     descripcion: "Establece un marco común para planificar, diseñar, ejecutar y documentar pruebas de software."
+    ejemplo: "El plan de pruebas de un proyecto define niveles, técnicas (partición de equivalencia, valores límite…) y documentación de pruebas siguiendo la ISO/IEC/IEEE 29119."
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5"]
     categoria: ingenieria-software
@@ -746,6 +778,7 @@ normas:
     concepto: "entidades muy pequeñas"
     pregunta: "¿Cómo aplica un equipo pequeño la ingeniería de software?"
     descripcion: "Adapta prácticas de ingeniería y gestión de software a organizaciones o equipos muy pequeños."
+    ejemplo: "Una empresa de cinco desarrolladores que trabaja para un ayuntamiento adopta el perfil básico de la ISO/IEC 29110 para ordenar su gestión de proyectos."
     alcance: serie
     categoria: ingenieria-software
     naturaleza: procesos
@@ -761,6 +794,7 @@ normas:
     concepto: "ingeniería de requisitos"
     pregunta: "¿Cómo obtengo y especifico los requisitos?"
     descripcion: "Establece procesos y buenas prácticas para identificar, analizar, especificar, validar y gestionar requisitos."
+    ejemplo: "Los requisitos de una nueva sede electrónica se recogen en una especificación que sigue la estructura y las características de calidad de la ISO/IEC/IEEE 29148."
     familia: requisitos
     alcance: norma
     categoria: ingenieria-software
@@ -778,6 +812,7 @@ normas:
     concepto: "herramientas de requisitos"
     pregunta: "¿Qué debe ofrecer una herramienta de requisitos?"
     descripcion: "Se relaciona con las características y evaluación de herramientas destinadas a apoyar las actividades de ingeniería de requisitos."
+    ejemplo: "Antes de adquirir una herramienta de gestión de requisitos, el equipo compara las candidatas con las capacidades que describe la ISO/IEC TR 24766."
     familia: requisitos
     alcance: norma
     categoria: ingenieria-software
@@ -793,6 +828,7 @@ normas:
     concepto: "herramientas CASE"
     pregunta: "¿Cómo elijo una herramienta CASE?"
     descripcion: "Proporciona orientación para evaluar y seleccionar herramientas de ingeniería de software asistida por ordenador."
+    ejemplo: "Para elegir una herramienta CASE de modelado, el equipo define criterios de evaluación y los pondera siguiendo la ISO/IEC 14102."
     alcance: norma
     categoria: ingenieria-software
     contexto: "El temario la cita como ISO 14102"
@@ -806,6 +842,7 @@ normas:
     concepto: "gestión de la configuración"
     pregunta: "¿Cómo controlo versiones y cambios?"
     descripcion: "Proporciona orientación sobre identificación de elementos de configuración, control de cambios, estado de configuración y auditorías."
+    ejemplo: "Durante la migración de un sistema, cada versión de código, configuración y documentación se identifica y cualquier cambio pasa por un comité de control de cambios, como indica la ISO 10007."
     alcance: norma
     edicion_citada: "2017"
     categoria: ingenieria-software
@@ -824,6 +861,7 @@ normas:
     concepto: "guía de SQuaRE"
     pregunta: "¿Cómo se organiza SQuaRE?"
     descripcion: "Guía de SQuaRE: presenta la arquitectura de la serie, sus divisiones (gestión, modelo, medición, requisitos y evaluación de la calidad) y los términos comunes."
+    ejemplo: "Antes de fijar los requisitos de calidad de un nuevo sistema, el equipo usa la ISO/IEC 25000 para saber qué norma de SQuaRE aplicar en cada paso."
     familia: square
     alcance: norma
     categoria: calidad-software
@@ -836,6 +874,7 @@ normas:
     concepto: "calidad del producto"
     pregunta: "¿Qué es un software de calidad?"
     descripcion: "Define características de calidad que permiten describir y evaluar la calidad de un sistema o producto software."
+    ejemplo: "Los requisitos no funcionales de una aplicación móvil se organizan por características de la ISO/IEC 25010: eficiencia de desempeño, seguridad, capacidad de interacción…"
     familia: square
     alcance: norma
     categoria: calidad-software
@@ -853,6 +892,7 @@ normas:
     concepto: "evaluar la calidad"
     pregunta: "¿Cómo evalúo la calidad de un producto?"
     descripcion: "Define un proceso para realizar evaluaciones de calidad de productos y sistemas software."
+    ejemplo: "Antes de aceptar un sistema entregado por un proveedor, el organismo evalúa su calidad siguiendo el proceso de la ISO/IEC 25040."
     familia: square
     alcance: norma
     categoria: calidad-software
@@ -902,6 +942,7 @@ normas:
     concepto: "marco de medición"
     pregunta: "¿Qué es medir el tamaño funcional?"
     descripcion: "Establece conceptos, principios y requisitos relacionados con la medición del tamaño funcional del software."
+    ejemplo: "Antes de elegir un método de medición, el organismo comprueba que es conforme con la ISO/IEC 14143, de modo que los tamaños medidos sean comparables."
     familia: tamano-funcional
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5"]
@@ -917,6 +958,7 @@ normas:
     concepto: "COSMIC"
     pregunta: "¿Cómo mido el tamaño con movimientos de datos?"
     descripcion: "Especifica COSMIC, método de medición del tamaño funcional basado en movimientos de datos a través de los límites del sistema."
+    ejemplo: "Para estimar el esfuerzo de un sistema de control de semáforos, se mide su tamaño funcional contando los movimientos de datos con COSMIC."
     familia: tamano-funcional
     alcance: norma
     categoria: metricas
@@ -935,6 +977,7 @@ normas:
     concepto: "IFPUG"
     pregunta: "¿Cómo mido el tamaño con puntos de función?"
     descripcion: "Formaliza el método de puntos de función de IFPUG para medir el tamaño funcional del software."
+    ejemplo: "El pliego de un contrato de desarrollo fija el precio por punto de función, contados con el método IFPUG de la ISO/IEC 20926."
     familia: tamano-funcional
     alcance: norma
     categoria: metricas
@@ -952,6 +995,7 @@ normas:
     concepto: "NESMA"
     pregunta: "¿Cómo estimo pronto el tamaño con puntos de función?"
     descripcion: "Recoge el método NESMA para la medición del tamaño funcional mediante puntos de función."
+    ejemplo: "En la fase de estudio de viabilidad, sin requisitos detallados, se hace un recuento indicativo NESMA para una primera estimación del tamaño."
     familia: tamano-funcional
     alcance: norma
     categoria: metricas
@@ -972,6 +1016,7 @@ normas:
     concepto: "servicios de TI (SGS)"
     pregunta: "¿Cómo gestiono los servicios de TI?"
     descripcion: "Establece un marco para planificar, diseñar, prestar, gestionar, controlar y mejorar servicios de tecnologías de la información."
+    ejemplo: "El centro de servicios de una administración organiza la gestión de incidencias, cambios y acuerdos de nivel de servicio y obtiene la certificación ISO/IEC 20000-1."
     alcance: serie
     partes_citadas: ["1", "2", "3", "5"]
     categoria: servicios-ti
@@ -992,6 +1037,7 @@ normas:
     concepto: "externalización (ITES-BPO)"
     pregunta: "¿Cómo gestiono servicios de negocio externalizados?"
     descripcion: "Define procesos para la prestación y gestión de servicios de negocio habilitados por TI, especialmente en contextos de externalización."
+    ejemplo: "Un organismo que externaliza su servicio de atención al ciudadano exige al proveedor procesos de ciclo de vida conformes con la ISO/IEC 30105."
     alcance: serie
     categoria: servicios-ti
     naturaleza: procesos
@@ -1006,6 +1052,7 @@ normas:
     concepto: "vocabulario y principios"
     pregunta: "¿Qué es la calidad y qué principios la guían?"
     descripcion: "Fundamentos y vocabulario de la gestión de la calidad, incluidos los siete principios de la gestión de la calidad (enfoque al cliente, liderazgo, compromiso de las personas, enfoque a procesos, mejora, toma de decisiones basada en la evidencia y gestión de las relaciones)."
+    ejemplo: "Para que todos hablen el mismo idioma, la unidad de calidad difunde los principios y definiciones de la ISO 9000, como «no conformidad» o «acción correctiva»."
     familia: iso-9000
     alcance: norma
     edicion_citada: "2015"
@@ -1022,6 +1069,7 @@ normas:
     concepto: "sistema (SGC)"
     pregunta: "¿Cómo gestiono la calidad?"
     descripcion: "Define los requisitos para establecer, mantener y mejorar un sistema de gestión de la calidad."
+    ejemplo: "Una oficina de atención al ciudadano implanta un sistema de gestión de la calidad y certifica sus procesos según la ISO 9001."
     familia: iso-9000
     alcance: norma
     edicion_citada: "2015"
@@ -1041,6 +1089,7 @@ normas:
     concepto: "éxito sostenido"
     pregunta: "¿Cómo voy más allá de la ISO 9001?"
     descripcion: "Proporciona orientación para mejorar el desempeño global de una organización, más allá de los requisitos de ISO 9001."
+    ejemplo: "Una organización ya certificada en ISO 9001 hace la autoevaluación de la ISO 9004 para detectar en qué áreas puede mejorar su desempeño."
     familia: iso-9000
     alcance: norma
     edicion_citada: "2018"
@@ -1073,6 +1122,7 @@ normas:
     concepto: "auditoría"
     pregunta: "¿Cómo audito un sistema de gestión?"
     descripcion: "Establece principios de auditoría y orientación para gestionar programas de auditoría, realizar auditorías y evaluar la competencia de los auditores."
+    ejemplo: "El equipo de auditoría interna planifica el programa de auditorías del año y selecciona a los auditores según su competencia, siguiendo la ISO 19011."
     alcance: norma
     categoria: calidad
     naturaleza: guia
@@ -1091,6 +1141,7 @@ normas:
     concepto: "medio ambiente (SGA)"
     pregunta: "¿Cómo gestiono el impacto ambiental?"
     descripcion: "Define los requisitos para establecer un sistema que permita gestionar los aspectos ambientales y mejorar el desempeño ambiental."
+    ejemplo: "Un centro de datos público establece objetivos para reducir su consumo eléctrico dentro de un sistema de gestión ambiental ISO 14001."
     alcance: norma
     categoria: calidad
     contexto: "El temario menciona la familia ISO 14000 en general"
@@ -1105,6 +1156,7 @@ normas:
     concepto: "dirección de proyectos"
     pregunta: "¿Qué conceptos rigen la dirección de proyectos?"
     descripcion: "Proporciona conceptos y orientación general para la dirección y gestión de proyectos."
+    ejemplo: "Al poner en marcha una oficina de proyectos, se toman los conceptos de la ISO 21500 (proyecto, programa, cartera, partes interesadas) como vocabulario común."
     alcance: norma
     categoria: proyectos
     naturaleza: guia
@@ -1120,6 +1172,7 @@ normas:
     concepto: "vocabulario biométrico"
     pregunta: "¿Qué significa cada término de biometría?"
     descripcion: "Establece conceptos y terminología comunes relacionados con la biometría."
+    ejemplo: "En un informe técnico sobre control de fronteras se distingue correctamente entre verificación (¿eres quien dices ser?) e identificación (¿quién eres?) usando la ISO/IEC 2382-37."
     alcance: norma
     categoria: biometria
     naturaleza: vocabulario
@@ -1135,6 +1188,7 @@ normas:
     concepto: "BioAPI"
     pregunta: "¿Cómo usa una aplicación un sensor biométrico?"
     descripcion: "Define interfaces y elementos para facilitar la interoperabilidad entre aplicaciones y tecnologías biométricas."
+    ejemplo: "Una aplicación de control de acceso puede cambiar de lector de huellas sin reprogramarse porque ambos lectores ofrecen la interfaz BioAPI."
     familia: bioapi
     alcance: serie
     partes_citadas: ["1", "2", "4"]
@@ -1150,6 +1204,7 @@ normas:
     concepto: "envoltorio CBEFF"
     pregunta: "¿Cómo se empaquetan los datos biométricos?"
     descripcion: "Define un marco para estructurar e intercambiar información biométrica de forma interoperable."
+    ejemplo: "Una plantilla de huella se envía entre dos sistemas dentro de una estructura CBEFF que indica su tipo, su formato y si está cifrada."
     familia: formatos-biometricos
     alcance: serie
     categoria: biometria
@@ -1167,6 +1222,7 @@ normas:
     concepto: "formatos por modalidad"
     pregunta: "¿Cómo se codifica una huella o una cara?"
     descripcion: "Define formatos normalizados para representar y almacenar distintos tipos de datos biométricos."
+    ejemplo: "La imagen facial del pasaporte electrónico se guarda en el chip con el formato normalizado de la ISO/IEC 19794-5, para que cualquier país pueda leerla."
     familia: formatos-biometricos
     alcance: serie
     categoria: biometria
@@ -1182,6 +1238,7 @@ normas:
     concepto: "formatos extensibles"
     pregunta: "¿Cuál es la nueva generación de formatos biométricos?"
     descripcion: "Nueva generación de formatos de intercambio biométrico, extensibles y con codificación ASN.1 y XML, que sustituye a la ISO/IEC 19794. Es la base de la nueva generación de pasaportes electrónicos de la OACI."
+    ejemplo: "Los nuevos pasaportes electrónicos migran el formato de la imagen facial y las huellas a la ISO/IEC 39794, que admite añadir información sin romper la compatibilidad."
     familia: formatos-biometricos
     alcance: serie
     categoria: biometria
@@ -1199,6 +1256,7 @@ normas:
     concepto: "rendimiento y errores"
     pregunta: "¿Cómo mido los errores de un sistema biométrico?"
     descripcion: "Establece principios y métodos para medir y evaluar el rendimiento de sistemas biométricos."
+    ejemplo: "Antes de desplegar puertas automáticas en aeropuertos, se prueba el sistema facial y se miden sus tasas de falso rechazo y falsa aceptación según la ISO/IEC 19795."
     alcance: serie
     categoria: biometria
     naturaleza: metodo
@@ -1211,6 +1269,7 @@ normas:
     concepto: "BioAPI en red"
     pregunta: "¿Cómo uso BioAPI a través de la red?"
     descripcion: "Define el protocolo que permite usar la interfaz BioAPI entre sistemas distintos a través de la red, facilitando la interoperabilidad entre sistemas biométricos."
+    ejemplo: "Un servidor central verifica huellas capturadas en lectores de varias sedes usando el protocolo BioAPI a través de la red."
     familia: bioapi
     alcance: norma
     categoria: biometria
@@ -1226,6 +1285,7 @@ normas:
     concepto: "conformidad de BioAPI"
     pregunta: "¿Cómo compruebo que se cumple BioAPI?"
     descripcion: "Se ocupa de la conformidad y las pruebas relacionadas con implementaciones de BioAPI."
+    ejemplo: "Antes de comprar un componente biométrico, el organismo exige que haya superado las pruebas de conformidad BioAPI de la ISO/IEC 24709."
     familia: bioapi
     alcance: serie
     categoria: biometria
@@ -1241,6 +1301,7 @@ normas:
     concepto: "contexto de autenticación"
     pregunta: "¿Me puedo fiar de un proceso biométrico remoto?"
     descripcion: "Se ocupa de información contextual asociada a procesos de autenticación biométrica."
+    ejemplo: "Un banco que autentica con la huella en el móvil del cliente recibe, junto al resultado, información firmada que le permite confiar en cómo se hizo la comparación."
     alcance: norma
     categoria: biometria
     naturaleza: especificacion
@@ -1253,6 +1314,7 @@ normas:
     concepto: "biometría en banca"
     pregunta: "¿Cómo uso la biometría con seguridad en servicios financieros?"
     descripcion: "Aborda el uso de tecnologías biométricas en determinados servicios financieros y los aspectos de seguridad asociados."
+    ejemplo: "Una entidad financiera que permite autorizar pagos con reconocimiento facial define sus controles de seguridad siguiendo la ISO 19092."
     alcance: norma
     categoria: biometria
     naturaleza: especificacion
@@ -1267,6 +1329,7 @@ normas:
     concepto: "SQL"
     pregunta: "¿Cómo se define el lenguaje SQL?"
     descripcion: "Define la especificación normalizada del lenguaje SQL, incluyendo su sintaxis, semántica y capacidades para trabajar con bases de datos relacionales."
+    ejemplo: "Una consulta escrita en SQL estándar funciona en varios gestores de bases de datos porque todos implementan la parte básica de la ISO/IEC 9075."
     familia: sql
     alcance: serie
     categoria: bd-comercio
@@ -1282,6 +1345,7 @@ normas:
     concepto: "SQL multimedia"
     pregunta: "¿Cómo trato en SQL texto, datos espaciales o imágenes?"
     descripcion: "Extiende SQL con especificaciones para tipos y aplicaciones multimedia, espaciales, minería de datos y otros dominios especializados."
+    ejemplo: "Un sistema de información geográfica municipal guarda parcelas como tipos espaciales y calcula intersecciones con las funciones de SQL/MM Spatial."
     familia: sql
     alcance: serie
     categoria: bd-comercio
@@ -1298,6 +1362,7 @@ normas:
     concepto: "sintaxis EDIFACT"
     pregunta: "¿Cómo se escribe un mensaje EDI?"
     descripcion: "Define reglas sintácticas para estructurar mensajes de intercambio electrónico de datos en UN/EDIFACT."
+    ejemplo: "Una gran distribuidora envía sus pedidos a los proveedores como mensajes EDIFACT, con segmentos y separadores definidos por la ISO 9735."
     familia: edi
     alcance: serie
     categoria: bd-comercio
@@ -1314,6 +1379,7 @@ normas:
     concepto: "diccionario de datos comerciales"
     pregunta: "¿Qué significa cada dato de un mensaje comercial?"
     descripcion: "Directorio de elementos de datos comerciales de Naciones Unidas (UNTDED): nombres, definiciones y formatos de los datos que se usan en documentos y mensajes comerciales."
+    ejemplo: "Los campos de una factura electrónica EDI, como la fecha de entrega o el número de pedido, usan las definiciones del directorio UNTDED (ISO 7372)."
     familia: edi
     alcance: norma
     categoria: bd-comercio
@@ -1331,6 +1397,7 @@ normas:
     concepto: "principios de gestión documental"
     pregunta: "¿Qué es gestionar documentos?"
     descripcion: "Establece conceptos y principios para crear, capturar, gestionar y conservar documentos auténticos, fiables, íntegros y utilizables."
+    ejemplo: "Un ayuntamiento define qué documentos debe conservar como prueba de su actividad y cómo garantizar su autenticidad e integridad, con los principios de la ISO 15489."
     familia: gestion-documentos
     alcance: serie
     partes_citadas: ["1", "TR 2"]
@@ -1347,6 +1414,7 @@ normas:
     concepto: "vocabulario del SGD"
     pregunta: "¿Qué términos usa el sistema de gestión para los documentos?"
     descripcion: "Fundamentos y vocabulario de la gestión de documentos y de los sistemas de gestión para los documentos."
+    ejemplo: "El equipo que implanta el sistema de gestión documental usa la ISO 30300 para definir términos como «documento», «expediente» o «disposición»."
     familia: iso-30300
     alcance: norma
     une: UNE-ISO 30300
@@ -1362,6 +1430,7 @@ normas:
     concepto: "sistema (SGD)"
     pregunta: "¿Cómo gestiono los documentos como un sistema?"
     descripcion: "Establece los requisitos de un sistema de gestión orientado a dirigir y controlar los procesos documentales de una organización."
+    ejemplo: "Un organismo implanta un sistema de gestión para los documentos con política, objetivos y auditorías, y lo certifica según la ISO 30301."
     familia: iso-30300
     alcance: norma
     une: UNE-ISO 30301
@@ -1379,6 +1448,7 @@ normas:
     concepto: "implantación"
     pregunta: "¿Cómo implanto el sistema de gestión para los documentos?"
     descripcion: "Proporciona orientación para implementar un sistema de gestión documental conforme al enfoque de ISO 30301."
+    ejemplo: "Para implantar la ISO 30301, el organismo sigue la guía de la ISO 30302 fase por fase: análisis, diseño, implantación y revisión."
     familia: iso-30300
     alcance: norma
     une: UNE-ISO 30302
@@ -1409,6 +1479,7 @@ normas:
     concepto: "digitalización"
     pregunta: "¿Cómo digitalizo con garantías?"
     descripcion: "Proporciona recomendaciones para planificar y realizar procesos de digitalización y gestionar adecuadamente los objetos digitales resultantes."
+    ejemplo: "Un registro que digitaliza documentos en papel define la resolución, los controles de calidad y los metadatos de cada imagen para que la copia sea fiable, según la ISO/TR 13028."
     familia: gestion-documentos
     alcance: norma
     une: UNE-ISO/TR 13028
@@ -1425,6 +1496,7 @@ normas:
     concepto: "conservación a largo plazo"
     pregunta: "¿Cómo evito que la información se vuelva ilegible?"
     descripcion: "Proporciona orientación para preservar información electrónica durante largos periodos manteniendo su accesibilidad y utilidad."
+    ejemplo: "Un archivo planifica migraciones periódicas de formato y soporte para que los documentos de hace veinte años sigan siendo legibles, según la ISO/TR 18492."
     familia: conservacion
     alcance: norma
     edicion_citada: "2005"
@@ -1442,6 +1514,7 @@ normas:
     concepto: "metadatos"
     pregunta: "¿Qué metadatos acompañan a un documento?"
     descripcion: "Establece principios y conceptos para gestionar metadatos asociados a documentos, registros y procesos documentales."
+    ejemplo: "Cada expediente electrónico incorpora metadatos de autor, fechas, clasificación y plazo de conservación siguiendo la ISO 23081."
     familia: gestion-documentos
     alcance: serie
     partes_citadas: ["1"]
@@ -1459,6 +1532,7 @@ normas:
     concepto: "análisis de procesos"
     pregunta: "¿Qué documentos genera cada proceso de trabajo?"
     descripcion: "Proporciona orientación para analizar procesos de trabajo con el fin de identificar cómo se crean, reciben y gestionan documentos."
+    ejemplo: "Antes de implantar la tramitación electrónica de licencias, se analiza el proceso paso a paso para saber qué documentos genera cada trámite, según la ISO/TR 26122."
     familia: gestion-documentos
     alcance: norma
     une: UNE-ISO/TR 26122
@@ -1475,6 +1549,7 @@ normas:
     concepto: "archivo digital (OAIS)"
     pregunta: "¿Cómo funciona un archivo digital a largo plazo?"
     descripcion: "Define el modelo de referencia Open Archival Information System para conservar información digital a largo plazo y facilitar su acceso futuro."
+    ejemplo: "El archivo histórico digital organiza la ingesta de documentos, su almacenamiento y el acceso de los ciudadanos según el modelo OAIS de la ISO 14721."
     familia: conservacion
     alcance: norma
     une: UNE-ISO 14721
@@ -1491,6 +1566,7 @@ normas:
     concepto: "PDF/A"
     pregunta: "¿En qué formato conservo un documento?"
     descripcion: "Familia de formatos PDF específicamente diseñada para la preservación a largo plazo de documentos electrónicos."
+    ejemplo: "Las resoluciones que deben conservarse durante décadas se guardan en PDF/A, con las fuentes incrustadas y sin contenido externo."
     familia: conservacion
     alcance: serie
     partes_citadas: ["1"]
@@ -1510,6 +1586,7 @@ normas:
     concepto: "fiabilidad de la información"
     pregunta: "¿Cómo demuestro que la información almacenada es fiable?"
     descripcion: "Proporciona recomendaciones para garantizar la fiabilidad y confianza en información almacenada electrónicamente."
+    ejemplo: "Para que un documento almacenado electrónicamente sirva como prueba ante un tribunal, el organismo documenta cómo lo captura, protege y conserva, según la ISO 15801."
     familia: conservacion
     alcance: norma
     edicion_citada: "2004"
@@ -1542,6 +1619,7 @@ normas:
     concepto: "usabilidad y diseño centrado en las personas"
     pregunta: "¿Qué es la usabilidad y cómo diseño pensando en las personas?"
     descripcion: "Amplia familia que aborda ergonomía, usabilidad, interacción, interfaces y diseño centrado en las personas."
+    ejemplo: "El rediseño de una sede electrónica sigue el diseño centrado en las personas (ISO 9241-210) y mide la usabilidad con usuarios reales: eficacia, eficiencia y satisfacción (ISO 9241-11)."
     familia: ergonomia
     alcance: serie
     partes_citadas: ["11", "210"]
@@ -1590,6 +1668,7 @@ normas:
     concepto: "control del cursor"
     pregunta: "¿Cómo debe comportarse el cursor al editar texto?"
     descripcion: "Define requisitos para el control del cursor en la edición de texto dentro de las interfaces de usuario."
+    ejemplo: "Un editor de formularios web se comporta como espera el usuario al mover el cursor con el teclado entre campos y caracteres."
     familia: interfaces
     alcance: serie
     categoria: usabilidad
@@ -1603,6 +1682,7 @@ normas:
     concepto: "iconos"
     pregunta: "¿Cómo se diseñan los iconos de una interfaz?"
     descripcion: "Familia de normas sobre iconos, símbolos y objetos utilizados en interfaces de usuario."
+    ejemplo: "Una aplicación usa iconos reconocibles y coherentes para acciones como imprimir, guardar o eliminar, siguiendo la ISO/IEC 11581."
     familia: interfaces
     alcance: serie
     categoria: usabilidad
@@ -1616,6 +1696,7 @@ normas:
     concepto: "centros de control"
     pregunta: "¿Cómo diseño una sala de control?"
     descripcion: "Familia de normas sobre diseño de centros de control, puestos de trabajo, distribución física, interfaces y factores humanos."
+    ejemplo: "El diseño de la sala de un centro de emergencias 112 organiza puestos, pantallas e iluminación según los principios ergonómicos de la ISO 11064."
     alcance: serie
     categoria: usabilidad
     naturaleza: guia
@@ -1628,6 +1709,7 @@ normas:
     concepto: "accesibilidad web (WCAG)"
     pregunta: "¿Cómo hago accesible una web?"
     descripcion: "Adopta las Web Content Accessibility Guidelines del W3C como norma de accesibilidad del contenido web. La edición de 2012 recogía las WCAG 2.0 y la de 2025, las WCAG 2.2."
+    ejemplo: "Una web pública comprueba que cumple los criterios de las WCAG (texto alternativo, contraste, navegación con teclado…), recogidos en la ISO/IEC 40500."
     alcance: norma
     categoria: usabilidad
     contexto: "WCAG como norma ISO"
@@ -1646,6 +1728,7 @@ normas:
     concepto: "activos y licencias (SAM)"
     pregunta: "¿Qué software tengo y con qué licencias?"
     descripcion: "Familia de normas para gestionar activos TI durante su ciclo de vida, incluyendo inventario, licencias, cumplimiento y activos software."
+    ejemplo: "Antes de una auditoría de licencias de un fabricante, el organismo concilia el software instalado con los derechos adquiridos gracias a su sistema de gestión de activos ISO/IEC 19770."
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5"]
     categoria: sam-drm
@@ -1661,6 +1744,7 @@ normas:
     concepto: "derechos digitales (REL)"
     pregunta: "¿Cómo expreso los derechos sobre un contenido digital?"
     descripcion: "Parte de MPEG-21 dedicada a expresar y gestionar derechos sobre contenidos digitales."
+    ejemplo: "Una plataforma de contenidos educativos expresa en REL que un vídeo se puede ver pero no descargar ni redistribuir."
     alcance: norma
     categoria: sam-drm
     contexto: "MPEG-21 REL"
@@ -1676,6 +1760,7 @@ normas:
     concepto: "modelo OSI"
     pregunta: "¿En qué capas se organiza la comunicación?"
     descripcion: "Define el modelo conceptual de interconexión de sistemas abiertos basado en siete capas."
+    ejemplo: "Ante un fallo de comunicación, el técnico revisa capa a capa: cable y enlace (1 y 2), direccionamiento IP (3) y puertos TCP (4), siguiendo el modelo OSI."
     alcance: serie
     partes_citadas: ["1", "4"]
     categoria: redes
@@ -1691,6 +1776,7 @@ normas:
     concepto: "cableado estructurado"
     pregunta: "¿Cómo se cablea un edificio?"
     descripcion: "Define arquitectura, requisitos de rendimiento y principios del cableado estructurado para redes y servicios de telecomunicaciones."
+    ejemplo: "El cableado de un nuevo edificio administrativo se diseña con cableado horizontal de categoría 6A y armarios de planta, según la ISO/IEC 11801."
     alcance: serie
     partes_citadas: ["1", "2", "3", "4", "5", "6"]
     categoria: redes
@@ -1706,6 +1792,7 @@ normas:
     concepto: "redes locales (IEEE 802)"
     pregunta: "¿Cómo funcionan Ethernet y las VLAN?"
     descripcion: "Familia de normas relacionada con redes de área local y metropolitana y con tecnologías del ámbito IEEE 802."
+    ejemplo: "La red de una sede se segmenta en VLAN (8802-1Q) y exige autenticación 802.1X (8802-1X) para conectar un equipo a un puerto Ethernet (8802-3)."
     alcance: serie
     partes_citadas: ["1Q", "1X", "3"]
     categoria: redes
@@ -1727,6 +1814,7 @@ normas:
     concepto: "directorio X.500 y certificados X.509"
     pregunta: "¿Cómo se organiza un directorio y sus certificados?"
     descripcion: "Define modelos y protocolos para servicios de directorio distribuidos y constituye la base conceptual de X.500."
+    ejemplo: "El directorio corporativo de usuarios sigue el modelo X.500, y los certificados electrónicos de los empleados usan el formato X.509."
     alcance: serie
     categoria: redes
     contexto: "X.500"
@@ -1744,6 +1832,7 @@ normas:
     concepto: "vocabulario IoT"
     pregunta: "¿Qué significa cada término de IoT?"
     descripcion: "Proporciona vocabulario y conceptos fundamentales para sistemas de Internet de las Cosas."
+    ejemplo: "Un pliego de ciudad inteligente usa las definiciones de la ISO/IEC 20924 para dejar claro qué se entiende por «dispositivo IoT» o «gemelo digital»."
     familia: iot
     alcance: norma
     edicion_citada: "2018"
@@ -1760,6 +1849,7 @@ normas:
     concepto: "arquitectura IoT"
     pregunta: "¿Cómo se estructura un sistema IoT?"
     descripcion: "Define una arquitectura de referencia común para estructurar sistemas IoT mediante modelos, conceptos y perspectivas."
+    ejemplo: "La plataforma de sensores de una ciudad se diseña con los dominios y vistas de la arquitectura de referencia ISO/IEC 30141."
     familia: iot
     alcance: norma
     edicion_citada: "2018"
@@ -1774,6 +1864,7 @@ normas:
     concepto: "interoperabilidad IoT"
     pregunta: "¿Cómo se entienden sistemas IoT distintos?"
     descripcion: "Aborda distintos aspectos de la interoperabilidad entre dispositivos, sistemas y plataformas de Internet de las Cosas."
+    ejemplo: "Para que sensores de distintos fabricantes compartan datos en la misma plataforma, se acuerda la interoperabilidad de transporte, sintáctica y semántica según la ISO/IEC 21823."
     familia: iot
     alcance: serie
     partes_citadas: ["1"]
@@ -1790,6 +1881,7 @@ normas:
     concepto: "indicadores de ciudad"
     pregunta: "¿Cómo mido una ciudad sostenible?"
     descripcion: "Indicadores normalizados para medir los servicios urbanos y la calidad de vida en ciudades sostenibles (economía, educación, energía, medio ambiente, gobierno…)."
+    ejemplo: "Un ayuntamiento publica sus indicadores de la ISO 37120 (paro, residuos, transporte…) para compararse con otras ciudades."
     alcance: norma
     edicion_citada: "2015"
     une: UNE-ISO 37120

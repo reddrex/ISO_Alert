@@ -121,6 +121,7 @@ def test_fichas(paginas):
     f = fichas["iso-iec-27001"]
     assert f.startswith('---\ntitle: "ISO/IEC 27001 · SGSI: requisitos"')
     assert "## Claves para el examen" in f and "93 controles" in f
+    assert '!!! example "Ejemplo"\n    Una agencia estatal implanta un SGSI' in f
     assert "- [Tema 47 · Seguridad de sistemas (1)](../temario/47.md)" in f
     assert "- **Desarrollada por:** [ISO/IEC 27002](iso-iec-27002.md) · controles" in f
     assert "```mermaid\ngraph LR" in f

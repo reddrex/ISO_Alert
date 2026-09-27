@@ -25,6 +25,11 @@ hide:
 {{ f.descripcion }}
 {% endif %}
 
+{% if f.ejemplo %}
+!!! example "Ejemplo"
+    {{ f.ejemplo }}
+
+{% endif %}
 {% if f.superada %}
 !!! warning "El temario cita la edición de {{ f.edicion_citada.anio }}"
     {% if f.edicion_citada.resultado == "superada" %}Esa edición ya no es la vigente{% else %}No hay edición ISO de ese año; probablemente es el año de la versión UNE{% endif %}{% if f.vigentes %}: la vigente es {{ enlace(f.vigentes[-1]) }}{% endif %}.

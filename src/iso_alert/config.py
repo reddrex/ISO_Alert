@@ -12,7 +12,7 @@ from .referencias import ReferenciaInvalida, parse
 
 ALCANCES = {"norma", "serie"}
 CAMPOS = {
-    "codigo", "nombre", "resumen", "concepto", "pregunta", "descripcion", "alcance", "familia", "partes_citadas", "edicion_citada",
+    "codigo", "nombre", "resumen", "concepto", "pregunta", "descripcion", "ejemplo", "alcance", "familia", "partes_citadas", "edicion_citada",
     "une", "categoria", "contexto", "revisar", "naturaleza", "certificable", "temas", "claves",
     "relaciones", "partes_descripcion",
 }
@@ -105,6 +105,7 @@ class Norma:
     concepto: str | None = None
     pregunta: str | None = None
     descripcion: str | None = None
+    ejemplo: str | None = None
     familia: str | None = None
     partes_citadas: tuple[str, ...] = ()
     edicion_citada: str | None = None
@@ -255,6 +256,7 @@ def validar(datos: dict) -> Config:
             concepto=n.get("concepto"),
             pregunta=n.get("pregunta"),
             descripcion=n.get("descripcion"),
+            ejemplo=n.get("ejemplo"),
             alcance=n.get("alcance", ""),
             categoria=n.get("categoria", ""),
             numero=ref.numero,
