@@ -9,33 +9,79 @@
 #   partes_citadas  partes que menciona el temario (informativo)
 #   edicion_citada  año de la edición que cita el temario
 #   une             código UNE cuando el temario lo cita
-#   categoria       bloque temático para filtrar en la web
+#   categoria       id de la categoría (ver bloque "categorias"), para filtrar en la web
 #   contexto        nota para humanos
 #   revisar         duda pendiente; se borra al resolverla
 #
 # Las familias solo agrupan y dan nombre en la web: NO amplían lo que se vigila.
+# "corto" es el nombre que se muestra en la tabla; "nombre", el completo.
+# Las categorías aparecen en los filtros de la web en el orden de este fichero.
 
 familias:
   - id: iso-27000
     nombre: "Familia ISO/IEC 27000 — Seguridad de la información"
+    corto: "ISO/IEC 27000"
   - id: square
     nombre: "SQuaRE (ISO/IEC 25000) — Requisitos y evaluación de la calidad de sistemas y software"
+    corto: "SQuaRE"
   - id: iso-9000
     nombre: "Familia ISO 9000 — Gestión de la calidad"
+    corto: "ISO 9000"
   - id: iso-30300
     nombre: "Familia ISO 30300 — Sistemas de gestión para los documentos"
+    corto: "ISO 30300"
   - id: iso-33000
     nombre: "Familia ISO/IEC 330xx — Evaluación de procesos (sucesora de SPICE)"
+    corto: "ISO/IEC 330xx"
   - id: privacidad-29100
     nombre: "Marco de privacidad ISO/IEC 29100 y normas relacionadas"
+    corto: "Privacidad 29100"
   - id: common-criteria
     nombre: "Common Criteria (ISO/IEC 15408) y su metodología de evaluación (ISO/IEC 18045)"
+    corto: "Common Criteria"
   - id: bioapi
     nombre: "BioAPI — Interfaz biométrica y normas asociadas"
+    corto: "BioAPI"
   - id: tamano-funcional
     nombre: "Medición del tamaño funcional del software (marco y métodos)"
+    corto: "Tamaño funcional"
   - id: iot
     nombre: "Internet de las cosas (IoT)"
+    corto: "IoT"
+
+categorias:
+  - id: seguridad
+    nombre: "Seguridad, privacidad y continuidad"
+  - id: gobierno-ti
+    nombre: "Gobierno de TI"
+  - id: datos
+    nombre: "Gobierno y calidad de datos"
+  - id: ingenieria-software
+    nombre: "Ingeniería de software"
+  - id: calidad-software
+    nombre: "Calidad del software"
+  - id: metricas
+    nombre: "Medición del tamaño funcional"
+  - id: servicios-ti
+    nombre: "Servicios de TI"
+  - id: calidad
+    nombre: "Calidad, auditoría y medio ambiente"
+  - id: proyectos
+    nombre: "Gestión de proyectos"
+  - id: biometria
+    nombre: "Biometría"
+  - id: bd-comercio
+    nombre: "Bases de datos y comercio electrónico"
+  - id: documental
+    nombre: "Gestión documental y preservación"
+  - id: usabilidad
+    nombre: "Ergonomía, usabilidad y accesibilidad"
+  - id: sam-drm
+    nombre: "Activos software y DRM"
+  - id: redes
+    nombre: "Redes y directorios"
+  - id: iot
+    nombre: "IoT y ciudades inteligentes"
 
 normas:
   # --- Gobierno y calidad de datos ---

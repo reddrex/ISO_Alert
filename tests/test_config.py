@@ -7,18 +7,26 @@ def test_normas_yaml_real(config):
     assert len(config.normas) == 99
     assert not any(n.revisar for n in config.normas)
     assert len(config.familias) == 10
+    assert config.familias["square"].corto == "SQuaRE"
+    assert len(config.categorias) == 16
+    assert {n.categoria for n in config.normas} == set(config.categorias)
     n = next(n for n in config.normas if n.codigo == "ISO/IEC 2382-37")
     assert (n.numero, n.parte) == ("2382", "37")
 
 
 def _datos(**norma):
     base = {"codigo": "ISO 9001", "nombre": "x", "alcance": "norma", "categoria": "calidad"}
-    return {"familias": [{"id": "f", "nombre": "F"}], "normas": [{**base, **norma}]}
+    return {
+        "familias": [{"id": "f", "nombre": "F"}],
+        "categorias": [{"id": "calidad", "nombre": "Calidad"}],
+        "normas": [{**base, **norma}],
+    }
 
 
 @pytest.mark.parametrize("cambios,mensaje", [
     ({"alcance": "familia"}, "no es norma|serie"),
     ({"familia": "inexistente"}, "no existe"),
+    ({"categoria": "inexistente"}, "categoría 'inexistente' no existe"),
     ({"edicion_citada": "15"}, "edicion_citada"),
     ({"codigo": "ISO 9001:2015"}, "no debe llevar año"),
     ({"codigo": "ISO/DIS 31700"}, "etapa de borrador"),

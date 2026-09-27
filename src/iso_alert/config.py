@@ -27,6 +27,13 @@ class ConfigError(ValueError):
 class Familia:
     id: str
     nombre: str
+    corto: str
+
+
+@dataclass(frozen=True)
+class Categoria:
+    id: str
+    nombre: str
 
 
 @dataclass(frozen=True)
@@ -49,6 +56,7 @@ class Norma:
 class Config:
     familias: dict[str, Familia]
     normas: list[Norma] = field(default_factory=list)
+    categorias: dict[str, Categoria] = field(default_factory=dict)
 
 
 def cargar(ruta: str | Path) -> Config:
@@ -66,7 +74,16 @@ def validar(datos: dict) -> Config:
             continue
         if fam["id"] in familias:
             errores.append(f"familia duplicada: {fam['id']}")
-        familias[fam["id"]] = Familia(fam["id"], fam["nombre"])
+        familias[fam["id"]] = Familia(fam["id"], fam["nombre"], fam.get("corto") or fam["nombre"])
+
+    categorias: dict[str, Categoria] = {}
+    for i, cat in enumerate(datos.get("categorias") or []):
+        if not cat.get("id") or not cat.get("nombre"):
+            errores.append(f"categorias[{i}]: faltan 'id' o 'nombre'")
+            continue
+        if cat["id"] in categorias:
+            errores.append(f"categoría duplicada: {cat['id']}")
+        categorias[cat["id"]] = Categoria(cat["id"], cat["nombre"])
 
     normas: list[Norma] = []
     vistos: set[str] = set()
@@ -80,6 +97,8 @@ def validar(datos: dict) -> Config:
             errores.append(f"{donde}: campos desconocidos {sorted(extra)}")
         if n.get("alcance") and n["alcance"] not in ALCANCES:
             errores.append(f"{donde}: alcance '{n['alcance']}' no es norma|serie")
+        if n.get("categoria") and categorias and n["categoria"] not in categorias:
+            errores.append(f"{donde}: categoría '{n['categoria']}' no existe")
         if n.get("familia") and n["familia"] not in familias:
             errores.append(f"{donde}: familia '{n['familia']}' no existe")
         ed = n.get("edicion_citada")
@@ -118,4 +137,4 @@ def validar(datos: dict) -> Config:
 
     if errores:
         raise ConfigError(errores)
-    return Config(familias=familias, normas=normas)
+    return Config(familias=familias, normas=normas, categorias=categorias)
