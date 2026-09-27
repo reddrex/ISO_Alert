@@ -130,6 +130,18 @@ hide:
 
 {% endfor %}
 {% endif %}
+## Cambios detectados
+
+{% if cambios_norma %}
+{% for c in cambios_norma %}
+- {{ c.detectado }} · **{{ c.etiqueta }}**: {{ c.resumen }}{{ (" ([aviso #" ~ c.issue ~ "](https://github.com/reddrex/ISO_Alert/issues/" ~ c.issue ~ "))") if c.issue else "" }}
+{% endfor %}
+{% else %}
+Ningún cambio desde que empezó la vigilancia.
+{% endif %}
+
+<p class="suscripcion"><a href="../feeds/{{ f.ancla }}.xml">Suscribirse a los cambios de esta norma (Atom)</a></p>
+
 {% if anterior or siguiente %}
 <nav class="paginacion" aria-label="Otras normas de la familia">{% if anterior %}<a href="{{ anterior.ancla }}/" rel="prev">← {{ anterior.codigo }}</a>{% else %}<span></span>{% endif %}{% if siguiente %}<a href="{{ siguiente.ancla }}/" rel="next">{{ siguiente.codigo }} →</a>{% endif %}</nav>
 

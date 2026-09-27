@@ -9,9 +9,9 @@ Herramienta que vigila las normas técnicas ISO/IEC (y, más adelante, sus adopc
 
 ## Estado del proyecto
 
-En desarrollo. La web ya muestra el [estado de cada norma](https://reddrex.github.io/ISO_Alert/estado/) con los datos de ISO del día, una capa de estudio (un [mapa](https://reddrex.github.io/ISO_Alert/) de áreas y familias, las [normas de cada tema del temario](https://reddrex.github.io/ISO_Alert/temario/) y [comparativas](https://reddrex.github.io/ISO_Alert/comparativas/)), una página por familia y por norma y el [informe de validación](https://reddrex.github.io/ISO_Alert/validacion/) de la lista. Faltan el historial de cambios y los avisos. El plan completo está en [PLAN.md](PLAN.md).
+En desarrollo. La web ya muestra el [estado de cada norma](https://reddrex.github.io/ISO_Alert/estado/) con los datos de ISO del día, una capa de estudio (un [mapa](https://reddrex.github.io/ISO_Alert/) de áreas y familias, las [normas de cada tema del temario](https://reddrex.github.io/ISO_Alert/temario/) y [comparativas](https://reddrex.github.io/ISO_Alert/comparativas/)), una página por familia y por norma y el [informe de validación](https://reddrex.github.io/ISO_Alert/validacion/) de la lista. Cada día compara los datos de ISO con los del día anterior, registra los cambios en el [historial](https://reddrex.github.io/ISO_Alert/historial/) y avisa de las ediciones nuevas, modificaciones y anulaciones. El plan completo está en [PLAN.md](PLAN.md).
 
-## Cómo suscribirse (cuando estén activos los avisos)
+## Cómo suscribirse
 
 - **GitHub:** *Watch* → *Custom* → *Issues*. Se abre un Issue por cada edición nueva, modificación o anulación de las normas y partes citadas en el temario.
 - **RSS/Atom:** un feed general (`https://reddrex.github.io/ISO_Alert/feed.xml`) y uno por norma, para seguir solo las que te interesen.
@@ -24,6 +24,7 @@ No se recogen emails ni datos personales.
 python -m venv .venv
 .venv/bin/pip install -e ".[dev,web]"      # en Windows: .venv\Scripts\pip
 
+python -m iso_alert vigilar --simulacro       # comprobación diaria: detecta cambios sin abrir Issues
 python -m iso_alert actualizar                # descarga el dataset ISO (~80 MB) → data/estado.json y data/validacion.json
 python -m iso_alert actualizar --sin-descarga # reutiliza la descarga de .cache/
 python -m iso_alert web                       # data/ → páginas generadas en docs/

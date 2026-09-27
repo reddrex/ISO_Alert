@@ -401,5 +401,5 @@ Tipografía propuesta: **Source Sans 3** para el texto (legible, con cifras tabu
 
 ## 12. Orden de trabajo propuesto
 
-~~Fase 0~~ → ~~1a~~ → ~~corrección de `normas.yaml`~~ → ~~1b (**MVP publicado**)~~ → 1c → fase 2.
-Las fases 0, 1a y 1b y la corrección de `normas.yaml` están hechas (2026-09-27). Hasta la 1c, el workflow `pages.yml` regenera la web a diario con los datos ISO del día, sin historial ni avisos.
+~~Fase 0~~ → ~~1a~~ → ~~corrección de `normas.yaml`~~ → ~~1b (**MVP publicado**)~~ → ~~1c~~ → fase 2.
+Las fases 0, 1a, 1b y 1c están hechas (2026-09-27), junto con la capa de estudio (mapa, familias, fichas, temas y comparativas). El workflow `vigilar.yml` hace la comprobación diaria, guarda `data/` solo si cambia algo y publica la web. Queda la fase 2 (BOE/UNE).

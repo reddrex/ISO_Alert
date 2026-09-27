@@ -1,0 +1,43 @@
+---
+title: Cambios
+hide:
+  - navigation
+---
+
+# Cambios detectados
+
+La web compara cada día los datos de ISO con los del día anterior. Aquí queda cada cambio en una norma vigilada. Las fechas son las del día en que se **detectó** el cambio, que puede ser posterior al cambio real.
+
+{% set avisos = cambios | selectattr("notificable") | list %}
+{% if cambios %}
+| Detectado | Norma | Cambio | Detalle |
+|---|---|---|---|
+{% for c in cambios %}
+| {{ c.detectado }} | {% for x in c.filas %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if not loop.last %}, {% endif %}{% endfor %} | {{ ("**" ~ c.etiqueta ~ "**") if c.notificable else c.etiqueta }} | {{ c.resumen }}{{ (" [Aviso #" ~ c.issue ~ "](https://github.com/reddrex/ISO_Alert/issues/" ~ c.issue ~ ")") if c.issue else "" }} |
+{% endfor %}
+
+En negrita, los cambios que generan aviso: ediciones nuevas, modificaciones y anulaciones de las normas y partes que cita el temario.
+{% else %}
+Todavía no se ha detectado ningún cambio. La vigilancia compara los datos de ISO cada día y los cambios aparecerán aquí.
+{% endif %}
+
+## Cómo suscribirse
+
+No hace falta registrarse ni dar ningún dato personal:
+
+- **Todos los avisos por RSS/Atom:** añade [este feed]({{ sitio }}feed.xml) a tu lector de feeds. Incluye las ediciones nuevas, modificaciones y anulaciones.
+- **Solo las normas que te interesan:** cada ficha de norma tiene su propio feed, con todos sus cambios, en el enlace «Suscribirse a los cambios de esta norma».
+- **Por correo, con GitHub:** en el [repositorio](https://github.com/reddrex/ISO_Alert), pulsa *Watch* → *Custom* → *Issues*. Cada aviso se publica como un Issue.
+
+## Qué se considera un cambio
+
+| Cambio | Cuándo | ¿Genera aviso? |
+|---|---|---|
+| Edición nueva | ISO publica una edición que sustituye a la vigilada | Sí |
+| Modificación publicada | ISO publica una modificación (`Amd`) | Sí |
+| Anulación | ISO anula la norma sin sustituirla | Sí |
+| Parte nueva | ISO publica una parte nueva de una serie | Solo en series sin partes citadas |
+| Revisión iniciada, proyecto que avanza o se cancela | Hay una edición nueva en preparación | No |
+| Revisión periódica, confirmada, anulación propuesta | Revisión quinquenal y sus resultados | No |
+
+Los cambios en partes de una serie que no cita el temario se registran, pero no generan aviso.

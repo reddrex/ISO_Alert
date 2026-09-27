@@ -33,6 +33,20 @@ Las {{ resumen.total }} normas técnicas del temario TIC A1, agrupadas en áreas
 
 ## Seguimiento de cambios
 
+{% if cambios %}
+**Últimos cambios detectados**
+
+{% for c in cambios[:5] %}
+- {{ c.detectado }} · **{{ c.etiqueta }}**{% if c.filas %} en [{{ c.filas[0].codigo }}](normas/{{ c.filas[0].ancla }}.md){% endif %}: {{ c.resumen }}
+{% endfor %}
+
+[Ver todos los cambios](historial.md) · [Suscribirse a los avisos (Atom)](feed.xml)
+
+{% else %}
+Todavía no se ha detectado ningún cambio desde que empezó la vigilancia. Puedes [suscribirte a los avisos](historial.md#como-suscribirse).
+
+{% endif %}
+
 Estado de las normas según ISO ({% if resumen.dato_fecha %}datos del **{{ resumen.dato_fecha }}**, {% endif %}comprobados el **{{ resumen.comprobado }}**). Pulsa un estado para ver sus normas en la tabla.
 
 <table>
@@ -60,4 +74,4 @@ El temario cita estas ediciones, pero ISO ya ha publicado otra más reciente.
 {% endfor %}
 {% endif %}
 
-La web se actualiza a diario con los datos de ISO. El historial de cambios y los avisos por Issue y por RSS se activarán próximamente.
+La web comprueba a diario los datos de ISO. Los cambios quedan en el [historial](historial.md), y las ediciones nuevas, modificaciones y anulaciones generan un aviso.

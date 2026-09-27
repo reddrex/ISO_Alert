@@ -20,7 +20,7 @@ CARPETAS = ("fichas", "familias", "temario")
 
 
 def test_paginas_generadas(paginas):
-    assert set(paginas) == {"index", "estado", "comparativas", "validacion", *CARPETAS}
+    assert set(paginas) == {"index", "estado", "comparativas", "historial", "validacion", *CARPETAS}
     assert len(paginas["familias"]) == 21
     assert len(paginas["temario"]) == 39  # índice + 38 temas
     for nombre, texto in paginas.items():

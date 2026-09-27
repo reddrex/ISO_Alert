@@ -1,0 +1,81 @@
+name: Vigilancia y web
+
+# Programado (a diario) o manual: comprueba los datos de ISO, registra los cambios,
+# abre los avisos, guarda data/ si ha cambiado algo y publica la web.
+# En cada push: solo regenera y publica la web con los datos ya guardados.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+    inputs:
+      simulacro:
+        description: "Simulacro: detectar cambios sin abrir Issues ni guardar datos"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: vigilancia
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[web]"
+
+      - name: Vigilancia diaria
+        if: github.event_name != 'push'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python -m iso_alert vigilar ${{ inputs.simulacro && '--simulacro' || '' }}
+
+      - name: Guardar datos si han cambiado
+        if: github.event_name != 'push' && !inputs.simulacro
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cambios=$(git status --porcelain -- data/estado.json data/historial.json data/validacion.json)
+          edad=$(( ( $(date +%s) - $(git log -1 --format=%ct) ) / 86400 ))
+          if [ -n "$cambios" ] || [ "$edad" -ge 45 ]; then
+            git add data/
+            git commit -m "Datos: comprobación del $(date -u +%F)"
+            git pull --rebase
+            git push
+          else
+            echo "Sin cambios en los datos; no se hace commit (último hace $edad días)."
+          fi
+
+      - name: Páginas generadas
+        run: python -m iso_alert web
+      - name: Build
+        run: zensical build
+      - name: Enlaces internos
+        run: python scripts/comprobar_enlaces.py
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

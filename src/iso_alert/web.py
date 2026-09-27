@@ -8,7 +8,7 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
-from . import didactico, informe
+from . import didactico, informe, rss
 from . import modelo as m
 from .config import NATURALEZAS, Config
 from .modelo import Estado, Subestado
@@ -23,6 +23,8 @@ HISTORICAS = {Estado.SUSTITUIDA, Estado.ANULADA, Estado.NO_PUBLICADA}
 FICHAS = "normas"
 FAMILIAS = "familias"
 TEMARIO = "temario"
+FEEDS = "feeds"
+SITIO = "https://reddrex.github.io/ISO_Alert/"
 
 
 def ancla(codigo: str) -> str:
@@ -265,11 +267,25 @@ def ordenar(grupo: list[dict]) -> list[dict]:
     return sorted(grupo, key=lambda f: (f["historica"], f["codigo_orden"]))
 
 
-def generar(estado: dict, validacion: dict, config: Config, docs: Path) -> list[Path]:
+def _cambios(historial: list[dict], por_codigo: dict[str, dict]) -> list[dict]:
+    """Eventos del historial preparados para las plantillas (del más reciente al más antiguo)."""
+    from .vigilancia import TIPOS
+
+    return [{
+        **h,
+        "etiqueta": TIPOS.get(h["tipo"], h["tipo"]),
+        "filas": [por_codigo[c] for c in h["normas"] if c in por_codigo],
+    } for h in historial]
+
+
+def generar(estado: dict, validacion: dict, config: Config, docs: Path,
+            historial: list[dict] | None = None) -> list[Path]:
     env = _entorno()
     vista = Vista(estado, config)
     filas = vista.filas()
     por_codigo = {f["codigo"]: f for f in filas}
+    historial = historial or []
+    cambios = _cambios(historial, por_codigo)
     ctx = {
         "filas": filas,
         "por_codigo": por_codigo,
@@ -281,15 +297,18 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path) -> list[
         "naturalezas": NATURALEZAS,
         "mapa": vista.mapa(filas),
         "areas": list(config.areas.values()),
+        "cambios": cambios,
+        "sitio": SITIO,
     }
     salidas = {
         docs / "index.md": env.get_template("index.md.j2").render(**ctx),
         docs / "estado.md": env.get_template("estado.md.j2").render(**ctx),
         docs / TEMARIO / "index.md": env.get_template("temario.md.j2").render(**ctx),
         docs / "comparativas.md": env.get_template("comparativas.md.j2").render(**ctx),
+        docs / "historial.md": env.get_template("historial.md.j2").render(**ctx),
         docs / "validacion.md": informe.a_markdown(validacion),
     }
-    for carpeta in (docs / FICHAS, docs / FAMILIAS, docs / TEMARIO):
+    for carpeta in (docs / FICHAS, docs / FAMILIAS, docs / TEMARIO, docs / FEEDS):
         if carpeta.exists():
             shutil.rmtree(carpeta)
     viejo = docs / "temario.md"  # antes, una sola página con todos los temas
@@ -297,9 +316,19 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path) -> list[
         viejo.unlink()
     plantilla_ficha = env.get_template("ficha.md.j2")
     for f in filas:
+        propios = [c for c in cambios if f["codigo"] in c["normas"]]
         salidas[docs / FICHAS / f"{f['ancla']}.md"] = plantilla_ficha.render(
-            f=f, **vista.ficha(f, por_codigo, filas), **ctx,
+            f=f, cambios_norma=propios, **vista.ficha(f, por_codigo, filas), **ctx,
         )
+        salidas[docs / FEEDS / f"{f['ancla']}.xml"] = rss.feed(
+            f"{f['codigo']} · cambios detectados", f"{SITIO}{FEEDS}/{f['ancla']}.xml",
+            f"{SITIO}{FICHAS}/{f['ancla']}/", [h for h in historial if f["codigo"] in h["normas"]],
+            SITIO, estado["generado"],
+        )
+    salidas[docs / "feed.xml"] = rss.feed(
+        "Vigilancia de normas TIC · avisos", f"{SITIO}feed.xml", f"{SITIO}historial/",
+        [h for h in historial if h["notificable"]], SITIO, estado["generado"],
+    )
     plantilla_tema = env.get_template("tema.md.j2")
     temas = ctx["temario"]
     for i, t in enumerate(temas):
