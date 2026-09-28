@@ -15,7 +15,7 @@ Los {{ temario | length }} temas del temario TIC A1 que citan normas técnicas. 
 | Tema | Normas que cita |
 |---|---|
 {% for t in temario %}
-| [{{ t.tema.numero }} · {{ t.corto }}]({{ t.tema.numero }}.md) | {% for x in t.normas %}[{{ x.codigo }}](../normas/{{ x.ancla }}.md){% if not loop.last %} · {% endif %}{% endfor %}{% for g in t.familias %}{{ " · " if t.normas or not loop.first else "" }}<span class="etiqueta-familia">+ familia [{{ g.familia.corto }}](../familias/{{ g.familia.id }}.md)</span>{% endfor %} |
+| [{{ t.tema.numero }} · {{ t.corto }}]({{ t.tema.numero }}.md) | {% for x in t.normas %}[{{ x.codigo }}](../normas/{{ x.ancla }}.md){% if not loop.last %} · {% endif %}{% endfor %}{% for g in t.familias %}{{ " · " if t.normas or not loop.first else "" }}<span class="etiqueta-familia">+ {{ g.familia.etiqueta }} [{{ g.familia.corto }}](../familias/{{ g.familia.id }}.md)</span>{% endfor %} |
 {% endfor %}
 
 *Fuente de los temas: temario de la oposición TIC A1 publicado por [ASTIC](https://www.astic.es/), la Asociación Profesional del Cuerpo Superior de Sistemas y Tecnologías de la Información de la Administración del Estado.*

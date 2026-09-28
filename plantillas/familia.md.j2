@@ -11,12 +11,22 @@ hide:
 
 # {{ g.familia.nombre }}
 
+{% if g.familia.es_familia %}
+<p class="grupo__tipo">Familia oficial: ISO agrupa estas normas con su numeración.</p>
+{% else %}
+<p class="grupo__tipo">Grupo temático: normas de un mismo tema reunidas aquí para estudiarlas juntas. No es una familia de ISO.</p>
+{% endif %}
+
 {% if g.familia.descripcion %}
 {{ g.familia.descripcion }}
 
 {% endif %}
-<p class="cadena-linea"><span class="cadena-linea__titulo">Para recordarla</span>{% for x in g.normas %}{% if x.concepto %}<a href="../normas/{{ x.ancla }}/" class="{{ 'historica' if x.historica else '' }}"><strong>{{ x.codigo.split(' ')[-1] }}</strong> = {{ x.concepto }}</a>{% if not loop.last %} <span aria-hidden="true">→</span> {% endif %}{% endif %}{% endfor %}</p>
+<p class="cadena-linea"><span class="cadena-linea__titulo">Para recordarlas</span>{% for x in g.normas %}{% if x.concepto %}<a href="../normas/{{ x.ancla }}/" class="{{ 'historica' if x.historica else '' }}"><strong>{{ x.codigo.split(' ')[-1] }}</strong> = {{ x.concepto }}</a>{% if not loop.last %} <span aria-hidden="true">→</span> {% endif %}{% endif %}{% endfor %}</p>
 
+{% if g.normas | selectattr("historica") | list %}
+<p class="leyenda">En gris, las normas que ya no están en vigor: sustituidas, anuladas o que no llegaron a publicarse.</p>
+
+{% endif %}
 ## Qué pregunta responde cada norma
 
 | Norma | Pregunta que responde | Edición vigente |
@@ -32,14 +42,14 @@ hide:
 {{ g.diagrama | safe }}
 ```
 
-Las flechas indican la relación («desarrolla», «amplía», «sustituye a»…) y las normas con borde discontinuo son antecesoras ya sustituidas. En la ficha de cada norma están todas sus relaciones, también con normas de otras familias.
+Las flechas indican la relación («desarrolla», «amplía», «sustituye a»…) y las normas con borde discontinuo son las que ya no están en vigor. En la ficha de cada norma están todas sus relaciones, también con normas de otras familias y grupos.
 
 {% endif %}
 {% if g.temas %}
 ## Dónde aparece en el temario
 
 {% for t in g.temas %}
-- [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md){{ " *(cita la familia en conjunto)*" if t.numero in g.temas_familia else "" }}
+- [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md){{ (" *(cita " ~ ("la familia" if g.familia.es_familia else "el grupo") ~ " en conjunto)*") if t.numero in g.temas_familia else "" }}
 {% endfor %}
 
 {% endif %}

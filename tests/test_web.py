@@ -114,6 +114,11 @@ def test_familias(paginas):
     orden = ["12207", "14764", "15288", "15289"]
     posiciones = [ciclo.index(f"<strong>{n}</strong>") for n in orden]
     assert posiciones == sorted(posiciones)
+    assert "Familia oficial" in fam and "Grupo temático" in ciclo
+    assert "En gris, las normas que ya no están en vigor" in fam  # 13335
+    mapa = paginas["index"]
+    assert 'Ciclo de vida <span class="mapa__tipo">grupo</span>' in mapa
+    assert 'ISO/IEC 27000 <span class="mapa__tipo">' not in mapa
 
 
 def test_asociacion(paginas):

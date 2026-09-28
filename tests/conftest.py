@@ -18,7 +18,7 @@ def config():
 def norma(codigo, alcance="norma", **campos):
     """Entrada sintética, validada igual que las de normas.yaml."""
     datos = {"codigo": codigo, "nombre": "x", "alcance": alcance, "categoria": "c", **campos}
-    return validar({"familias": [{"id": "f", "nombre": "F"}], "normas": [datos]}).normas[0]
+    return validar({"familias": [{"id": "f", "nombre": "F", "tipo": "grupo"}], "normas": [datos]}).normas[0]
 
 
 @pytest.fixture(scope="session")

@@ -33,12 +33,19 @@ hide:
     <option value="{{ t.tema.numero }}">{{ t.tema.numero }}. {{ t.tema.titulo | titulo_corto | truncate(60) }}</option>
     {% endfor %}
   </select></label>
-  <label class="filtro">Familia <select id="f-familia">
-    <option value="">Todas</option>
-    {% for f in familias %}
+  <label class="filtro">Familia o grupo <select id="f-familia">
+    <option value="">Todos</option>
+    <optgroup label="Familias">
+    {% for f in familias if f.es_familia %}
     <option value="{{ f.id }}">{{ f.corto }}</option>
     {% endfor %}
-    <option value="-">Sin familia</option>
+    </optgroup>
+    <optgroup label="Grupos temáticos">
+    {% for f in familias if not f.es_familia %}
+    <option value="{{ f.id }}">{{ f.corto }}</option>
+    {% endfor %}
+    </optgroup>
+    <option value="-">Normas sueltas</option>
   </select></label>
   {% if une_cobertura %}
   <label class="filtro">Versión UNE <select id="f-une">
@@ -60,7 +67,7 @@ hide:
     <option value="antigua">Aprobación más antigua</option>
   </select></label>
   <label class="filtro filtro--check"><input type="checkbox" id="f-superada"> Solo ediciones del temario superadas</label>
-  <label class="filtro filtro--check"><input type="checkbox" id="f-agrupar"> Agrupar por familia</label>
+  <label class="filtro filtro--check"><input type="checkbox" id="f-agrupar"> Agrupar por familia o grupo</label>
   <p class="filtros__contador" id="f-contador" aria-live="polite"></p>
 </div>
 
@@ -70,7 +77,7 @@ hide:
       <th>Código</th>
       <th>Nombre</th>
       <th class="col-sec">Título oficial (ISO)</th>
-      <th class="col-sec">Familia</th>
+      <th class="col-sec">Familia o grupo</th>
       <th class="col-sec">Categoría</th>
       <th>Estado</th>
       <th>Edición vigente</th>
@@ -82,7 +89,7 @@ hide:
   </thead>
   <tbody>
     {% for f in filas %}
-    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sin familia' }}" data-superada="{{ 1 if f.superada else 0 }}" data-aprobacion="{{ f.aprobacion or '' }}" data-une="{{ f.une_boe.estado if f.une_boe else '' }}" data-temas="{{ (f.temas + f.temas_familia) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
+    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sueltas' }}" data-superada="{{ 1 if f.superada else 0 }}" data-aprobacion="{{ f.aprobacion or '' }}" data-une="{{ f.une_boe.estado if f.une_boe else '' }}" data-temas="{{ (f.temas + f.temas_familia) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
       <td class="codigo" data-sort="{{ f.codigo_orden }}">{{ f.codigo }}</td>
       <td class="nombre">
         <details class="detalle">

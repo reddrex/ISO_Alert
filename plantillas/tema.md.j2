@@ -47,7 +47,8 @@ hide:
 
 {% endif %}
 {% for g in t.familias %}
-El tema cita además la familia **{{ g.familia.corto }}** completa ({{ g.normas | length }} normas): [ver la familia](../familias/{{ g.familia.id }}.md).
+{% set nombre = "la familia" if g.familia.es_familia else "el grupo" %}
+El tema cita además {{ nombre }} **{{ g.familia.corto }}** {{ "completa" if g.familia.es_familia else "completo" }} ({{ g.normas | length }} normas): [ver {{ nombre }}](../familias/{{ g.familia.id }}.md).
 
 {% endfor %}
 {% if t.tema.relacion or t.diagrama %}

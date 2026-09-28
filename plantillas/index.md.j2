@@ -10,7 +10,7 @@ hide:
 
 # Estándares por ámbito
 
-Las {{ resumen.total }} normas técnicas del temario (ISO, IEC, IEEE y sus adopciones europeas y españolas), agrupadas por áreas, cada una con su color, y por familias. Pulsa una familia para ver cómo se relacionan sus normas, o una norma sin familia para ir a su ficha.
+Las {{ resumen.total }} normas internacionales (ISO, IEC e IEEE) que cita el temario, agrupadas por áreas, cada una con su color. Dentro de cada área, unas forman **familias** oficiales, que ISO agrupa con su numeración (27000, 9000…), y otras están reunidas en **grupos temáticos** para estudiarlas juntas. Pulsa una familia o un grupo para ver cómo se relacionan sus normas, o una norma suelta para ir a su ficha. La versión española (UNE) de cada norma está en su ficha y en [Estado](estado.md).
 
 <p class="leyenda"><span class="mapa__normas"><span>27001</span></span> en vigor · <span class="mapa__normas"><span class="historica">9126</span></span> sustituida, retirada o no publicada</p>
 
@@ -20,12 +20,12 @@ Las {{ resumen.total }} normas técnicas del temario (ISO, IEC, IEEE y sus adopc
 <h2 class="mapa__titulo">{{ b.area.nombre }}</h2>
 {% for g in b.familias %}
 <a class="mapa__familia" href="familias/{{ g.familia.id }}/">
-<span class="mapa__nombre">{{ g.familia.corto }}</span>
+<span class="mapa__nombre">{{ g.familia.corto }}{% if not g.familia.es_familia %} <span class="mapa__tipo">grupo</span>{% endif %}</span>
 <span class="mapa__normas">{% for x in g.normas %}<span class="{{ 'historica' if x.historica else '' }}">{{ x.codigo.split(' ')[-1] }}</span>{% if not loop.last %} · {% endif %}{% endfor %}</span>
 </a>
 {% endfor %}
 {% if b.sueltas %}
-<p class="mapa__sueltas">{{ "Normas sin familia:" if b.familias else "Normas:" }} {% for x in b.sueltas %}<a href="{{ x.ficha }}" title="{{ x.nombre }}">{{ x.codigo }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+<p class="mapa__sueltas">{{ "Normas sueltas:" if b.familias else "Normas:" }} {% for x in b.sueltas %}<a href="{{ x.ficha }}" title="{{ x.nombre }}">{{ x.codigo }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
 {% endif %}
 </section>
 {% endfor %}

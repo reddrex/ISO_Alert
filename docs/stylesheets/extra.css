@@ -433,6 +433,17 @@
   border-bottom-color: var(--md-typeset-a-color);
 }
 .md-typeset .leyenda { font-size: 0.75rem; color: var(--md-default-fg-color--light); }
+/* Grupo temático (no es una familia de ISO): etiqueta en el mapa y aviso en su página. */
+.md-typeset .mapa__tipo {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: var(--md-default-fg-color--light);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.2rem;
+  padding: 0 0.3em;
+  margin-left: 0.3em;
+}
+.md-typeset .grupo__tipo { font-size: 0.8rem; color: var(--md-default-fg-color--light); margin-top: -0.6em; }
 .md-typeset .leyenda .mapa__normas { display: inline; font-size: 1em; margin: 0; }
 
 /* Enlaces a iso.org: se marcan como externos */

@@ -38,7 +38,7 @@ hide:
 
 {% endif %}
 {% if cadena | length > 1 %}
-<p class="cadena-linea"><span class="cadena-linea__titulo">Para recordarla en su familia</span>{% for x in cadena %}{% if x.concepto %}{% if x.codigo == f.codigo %}<strong class="actual">{{ x.codigo.split(' ')[-1] }} = {{ x.concepto }}</strong>{% else %}<a href="{{ x.ancla }}/" class="{{ 'historica' if x.historica else '' }}">{{ x.codigo.split(' ')[-1] }} = {{ x.concepto }}</a>{% endif %}{% if not loop.last %} <span aria-hidden="true">→</span> {% endif %}{% endif %}{% endfor %}</p>
+<p class="cadena-linea"><span class="cadena-linea__titulo">Para recordarla en su {{ f.familia.etiqueta }}</span>{% for x in cadena %}{% if x.concepto %}{% if x.codigo == f.codigo %}<strong class="actual">{{ x.codigo.split(' ')[-1] }} = {{ x.concepto }}</strong>{% else %}<a href="{{ x.ancla }}/" class="{{ 'historica' if x.historica else '' }}">{{ x.codigo.split(' ')[-1] }} = {{ x.concepto }}</a>{% endif %}{% if not loop.last %} <span aria-hidden="true">→</span> {% endif %}{% endif %}{% endfor %}</p>
 
 {% endif %}
 {% if f.claves %}
@@ -56,7 +56,7 @@ hide:
 - [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md)
 {% endfor %}
 {% for t in f.temas_familia %}
-- [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md) *(cita la familia {{ f.familia.corto }} en conjunto)*
+- [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md) *(cita {{ "la familia" if f.familia.es_familia else "el grupo" }} {{ f.familia.corto }} en conjunto)*
 {% endfor %}
 
 {% endif %}
@@ -124,7 +124,7 @@ hide:
 | Norma UNE que cita el temario | {{ f.une }} |
 {% endif %}
 {% if f.familia %}
-| Familia | [{{ f.familia.nombre }}](../familias/{{ f.familia.id }}.md) |
+| {{ "Familia" if f.familia.es_familia else "Grupo temático" }} | [{{ f.familia.nombre }}](../familias/{{ f.familia.id }}.md) |
 {% endif %}
 {% if f.area %}
 | Área y materia | <span class="marca area--{{ f.area.id }}" aria-hidden="true"></span>{{ f.area.nombre }}{% if f.categoria %} · {{ f.categoria.nombre }}{% endif %} |
@@ -166,7 +166,7 @@ Ningún cambio desde que empezó la vigilancia.
 <p class="suscripcion"><a href="../feeds/{{ f.ancla }}.xml" type="application/atom+xml">Suscribirse a los cambios de esta norma (feed Atom)</a></p>
 
 {% if anterior or siguiente %}
-<nav class="paginacion" aria-label="Otras normas de la familia">{% if anterior %}<a href="{{ anterior.ancla }}/" rel="prev">← {{ anterior.codigo }}</a>{% else %}<span></span>{% endif %}{% if siguiente %}<a href="{{ siguiente.ancla }}/" rel="next">{{ siguiente.codigo }} →</a>{% endif %}</nav>
+<nav class="paginacion" aria-label="Otras normas {{ 'de la familia' if f.familia and f.familia.es_familia else 'del grupo' }}">{% if anterior %}<a href="{{ anterior.ancla }}/" rel="prev">← {{ anterior.codigo }}</a>{% else %}<span></span>{% endif %}{% if siguiente %}<a href="{{ siguiente.ancla }}/" rel="next">{{ siguiente.codigo }} →</a>{% endif %}</nav>
 
 {% endif %}
 ---

@@ -55,14 +55,30 @@ class ConfigError(ValueError):
         super().__init__("normas.yaml no es válido:\n  - " + "\n  - ".join(errores))
 
 
+# Una familia la define ISO con su numeración (27000, 9000…); un grupo lo formamos
+# nosotros para estudiar juntas normas de un mismo tema.
+TIPOS_GRUPO = ("familia", "grupo")
+
+
 @dataclass(frozen=True)
 class Familia:
+    """Familia oficial o grupo temático de normas que se estudian juntas."""
     id: str
     nombre: str
     corto: str
-    categoria: str | None = None  # tema en el que se muestra en «Por temas»
+    categoria: str | None = None  # categoría (y, con ella, área del mapa) en la que se muestra
     descripcion: str | None = None
     temas: tuple[int, ...] = ()
+    tipo: str = "grupo"  # familia | grupo
+
+    @property
+    def es_familia(self) -> bool:
+        return self.tipo == "familia"
+
+    @property
+    def etiqueta(self) -> str:
+        """«familia» o «grupo», para las frases de la web."""
+        return self.tipo
 
 
 @dataclass(frozen=True)
@@ -196,10 +212,13 @@ def validar(datos: dict) -> Config:
             errores.append(f"familia duplicada: {fam['id']}")
         if fam.get("categoria") and categorias and fam["categoria"] not in categorias:
             errores.append(f"familia {fam['id']}: categoría '{fam['categoria']}' no existe")
+        if fam.get("tipo") not in TIPOS_GRUPO:
+            errores.append(f"familia {fam['id']}: 'tipo' debe ser {' o '.join(TIPOS_GRUPO)}")
         familias[fam["id"]] = Familia(
             fam["id"], fam["nombre"], fam.get("corto") or fam["nombre"],
             fam.get("categoria"), fam.get("descripcion"),
             _temas(fam.get("temas"), f"familia {fam['id']}", temario, errores),
+            fam.get("tipo") or "grupo",
         )
 
     normas: list[Norma] = []

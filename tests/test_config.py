@@ -1,3 +1,5 @@
+import re
+
 import pytest
 
 from iso_alert.config import ConfigError, validar
@@ -17,10 +19,28 @@ def test_normas_yaml_real(config):
     assert (n.numero, n.parte) == ("2382", "37")
 
 
+def test_familias_y_grupos(config):
+    # Familias oficiales (numeradas por ISO) frente a grupos temáticos formados para estudiar.
+    familias = {f.id for f in config.familias.values() if f.es_familia}
+    assert familias == {"iso-27000", "gobierno-ti", "iso-33000", "square", "iso-9000", "iso-30300", "ergonomia"}
+    assert config.familias["privacidad-29100"].etiqueta == "grupo"
+    # El estado sale de los datos de ISO: no se escribe en el nombre ni en el concepto.
+    for n in config.normas:
+        for texto in (n.nombre, n.concepto or ""):
+            assert not re.search(r"antecesora|hist[oó]rica|sucesora|serie antigua|cancelad", texto, re.I), n.codigo
+
+
+def test_tipo_de_grupo_obligatorio():
+    datos = _datos()
+    datos["familias"][0]["tipo"] = "serie"
+    with pytest.raises(ConfigError, match="'tipo' debe ser familia o grupo"):
+        validar(datos)
+
+
 def _datos(**norma):
     base = {"codigo": "ISO 9001", "nombre": "x", "alcance": "norma", "categoria": "calidad"}
     return {
-        "familias": [{"id": "f", "nombre": "F"}],
+        "familias": [{"id": "f", "nombre": "F", "tipo": "grupo"}],
         "categorias": [{"id": "calidad", "nombre": "Calidad"}],
         "normas": [{**base, **norma}],
     }
