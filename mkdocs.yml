@@ -1,8 +1,6 @@
 site_name: Observatorio de estándares TIC
 site_description: Estado y cambios de las normas ISO y UNE citadas en el temario de la oposición TIC A1. No es una fuente oficial.
 site_url: https://reddrex.github.io/ISO_Alert/
-repo_url: https://github.com/reddrex/ISO_Alert
-repo_name: reddrex/ISO_Alert
 copyright: Datos ISO Open Data (ODC-By 1.0) · No es una fuente oficial
 
 theme:

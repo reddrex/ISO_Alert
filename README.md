@@ -13,8 +13,8 @@ En desarrollo. La web ya muestra el [estado de cada norma](https://reddrex.githu
 
 ## Cómo suscribirse
 
-- **GitHub:** *Watch* → *Custom* → *Issues*. Se abre un Issue por cada edición nueva, modificación o anulación (ISO o UNE) de las normas y partes citadas en el temario.
-- **RSS/Atom:** un feed general (`https://reddrex.github.io/ISO_Alert/feed.xml`) y uno por norma, para seguir solo las que te interesen.
+- **RSS/Atom:** un feed general (`https://reddrex.github.io/ISO_Alert/feed.xml`) y uno por norma, para seguir solo las que te interesen. Es la única vía pública: el repositorio es privado.
+- **Issues del repositorio:** se abre uno por cada edición nueva, modificación o anulación (ISO o UNE) de las normas y partes citadas en el temario. Solo los ven los colaboradores.
 
 No se recogen emails ni datos personales.
 

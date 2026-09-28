@@ -13,7 +13,7 @@ La web compara cada día los datos de ISO con los del día anterior y lee las re
 | Detectado | Norma | Cambio | Detalle |
 |---|---|---|---|
 {% for c in cambios %}
-| {{ c.detectado }} | {% for x in c.filas %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if not loop.last %}, {% endif %}{% endfor %} | {{ ("**" ~ c.etiqueta ~ "**") if c.notificable else c.etiqueta }} | {{ c.resumen }}{{ (" [Aviso #" ~ c.issue ~ "](https://github.com/reddrex/ISO_Alert/issues/" ~ c.issue ~ ")") if c.issue else "" }} |
+| {{ c.detectado }} | {% for x in c.filas %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if not loop.last %}, {% endif %}{% endfor %} | {{ ("**" ~ c.etiqueta ~ "**") if c.notificable else c.etiqueta }} | {{ c.resumen }} |
 {% endfor %}
 
 En negrita, los cambios que generan aviso: ediciones nuevas, modificaciones y anulaciones (ISO o UNE) de las normas y partes que cita el temario.
@@ -27,7 +27,7 @@ No hace falta registrarse ni dar ningún dato personal:
 
 - **Todos los avisos por RSS/Atom:** añade [este feed]({{ sitio }}feed.xml) a tu lector de feeds. Incluye las ediciones nuevas, modificaciones y anulaciones, de ISO y de UNE.
 - **Solo las normas que te interesan:** cada ficha de norma tiene su propio feed, con todos sus cambios, en el enlace «Suscribirse a los cambios de esta norma».
-- **Por correo, con GitHub:** en el [repositorio](https://github.com/reddrex/ISO_Alert), pulsa *Watch* → *Custom* → *Issues*. Cada aviso se publica como un Issue.
+- **Por correo:** muchos lectores de feeds, y los servicios que convierten un feed en correo, pueden enviarte los avisos por email. Solo tienes que darles la dirección del feed.
 
 ## Qué se considera un cambio
 

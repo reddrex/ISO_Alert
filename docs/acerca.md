@@ -21,7 +21,3 @@ El dataset de ISO indica la etapa en la que está cada norma, pero no desde cuá
 ## Calidad de la lista de normas
 
 La lista de normas se extrajo del temario y se revisó contra los datos de ISO. El [informe de validación](validacion.md) indica, para cada norma, si se encontró, cuál es su edición vigente y si la edición que cita el temario sigue en vigor.
-
-## Código
-
-El código es abierto y tiene licencia MIT: <https://github.com/reddrex/ISO_Alert>. Los errores en la lista de normas se pueden comunicar abriendo un *issue* en el repositorio.

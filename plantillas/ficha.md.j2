@@ -155,7 +155,7 @@ hide:
 
 {% if cambios_norma %}
 {% for c in cambios_norma %}
-- {{ c.detectado }} · **{{ c.etiqueta }}**: {{ c.resumen }}{{ (" ([aviso #" ~ c.issue ~ "](https://github.com/reddrex/ISO_Alert/issues/" ~ c.issue ~ "))") if c.issue else "" }}
+- {{ c.detectado }} · **{{ c.etiqueta }}**: {{ c.resumen }}
 {% endfor %}
 {% else %}
 Ningún cambio desde que empezó la vigilancia.
