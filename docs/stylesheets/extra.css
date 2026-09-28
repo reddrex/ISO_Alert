@@ -97,6 +97,7 @@
   white-space: nowrap;
 }
 .md-typeset #tabla-normas .vigente a { white-space: nowrap; }
+.md-typeset #tabla-normas .aprobacion { color: var(--md-default-fg-color--light); }
 .md-typeset #tabla-normas .titulo {
   color: var(--md-default-fg-color--light);
   min-width: 14rem;

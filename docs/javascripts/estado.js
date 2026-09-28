@@ -1,6 +1,6 @@
 // Filtros, búsqueda, ordenación y agrupación de la tabla de estado.
 // Sin dependencias salvo Tablesort. Los filtros se reflejan en la URL
-// (?estado=en_revision&categoria=seguridad) para poder compartir enlaces.
+// (?estado=en_revision&categoria=seguridad&anio=2022&orden=reciente) para poder compartir enlaces.
 
 document$.subscribe(function () {
   var tabla = document.getElementById("tabla-normas");
@@ -18,6 +18,8 @@ document$.subscribe(function () {
     categoria: document.getElementById("f-categoria"),
     tema: document.getElementById("f-tema"),
     familia: document.getElementById("f-familia"),
+    anio: document.getElementById("f-anio"),
+    orden: document.getElementById("f-orden"),
     superada: document.getElementById("f-superada"),
     agrupar: document.getElementById("f-agrupar")
   };
@@ -26,7 +28,7 @@ document$.subscribe(function () {
 
   // Estado inicial desde la URL.
   var params = new URLSearchParams(location.search);
-  ["texto", "estado", "categoria", "tema", "familia"].forEach(function (k) {
+  ["texto", "estado", "categoria", "tema", "familia", "anio", "orden"].forEach(function (k) {
     if (params.has(k)) campos[k].value = params.get(k);
   });
   campos.superada.checked = params.get("superada") === "1";
@@ -80,10 +82,12 @@ document$.subscribe(function () {
         (!campos.categoria.value || f.dataset.categoria === campos.categoria.value) &&
         (!campos.tema.value || (" " + f.dataset.temas + " ").indexOf(" " + campos.tema.value + " ") !== -1) &&
         (!campos.familia.value || f.dataset.familia === campos.familia.value) &&
+        (!campos.anio.value || f.dataset.aprobacion.slice(0, 4) === campos.anio.value) &&
         (!campos.superada.checked || f.dataset.superada === "1");
       f.hidden = !ok;
       if (ok) visibles++;
     });
+    ordenar();
     agrupar();
     contador.textContent = visibles === filas.length
       ? filas.length + " normas"
@@ -91,12 +95,34 @@ document$.subscribe(function () {
     guardarEnUrl();
   }
 
+  // Orden por fecha de aprobación de la edición vigente; las que no tienen van al final.
+  // "Por código" recupera el orden original, que es el de la página.
+  function ordenar() {
+    var modo = campos.orden.value;
+    if (!modo && !ordenada) return;
+    var ordenadas = filas.slice().sort(function (a, b) {
+      var fa = a.dataset.aprobacion, fb = b.dataset.aprobacion;
+      if (modo && fa !== fb) {
+        if (!fa) return 1;
+        if (!fb) return -1;
+        return (fa < fb ? -1 : 1) * (modo === "reciente" ? -1 : 1);
+      }
+      return a.dataset.orden - b.dataset.orden;
+    });
+    ordenadas.forEach(function (f) { cuerpo.appendChild(f); });
+    ordenada = !!modo;
+  }
+  var ordenada = false;
+
   function agrupar() {
     cuerpo.querySelectorAll("tr.grupo").forEach(function (g) { g.remove(); });
     if (!campos.agrupar.checked) return;
+    // Dentro de cada familia se mantiene el orden que ya tenga la tabla.
+    var pos = new Map(Array.prototype.map.call(cuerpo.rows, function (f, i) { return [f, i]; }));
     var ordenadas = filas.slice().sort(function (a, b) {
-      return (a.dataset.familiaOrden - b.dataset.familiaOrden) || (a.dataset.orden - b.dataset.orden);
+      return (a.dataset.familiaOrden - b.dataset.familiaOrden) || (pos.get(a) - pos.get(b));
     });
+    ordenada = true;
     var actual = null;
     ordenadas.forEach(function (f) {
       if (!f.hidden && f.dataset.familia !== actual) {
@@ -116,7 +142,7 @@ document$.subscribe(function () {
 
   function guardarEnUrl() {
     var p = new URLSearchParams();
-    ["texto", "estado", "categoria", "tema", "familia"].forEach(function (k) {
+    ["texto", "estado", "categoria", "tema", "familia", "anio", "orden"].forEach(function (k) {
       if (campos[k].value) p.set(k, campos[k].value.trim());
     });
     if (campos.superada.checked) p.set("superada", "1");
@@ -125,9 +151,14 @@ document$.subscribe(function () {
     history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash);
   }
 
-  // Ordenar por una columna deshace la agrupación.
+  // Ordenar por una columna deshace la agrupación y el orden por fecha.
   tabla.addEventListener("beforeSort", function () {
     cerrarDetalles();
+    if (campos.orden.value) {
+      campos.orden.value = "";
+      ordenada = false;
+      guardarEnUrl();
+    }
     if (campos.agrupar.checked) {
       campos.agrupar.checked = false;
       cuerpo.querySelectorAll("tr.grupo").forEach(function (g) { g.remove(); });
@@ -136,7 +167,7 @@ document$.subscribe(function () {
   });
 
   campos.texto.addEventListener("input", aplicar);
-  ["estado", "categoria", "tema", "familia", "superada", "agrupar"].forEach(function (k) {
+  ["estado", "categoria", "tema", "familia", "anio", "orden", "superada", "agrupar"].forEach(function (k) {
     campos[k].addEventListener("change", aplicar);
   });
   aplicar();

@@ -40,6 +40,17 @@ hide:
     {% endfor %}
     <option value="-">Sin familia</option>
   </select></label>
+  <label class="filtro">Aprobada en <select id="f-anio">
+    <option value="">Cualquier año</option>
+    {% for a in anios_aprobacion %}
+    <option value="{{ a }}">{{ a }}</option>
+    {% endfor %}
+  </select></label>
+  <label class="filtro">Ordenar <select id="f-orden">
+    <option value="">Por código</option>
+    <option value="reciente">Aprobación más reciente</option>
+    <option value="antigua">Aprobación más antigua</option>
+  </select></label>
   <label class="filtro filtro--check"><input type="checkbox" id="f-superada"> Solo ediciones del temario superadas</label>
   <label class="filtro filtro--check"><input type="checkbox" id="f-agrupar"> Agrupar por familia</label>
   <p class="filtros__contador" id="f-contador" aria-live="polite"></p>
@@ -60,7 +71,7 @@ hide:
   </thead>
   <tbody>
     {% for f in filas %}
-    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sin familia' }}" data-superada="{{ 1 if f.superada else 0 }}" data-temas="{{ (f.temas + f.temas_familia) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
+    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sin familia' }}" data-superada="{{ 1 if f.superada else 0 }}" data-aprobacion="{{ f.aprobacion or '' }}" data-temas="{{ (f.temas + f.temas_familia) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
       <td class="codigo" data-sort="{{ f.codigo_orden }}">{{ f.codigo }}</td>
       <td class="nombre">
         <details class="detalle">
@@ -122,7 +133,7 @@ hide:
       <td class="col-sec">{{ f.familia.corto if f.familia else "" }}</td>
       <td class="col-sec">{{ f.categoria.nombre if f.categoria else "" }}</td>
       <td data-sort="{{ f.estado_orden }}">{{ estado(f.estado, f.subestado) }}</td>
-      <td class="vigente">{% if f.alcance == "serie" and f.partes.relevantes > 1 and f.partes.vigentes %}{{ f.partes.vigentes }} de {{ f.partes.relevantes }} partes vigentes{% elif f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% elif f.sustituida_por %}Sustituida por {{ enlace(f.sustituida_por[0]) }}{% if f.sustituida_por | length > 1 %} y {{ f.sustituida_por | length - 1 }} más{% endif %}{% else %}—{% endif %}</td>
+      <td class="vigente" data-sort="{{ f.aprobacion or '' }}">{% if f.alcance == "serie" and f.partes.relevantes > 1 and f.partes.vigentes %}{{ f.partes.vigentes }} de {{ f.partes.relevantes }} partes vigentes{% if f.anio_aprobacion %} <span class="aprobacion">(la más reciente, de {{ f.anio_aprobacion }})</span>{% endif %}{% elif f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% elif f.sustituida_por %}Sustituida por {{ enlace(f.sustituida_por[0]) }}{% if f.sustituida_por | length > 1 %} y {{ f.sustituida_por | length - 1 }} más{% endif %}{% else %}—{% endif %}</td>
       <td data-sort="{{ f.edicion_citada.anio if f.edicion_citada else '' }}">{% if f.edicion_citada %}{{ f.edicion_citada.anio }}{% if f.superada %} <span class="superada">{{ "superada" if f.edicion_citada.resultado == "superada" else "no es ISO" }}</span>{% endif %}{% endif %}</td>
     </tr>
     {% endfor %}

@@ -80,6 +80,8 @@ class Vista:
             estado = Estado(d["estado"])
             sub = Subestado(d["subestado"]) if d["subestado"] else None
             vigentes = [self.e(i) for i in d["vigentes"]]
+            # Aprobación de la edición vigente más reciente (en una serie, la última parte publicada).
+            aprobacion = max((self.ent[str(i)]["publicacion"] or "" for i in d["vigentes"]), default="") or None
             fam = self.config.familias.get(n.familia) if n.familia else None
             cat = self.config.categorias.get(n.categoria)
             # Área del mapa: la de la familia si la tiene (25012 se estudia en SQuaRE, área Software).
@@ -126,6 +128,8 @@ class Vista:
                 "subestado": sub,
                 "historica": estado in HISTORICAS,
                 "vigentes": vigentes,
+                "aprobacion": aprobacion,
+                "anio_aprobacion": aprobacion[:4] if aprobacion else None,
                 "en_desarrollo": [self.e(i) for i in d["en_desarrollo"]],
                 "sustituida_por": [self.e(i) for i in d["sustituida_por"]],
                 "suplementos": [self.e(i) for i in d["suplementos"]],
@@ -294,6 +298,7 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path,
         "categorias": list(config.categorias.values()),
         "temario": vista.temario(filas),
         "estados": ORDEN_ESTADOS,
+        "anios_aprobacion": sorted({f["anio_aprobacion"] for f in filas if f["anio_aprobacion"]}, reverse=True),
         "naturalezas": NATURALEZAS,
         "mapa": vista.mapa(filas),
         "areas": list(config.areas.values()),

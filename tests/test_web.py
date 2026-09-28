@@ -46,9 +46,22 @@ def test_filtros(paginas, config):
     md = paginas["estado"]
     filtros = md[md.index('<div class="filtros"'):md.index("</div>")]
     assert "\n\n" not in filtros
+    anios = re.findall(r'<option value="(\d{4})">', filtros)
+    assert anios and anios == sorted(anios, reverse=True)
     assert filtros.count("<option") == (
         1 + 5 + 1 + len(config.categorias) + 1 + len(config.temario) + 1 + len(config.familias) + 1
+        + 1 + len(anios) + 3
     )
+
+
+def test_aprobacion(paginas):
+    tabla = paginas["estado"]
+    # La fila lleva la fecha de aprobación de la edición vigente, para filtrar y ordenar por ella.
+    fila = re.search(r'<tr [^>]*data-aprobacion="(\d{4}-\d{2}-\d{2})"[^>]*data-texto="iso/iec 27001 ', tabla)
+    assert fila and fila.group(1).startswith("2022")
+    assert re.search(r'<td class="vigente" data-sort="\d{4}-\d{2}-\d{2}">', tabla)
+    # Las sustituidas no tienen edición vigente.
+    assert re.search(r'<tr data-estado="sustituida"[^>]*data-aprobacion=""', tabla)
 
 
 def test_inicio(paginas):
