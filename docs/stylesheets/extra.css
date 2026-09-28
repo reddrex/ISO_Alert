@@ -343,6 +343,22 @@
 .md-typeset h1 + .ficha__nombre { margin-top: -1em; }
 .md-typeset .ficha__nombre { font-size: 1.05rem; color: var(--md-default-fg-color--light); margin-bottom: 0.6em; }
 .md-typeset .ficha__meta { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; align-items: center; font-size: 0.78rem; }
+/* Botón de suscripción al feed de la norma, bajo la cabecera de la ficha. */
+.md-typeset .ficha__acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.8rem; margin: 0.9em 0 1.2em; }
+.md-typeset .md-button.suscribirse {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.45em 1.1em;
+  font-size: 0.75rem;
+}
+.md-typeset .md-button.suscribirse svg { flex: none; }
+[data-md-color-scheme="slate"] .md-typeset .md-button.suscribirse {
+  background-color: var(--md-typeset-a-color);
+  border-color: var(--md-typeset-a-color);
+  color: var(--md-default-bg-color);
+}
+.md-typeset .ficha__acciones-nota { font-size: 0.72rem; color: var(--md-default-fg-color--light); }
 .md-typeset .ficha__pregunta {
   font-size: 1rem;
   font-weight: 600;
