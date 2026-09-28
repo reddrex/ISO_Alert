@@ -62,8 +62,9 @@ extra_javascript:
   - javascripts/estado.js
 
 nav:
-  - Mapa: index.md
-  - Temas: temario/index.md
+  - Estándares internacionales:
+      - Por ámbito: index.md
+      - Por tema: temario/index.md
   - Comparativas: comparativas.md
   - Estado: estado.md
   - Cambios: historial.md

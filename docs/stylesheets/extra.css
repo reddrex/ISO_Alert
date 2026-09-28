@@ -402,6 +402,29 @@
 /* Entrada de la portada */
 .md-typeset .entradas { font-size: 0.85rem; }
 
+/* Subpestañas de «Estándares internacionales» (Por ámbito / Por tema). */
+.md-typeset .subpestanas {
+  display: flex;
+  gap: 0.2rem;
+  margin: 0 0 1.2rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  font-size: 0.8rem;
+}
+.md-typeset .subpestanas a {
+  padding: 0.45em 0.9em;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  color: var(--md-default-fg-color--light);
+  font-weight: 600;
+}
+.md-typeset .subpestanas a:hover { color: var(--md-typeset-a-color); }
+.md-typeset .subpestanas a[aria-current="page"] {
+  color: var(--md-typeset-a-color);
+  border-bottom-color: var(--md-typeset-a-color);
+}
+.md-typeset .leyenda { font-size: 0.75rem; color: var(--md-default-fg-color--light); }
+.md-typeset .leyenda .mapa__normas { display: inline; font-size: 1em; margin: 0; }
+
 /* Enlaces a iso.org: se marcan como externos */
 .md-typeset a[href^="https://www.iso.org/standard/"]::after {
   content: "↗";

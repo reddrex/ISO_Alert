@@ -66,8 +66,12 @@ def test_aprobacion(paginas):
 
 def test_inicio(paginas):
     md = paginas["index"]
+    assert "# Estándares por ámbito" in md and 'aria-current="page">Por ámbito' in md
     assert "Ediciones del temario que ya no son las vigentes" not in md
-    assert 'href="estado/?estado=en_revision"' in md
+    assert "Seguimiento de cambios" not in md and "md-button" not in md
+    # La situación actual está ahora en Cambios.
+    assert 'href="estado/?estado=en_revision"' in paginas["historial"]
+    assert "## Situación actual" in paginas["historial"]
 
 
 def test_escapado(config, indice, tmp_path):
@@ -105,7 +109,7 @@ def test_familias(paginas):
     assert "| [ISO/IEC 27002](../normas/iso-iec-27002.md) <br>" in fam and "¿Qué controles puedo aplicar?" in fam
     # Solo se destacan los estados que requieren atención.
     assert "estado--vigente" not in fam and "estado--sustituida" in fam
-    assert fam.split("\n---\n", 1)[1].lstrip().startswith("[Mapa](../index.md) › [Seguridad y privacidad]")
+    assert fam.split("\n---\n", 1)[1].lstrip().startswith("[Por ámbito](../index.md) › [Seguridad y privacidad]")
     ciclo = paginas["familias"]["ciclo-vida"]
     orden = ["12207", "14764", "15288", "15289"]
     posiciones = [ciclo.index(f"<strong>{n}</strong>") for n in orden]
@@ -141,7 +145,7 @@ def test_fichas(paginas):
     # Enlaces HTML entre fichas: relativos a la carpeta normas/ (Zensical añade el «../»).
     assert '<a href="iso-iec-27000/"' in f and 'href="../iso-iec-27000/"' not in f
     assert '<a href="iso-iec-27000/" rel="prev">' in f and '<a href="iso-iec-27002/" rel="next">' in f
-    assert "[Mapa](../index.md) › [Seguridad y privacidad](../index.md#area-seguridad) › [ISO/IEC 27000]" in f
+    assert "[Por ámbito](../index.md) › [Seguridad y privacidad](../index.md#area-seguridad) › [ISO/IEC 27000]" in f
     # Cada elemento de lista en su propia línea (trim_blocks no debe pegarlos).
     assert ")- **" not in f
     # Series: partes citadas con la descripción del temario.

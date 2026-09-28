@@ -1,16 +1,18 @@
-{% from "_macros.j2" import estado, enlace %}
+{% from "_macros.j2" import subpestanas %}
 ---
-title: Mapa de normas
+title: Por ámbito
 hide:
   - navigation
   - toc
 ---
 
-# Mapa de normas
+{{ subpestanas("ambito") }}
 
-Las {{ resumen.total }} normas técnicas del temario TIC A1, agrupadas en áreas y familias para estudiarlas como una red y no como una lista.
+# Estándares por ámbito
 
-<p class="entradas"><strong>Dos formas de empezar:</strong> elige una familia en el mapa, o parte de tu tema en <a href="temario/">Temas del temario</a>.</p>
+Las {{ resumen.total }} normas técnicas del temario (ISO, IEC, IEEE y sus adopciones europeas y españolas), agrupadas por áreas, cada una con su color, y por familias. Pulsa una familia para ver cómo se relacionan sus normas, o una norma sin familia para ir a su ficha.
+
+<p class="leyenda"><span class="mapa__normas"><span>27001</span></span> en vigor · <span class="mapa__normas"><span class="historica">9126</span></span> sustituida, retirada o no publicada</p>
 
 <div class="mapa">
 {% for b in mapa %}
@@ -23,43 +25,8 @@ Las {{ resumen.total }} normas técnicas del temario TIC A1, agrupadas en áreas
 </a>
 {% endfor %}
 {% if b.sueltas %}
-<p class="mapa__sueltas">{{ "Otras normas:" if b.familias else "Normas:" }} {% for x in b.sueltas %}<a href="{{ x.ficha }}" title="{{ x.nombre }}">{{ x.codigo }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+<p class="mapa__sueltas">{{ "Normas sin familia:" if b.familias else "Normas:" }} {% for x in b.sueltas %}<a href="{{ x.ficha }}" title="{{ x.nombre }}">{{ x.codigo }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
 {% endif %}
 </section>
 {% endfor %}
 </div>
-
-[Temas del temario](temario/index.md){ .md-button .md-button--primary } [Comparativas](comparativas.md){ .md-button } [Cómo leer un código de norma](guia.md){ .md-button }
-
-## Seguimiento de cambios
-
-{% if cambios %}
-**Últimos cambios detectados**
-
-{% for c in cambios[:5] %}
-- {{ c.detectado }} · **{{ c.etiqueta }}**{% if c.filas %} en [{{ c.filas[0].codigo }}](normas/{{ c.filas[0].ancla }}.md){% endif %}: {{ c.resumen }}
-{% endfor %}
-
-[Ver todos los cambios](historial.md) · [Suscribirse a los avisos (feed Atom)](feed.xml)
-
-{% else %}
-Todavía no se ha detectado ningún cambio desde que empezó la vigilancia. Puedes [suscribirte a los avisos](historial.md#como-suscribirse).
-
-{% endif %}
-
-Estado de las normas según ISO ({% if resumen.dato_fecha %}datos del **{{ resumen.dato_fecha }}**, {% endif %}comprobados el **{{ resumen.comprobado }}**). Pulsa un estado para ver sus normas en la tabla.
-
-<table>
-  <thead><tr><th>Estado</th><th>Normas</th></tr></thead>
-  <tbody>
-    {% for e, n in resumen.por_estado if n %}
-    <tr><td><a href="estado/?estado={{ e.value }}">{{ estado(e) }}</a></td><td>{{ n }}</td></tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-{% if resumen.revision_periodica %}
-Además, {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.revision_periodica == 1 else "normas vigentes están" }} en revisión periódica, que casi siempre acaba en confirmación.
-{% endif %}
-
-La web comprueba a diario los datos de ISO y las normas UNE que publica el BOE. Los cambios quedan en el [historial](historial.md), y las ediciones nuevas, modificaciones y anulaciones generan un aviso.

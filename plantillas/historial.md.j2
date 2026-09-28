@@ -1,3 +1,4 @@
+{% from "_macros.j2" import estado %}
 ---
 title: Cambios
 hide:
@@ -6,9 +7,27 @@ hide:
 
 # Cambios detectados
 
-La web compara cada día los datos de ISO con los del día anterior y lee las resoluciones de normas UNE que publica el BOE. Aquí queda cada cambio en una norma vigilada. Las fechas son las del día en que se **detectó** el cambio, que puede ser posterior al cambio real.
+Aquí queda cada cambio en una norma vigilada, de ISO o de UNE. Las fechas son las del día en que se **detectó** el cambio, que puede ser posterior al cambio real. Cada cuánto se comprueba se explica en [Acerca de](acerca.md#frecuencia-de-actualizacion).
 
-{% set avisos = cambios | selectattr("notificable") | list %}
+## Situación actual
+
+Estado de las normas según ISO ({% if resumen.dato_fecha %}datos del **{{ resumen.dato_fecha }}**, {% endif %}comprobados el **{{ resumen.comprobado }}**). Pulsa un estado para ver sus normas en la tabla.
+
+<table>
+  <thead><tr><th>Estado</th><th>Normas</th></tr></thead>
+  <tbody>
+    {% for e, n in resumen.por_estado if n %}
+    <tr><td><a href="estado/?estado={{ e.value }}">{{ estado(e) }}</a></td><td>{{ n }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% if resumen.revision_periodica %}
+Además, {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.revision_periodica == 1 else "normas vigentes están" }} en revisión periódica, que casi siempre acaba en confirmación.
+{% endif %}
+
+## Historial
+
 {% if cambios %}
 | Detectado | Norma | Cambio | Detalle |
 |---|---|---|---|
@@ -18,7 +37,7 @@ La web compara cada día los datos de ISO con los del día anterior y lee las re
 
 En negrita, los cambios que generan aviso: ediciones nuevas, modificaciones y anulaciones (ISO o UNE) de las normas y partes que cita el temario.
 {% else %}
-Todavía no se ha detectado ningún cambio. La vigilancia compara los datos de ISO y lee el BOE cada día; los cambios aparecerán aquí.
+Todavía no se ha detectado ningún cambio desde que empezó la vigilancia. Cuando lo haya, aparecerá aquí.
 {% endif %}
 
 ## Cómo suscribirse

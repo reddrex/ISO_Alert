@@ -1,11 +1,14 @@
+{% from "_macros.j2" import subpestanas %}
 ---
-title: Temas del temario
+title: Por tema
 hide:
   - navigation
   - toc
 ---
 
-# Temas del temario
+{{ subpestanas("tema", "../") }}
+
+# Estándares por tema del temario
 
 Los {{ temario | length }} temas del temario TIC A1 que citan normas técnicas. Cada tema tiene su página con las normas que hay que saber, una **asociación para el examen** que las ordena de lo general a lo específico y cómo encajan entre sí.
 

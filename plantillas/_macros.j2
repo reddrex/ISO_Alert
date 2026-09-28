@@ -27,3 +27,8 @@
 {% macro une_detalle(e) -%}
 {{ une_enlace(e) }}{% if e.iso_adoptada %}, adopta la {{ e.iso_adoptada }}{% elif e.deducido %}, que por fechas adopta la edición ISO vigente{% endif %}{% if e.aprobada %} (aprobada en {{ e.aprobada.mes or e.aprobada.fecha[:7] }}){% endif %}{% if e.estado == "anterior" %} {{ une_marca("anterior", "edición ISO anterior") }}{% endif %}
 {%- endmacro %}
+
+{# Subpestañas de «Estándares internacionales». ``raiz`` es la ruta hasta la raíz del sitio. #}
+{% macro subpestanas(activa, raiz="") -%}
+<nav class="subpestanas" aria-label="Estándares internacionales"><a href="{{ raiz or './' }}"{% if activa == "ambito" %} aria-current="page"{% endif %}>Por ámbito</a><a href="{{ raiz }}temario/"{% if activa == "tema" %} aria-current="page"{% endif %}>Por tema</a></nav>
+{%- endmacro %}
