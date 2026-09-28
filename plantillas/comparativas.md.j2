@@ -1,3 +1,4 @@
+{% from "_macros.j2" import une_enlace %}
 {% macro n(codigo) -%}{% set x = por_codigo[codigo] %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){%- endmacro %}
 {% macro ed(codigo, parte=None) -%}{% set x = por_codigo[codigo] %}{% if parte %}{% set ps = (x.partes.citadas + x.partes.otras) | selectattr("parte", "equalto", parte) | list %}{{ ps[0].ultima.anio if ps and ps[0].ultima else "—" }}{% elif x.vigentes %}{{ x.vigentes[-1].anio }}{% else %}—{% endif %}{%- endmacro %}
 ---
@@ -104,12 +105,20 @@ Las normas ISO de IFPUG y NESMA recogen los puntos de función **sin ajustar**: 
 
 ## Códigos ISO y UNE
 
-La versión española de una norma suele publicarse después que la ISO, a veces pasando antes por una norma europea (EN). Estas son las normas para las que el temario cita el código UNE:
+La versión española de una norma suele publicarse después que la ISO, a veces pasando antes por una norma europea (EN). {% if une_cobertura %}Estas son las normas del temario con una UNE vigente según el BOE; «edición ISO anterior» indica que la UNE todavía adopta una edición ISO ya sustituida:
+
+| Norma ISO | Edición ISO vigente | Norma UNE vigente | ¿Adopta la edición vigente? |
+|---|---|---|---|
+{% for x in filas if x.une_boe and x.alcance == "norma" and x.une_boe.vigentes %}
+| [{{ x.codigo }}](normas/{{ x.ancla }}.md) | {{ ed(x.codigo) }} | {{ une_enlace(x.une_boe.vigentes[-1]) }} | {{ {"al_dia": "Sí", "anterior": "No, adopta la " ~ (x.une_boe.vigentes[-1].iso_adoptada or "anterior"), "sin_dato": "Sin dato"}[x.une_boe.vigentes[-1].estado] }} |
+{% endfor %}
+{% else %}Estas son las normas para las que el temario cita el código UNE:
 
 | Norma UNE citada | Norma ISO | Edición ISO vigente |
 |---|---|---|
 {% for x in filas if x.une %}
 | {{ x.une }} | [{{ x.codigo }}](normas/{{ x.ancla }}.md) | {{ ed(x.codigo) }} |
 {% endfor %}
+{% endif %}
 
 Cómo se lee el prefijo: `UNE-ISO` es una adopción directa de la norma ISO; `UNE-EN ISO`, una adopción de la versión europea. Consulta la [guía](guia.md) para más detalle.

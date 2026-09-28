@@ -1,4 +1,4 @@
-{% from "_macros.j2" import estado, enlace, enlaces %}
+{% from "_macros.j2" import estado, enlace, enlaces, une_enlace, une_marca, une_detalle %}
 {% macro ref(x) -%}[{{ x.codigo }}]({{ x.ancla }}.md){%- endmacro %}
 ---
 title: "{{ f.codigo }} · {{ f.nombre }}"
@@ -13,7 +13,7 @@ hide:
 
 <p class="ficha__nombre">{{ f.nombre }}</p>
 
-<p class="ficha__meta">{{ estado(f.estado, f.subestado) }}{% if f.naturaleza %} <span>{{ f.naturaleza }}{% if f.certificable %} · <strong>certificable</strong>{% endif %}</span>{% endif %}{% if f.alcance == "norma" and f.vigentes %} <span>Edición vigente: {{ enlace(f.vigentes[-1]) }}{% if f.suplementos %} + {{ f.suplementos | length }} modificación{{ "es" if f.suplementos | length > 1 else "" }}{% endif %}</span>{% endif %}</p>
+<p class="ficha__meta">{{ estado(f.estado, f.subestado) }}{% if f.naturaleza %} <span>{{ f.naturaleza }}{% if f.certificable %} · <strong>certificable</strong>{% endif %}</span>{% endif %}{% if f.alcance == "norma" and f.vigentes %} <span>Edición vigente: {{ enlace(f.vigentes[-1]) }}{% if f.suplementos %} + {{ f.suplementos | length }} modificación{{ "es" if f.suplementos | length > 1 else "" }}{% endif %}</span>{% endif %}{% if f.alcance == "norma" and f.une_boe and f.une_boe.vigentes %} <span>UNE: {{ une_enlace(f.une_boe.vigentes[-1]) }}{% if f.une_boe.estado == "anterior" %} {{ une_marca("anterior", "edición ISO anterior") }}{% endif %}</span>{% endif %}</p>
 
 {% if f.pregunta %}
 <p class="ficha__pregunta"><span>Pregunta que responde</span>{{ f.pregunta }}</p>
@@ -32,7 +32,7 @@ hide:
 {% endif %}
 {% if f.superada %}
 !!! warning "El temario cita la edición de {{ f.edicion_citada.anio }}"
-    {% if f.edicion_citada.resultado == "superada" %}Esa edición ya no es la vigente{% else %}No hay edición ISO de ese año; probablemente es el año de la versión UNE{% endif %}{% if f.vigentes %}: la vigente es {{ enlace(f.vigentes[-1]) }}{% endif %}.
+    {% if f.edicion_citada.resultado == "superada" %}Esa edición ya no es la vigente{% elif f.une_boe and f.une_boe.anios.get(f.edicion_citada.anio) %}No hay edición ISO de ese año: es el año de la {{ f.une_boe.anios[f.edicion_citada.anio] }}{% else %}No hay edición ISO de ese año; probablemente es el año de la versión UNE{% endif %}{% if f.vigentes %}: la vigente es {{ enlace(f.vigentes[-1]) }}{% endif %}.
 
 {% endif %}
 {% if cadena | length > 1 %}
@@ -101,12 +101,24 @@ hide:
 | Partes | {% if f.partes.vigentes %}{{ f.partes.vigentes }} de {{ f.partes.relevantes }} {{ "partes citadas" if f.partes.otras else "partes" }} vigentes{% elif f.sustituida_por %}Sustituida por {{ enlaces(f.sustituida_por) }}{% else %}Sin partes vigentes{% endif %} |
 {% endif %}
 {% if f.edicion_citada %}
-| Edición que cita el temario | {{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "vigente" %}, que sigue vigente{% elif f.edicion_citada.resultado == "superada" %}, que ya no es la vigente{% else %}: no hay edición ISO de ese año (puede ser el de la UNE){% endif %} |
+| Edición que cita el temario | {{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "vigente" %}, que sigue vigente{% elif f.edicion_citada.resultado == "superada" %}, que ya no es la vigente{% elif f.une_boe and f.une_boe.anios.get(f.edicion_citada.anio) %}: no hay edición ISO de ese año, es el de la {{ f.une_boe.anios[f.edicion_citada.anio] }}{% else %}: no hay edición ISO de ese año (puede ser el de la UNE){% endif %} |
 {% endif %}
 {% if f.titulo_en %}
 | Título oficial (ISO, en inglés) | <span lang="en">{{ f.titulo_en }}</span> |
 {% endif %}
-{% if f.une %}
+{% if f.une_boe %}
+{% if f.une_boe.vigentes %}
+| {{ "Normas UNE vigentes" if f.une_boe.vigentes | length > 1 else "Norma UNE vigente" }} | {% for e in f.une_boe.vigentes %}{{ une_detalle(e) }}{% if not loop.last %}<br>{% endif %}{% endfor %}{% if f.une_boe.suplementos %}<br>Con {% for e in f.une_boe.suplementos %}{{ une_enlace(e) }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %} |
+{% else %}
+| Norma UNE | No consta ninguna vigente en el BOE{% if f.une %}; el temario cita {{ f.une }}{% if f.une_boe.historicas %} (consulta la historia UNE más abajo){% else %}, que puede estar en una relación del BOE publicada como imagen y que no se puede leer{% endif %}{% endif %} |
+{% endif %}
+{% if f.une_boe.proyectos %}
+| UNE en preparación | {% for p in f.une_boe.proyectos %}<a href="{{ p.url }}">{{ p.codigo }}</a>{% if p.iso_adoptada %}, adoptará la {{ p.iso_adoptada }}{% endif %} (información pública, {{ p.mes or p.fecha[:7] }}){% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endif %}
+{% if f.une and f.une_boe.vigentes %}
+| Norma UNE que cita el temario | {{ f.une }} |
+{% endif %}
+{% elif f.une %}
 | Norma UNE que cita el temario | {{ f.une }} |
 {% endif %}
 {% if f.familia %}
@@ -130,6 +142,15 @@ hide:
 
 {% endfor %}
 {% endif %}
+{% if f.une_boe and (f.une_boe.vigentes or f.une_boe.historicas) %}
+??? note "Historia de las normas UNE"
+{% for e in f.une_boe.historia %}
+    - {{ e.anio or "—" }} · {{ une_enlace(e) }} · {% if e.sustituida_por %}sustituida por {{ e.sustituida_por | join(", ") }}{% elif e.anulada %}anulada ({{ e.anulada.mes or e.anulada.fecha[:7] }}){% else %}vigente{% endif %}
+{% endfor %}
+
+    Según las resoluciones mensuales del BOE, leídas desde {{ une_cobertura.primera_tabla[:4] }}. Las UNE anteriores solo aparecen si una posterior las sustituye o se anulan.
+
+{% endif %}
 ## Cambios detectados
 
 {% if cambios_norma %}
@@ -140,7 +161,7 @@ hide:
 Ningún cambio desde que empezó la vigilancia.
 {% endif %}
 
-<p class="suscripcion"><a href="../feeds/{{ f.ancla }}.xml">Suscribirse a los cambios de esta norma (Atom)</a></p>
+<p class="suscripcion"><a href="../feeds/{{ f.ancla }}.xml" type="application/atom+xml">Suscribirse a los cambios de esta norma (feed Atom)</a></p>
 
 {% if anterior or siguiente %}
 <nav class="paginacion" aria-label="Otras normas de la familia">{% if anterior %}<a href="{{ anterior.ancla }}/" rel="prev">← {{ anterior.codigo }}</a>{% else %}<span></span>{% endif %}{% if siguiente %}<a href="{{ siguiente.ancla }}/" rel="next">{{ siguiente.codigo }} →</a>{% endif %}</nav>
@@ -148,4 +169,4 @@ Ningún cambio desde que empezó la vigilancia.
 {% endif %}
 ---
 
-*Estado y ediciones: [ISO Open Data](https://www.iso.org/open-data.html) (ODC-By 1.0){% if resumen.dato_fecha %}, datos del {{ resumen.dato_fecha }}{% endif %}. Los textos son orientativos y no sustituyen a la norma.*
+*Estado y ediciones: [ISO Open Data](https://www.iso.org/open-data.html) (ODC-By 1.0){% if resumen.dato_fecha %}, datos del {{ resumen.dato_fecha }}{% endif %}{% if une_cobertura %}; normas UNE: [BOE](https://www.boe.es/datosabiertos/), leído hasta el {{ une_cobertura.ultimo_dia }}{% endif %}. Los textos son orientativos y no sustituyen a la norma.*

@@ -29,6 +29,8 @@ TIPOS = {
     "confirmada": "Confirmada",
     "anulacion_propuesta": "Anulación propuesta",
     "alta_vigilancia": "Empieza a vigilarse",
+    "adopcion_une": "Norma UNE nueva",
+    "proyecto_une_info_publica": "Proyecto UNE en información pública",
 }
 # Tipos que generan aviso (Issue y feed general), siempre que afecten a partes citadas.
 NOTIFICABLES = {"edicion_nueva", "modificacion_publicada", "anulacion"}
@@ -44,7 +46,7 @@ class Evento:
     detectado: str  # fecha de detección (AAAA-MM-DD)
     dato_fecha: str | None  # fecha del dataset ISO
     fuente: str = "iso"
-    entregable: dict | None = None  # {id, referencia}
+    entregable: dict | None = None  # ISO: {id, referencia}; UNE: {referencia, url} (resolución del BOE)
     sustituye: list[dict] = field(default_factory=list)
     etapa_anterior: int | None = None
     etapa_nueva: int | None = None

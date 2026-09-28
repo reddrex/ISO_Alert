@@ -21,12 +21,14 @@ ETIQUETA_AVISO = "aviso"
 # etiqueta: (color, descripción)
 ETIQUETAS = {
     "aviso": ("1f4e5f", "Aviso automático de cambio en una norma vigilada"),
-    "edicion-nueva": ("2e7d32", "ISO ha publicado una edición nueva"),
+    "edicion-nueva": ("2e7d32", "ISO o UNE han publicado una edición nueva"),
     "modificacion": ("1f5fa8", "ISO ha publicado una modificación (Amd)"),
-    "anulacion": ("b3261e", "ISO ha anulado una norma sin sustituirla"),
+    "anulacion": ("b3261e", "ISO o UNE han anulado una norma sin sustituirla"),
     "parte-nueva": ("5b3fa8", "Parte nueva de una serie vigilada"),
     "fuente:iso": ("bfbfbf", "Detectado en ISO Open Data"),
+    "fuente:une": ("bfbfbf", "Detectado en el BOE (normas UNE)"),
     "fallo-fuente": ("d93f0b", "La fuente de datos ha fallado o ha cambiado de formato"),
+    "fallo-boe": ("d93f0b", "La lectura del BOE (normas UNE) ha fallado"),
     "fuente-desactualizada": ("fbca04", "La fuente de datos lleva días sin actualizarse"),
     "revision-manual": ("d93f0b", "Demasiados cambios a la vez: revisar antes de avisar"),
 }
@@ -35,6 +37,7 @@ ETIQUETA_TIPO = {
     "modificacion_publicada": "modificacion",
     "anulacion": "anulacion",
     "parte_nueva": "parte-nueva",
+    "adopcion_une": "edicion-nueva",
 }
 MAX_AVISOS = 15
 
@@ -116,7 +119,8 @@ def _cuerpo(grupo: list[Evento], sitio: str) -> str:
     for e in grupo:
         lineas.append(f"**{e.resumen}**")
         if e.entregable:
-            lineas.append(f"- Documento: [{e.entregable['referencia']}](https://www.iso.org/standard/{e.entregable['id']}.html)")
+            url = e.entregable.get("url") or f"https://www.iso.org/standard/{e.entregable['id']}.html"
+            lineas.append(f"- {'Resolución del BOE' if e.fuente == 'une' else 'Documento'}: [{e.entregable['referencia']}]({url})")
         if e.sustituye:
             lineas.append("- Sustituye a: " + ", ".join(s["referencia"] for s in e.sustituye))
         lineas.append("")
@@ -124,11 +128,16 @@ def _cuerpo(grupo: list[Evento], sitio: str) -> str:
     normas = ", ".join(f"[{c}]({sitio}normas/{ancla(c)}/)" for c in ev.normas)
     lineas += [
         f"- Norma vigilada: {normas}",
-        f"- Detectado el {ev.detectado}" + (f" con los datos de ISO del {ev.dato_fecha}." if ev.dato_fecha else "."),
+        f"- Detectado el {ev.detectado}" + (
+            f" en el BOE del {ev.dato_fecha}." if ev.fuente == "une"
+            else f" con los datos de ISO del {ev.dato_fecha}." if ev.dato_fecha else "."
+        ),
         "",
         f"Historial completo: {sitio}historial/",
         "",
-        "*Aviso automático de una web no oficial: compruébalo en [iso.org](https://www.iso.org) antes de darlo por seguro.*",
+        "*Aviso automático de una web no oficial: compruébalo en "
+        + ("[une.org](https://www.une.org) o en el BOE" if ev.fuente == "une" else "[iso.org](https://www.iso.org)")
+        + " antes de darlo por seguro.*",
         "",
         *(_marcador(e.id) for e in grupo),
     ]
@@ -175,7 +184,7 @@ def publicar(eventos: list[Evento], cliente: GitHub, sitio: str, maximo: int = M
         ya = next((existentes[e.id] for e in grupo if e.id in existentes), None)
         numero = ya or cliente.crear_issue(
             _titulo(grupo), _cuerpo(grupo, sitio),
-            [ETIQUETA_AVISO, ETIQUETA_TIPO[grupo[0].tipo], "fuente:iso"],
+            [ETIQUETA_AVISO, ETIQUETA_TIPO[grupo[0].tipo], f"fuente:{grupo[0].fuente}"],
         )
         for e in grupo:
             numeros[e.id] = numero

@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{# Descubrimiento automático: basta con pegar la dirección de la web en un lector de feeds. #}
+{% block extrahead %}
+<link rel="alternate" type="application/atom+xml" title="{{ config.site_name }} · avisos" href="{{ config.site_url }}feed.xml">
+{% endblock %}
+
 {% block announce %}
 Web no oficial. Los datos proceden de ISO Open Data y pueden llevar días de retraso: ante cualquier duda, consulta el organismo correspondiente.
 {% endblock %}

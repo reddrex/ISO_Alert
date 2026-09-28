@@ -6,7 +6,7 @@ hide:
 
 # Cambios detectados
 
-La web compara cada día los datos de ISO con los del día anterior. Aquí queda cada cambio en una norma vigilada. Las fechas son las del día en que se **detectó** el cambio, que puede ser posterior al cambio real.
+La web compara cada día los datos de ISO con los del día anterior y lee las resoluciones de normas UNE que publica el BOE. Aquí queda cada cambio en una norma vigilada. Las fechas son las del día en que se **detectó** el cambio, que puede ser posterior al cambio real.
 
 {% set avisos = cambios | selectattr("notificable") | list %}
 {% if cambios %}
@@ -16,16 +16,16 @@ La web compara cada día los datos de ISO con los del día anterior. Aquí queda
 | {{ c.detectado }} | {% for x in c.filas %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if not loop.last %}, {% endif %}{% endfor %} | {{ ("**" ~ c.etiqueta ~ "**") if c.notificable else c.etiqueta }} | {{ c.resumen }}{{ (" [Aviso #" ~ c.issue ~ "](https://github.com/reddrex/ISO_Alert/issues/" ~ c.issue ~ ")") if c.issue else "" }} |
 {% endfor %}
 
-En negrita, los cambios que generan aviso: ediciones nuevas, modificaciones y anulaciones de las normas y partes que cita el temario.
+En negrita, los cambios que generan aviso: ediciones nuevas, modificaciones y anulaciones (ISO o UNE) de las normas y partes que cita el temario.
 {% else %}
-Todavía no se ha detectado ningún cambio. La vigilancia compara los datos de ISO cada día y los cambios aparecerán aquí.
+Todavía no se ha detectado ningún cambio. La vigilancia compara los datos de ISO y lee el BOE cada día; los cambios aparecerán aquí.
 {% endif %}
 
 ## Cómo suscribirse
 
 No hace falta registrarse ni dar ningún dato personal:
 
-- **Todos los avisos por RSS/Atom:** añade [este feed]({{ sitio }}feed.xml) a tu lector de feeds. Incluye las ediciones nuevas, modificaciones y anulaciones.
+- **Todos los avisos por RSS/Atom:** añade [este feed]({{ sitio }}feed.xml) a tu lector de feeds. Incluye las ediciones nuevas, modificaciones y anulaciones, de ISO y de UNE.
 - **Solo las normas que te interesan:** cada ficha de norma tiene su propio feed, con todos sus cambios, en el enlace «Suscribirse a los cambios de esta norma».
 - **Por correo, con GitHub:** en el [repositorio](https://github.com/reddrex/ISO_Alert), pulsa *Watch* → *Custom* → *Issues*. Cada aviso se publica como un Issue.
 
@@ -39,5 +39,8 @@ No hace falta registrarse ni dar ningún dato personal:
 | Parte nueva | ISO publica una parte nueva de una serie | Solo en series sin partes citadas |
 | Revisión iniciada, proyecto que avanza o se cancela | Hay una edición nueva en preparación | No |
 | Revisión periódica, confirmada, anulación propuesta | Revisión quinquenal y sus resultados | No |
+| Norma UNE nueva | El BOE publica una UNE que adopta la norma (edición nueva o modificación) | Sí |
+| Anulación (UNE) | El BOE publica la anulación de la UNE sin otra que la sustituya | Sí |
+| Proyecto UNE en información pública | El BOE somete a información pública un proyecto (PNE) de la norma | No |
 
-Los cambios en partes de una serie que no cita el temario se registran, pero no generan aviso.
+Los cambios en partes de una serie que no cita el temario se registran, pero no generan aviso. Las normas UNE se leen de las relaciones mensuales del BOE, así que llegan con un mes o dos de retraso respecto a su aprobación.

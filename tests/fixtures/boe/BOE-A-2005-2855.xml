@@ -1,0 +1,2298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documento fecha_actualizacion="20251218222601">
+  <metadatos>
+    <identificador>BOE-A-2005-2855</identificador>
+    <origen_legislativo codigo="1">Estatal</origen_legislativo>
+    <departamento codigo="5251">Ministerio de Industria, Turismo y Comercio</departamento>
+    <rango codigo="1370">Resolución</rango>
+    <fecha_disposicion>20050125</fecha_disposicion>
+    <numero_oficial/>
+    <titulo>Resolución de 25 de enero de 2005, de la Dirección General de Desarrollo Industrial, por la que se publica la relación de normas UNE aprobadas por AENOR durante el mes de diciembre de 2004.</titulo>
+    <diario codigo="BOE">Boletín Oficial del Estado</diario>
+    <fecha_publicacion>20050219</fecha_publicacion>
+    <diario_numero>43</diario_numero>
+    <seccion>3</seccion>
+    <subseccion/>
+    <pagina_inicial>6131</pagina_inicial>
+    <pagina_final>6136</pagina_final>
+    <suplemento_pagina_inicial/>
+    <suplemento_pagina_final/>
+    <url_pdf>https://www.boe.es/boe/dias/2005/02/19/pdfs/A06131-06136.pdf</url_pdf>
+    <url_epub/>
+    <url_pdf_catalan/>
+    <url_pdf_euskera/>
+    <url_pdf_gallego/>
+    <url_pdf_valenciano/>
+    <estatus_legislativo>L</estatus_legislativo>
+    <fecha_vigencia/>
+    <estatus_derogacion>N</estatus_derogacion>
+    <fecha_derogacion/>
+    <judicialmente_anulada>N</judicialmente_anulada>
+    <fecha_anulacion/>
+    <vigencia_agotada>N</vigencia_agotada>
+    <estado_consolidacion codigo="0"/>
+    <letra_imagen>A</letra_imagen>
+    <suplemento_letra_imagen/>
+    <url_eli>https://www.boe.es/eli/es/res/2005/01/25/(3)</url_eli>
+  </metadatos>
+  <metadata-eli>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+      <eli:LegalResource rdf:about="https://www.boe.es/eli/es/res/2005/01/25/(3)">
+        <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+        <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/res"/>
+        <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2005-2855</eli:id_local>
+        <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-01-25</eli:date_document>
+        <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(3)</eli:number>
+        <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+        <eli:has_member>
+          <eli:LegalResource rdf:about="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof">
+            <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+            <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/res"/>
+            <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2005-2855</eli:id_local>
+            <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-01-25</eli:date_document>
+            <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(3)</eli:number>
+            <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+            <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/dof"/>
+            <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/res/2005/01/25/(3)"/>
+            <eli:is_realized_by>
+              <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof/spa">
+                <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resolución de 25 de enero de 2005, de la Dirección General de Desarrollo Industrial, por la que se publica la relación de normas UNE aprobadas por AENOR durante el mes de diciembre de 2004.</eli:title>
+                <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2005-02-19</eli:date_publication>
+                <eli:realizes rdf:resource="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof"/>
+                <eli:is_embodied_by>
+                  <eli:Format rdf:about="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof/spa/html">
+                    <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                    <eli:embodies rdf:resource="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof/spa"/>
+                  </eli:Format>
+                </eli:is_embodied_by>
+                <eli:is_embodied_by>
+                  <eli:Format rdf:about="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof/spa/pdf">
+                    <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                    <eli:embodies rdf:resource="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof/spa"/>
+                  </eli:Format>
+                </eli:is_embodied_by>
+                <eli:is_embodied_by>
+                  <eli:Format rdf:about="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof/spa/xml">
+                    <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/xml"/>
+                    <eli:embodies rdf:resource="https://www.boe.es/eli/es/res/2005/01/25/(3)/dof/spa"/>
+                  </eli:Format>
+                </eli:is_embodied_by>
+              </eli:LegalExpression>
+            </eli:is_realized_by>
+          </eli:LegalResource>
+        </eli:has_member>
+      </eli:LegalResource>
+    </rdf:RDF>
+  </metadata-eli>
+  <analisis>
+    <materias>
+      <materia codigo="5159" orden="">Normalización</materia>
+    </materias>
+    <notas>
+      <nota codigo="38" orden="230">Efectos desde el 20 de febrero de 2005</nota>
+    </notas>
+    <referencias>
+      <anteriores>
+        <anterior referencia="BOE-A-1996-2468" orden="3060">
+          <palabra codigo="440">DE CONFORMIDAD con</palabra>
+          <texto>el art. 11.f) del Reglamento aprobado por Real Decreto 2200/1995, de 28 de diciembre</texto>
+        </anterior>
+      </anteriores>
+      <posteriores/>
+    </referencias>
+    <alertas>
+      <alerta codigo="129" orden="">Tecnología e investigación</alerta>
+    </alertas>
+  </analisis>
+  <texto>
+    <p class="ATEXTO_NORMAL">
+En cumplimiento de lo dispuesto en el artículo 11.º, apartado f), del Reglamento de la Infraestructura para la Calidad y Seguridad Industrial, aprobado por Real Decreto 2200/1995, de 28 de diciembre, (BOE de 6 de febrero 1996), y visto el expediente de las normas aprobadas por la Asociación Española de Normalización y Certificación (AENOR), entidad designada por Orden del Ministerio de Industria y Energía de 26 de febrero de 1986, de acuerdo con el Real Decreto 1614/1985, de 1 de agosto, y reconocida por la Disposición adicional primera del citado Real Decreto 2200/1995, de 28 de diciembre.
+Esta Dirección General ha resuelto publicar en el Boletín Oficial del Estado, la relación de normas españolas UNE aprobadas por AENOR, correspondientes al mes de diciembre de 2004, identificadas por su título y código numérico, que figura como anexo a la presente Resolución.
+</p>
+    <p class="ATEXTO_NORMALySIG">
+Esta Resolución causará efecto a partir del día siguiente al de su publicación en el Boletín Oficial del Estado.
+</p>
+    <p class="ATEXTO_BLANCO_6">
+Lo que se comunica a los efectos oportunos.
+</p>
+    <p class="ATEXTO_NORMAL">
+Madrid, 25 de enero de 2005.-El Director General, Jesús Candil Gonzalo.</p>
+    <table>
+      <tr>
+        <td colspan="3" rowspan="1">
+          <p>ANEXO</p>
+          <p>Normas editadas en el mes de diciembre de 2004</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>Código</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Título</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Sustituye a:</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 17703:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Rosca métrica ISO para usos generales. Selección de diámetros y pasos para tornillería.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 17703:1978</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 20540:2001/1M:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Bobinas de bloqueo para instalaciones de corriente portadora en redes de corriente alterna de alta tensión.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 21123-4/1M:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Cables eléctricos de utilización industrial de tensión asignada 0,6/1 kV. Parte 4: Cables con aislamiento de polietileno reticulado y cubierta de poliolefina.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 21302-151:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Vocabulario electrotécnico. Parte 151: Dispositivos eléctricos y magnéticos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 21302-151:1981UNE 21302-151/1M:1992</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 23007-2:1998 ERRATUM:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Sistemas de detección y de alarma de incendios. Parte 2: Equipos de control e indicación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 23007-2:1999 ERRATUM</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 23120:2003 ERRATUM:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Mantenimiento de extintores portátiles contra incendios.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 23585:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad contra incendios. Sistemas de control de temperatura y evacuación de humos (SCTEH). Requisitos y métodos de cálculo y diseño para proyectar un sistema de control de temperatura y de evacuación de humos en caso de incendio.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 26299-2:2004 ERRATUM</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Vehículos de carretera. Dispositivos eléctricos/electrónicos de conmutación. Parte 2: Dispositivos electrónicos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 36745:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Método de ensayo para determinar el módulo de elasticidad en armaduras de acero para hormigón.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 48306:2004 ERRATUM</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Pinturas y barnices. Pintura de poliuretano alifático de acabado, de altas prestaciones.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 53950:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Plásticos. Ensayos de materias primas para poliuretanos. Polioles. Determinación del punto de enturbiamiento y del punto de clarificación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 53951:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Plásticos. Ensayos de materias primas para poliuretanos. Polioles. Determinación del pH.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 56922:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Tapones de corcho aglomerado para vinos tranquilos. Métodos de ensayo y especificaciones.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 56922:1998</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 58011:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Almacenaje en estanterías metálicas. Clasificación. Definiciones. Terminología.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 58003:1978</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 69034:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Neumáticos, llantas y válvulas. Neumáticos para vehículos agrícolas. Generalidades.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 69034:1998</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 69043:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Neumáticos, llantas y válvulas. Neumáticos para bicicletas. Recomendaciones de seguridad.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 73320-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Procedimiento para la determinación de la radiactividad ambiental. Toma de muestras. Parte 2: Sedimentos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 73340-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Procedimiento para la determinación de la radiactividad ambiental. Métodos analíticos. Parte 3: Determinación de la concentración de actividad de 89 Sr y 90 Sr en suelos y sedimentos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 77260-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aire de interiores. Parte 3: Determinación de formaldehído y otros compuestos carbonílicos. Método de muestreo activo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83505:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hormigones con fibras. Extracción y conservación de probetas testigo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83505:1986</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83506:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hormigones con fibras. Refrentado de probetas con mortero de azufre.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83506:1986</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83507:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hormigones con fibras. Rotura por compresión.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83507:1986</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83508:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hormigones con fibras. Determinación del índice de tenacidad a compresión.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83508:1990</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83509:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hormigones con fibras. Rotura por flexotracción.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83509:1988UNE 83509:1995 ERRATUM</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83510:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hormigones con fibras. Determinación del índice de tenacidad y resistencia a primera fisura.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 83510:1989</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 102014-2:2004 ERRATUM</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Yesos especiales de aplicación manual para la construcción. Definiciones y especificaciones. Parte 2: Yesos de alta dureza.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 102015:2004 ERRATUM</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Yesos de construcción de proyección mecánica. Definiciones y especificaciones.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 102041:2004 IN</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Montajes de sistemas de trasdosados con placas de yeso laminado. Definiciones, aplicaciones y recomendaciones.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 115453:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Maquinaria para movimiento de tierras. Zanjadoras. Terminología y especificaciones comerciales.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 127916:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Tubos y piezas complementarias de hormigón en masa, de hormigón armado y hormigón con fibra de acero. Complemento nacional a la Norma UNE-EN 1916:2003.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 139803:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aplicaciones informáticas para personas con discapacidad. Requisitos de accesibilidad para contenidos en la Web.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 155118:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hortalizas frescas. Producción controlada. Puerro.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 155119:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hortalizas frescas. Producción controlada. Alcachofa.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 155120:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hortalizas frescas. Producción controlada. Coliflor.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 155124:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Hortalizas frescas. Producción controlada. Apio.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 155208:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Frutas frescas. Producción controlada. Uva de mesa.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 175001-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Calidad de servicio para pequeño comercio. Parte 1: Requisitos generales.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>EA 0012:2002</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 175001-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Calidad de servicio para pequeño comercio. Parte 2: Requisitos para pescaderías.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE 215001:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Procedimientos normalizados para la medida de los campos eléctricos y magnéticos de frecuencia industrial producidos por las líneas eléctricas de alta tensión.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-CEN/TS 13763-27:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Explosivos para uso civil. Detonadores y relés. Parte 27: Definiciones, métodos y requisitos de los sistemas de iniciación electrónicos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-CEN/TS 14821-6:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Información de tráfico y viaje (TTI). Mensajes TTI vía redes celulares. Parte 6: Servicios externos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 26:1997/A2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aparatos de producción instantánea de agua caliente para usos sanitarios provistos de quemadores atmosféricos que utilizan combustibles gaseosos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 71-1/A4:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad de los juguetes. Parte 1: Propiedades mecánicas y físicas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 207/A1/AC:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Protección individual de los ojos. Filtros y protectores de los ojos contra la radiación láser (gafas de protección láser).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 215:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Válvulas termostáticas para radiadores. Requisitos y métodos de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 19801-1:1990HD 1215.2:1988HD 1215.2/AC1:1989</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 342:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ropas de protección. Conjuntos y prendas de protección contra el frío.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ENV 342:1999</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 403:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Equipos de protección respiratoria para evacuación. Equipos filtrantes con capucha para evacuación de incendios. Requisitos, ensayos, marcado.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 403:1994</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 437:2004 ERRATUM</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Gases de ensayo. Presiones de ensayo. Categorías de los aparatos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 437/A1:1997UNE-EN 437/A2:2001</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 622-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Tableros de fibras. Especificaciones. Parte 2: Especificaciones para los tableros de fibras duros.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 622-2:1997</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 748:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Equipos de campos de juego. Porterías de fútbol. Requisitos funcionales y de seguridad, métodos de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 748:1999</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 878:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos químicos utilizados para el tratamiento del agua destinada al consumo humano. Sulfato de aluminio.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 878:1997</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 932-3/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ensayos para determinar las propiedades generales de los áridos. Parte 3: Procedimiento y terminología para la descripción petrográfica simplificada.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 933-3/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ensayos para determinar las propiedades geométricas de los áridos. Parte 3: Determinación de la forma de las partículas. Índice de lajas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1062-7:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Pinturas y barnices. Materiales de recubrimiento y sistemas de recubrimiento para albañilería exterior y hormigón. Parte 7: Determinación de la resistencia a la fisuración.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1097-1/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ensayos para determinar las propiedades mecánicas y físicas de los áridos. Parte 1: Determinación de la resistencia al desgaste (Micro-deval).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1341:2004 ERRATUM</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Baldosas de piedra natural para uso como pavimento exterior. Requisitos y métodos de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1341:2003 ERRATUM</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1639:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Productos sanitarios para odontología. Instrumentos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1639:1996</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1640:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Productos sanitarios para odontología. Equipos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1640:1996</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1641:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Productos sanitarios para odontología. Materiales.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1641:1996</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1642:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Productos sanitarios para odontología. Implantes dentales.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1642:1996</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1870-11:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad de las máquinas para trabajar la madera. Sierras circulares. Parte 11: Tronzadoras automáticas y semiautomáticas con unidad de corte horizontal (brazo de corte radial).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1870-12:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad de las máquinas para trabajar la madera. Sierras circulares. Parte 12: Tronzadoras pendulares.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 10226-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Roscas de tuberías para uniones con estanquidad en la rosca. Parte 1: Roscas exteriores cónicas y roscas interiores cilíndricas. Dimensiones, tolerancias y designación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 19009-1:1984</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 12052:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Informática sanitaria. Imagen digital. Comunicación, flujo de trabajo y gestión de datos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ENV 12052:1998UNE-ENV 12623:1997UNE-ENV 12922-1:1998UNE-ENV 13939:2002</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 12195-4:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Dispositivos para la sujeción de la carga en vehículos de carretera. Seguridad. Parte 4: Cables de amarre de acero.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 12251:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Informática sanitaria. Identificación segura de usuario para sanidad. Gestión y seguridad de la autenticación por contraseñas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ENV 12251:2001</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 12560-7:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Bridas y sus uniones. Juntas para las bridas designadas por Clase. Parte 7: Juntas metaloplásticas revestidas para bridas de acero.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 12792:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ventilación de edificios. Símbolos, terminología y símbolos gráficos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 100000:1995UNE 100000/1M:1997UNE 100700:1991</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 12859/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Paneles de yeso. Definiciones, especificaciones y métodos de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 12965:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Tractores y maquinaria agrícola y forestal. Ejes de transmisión de potencia a cardan y sus protecciones. Seguridad.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13164/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos aislantes térmicos para aplicaciones en la edificación. Productos manufacturados de poliestireno extruido (XPS). Especificación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13165/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos aislantes térmicos para aplicaciones en la edificación. Productos manufacturados de espuma rígida de poliuretano (PUR). Especificación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13166/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos aislantes térmicos para aplicaciones en la edificación. Productos manufacturados de espuma fenólica (PF). Especificación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13167/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos aislantes térmicos para aplicaciones en la edificación. Productos manufacturados de vidrio celular (CG). Especificación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13168/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos aislantes térmicos para aplicaciones en la edificación. Productos manufacturados de lana de madera (WW). Especificación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13169/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos aislantes térmicos para aplicaciones en la edificación. Productos manufacturados de perlita expandida (EPB). Especificación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13171/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos aislantes térmicos para aplicaciones en la edificación. Productos manufacturados de fibra de madera (WF). Especificación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13201-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Iluminación de carreteras. Parte 2: Requisitos de prestaciones.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13201-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Iluminación de carreteras. Parte 3: Cálculo de prestaciones.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13374:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Sistemas provisionales de protección de borde. Especificaciones del producto, métodos de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13418:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Máquinas para caucho y plásticos. Máquinas de bobinado para películas u hojas. Requisitos de seguridad.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13451-2/AC:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Equipamiento para piscinas. Parte 2: Requisitos específicos de seguridad y métodos de ensayo adicionales para escalas, escaleras y barandillas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13630-9:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Explosivos para uso civil. Cordones detonantes y mechas de seguridad. Parte 9: Determinación de la transmisión de la detonación de cordón detonante a cordón detonante.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13721:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Mobiliario. Valoración de la reflectancia superficial.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13763-25:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Explosivos para uso civil. Detonadores y relés. Parte 25: Determinación de la capacidad de transferencia de los relés y accesorios de empalme.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13790-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Maquinaria agrícola. Pulverizadores. Inspección de pulverizadores en uso. Parte 1: Pulverizadores para cultivos bajos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13790-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Maquinaria agrícola. Pulverizadores. Inspección de pulverizadores en uso. Parte 2: Pulverizadores para plantaciones arbustivas y arbóreas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13848-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aplicaciones ferroviarias. Vía. Calidad de la geometría de vía. Parte 1: Caracterización de la geometría de vía.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 13938-6:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Explosivos para uso civil. Propulsantes y propulsores para cohetes. Parte 6: Combustibles sólidos para cohetes. Guía para la determinación de la integridad de los recubrimientos de los inhibidores.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14010:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad de las máquinas. Dispositivos de estacionamiento mecanizado de vehículos automóviles. Requisitos relativos a la seguridad y la CEM para el diseño, construcción, montaje y puesta en servicio.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14058:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ropa de protección. Prendas para protección contra ambientes fríos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14136:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Utilización de programas de evaluación externa de la calidad en la evaluación del desempeño de los procedimientos de diagnóstico in vitro.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14146:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Métodos de ensayo para piedra natural. Determinación del módulo de elasticidad dinámico (con la medida de la frecuencia de resonancia fundamental).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14158:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Métodos de ensayo para la piedra natural. Determinación de la energía de rotura.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14204:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Antisépticos y desinfectantes químicos. Ensayo cuantitativo de suspensión para la evaluación de la actividad micobactericida de los antisépticos y desinfectantes químicos utilizados en veterinaria. Método de ensayo y requisitos (fase 2, etapa 1).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14254:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos sanitarios para diagnóstico in vitro. Recipientes de un solo uso para la recogida de muestras de origen humano, excepto sangre.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14299:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Implantes quirúrgicos no activos. Requisitos particulares para los implantes cardiacos y vasculares. Requisitos específicos para stents arteriales.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14435:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Equipos de protección respiratoria. Equipos de respiración autónomos de circuito abierto, de aire comprimido, provistos de media máscara para ser usados sólo con presión positiva. Requisitos, ensayos, marcado.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14456:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Productos químicos utilizados para el tratamiento del agua destinada al consumo humano. Carbón animal.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14458:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Protección individual de los ojos. Pantallas faciales y visores para usar con los cascos de bomberos y los de protección industrial de altas prestaciones empleados por los servicios de bomberos, de ambulancias y de emergencias.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14469-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Pigmentos y extendedores. Ensayos para materiales colorantes en poli(cloruro de vinilo) plastificado (PVC-P). Parte 1: Composición y preparación de las mezclas básicas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14503:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Embarcaciones de navegación interior. Puertos para la navegación interior.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14511-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Acondicionadores de aire, enfriadoras de líquido y bombas de calor con compresor accionado eléctricamente para la calefacción y la refrigeración de locales. Parte 1: Términos y definiciones.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 255-1:1998UNE-EN 814-1:1998EN 12055:1998</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14511-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Acondicionadores de aire, enfriadoras de líquido y bombas de calor con compresor accionado eléctricamente para la calefacción y la refrigeración de locales. Parte 2: Condiciones de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 255-2:1998UNE-EN 814-2:1998EN 12055:1998</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14511-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Acondicionadores de aire, enfriadoras de líquido y bombas de calor con compresor accionado eléctricamente para la calefacción y la refrigeración de locales. Parte 3: Métodos de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 255-2:1998UNE-EN 814-2:1998EN 12055:1998</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 14511-4:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Acondicionadores de aire, enfriadoras de líquido y bombas de calor con compresor accionado eléctricamente para la calefacción y la refrigeración de locales. Parte 4: Requisitos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 255-4:1999UNE-EN 814-3:1999EN 12055:1998</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 50065-4-6:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Transmisión de señales por la red eléctrica de baja tensión en la banda de frecuencias de 3 kHz a 148,5 kHz. Parte 4-6: Filtros de desacoplamiento de baja tensión. Acoplador de fase.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 50090-4-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Sistemas electrónicos en viviendas y edificios (HBES). Parte 4-1: Capas independientes del medio. Capa de aplicación para HBES de Clase 1.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 50123-6:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aplicaciones ferroviarias. Instalaciones fijas. Aparamenta de corriente continua. Parte 6: Conjuntos de aparamenta de corriente continua.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 50240:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Compatibilidad electromagnética (CEM). Norma de producto para equipos de soldadura por resistencia.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 50242/A3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Lavavajillas eléctricos para uso doméstico. Métodos de ensayo para la medida de la aptitud a la función.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 55025:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Características de las perturbaciones radioeléctricas para la protección de los receptores utilizados a bordo de vehículos, de embarcaciones y de dispositivos. Límites y métodos de medida.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60247:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Líquidos aislantes. Medida de la permitividad relativa, del factor de disipación dieléctrica (tan d) y de la resistividad en corriente continua.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60296:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Fluidos para aplicaciones electrotécnicas. Aceites minerales aislantes nuevos para transformadores y aparamenta de conexión.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60300-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Gestión de la confiabilidad. Parte 1: Sistemas de gestión de la confiabilidad.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60310:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aplicaciones ferroviarias. Transformadores de tracción e inductancias instalados a bordo del material rodante.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60311:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Planchas eléctricas para uso doméstico o análogo. Métodos de medida de la aptitud para la función.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60335-2-34:2002/A11:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad de los aparatos electrodomésticos y análogos. Parte 2-34: Requisitos particulares para motocompresores.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60335-2-34:2003/A11:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aparatos electrodomésticos y análogos. Seguridad. Parte 2-34: Requisitos particulares para motocompresores.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60335-2-36/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aparatos electrodomésticos y análogos. Seguridad. Parte 2-36: Requisitos particulares para cocinas, hornos, encimeras y placas de encimera eléctricas de uso colectivo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60335-2-39/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aparatos electrodomésticos y análogos. Seguridad. Parte 2-39: Requisitos particulares para sartenes eléctricas de uso colectivo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60455-3-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Compuestos reactivos a base de resina utilizados como aislantes eléctricos. Parte 3: Especificaciones para materiales particulares. Hoja 1: Compuestos de resina epoxi sin cargas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60455-3-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Compuestos reactivos a base de resina utilizados como aislantes eléctricos. Parte 3: Especificaciones para materiales particulares. Hoja 2: Compuestos de resina epoxi con carga de sílice.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60455-3-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Compuestos reactivos a base de resina utilizados como aislantes eléctricos. Parte 3: Especificaciones para materiales particulares. Hoja 3: Compuestos de resina de poliuretano sin carga.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60455-3-4:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Compuestos reactivos a base de resina utilizados como aislantes eléctricos. Parte 3: Especificaciones para materiales particulares. Hoja 4: Compuestos de resina de poliuretano con carga.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60598-2-20/A2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Luminarias. Parte 2-20: Requisitos particulares. Guirnaldas luminosas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60619/A2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Aparatos eléctricos para la preparación de los alimentos. Métodos de medida de la aptitud para la función.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60893-3-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Materiales aislantes. Laminados industriales rígidos en planchas a base de resinas termoendurecibles para usos eléctricos. Parte 3-1: Especificaciones para materiales particulares. Requisitos para tipos de laminados industriales rígidos en planchas.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60893-3-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Materiales aislantes. Laminados industriales rígidos en planchas a base de resinas termoendurecibles para usos eléctricos. Parte 3-2: Especificaciones para materiales particulares. Requisitos para los laminados rígidos en planchas a base de resina epoxi.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60893-3-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Materiales aislantes. Laminados industriales rígidos en planchas a base de resinas termoendurecibles para usos eléctricos. Parte 3-3: Especificaciones para materiales particulares. Requisitos para los laminados rígidos en planchas a base de resina de melamina.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60893-3-4:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Materiales aislantes. Laminados industriales rígidos en planchas a base de resinas termoendurecibles para usos eléctricos. Parte 3-4: Especificaciones para materiales particulares. Requisitos para los laminados rígidos en planchas a base de resina fenólica.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60893-3-5:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Materiales aislantes. Laminados industriales rígidos en planchas a base de resinas termoendurecibles para usos eléctricos. Parte 3-5: Especificaciones para materiales particulares. Requisitos para los laminados rígidos en planchas a base de resina de poliéster.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60893-3-6:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Materiales aislantes. Laminados industriales rígidos en planchas a base de resinas termoendurecibles para usos eléctricos. Parte 3-6: Especificaciones para materiales particulares. Requisitos para los laminados rígidos en planchas a base de resina de silicona.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60893-3-7:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Materiales aislantes. Laminados industriales rígidos en planchas a base de resinas termoendurecibles para usos eléctricos. Parte 3-7: Especificaciones para materiales particulares. Requisitos para los laminados rígidos en planchas a base de resina de poliimida.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 60929:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Balastos electrónicos alimentados en corriente alterna para lámparas fluorescentes tubulares. Requisitos de funcionamiento.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61010-2-010:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Requisitos de seguridad de equipos eléctricos de medida, control y uso en laboratorio. Parte 2-010: Requisitos particulares para equipos de laboratorio utilizados para el calentamiento de materiales.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61010-2-051:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Requisitos de seguridad de equipos eléctricos de medida, control y uso en laboratorio. Parte 2-051: Requisitos particulares para equipos de laboratorio para mezcla, golpeteo y agitación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61014:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Programas de crecimiento de fiabilidad.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61086-2:2004 ERRATUM:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Recubrimientos para tarjetas de cableados impresos (recubrimientos conformados). Parte 2: Métodos de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61125/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Fluidos para aplicaciones electrotécnicas. Líquidos aislantes nuevos a base de hidrocarburos. Métodos de ensayo para evaluar la estabilidad a la oxidación.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61496-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad de las máquinas. Equipos de protección electrosensibles. Parte 1: Requisitos generales y ensayos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61534-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Sistemas de canalización eléctrica prefabricada. Parte 1: Requisitos generales.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61558-2-5/A11:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad de los transformadores, unidades de alimentación y análogos. Parte 2-5: Requisitos particulares para los transformadores y unidades de alimentación para máquinas de afeitar.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61810-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Relés electromecánicos elementales. Parte 1: Requisitos generales y de seguridad.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 61960:2004 ERRATUM:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Acumuladores con electrolitos alcalinos u otros electrolitos no ácidos. Acumuladores de litio para aplicaciones portátiles.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 62011-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Materiales aislantes. Tubos y barras industriales, rígidos, moldeados, estratificados, de sección transversal rectangular y hexagonal, a base de resinas termoendurecibles para usos eléctricos. Parte 2: Métodos de ensayo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 62211:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Componentes inductivos. Gestión de la fiabilidad.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 62220-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Equipos electromédicos. Características de los dispositivos digitales de imágenes de rayos X. Parte 1: Determinación de la eficiencia cuántica de detección.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 62281:2004 ERRATUM:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Seguridad de las pilas y acumuladores de litio durante el transporte.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 1562:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Aleaciones dentales de oro para colar (ISO 1562:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 1562:1995</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 3766/AC:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Dibujos de construcción. Representación simplificada de las armaduras de hormigón (ISO 3766:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 4066:2000</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 3838:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Petróleo crudo y productos petrolíferos líquidos o sólidos. Determinación de la densidad o de la densidad relativa. Métodos del picnómetro de tapón capilar y del picnómetro bicapilar graduado. (ISO 3838:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 3838:1996</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 4074/AC:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Condones de látex de caucho natural. Requisitos y métodos de ensayo. (ISO 4074:2002/Cor.1:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 5356-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Equipo respiratorio y de anestesia. Conectores cónicos. Parte 1: Conectores macho y hembra (ISO 5356-1:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1281-1:1997UNE-EN 1281-1/A1:1999</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 5534:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Queso y queso fundido. Determinación del contenido total de materia seca (Método de referencia) (ISO 5534:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 5537:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Leche en polvo. Determinación del contenido de humedad (Método de referencia). (ISO 5537:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 34844:1983</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 5667-19:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Calidad del agua. Muestreo. Parte 19: Guía para el muestreo de sedimentos marinos (ISO 5667-19:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6272-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Pinturas y barnices. Ensayos de deformación rápida (resistencia al impacto). Parte 1: Ensayo de caída de una masa con percutor de gran superficie (ISO 6272-1:2002).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6272:1996</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6360-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Sistema de codificación numérica de los instrumentos rotatorios. Parte 1: Características generales (ISO 6360-1:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 106103-1:1991</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6360-4:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Sistema de codificación numérica de los instrumentos rotatorios. Parte 4: Características específicas de los instrumentos adiamantados (ISO 6360-4:2002).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6360-6:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Sistema de codificación numérica de los instrumentos rotatorios. Parte 6: Características específicas de los instrumentos abrasivos (ISO 6360-6:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6744-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ligantes para pinturas y barnices. Resinas alcídicas. Parte 1: Métodos generales de ensayo (ISO 6744-1:1999).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6744-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ligantes para pinturas y barnices. Resinas alcídicas. Parte 2: Determinación del contenido de anhídrido ftálico(ISO 6744-2:1999).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 48116:1961</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6744-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ligantes para pinturas y barnices. Resinas alcídicas. Parte 3: Determinación del contenido en materia insaponificable (ISO 6744-3:1999).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 6744-4:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ligantes para pinturas y barnices. Resinas alcídicas. Parte 4: Determinación del contenido de ácidos grasos (ISO 6744-4:1999).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE 48070:1962</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 7142:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ligantes para pinturas y barnices. Resinas epoxídicas. Métodos generales de ensayo (ISO 7142:1984).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 7143:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Pinturas, barnices y ligantes. Métodos de ensayo para la caracterización de materiales de recubrimiento y ligantes base agua (ISO 7143:2000).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 7380:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Tornillos de cabeza cilíndrica bombeada con hueco hexagonal (ISO 7380:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 7380:1998</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 8166:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Soldeo por resistencia. Procedimiento para la evaluación de la duración de vida de los electrodos utilizados en soldeo por puntos con ajustes de máquina constantes. (ISO 8166:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 8362-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Recipientes para productos inyectables y accesorios. Parte 1: Viales de inyección hechos de tubo de vidrio. (ISO 8362-1:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 28362-1:1994</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 8362-4:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Recipientes para productos inyectables y accesorios. Parte 4: Viales de inyección hechos de vidrio moldeado. (ISO 8362-4:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 28362-4:1994</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 8835-5:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Sistemas de anestesia por inhalación. Parte 5: Ventiladores anestésicos (ISO 8835-5:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 740:1999UNE-EN 740:1999 ERRATUMUNE-EN 740/A1:2004</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 8871-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Elementos elastoméricos para productos de administración parenteral y para productos de uso farmacéutico. Parte 3: Recuento de las partículas liberadas (ISO 8871-3:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 8871:1998UNE-EN ISO 8871/A1:1999</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 9239-1:2002 ERRATUM:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ensayos de reacción al fuego de los revestimientos de suelos. Parte 1: Determinación del comportamiento al fuego mediante una fuente de calor radiante. (ISO 9239-1:2002).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 9371/AC:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Plásticos. Resinas fenólicas en estado líquido o en solución. Determinación de la viscosidad. (ISO 9371:1990).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 9886:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ergonomía. Evaluación de la sobrecarga térmica mediante mediciones fisiológicas. (ISO 9886:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 9886:2002</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 10360-1/AC:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Especificación geométrica de productos (GPS). Ensayos de aceptación y de verificación periódica de máquinas de medición por coordenadas (MMC). Parte 1: Vocabulario. (ISO 10360-1:2000/Cor.1:2002).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 10555-1/A2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Catéteres intravasculares estériles, para un solo uso. Parte 1: Requisitos generales. (ISO 10555-1:1996/AM 2:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 11681-2/A1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Maquinaria forestal. Sierras de cadena portátiles. Requisitos de seguridad y ensayos. Parte 2: Sierras de cadena para el talado de árboles. Modificación 1 (ISO 11681-2:1998/AM 1:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 12058-1/AC:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Plásticos. Determinación de la viscosidad empleando un viscosímetro de caída de bola. Parte 1: Método del tubo inclinado. (ISO 12058-1:1997).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 13897:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Odontología. Cápsulas para amalgama (ISO 13897:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 15001:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Equipo respiratorio y de anestesia. Compatibilidad con oxígeno (ISO 15001:2003).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 15605:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Adhesivos. Toma de muestras. (ISO 15605:2000).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 1066:1997</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 17994:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Calidad del agua. Criterios para establecer la equivalencia de dos métodos microbiológicos (ISO 17994:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO 23429:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Calibración de los huecos hexagonales (ISO 23429:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO/IEC 17011:2004 ERRATUM</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Evaluación de la conformidad. Requisitos generales para los organismos de acreditación que realizan la acreditación de organismos de evaluación de la conformidad (ISO/IEC 17011:2004).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 45003:1995 UNE-EN 45010:1998</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN ISO/IEC 17020:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Criterios generales para el funcionamiento de diferentes tipos de organismos que realizan la inspección (ISO/IEC 17020:1998).</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>UNE-EN 45004:1995</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-IEC 61649:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Procedimiento para el contraste de bondad del ajuste, intervalos de confianza y límites inferiores de confianza para datos distribuidos según Weibull.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ISO 11268-3:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Calidad del suelo. Efectos de los contaminantes sobre las lombrices. Parte 3: Directrices para la determinación de los efectos en condiciones de campo.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ISO 11269-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Calidad del suelo. Determinación de los efectos de los contaminantes sobre la flora del suelo. Parte 2: Efectos de los compuestos químicos sobre la emergencia y el crecimiento de las plantas superiores.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ISO 14507:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Calidad del suelo. Pretratamiento de muestras para la determinación de contaminantes orgánicos.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ISO/IEC 9126-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ingeniería del software. Calidad del producto software. Modelo de calidad.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ISO/IEC 14598-1:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Tecnología de la información. Evaluación del producto software. Parte 1: Visión general.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ISO/IEC 14598-2:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Tecnología de la información. Evaluación del producto software. Parte 2: Planificación y gestión.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1" rowspan="1">
+          <p>UNE-ISO/IEC 19761:2004</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p>Ingeniería del Software. COSMIC-FFP. Un método de medición del tamaño funcional.</p>
+        </td>
+        <td colspan="1" rowspan="1">
+          <p/>
+        </td>
+      </tr>
+    </table>
+  </texto>
+</documento>

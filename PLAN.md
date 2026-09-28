@@ -401,5 +401,11 @@ Tipografía propuesta: **Source Sans 3** para el texto (legible, con cifras tabu
 
 ## 12. Orden de trabajo propuesto
 
-~~Fase 0~~ → ~~1a~~ → ~~corrección de `normas.yaml`~~ → ~~1b (**MVP publicado**)~~ → ~~1c~~ → fase 2.
-Las fases 0, 1a, 1b y 1c están hechas (2026-09-27), junto con la capa de estudio (mapa, familias, fichas, temas y comparativas). El workflow `vigilar.yml` hace la comprobación diaria, guarda `data/` solo si cambia algo y publica la web. Queda la fase 2 (BOE/UNE).
+~~Fase 0~~ → ~~1a~~ → ~~corrección de `normas.yaml`~~ → ~~1b (**MVP publicado**)~~ → ~~1c~~ → ~~fase 2~~.
+Las fases 0, 1a, 1b y 1c están hechas (2026-09-27), junto con la capa de estudio (mapa, familias, fichas, temas y comparativas). El workflow `vigilar.yml` hace la comprobación diaria, guarda `data/` solo si cambia algo y publica la web.
+
+La fase 2 (BOE/UNE) está hecha (2026-09-28), con un cambio sobre lo previsto en §Fase 2: **sí hay carga histórica**. `python -m iso_alert une` recorre los sumarios del BOE desde 2000 (reanudable, con caché en `.cache/boe/`) y deja en `data/une.json` las UNE y proyectos PNE cuyo número coincide con una norma vigilada. Así la columna UNE se llena desde el primer día. Detalles:
+- Los anexos anteriores a ~2004 son imágenes escaneadas (`filas: null`); algunos días antiguos dan error 500 permanente en la API (`cobertura.dias_fallidos`).
+- La vigilancia diaria lee hasta **ayer** (el BOE de hoy puede no estar publicado a las 05:17 UTC). Un fallo del BOE no detiene la de ISO: abre el Issue `fallo-boe`.
+- Una anulación UNE espera a que se publique la relación de aprobadas del mismo mes (o 62 días) antes de decidir si avisa: si tiene sustituta, avisa la UNE nueva.
+- «¿Adopta la edición ISO vigente?» sale de la edición que cita el título de la UNE («… (ISO/IEC 27001:2022)») o, si no la cita, de las fechas.

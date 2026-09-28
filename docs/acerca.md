@@ -5,14 +5,14 @@
 
 ## Qué hace
 
-Cada día descarga los metadatos públicos de las normas ISO y comprueba si alguna de las normas del temario ha cambiado: una edición nueva, una revisión en marcha o una anulación.
+Cada día descarga los metadatos públicos de las normas ISO y comprueba si alguna de las normas del temario ha cambiado: una edición nueva, una revisión en marcha o una anulación. También lee el BOE para saber qué versión española (UNE) está vigente, si adopta la edición ISO actual y si hay una nueva en preparación.
 
 Solo se muestran metadatos públicos: código, título, estado y fechas. El contenido de las normas está protegido por derechos de autor y no se reproduce aquí.
 
 ## Fuentes y atribución
 
 - **ISO Open Data**, dataset *ISO deliverables metadata*, © ISO, publicado con licencia [Open Data Commons Attribution License (ODC-By) 1.0](https://opendatacommons.org/licenses/by/1-0/). Fuente: <https://www.iso.org/open-data.html>. Los títulos oficiales, las etapas y las relaciones entre ediciones proceden de este dataset.
-- **Boletín Oficial del Estado** (próximamente), para las adopciones y anulaciones de normas UNE.
+- **[Boletín Oficial del Estado](https://www.boe.es/datosabiertos/)** (API de datos abiertos), para las normas UNE. Cada mes el BOE publica la relación de normas UNE aprobadas (con la norma a la que sustituyen), la de anuladas y los proyectos en información pública. La web las lee desde el año 2000; los anexos anteriores a 2004, más o menos, son imágenes escaneadas y no se pueden leer. Por eso una UNE aprobada antes solo se conoce si una posterior la sustituye o si se anula.
 
 ## Cómo leer las fechas
 

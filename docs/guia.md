@@ -35,6 +35,8 @@ UNE publica normas propias, pero sobre todo **adopta** normas internacionales y 
 
 El contenido técnico es el mismo, pero **las fechas no coinciden**. La versión española suele salir meses o años después, así que es normal ver `ISO/IEC 27001:2022` y `UNE-EN ISO/IEC 27001:2023`. Por eso esta web muestra las dos: cuando ISO publica una edición nueva, sabes que la UNE llegará después.
 
+Para saber si la UNE vigente está **al día**, la web mira qué edición ISO adopta. Casi siempre lo dice su título, entre paréntesis: el de `UNE-EN ISO/IEC 27001:2023` termina en «(ISO/IEC 27001:2022)». Si esa edición ya no es la vigente en ISO, la tabla de estado la marca como **edición ISO anterior**: la versión española todavía no ha recogido la última edición internacional.
+
 ## Cómo leer un código
 
 Tomemos como ejemplo `UNE-EN ISO/IEC 27001:2023`:

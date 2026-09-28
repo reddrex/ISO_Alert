@@ -2,26 +2,29 @@
 
     python -m iso_alert vigilar      # comprobación diaria: cambios, historial y avisos
     python -m iso_alert actualizar   # dataset ISO → data/estado.json y data/validacion.json
+    python -m iso_alert une          # carga inicial de las normas UNE desde el BOE → data/une.json
     python -m iso_alert web          # data/ → páginas generadas en docs/
 """
 
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from . import avisos, estado, informe, vigilancia, web
+from . import avisos, estado, informe, une, vigilancia, web
 from . import config as cfg
-from .fuentes import iso
+from .fuentes import boe, iso
 from .resolver import Indice
 
 RAIZ = Path.cwd()
 CACHE = RAIZ / ".cache" / "iso_deliverables_metadata.jsonl"
 CACHE_META = CACHE.with_suffix(".meta.json")
+CACHE_BOE = RAIZ / ".cache" / "boe"
 
 
 def _obtener_dataset(args) -> tuple[Path, iso.Descarga]:
@@ -109,6 +112,10 @@ def vigilar(args) -> int:
             )
         raise
 
+    une_nuevo, error_boe = _vigilar_une(datos, config, hoy)
+    if une_nuevo is not None:
+        eventos += une.eventos(_leer_json(datos / "une.json", None), une_nuevo, config, hoy)
+
     historial = _leer_json(datos / "historial.json", [])
     nuevos = vigilancia.registrar(historial, eventos)
     notificables = [ev for ev in nuevos if ev.notificable]
@@ -133,6 +140,13 @@ def vigilar(args) -> int:
                 h["issue"] = numeros[h["id"]]
         avisos.issue_de_estado(cliente, "fallo-fuente", "", "", abierto=False)
         avisos.issue_de_estado(cliente, "revision-manual", "", "", abierto=False)
+        avisos.issue_de_estado(
+            cliente, "fallo-boe", "La lectura del BOE (normas UNE) ha fallado",
+            f"La comprobación de las normas UNE en el BOE ha fallado:\n\n```\n{error_boe}\n```\n\n"
+            f"Ejecución: {ultima['run_url'] or '—'}\n\nLa comprobación de ISO no se ve afectada. "
+            "Los días pendientes del BOE se leerán en la siguiente ejecución que funcione.",
+            abierto=error_boe is not None,
+        )
         antiguedad = _dias_desde(descarga.last_modified, hoy)
         avisos.issue_de_estado(
             cliente, "fuente-desactualizada",
@@ -144,11 +158,14 @@ def vigilar(args) -> int:
 
     _escribir_si_cambia(datos / "estado.json", nuevo)
     _escribir_si_cambia(datos / "validacion.json", informe.construir(config, indice, descarga))
+    if une_nuevo is not None:
+        _escribir_si_cambia(datos / "une.json", une_nuevo)
     if nuevos or not (datos / "historial.json").exists():
         _escribir_json(datos / "historial.json", historial)
     ultima.update(
         resultado="ok" if nuevos else "sin_cambios",
         iso={"last_modified": descarga.last_modified, "sha256": descarga.sha256},
+        boe={"ultimo_dia": une_nuevo["cobertura"]["ultimo_dia"]} if une_nuevo else {"error": error_boe},
         eventos_nuevos=len(nuevos),
         avisos=len(notificables),
     )
@@ -159,6 +176,27 @@ def vigilar(args) -> int:
 DIAS_DESACTUALIZADA = 14
 
 
+def _vigilar_une(datos: Path, config, hoy: str) -> tuple[dict | None, str | None]:
+    """Lee los BOE pendientes hasta ayer (el de hoy puede no estar publicado a la hora del cron).
+
+    Devuelve (registro nuevo, error). Un fallo del BOE no detiene la vigilancia de ISO.
+    """
+    anterior = _leer_json(datos / "une.json", None)
+    if anterior is None:
+        print("Sin data/une.json: ejecuta «python -m iso_alert une» para la carga inicial", file=sys.stderr)
+        return None, None
+    nuevo = copy.deepcopy(anterior)
+    ayer = date.fromisoformat(hoy) - timedelta(days=1)
+    try:
+        leidas = une.recorrer(nuevo, ayer, une.numeros_vigilados(config), CACHE_BOE)
+    except boe.FuenteError as e:
+        print(f"BOE: {e}", file=sys.stderr)
+        return None, str(e)
+    print(f"BOE hasta el {nuevo['cobertura']['ultimo_dia']}: {len(leidas)} resoluciones de normas UNE")
+    nuevo["generado"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    return nuevo, None
+
+
 def _dias_desde(fecha_iso: str | None, hoy: str) -> int | None:
     if not fecha_iso:
         return None
@@ -166,12 +204,37 @@ def _dias_desde(fecha_iso: str | None, hoy: str) -> int | None:
     return (date.fromisoformat(hoy) - date.fromisoformat(fecha_iso[:10])).days
 
 
+def cargar_une(args) -> int:
+    """Carga (o reanuda) el registro UNE leyendo los BOE hasta ayer. Las resoluciones leídas no avisan."""
+    config = cfg.cargar(args.normas)
+    ruta = Path(args.datos) / "une.json"
+    registro = None if args.desde else _leer_json(ruta, None)
+    registro = registro or une.vacio(args.desde or une.DESDE)
+    hasta = date.fromisoformat(args.hasta) if args.hasta else datetime.now(timezone.utc).date() - timedelta(days=1)
+    print(f"BOE del {registro['cobertura']['ultimo_dia']} (excl.) al {hasta}", file=sys.stderr)
+
+    def guardar(d: dict) -> None:
+        d["generado"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+        _escribir_json(ruta, d)
+        print(f"  … {d['cobertura']['ultimo_dia']}: {len(d['resoluciones'])} resoluciones, "
+              f"{len(d['normas'])} UNE, {len(d['proyectos'])} proyectos", file=sys.stderr)
+
+    une.recorrer(registro, hasta, une.numeros_vigilados(config), CACHE_BOE, hilos=args.hilos, al_avanzar=guardar)
+    une.cerrar_anulaciones(registro)
+    guardar(registro)
+    sin_tabla = sum(1 for r in registro["resoluciones"].values() if r["filas"] is None and r["tipo"] != "correccion")
+    print(f"{len(registro['resoluciones'])} resoluciones ({sin_tabla} sin tabla) · "
+          f"primera con tabla: {registro['cobertura']['primera_tabla']} → {ruta}")
+    return 0
+
+
 def generar_web(args) -> int:
     config = cfg.cargar(args.normas)
     datos = Path(args.datos)
     leer = lambda nombre: json.loads((datos / nombre).read_text(encoding="utf-8"))  # noqa: E731
     historial = _leer_json(datos / "historial.json", [])
-    rutas = web.generar(leer("estado.json"), leer("validacion.json"), config, Path(args.docs), historial)
+    rutas = web.generar(leer("estado.json"), leer("validacion.json"), config, Path(args.docs), historial,
+                        _leer_json(datos / "une.json", None))
     carpetas = (web.FICHAS, web.FAMILIAS, web.TEMARIO, web.FEEDS)
     for ruta in rutas:
         if ruta.parent.name not in carpetas:
@@ -202,6 +265,14 @@ def main(argv: list[str] | None = None) -> int:
     v.add_argument("--simulacro", action="store_true", help="no abre Issues aunque haya token")
     v.add_argument("--minimo", type=int, default=iso.MIN_REGISTROS, help=argparse.SUPPRESS)
     v.set_defaults(func=vigilar)
+
+    u = sub.add_parser("une", help="carga inicial (reanudable) de las normas UNE desde el BOE")
+    u.add_argument("--normas", default="normas.yaml")
+    u.add_argument("--datos", default="data")
+    u.add_argument("--desde", help=f"empieza de cero en esta fecha (por defecto, reanuda; si no hay datos, {une.DESDE})")
+    u.add_argument("--hasta", help="último día (por defecto, ayer)")
+    u.add_argument("--hilos", type=int, default=4)
+    u.set_defaults(func=cargar_une)
 
     w = sub.add_parser("web", help="genera las páginas del sitio a partir de data/")
     w.add_argument("--normas", default="normas.yaml")

@@ -14,3 +14,16 @@
 {% macro enlaces(lista) -%}
 {% for x in lista %}{{ enlace(x) }}{% if not loop.last %}, {% endif %}{% endfor %}
 {%- endmacro %}
+
+{% macro une_enlace(e) -%}
+{% if e.url %}<a href="{{ e.url }}" title="Resolución del BOE que la publica">{{ e.codigo }}</a>{% else %}{{ e.codigo }}{% endif %}
+{%- endmacro %}
+
+{% macro une_marca(estado, etiqueta) -%}
+<span class="une une--{{ estado }}">{{ etiqueta }}</span>
+{%- endmacro %}
+
+{# Una UNE vigente con la edición ISO que adopta y cuándo se aprobó. #}
+{% macro une_detalle(e) -%}
+{{ une_enlace(e) }}{% if e.iso_adoptada %}, adopta la {{ e.iso_adoptada }}{% elif e.deducido %}, que por fechas adopta la edición ISO vigente{% endif %}{% if e.aprobada %} (aprobada en {{ e.aprobada.mes or e.aprobada.fecha[:7] }}){% endif %}{% if e.estado == "anterior" %} {{ une_marca("anterior", "edición ISO anterior") }}{% endif %}
+{%- endmacro %}

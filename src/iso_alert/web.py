@@ -8,7 +8,7 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
-from . import didactico, informe, rss
+from . import didactico, informe, rss, une
 from . import modelo as m
 from .config import NATURALEZAS, Config
 from .modelo import Estado, Subestado
@@ -53,9 +53,10 @@ def _entorno() -> Environment:
 class Vista:
     """Datos de estado.json y normas.yaml preparados para las plantillas."""
 
-    def __init__(self, estado: dict, config: Config):
+    def __init__(self, estado: dict, config: Config, registro_une: dict | None = None):
         self.estado = estado
         self.config = config
+        self.une = registro_une
         self.ent = estado["entregables"]
         self.aristas = didactico.aristas(config)
 
@@ -88,6 +89,14 @@ class Vista:
             cat_mapa = self.config.categorias.get(fam.categoria) if fam and fam.categoria else cat
             area = self.config.areas.get(cat_mapa.area) if cat_mapa and cat_mapa.area else None
             ed = d["edicion_citada"]
+            # Fecha de la edición ISO vigente por (número, parte), para saber si la UNE la adopta.
+            iso_vigente: dict[tuple, str] = {}
+            for i in d["vigentes"]:
+                x = self.ent[str(i)]
+                if not x["suplemento"] and x["publicacion"]:
+                    clave = (x["numero"], x["parte"])
+                    iso_vigente[clave] = max(iso_vigente.get(clave, ""), x["publicacion"])
+            une_boe = une.resumen(n, self.une, iso_vigente)
             partes = None
             if d["partes"] is not None:
                 desc_partes = dict(n.partes_descripcion)
@@ -137,9 +146,11 @@ class Vista:
                 "edicion_citada": ed,
                 "superada": bool(ed and ed["resultado"] != "vigente"),
                 "une": n.une,
+                "une_boe": une_boe,
                 "contexto": n.contexto,
                 "texto": " ".join(filter(None, [
                     n.codigo, n.nombre, n.resumen, d["titulo_en"], n.contexto, n.une,
+                    *(e["codigo"] for e in (une_boe["vigentes"] if une_boe else [])),
                 ])).lower(),
             })
         return filas
@@ -251,7 +262,6 @@ class Vista:
         return {
             "total": len(filas),
             "por_estado": [(e, sum(1 for f in filas if f["estado"] == e)) for e in ORDEN_ESTADOS],
-            "superadas": [f for f in filas if f["superada"]],
             "revision_periodica": sum(1 for f in filas if f["subestado"] == Subestado.REVISION_PERIODICA),
             "dato_fecha": (iso.get("last_modified") or "")[:10] or None,
             "comprobado": self.estado["generado"][:10],
@@ -283,9 +293,9 @@ def _cambios(historial: list[dict], por_codigo: dict[str, dict]) -> list[dict]:
 
 
 def generar(estado: dict, validacion: dict, config: Config, docs: Path,
-            historial: list[dict] | None = None) -> list[Path]:
+            historial: list[dict] | None = None, registro_une: dict | None = None) -> list[Path]:
     env = _entorno()
-    vista = Vista(estado, config)
+    vista = Vista(estado, config, registro_une)
     filas = vista.filas()
     por_codigo = {f["codigo"]: f for f in filas}
     historial = historial or []
@@ -304,6 +314,8 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path,
         "areas": list(config.areas.values()),
         "cambios": cambios,
         "sitio": SITIO,
+        "une_cobertura": registro_une["cobertura"] if registro_une else None,
+        "estados_une": une.ESTADOS_UNE,
     }
     salidas = {
         docs / "index.md": env.get_template("index.md.j2").render(**ctx),
@@ -328,11 +340,11 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path,
         salidas[docs / FEEDS / f"{f['ancla']}.xml"] = rss.feed(
             f"{f['codigo']} · cambios detectados", f"{SITIO}{FEEDS}/{f['ancla']}.xml",
             f"{SITIO}{FICHAS}/{f['ancla']}/", [h for h in historial if f["codigo"] in h["normas"]],
-            SITIO, estado["generado"],
+            SITIO, estado["generado"], xsl="../feed.xsl",
         )
     salidas[docs / "feed.xml"] = rss.feed(
-        "Vigilancia de normas TIC · avisos", f"{SITIO}feed.xml", f"{SITIO}historial/",
-        [h for h in historial if h["notificable"]], SITIO, estado["generado"],
+        f"{rss.NOMBRE} · avisos", f"{SITIO}feed.xml", f"{SITIO}historial/",
+        [h for h in historial if h["notificable"]], SITIO, estado["generado"], xsl="feed.xsl",
     )
     plantilla_tema = env.get_template("tema.md.j2")
     temas = ctx["temario"]

@@ -40,7 +40,7 @@ Las {{ resumen.total }} normas técnicas del temario TIC A1, agrupadas en áreas
 - {{ c.detectado }} · **{{ c.etiqueta }}**{% if c.filas %} en [{{ c.filas[0].codigo }}](normas/{{ c.filas[0].ancla }}.md){% endif %}: {{ c.resumen }}
 {% endfor %}
 
-[Ver todos los cambios](historial.md) · [Suscribirse a los avisos (Atom)](feed.xml)
+[Ver todos los cambios](historial.md) · [Suscribirse a los avisos (feed Atom)](feed.xml)
 
 {% else %}
 Todavía no se ha detectado ningún cambio desde que empezó la vigilancia. Puedes [suscribirte a los avisos](historial.md#como-suscribirse).
@@ -62,16 +62,4 @@ Estado de las normas según ISO ({% if resumen.dato_fecha %}datos del **{{ resum
 Además, {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.revision_periodica == 1 else "normas vigentes están" }} en revisión periódica, que casi siempre acaba en confirmación.
 {% endif %}
 
-{% if resumen.superadas %}
-### Ediciones del temario que ya no son las vigentes
-
-El temario cita estas ediciones, pero ISO ya ha publicado otra más reciente.
-
-| Norma | Cita el temario | Edición ISO vigente |
-|---|---|---|
-{% for f in resumen.superadas %}
-| [{{ f.codigo }}](normas/{{ f.ancla }}.md) · {{ f.nombre }} | {{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "no_existe" %} (año de la UNE){% endif %} | {% if f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% else %}—{% endif %} |
-{% endfor %}
-{% endif %}
-
-La web comprueba a diario los datos de ISO. Los cambios quedan en el [historial](historial.md), y las ediciones nuevas, modificaciones y anulaciones generan un aviso.
+La web comprueba a diario los datos de ISO y las normas UNE que publica el BOE. Los cambios quedan en el [historial](historial.md), y las ediciones nuevas, modificaciones y anulaciones generan un aviso.

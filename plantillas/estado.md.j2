@@ -1,4 +1,4 @@
-{% from "_macros.j2" import estado, enlace, enlaces %}
+{% from "_macros.j2" import estado, enlace, enlaces, une_enlace, une_marca, une_detalle %}
 ---
 title: Estado de las normas
 hide:
@@ -11,7 +11,7 @@ hide:
 {{ resumen.total }} normas citadas en el temario. Datos ISO{% if resumen.dato_fecha %} del {{ resumen.dato_fecha }}{% endif %}, comprobados el {{ resumen.comprobado }}. Pulsa el nombre de una norma para ver sus ediciones, partes y proyectos en marcha.
 
 !!! note "ISO va por delante de UNE"
-    La tabla muestra las ediciones **ISO**. La versión española (UNE) suele publicarse meses o años después, y el temario a veces cita una y a veces otra. Consulta la [guía](guia.md#que-diferencia-hay-entre-iso-y-une).
+    La tabla muestra las ediciones **ISO** y, en la columna **UNE**, la versión española vigente según las resoluciones del BOE{% if une_cobertura and une_cobertura.primera_tabla %} (se leen desde {{ une_cobertura.primera_tabla[:4] }}){% endif %}. La UNE suele publicarse meses o años después que la ISO, y el temario a veces cita una y a veces otra. «Edición ISO anterior» significa que la UNE vigente adopta una edición ISO que ya no es la vigente. Consulta la [guía](guia.md#que-diferencia-hay-entre-iso-y-une).
 
 <div class="filtros" id="filtros" hidden>
   <label class="filtro filtro--texto">Buscar <input type="search" id="f-texto" placeholder="Código, nombre o título" autocomplete="off"></label>
@@ -40,6 +40,14 @@ hide:
     {% endfor %}
     <option value="-">Sin familia</option>
   </select></label>
+  {% if une_cobertura %}
+  <label class="filtro">Versión UNE <select id="f-une">
+    <option value="">Todas</option>
+    {% for valor, etiqueta in estados_une.items() %}
+    <option value="{{ valor }}">{{ etiqueta }}</option>
+    {% endfor %}
+  </select></label>
+  {% endif %}
   <label class="filtro">Aprobada en <select id="f-anio">
     <option value="">Cualquier año</option>
     {% for a in anios_aprobacion %}
@@ -66,12 +74,15 @@ hide:
       <th class="col-sec">Categoría</th>
       <th>Estado</th>
       <th>Edición vigente</th>
+      {% if une_cobertura %}
+      <th>UNE</th>
+      {% endif %}
       <th>Cita el temario</th>
     </tr>
   </thead>
   <tbody>
     {% for f in filas %}
-    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sin familia' }}" data-superada="{{ 1 if f.superada else 0 }}" data-aprobacion="{{ f.aprobacion or '' }}" data-temas="{{ (f.temas + f.temas_familia) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
+    <tr data-estado="{{ f.estado.value }}" data-categoria="{{ f.categoria.id if f.categoria else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sin familia' }}" data-superada="{{ 1 if f.superada else 0 }}" data-aprobacion="{{ f.aprobacion or '' }}" data-une="{{ f.une_boe.estado if f.une_boe else '' }}" data-temas="{{ (f.temas + f.temas_familia) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
       <td class="codigo" data-sort="{{ f.codigo_orden }}">{{ f.codigo }}</td>
       <td class="nombre">
         <details class="detalle">
@@ -115,9 +126,21 @@ hide:
             </dd>
             {% endif %}
             {% if f.edicion_citada %}
-            <dt>Edición que cita el temario</dt><dd>{{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "vigente" %}, que sigue vigente{% elif f.edicion_citada.resultado == "superada" %}, que ya no es la vigente{% else %}; no hay edición ISO de ese año (puede ser el año de la UNE){% endif %}</dd>
+            <dt>Edición que cita el temario</dt><dd>{{ f.edicion_citada.anio }}{% if f.edicion_citada.resultado == "vigente" %}, que sigue vigente{% elif f.edicion_citada.resultado == "superada" %}, que ya no es la vigente{% elif f.une_boe and f.une_boe.anios.get(f.edicion_citada.anio) %}; no hay edición ISO de ese año: es el de la {{ f.une_boe.anios[f.edicion_citada.anio] }}{% else %}; no hay edición ISO de ese año (puede ser el año de la UNE){% endif %}</dd>
             {% endif %}
-            {% if f.une %}
+            {% if f.une_boe %}
+            {% if f.une_boe.vigentes %}
+            <dt>{{ "Normas UNE vigentes" if f.une_boe.vigentes | length > 1 else "Norma UNE vigente" }}</dt><dd>{% for e in f.une_boe.vigentes %}{{ une_detalle(e) }}{% if not loop.last %}; {% endif %}{% endfor %}{% if f.une_boe.suplementos %}, con {% for e in f.une_boe.suplementos %}{{ une_enlace(e) }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</dd>
+            {% else %}
+            <dt>Norma UNE</dt><dd>No consta ninguna vigente en el BOE{% if f.une %}. El temario cita {{ f.une }}: puede estar en una relación del BOE publicada como imagen, que no se puede leer, o haberse anulado{% endif %}.</dd>
+            {% endif %}
+            {% if f.une_boe.proyectos %}
+            <dt>UNE en preparación</dt><dd>{% for p in f.une_boe.proyectos %}<a href="{{ p.url }}">{{ p.codigo }}</a>{% if p.iso_adoptada %}, adoptará la {{ p.iso_adoptada }}{% endif %} (información pública, {{ p.mes or p.fecha[:7] }}){% if not loop.last %}; {% endif %}{% endfor %}</dd>
+            {% endif %}
+            {% if f.une_boe.historicas %}
+            <dt>UNE anteriores</dt><dd>{% for e in f.une_boe.historicas[:6] %}{{ une_enlace(e) }}{% if not loop.last %}, {% endif %}{% endfor %}{% if f.une_boe.historicas | length > 6 %} y {{ f.une_boe.historicas | length - 6 }} más{% endif %}</dd>
+            {% endif %}
+            {% elif f.une %}
             <dt>Norma UNE citada</dt><dd>{{ f.une }}</dd>
             {% endif %}
             {% if f.temas or f.temas_familia %}
@@ -134,10 +157,13 @@ hide:
       <td class="col-sec">{{ f.categoria.nombre if f.categoria else "" }}</td>
       <td data-sort="{{ f.estado_orden }}">{{ estado(f.estado, f.subestado) }}</td>
       <td class="vigente" data-sort="{{ f.aprobacion or '' }}">{% if f.alcance == "serie" and f.partes.relevantes > 1 and f.partes.vigentes %}{{ f.partes.vigentes }} de {{ f.partes.relevantes }} partes vigentes{% if f.anio_aprobacion %} <span class="aprobacion">(la más reciente, de {{ f.anio_aprobacion }})</span>{% endif %}{% elif f.vigentes %}{{ enlace(f.vigentes[-1]) }}{% elif f.sustituida_por %}Sustituida por {{ enlace(f.sustituida_por[0]) }}{% if f.sustituida_por | length > 1 %} y {{ f.sustituida_por | length - 1 }} más{% endif %}{% else %}—{% endif %}</td>
+      {% if une_cobertura %}
+      <td class="une-col" data-sort="{{ (f.une_boe.vigentes[-1].codigo if f.une_boe.vigentes else '~') if f.une_boe else '~' }}">{% if f.une_boe and f.une_boe.vigentes %}{% if f.alcance == "serie" and f.une_boe.vigentes | length > 1 %}{{ f.une_boe.vigentes | length }} partes con UNE{% else %}{{ une_enlace(f.une_boe.vigentes[-1]) }}{% endif %}{% if f.une_boe.estado == "anterior" %} {{ une_marca("anterior", "edición ISO anterior") }}{% endif %}{% elif f.une %}<span class="une-temario" title="Código que cita el temario; no consta como vigente en las relaciones del BOE que se pueden leer">{{ f.une }}</span>{% else %}—{% endif %}</td>
+      {% endif %}
       <td data-sort="{{ f.edicion_citada.anio if f.edicion_citada else '' }}">{% if f.edicion_citada %}{{ f.edicion_citada.anio }}{% if f.superada %} <span class="superada">{{ "superada" if f.edicion_citada.resultado == "superada" else "no es ISO" }}</span>{% endif %}{% endif %}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 
-*Datos: [ISO Open Data](https://www.iso.org/open-data.html), licencia ODC-By 1.0. Los títulos oficiales están en inglés porque así los publica ISO.*
+*Datos: [ISO Open Data](https://www.iso.org/open-data.html), licencia ODC-By 1.0{% if une_cobertura %}; normas UNE: resoluciones mensuales del [BOE](https://www.boe.es/datosabiertos/) leídas hasta el {{ une_cobertura.ultimo_dia }}{% endif %}. Los títulos oficiales están en inglés porque así los publica ISO.*

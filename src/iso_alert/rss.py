@@ -7,6 +7,7 @@ from xml.etree import ElementTree as ET
 from .vigilancia import TIPOS
 
 ATOM = "http://www.w3.org/2005/Atom"
+NOMBRE = "Observatorio de estándares TIC"
 ET.register_namespace("", ATOM)
 MAX_ENTRADAS = 50
 
@@ -19,8 +20,12 @@ def _sub(padre, etiqueta: str, texto: str | None = None, **atributos) -> ET.Elem
 
 
 def feed(titulo: str, url_feed: str, url_web: str, eventos: list[dict], sitio: str,
-         generado: str) -> str:
-    """Feed Atom con los eventos (dicts del historial), del más reciente al más antiguo."""
+         generado: str, xsl: str | None = None) -> str:
+    """Feed Atom con los eventos (dicts del historial), del más reciente al más antiguo.
+
+    ``xsl`` es la ruta relativa de la hoja XSLT que convierte el feed en una página
+    legible cuando se abre en el navegador (los lectores de feeds la ignoran).
+    """
     from .web import ancla
 
     raiz = ET.Element(f"{{{ATOM}}}feed")
@@ -30,7 +35,7 @@ def feed(titulo: str, url_feed: str, url_web: str, eventos: list[dict], sitio: s
     _sub(raiz, "link", rel="alternate", href=url_web)
     _sub(raiz, "updated", (eventos[0]["detectado"] + "T00:00:00Z") if eventos else generado)
     autor = _sub(raiz, "author")
-    _sub(autor, "name", "Vigilancia de normas TIC (no oficial)")
+    _sub(autor, "name", f"{NOMBRE} (no oficial)")
     for ev in eventos[:MAX_ENTRADAS]:
         entrada = _sub(raiz, "entry")
         ref = ev["entregable"]["referencia"] if ev.get("entregable") else ", ".join(ev["normas"])
@@ -41,4 +46,5 @@ def feed(titulo: str, url_feed: str, url_web: str, eventos: list[dict], sitio: s
         _sub(entrada, "category", term=ev["tipo"], label=TIPOS.get(ev["tipo"], ev["tipo"]))
         _sub(entrada, "summary", ev["resumen"])
     ET.indent(raiz)
-    return '<?xml version="1.0" encoding="utf-8"?>\n' + ET.tostring(raiz, encoding="unicode") + "\n"
+    estilo = f'<?xml-stylesheet type="text/xsl" href="{xsl}"?>\n' if xsl else ""
+    return '<?xml version="1.0" encoding="utf-8"?>\n' + estilo + ET.tostring(raiz, encoding="unicode") + "\n"

@@ -66,9 +66,7 @@ def test_aprobacion(paginas):
 
 def test_inicio(paginas):
     md = paginas["index"]
-    assert "### Ediciones del temario que ya no son las vigentes" in md
-    assert "| [ISO 22301](normas/iso-22301.md) · " in md
-    assert "2015 (año de la UNE)" in md  # ISO 37120
+    assert "Ediciones del temario que ya no son las vigentes" not in md
     assert 'href="estado/?estado=en_revision"' in md
 
 
@@ -171,3 +169,12 @@ def test_comparativas(paginas):
     # El contenido de los bloques plegables va sangrado.
     bloque = md[md.index('??? note "Norma de requisitos'):]
     assert bloque.split("\n")[1].startswith("    [ISO 9001]")
+
+
+def test_feeds_legibles_en_el_navegador(config, indice, tmp_path):
+    web.generar(estado.construir(config, indice, None), informe.construir(config, indice, None), config, tmp_path)
+    general = (tmp_path / "feed.xml").read_text(encoding="utf-8")
+    assert '<?xml-stylesheet type="text/xsl" href="feed.xsl"?>' in general
+    assert "Observatorio de estándares TIC · avisos" in general
+    norma = (tmp_path / web.FEEDS / "iso-iec-27001.xml").read_text(encoding="utf-8")
+    assert '<?xml-stylesheet type="text/xsl" href="../feed.xsl"?>' in norma

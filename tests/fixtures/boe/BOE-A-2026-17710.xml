@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<documento fecha_actualizacion="20260813115602">
+  <metadatos>
+    <identificador>BOE-A-2026-17710</identificador>
+    <origen_legislativo codigo="1">Estatal</origen_legislativo>
+    <departamento codigo="9591">Ministerio de Industria y Turismo</departamento>
+    <rango codigo="1370">Resolución</rango>
+    <fecha_disposicion>20260802</fecha_disposicion>
+    <numero_oficial/>
+    <titulo>Resolución de 2 de agosto de 2026, de la Dirección General de Estrategia Industrial y de la Pequeña y Mediana Empresa, por la que se publica la relación de normas UNE aprobadas por la Asociación Española de Normalización, durante el mes de julio de 2026.</titulo>
+    <diario codigo="BOE">Boletín Oficial del Estado</diario>
+    <fecha_publicacion>20260813</fecha_publicacion>
+    <diario_numero>198</diario_numero>
+    <seccion>3</seccion>
+    <subseccion/>
+    <pagina_inicial>114066</pagina_inicial>
+    <pagina_final>114070</pagina_final>
+    <suplemento_pagina_inicial/>
+    <suplemento_pagina_final/>
+    <url_pdf>https://www.boe.es/boe/dias/2026/08/13/pdfs/BOE-A-2026-17710.pdf</url_pdf>
+    <url_epub/>
+    <url_pdf_catalan/>
+    <url_pdf_euskera/>
+    <url_pdf_gallego/>
+    <url_pdf_valenciano/>
+    <estatus_legislativo>L</estatus_legislativo>
+    <fecha_vigencia/>
+    <estatus_derogacion>N</estatus_derogacion>
+    <fecha_derogacion/>
+    <judicialmente_anulada>N</judicialmente_anulada>
+    <fecha_anulacion/>
+    <vigencia_agotada>N</vigencia_agotada>
+    <estado_consolidacion codigo="0"/>
+    <letra_imagen>A</letra_imagen>
+    <suplemento_letra_imagen/>
+    <url_eli>https://www.boe.es/eli/es/res/2026/08/02/(3)</url_eli>
+  </metadatos>
+  <metadata-eli>
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:eli="http://data.europa.eu/eli/ontology#">
+      <eli:LegalResource rdf:about="https://www.boe.es/eli/es/res/2026/08/02/(3)">
+        <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+        <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/res"/>
+        <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2026-17710</eli:id_local>
+        <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-02</eli:date_document>
+        <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(3)</eli:number>
+        <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+        <eli:has_member>
+          <eli:LegalResource rdf:about="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof">
+            <eli:jurisdiction rdf:resource="http://www.elidata.es/mdr/authority/jurisdiction/1/es"/>
+            <eli:type_document rdf:resource="http://www.elidata.es/mdr/authority/resource-type/1/res"/>
+            <eli:id_local rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BOE-A-2026-17710</eli:id_local>
+            <eli:date_document rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-02</eli:date_document>
+            <eli:number rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(3)</eli:number>
+            <eli:is_about rdf:resource="https://www.boe.es/legislacion/eli/materias/5159"/>
+            <eli:version rdf:resource="http://www.elidata.es/mdr/authority/version/dof"/>
+            <eli:is_member_of rdf:resource="https://www.boe.es/eli/es/res/2026/08/02/(3)"/>
+            <eli:is_realized_by>
+              <eli:LegalExpression rdf:about="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof/spa">
+                <eli:language rdf:resource="http://www.elidata.es/mdr/authority/language/spa"/>
+                <eli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resolución de 2 de agosto de 2026, de la Dirección General de Estrategia Industrial y de la Pequeña y Mediana Empresa, por la que se publica la relación de normas UNE aprobadas por la Asociación Española de Normalización, durante el mes de julio de 2026.</eli:title>
+                <eli:publisher_agent rdf:resource="https://www.boe.es"/>
+                <eli:date_publication rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-13</eli:date_publication>
+                <eli:realizes rdf:resource="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof"/>
+                <eli:is_embodied_by>
+                  <eli:Format rdf:about="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof/spa/html">
+                    <eli:format rdf:resource="http://www.iana.org/assignments/media-types/text/html"/>
+                    <eli:embodies rdf:resource="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof/spa"/>
+                  </eli:Format>
+                </eli:is_embodied_by>
+                <eli:is_embodied_by>
+                  <eli:Format rdf:about="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof/spa/pdf">
+                    <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/pdf"/>
+                    <eli:embodies rdf:resource="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof/spa"/>
+                  </eli:Format>
+                </eli:is_embodied_by>
+                <eli:is_embodied_by>
+                  <eli:Format rdf:about="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof/spa/xml">
+                    <eli:format rdf:resource="http://www.iana.org/assignments/media-types/application/xml"/>
+                    <eli:embodies rdf:resource="https://www.boe.es/eli/es/res/2026/08/02/(3)/dof/spa"/>
+                  </eli:Format>
+                </eli:is_embodied_by>
+              </eli:LegalExpression>
+            </eli:is_realized_by>
+          </eli:LegalResource>
+        </eli:has_member>
+      </eli:LegalResource>
+    </rdf:RDF>
+  </metadata-eli>
+  <analisis>
+    <materias>
+      <materia codigo="5159" orden="1">Normalización</materia>
+    </materias>
+    <notas>
+      <nota codigo="38" orden="225">Efectos desde el 14 de agosto de 2026.</nota>
+    </notas>
+    <referencias>
+      <anteriores>
+        <anterior referencia="BOE-A-1996-2468" orden="3060">
+          <palabra codigo="440">DE CONFORMIDAD con</palabra>
+          <texto>el art. 11.f) del Reglamento aprobado por Real Decreto 2200/1995, de 28 de diciembre</texto>
+        </anterior>
+      </anteriores>
+      <posteriores/>
+    </referencias>
+    <alertas>
+      <alerta codigo="129" orden="1">Tecnología e investigación</alerta>
+    </alertas>
+  </analisis>
+  <texto>
+    <p class="parrafo">En cumplimiento de lo dispuesto en el artículo 11.º, apartado f), del Reglamento de la Infraestructura para la Calidad y Seguridad Industrial, aprobado por Real Decreto 2200/1995, de 28 de diciembre (BOE de 6 de febrero de 1996) modificado por el Real Decreto 1072/2015, de 27 de noviembre (BOE de 14 de diciembre de 2015), y visto el expediente de las normas aprobadas por la Asociación Española de Normalización, entidad designada por Orden del Ministerio de Industria y Energía de 26 de febrero de 1986, de acuerdo con el Real Decreto 1614/1985, de 1 de agosto, y reconocida por la disposición adicional primera del citado Real Decreto 2200/1995, de 28 de diciembre.</p>
+    <p class="parrafo">Esta Dirección General ha resuelto publicar en el «Boletín Oficial del Estado», la relación de normas españolas UNE aprobadas por la Asociación Española de Normalización, correspondientes al mes de julio de 2026, identificadas por su título y código numérico, que figura como anexo a la presente resolución.</p>
+    <p class="parrafo">Esta resolución causará efecto a partir del día siguiente al de su publicación en el «Boletín Oficial del Estado».</p>
+    <p class="parrafo_2">Madrid, 2 de agosto de 2026.–El Director General de Estrategia Industrial y de la Pequeña y Mediana Empresa, Miguel Gómez-Pavón López.</p>
+    <p class="anexo_num">ANEXO</p>
+    <p class="anexo_tit">Normas editadas en el mes de julio de 2026</p>
+    <table class="tabla_ancha">
+      <colgroup>
+        <col width="30%"/>
+        <col width="50%"/>
+        <col width="20%"/>
+      </colgroup>
+      <thead>
+        <tr>
+          <th class="cabeza_tabla">Código</th>
+          <th class="cabeza_tabla">Título</th>
+          <th class="cabeza_tabla">Sustituye a</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE 23035-1:2026.</td>
+          <td class="cuerpo_tabla_izq">Seguridad contra incendios. Señalización fotoluminiscente. Parte 1: Medida y calificación.</td>
+          <td class="cuerpo_tabla_izq">UNE 23035-1:2003.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE 60230:2026.</td>
+          <td class="cuerpo_tabla_izq">Plantas de almacenamiento, trasvase y llenado de envases de gases licuados del petróleo.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE 60310:2022/2M:2026.</td>
+          <td class="cuerpo_tabla_izq">Canalizaciones de combustibles gaseosos con presión máxima de operación superior a 5 bar e inferior o igual a 16 bar.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE 60311:2022/2M:2026.</td>
+          <td class="cuerpo_tabla_izq">Canalizaciones de combustibles gaseosos con presión máxima de operación inferior o igual a 5 bar.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE 192007-1:2026.</td>
+          <td class="cuerpo_tabla_izq">Procedimiento para la inspección reglamentaria. Instalaciones eléctricas de baja tensión. Parte 1: Requisitos generales.</td>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">UNE 192007-1:2020/2M:2026.</p>
+            <p class="cuerpo_tabla_izq">UNE 192007-1:2020.</p>
+            <p class="cuerpo_tabla_izq">UNE 192007-1:2020/1M:2024.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-CEN/TR 14380:2026 IN.</td>
+          <td class="cuerpo_tabla_izq">Aplicaciones de iluminación. Alumbrado de túneles.</td>
+          <td class="cuerpo_tabla_izq">UNE-CR 14380:2007 IN.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 71-7:2026.</td>
+          <td class="cuerpo_tabla_izq">Seguridad de los juguetes. Parte 7: Pinturas de dedos. Requisitos y métodos de ensayo.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 81-83:2026.</td>
+          <td class="cuerpo_tabla_izq">Reglas de seguridad para la construcción e instalación de ascensores. Ascensores existentes. Parte 83: Reglas para la mejora de la resistencia al vandalismo.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 1434-3:2026.</td>
+          <td class="cuerpo_tabla_izq">Contadores de energía térmica. Parte 3: Intercambio de datos e interfaces.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 1434-3:2016.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 1508:2026.</td>
+          <td class="cuerpo_tabla_izq">Abastecimiento de agua. Requisitos para sistemas y componentes para el almacenamiento de agua.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 1508:1999.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 1761:2026.</td>
+          <td class="cuerpo_tabla_izq">Mangueras a base de elastómeros y sus conjuntos con accesorios de unión, para el suministro de combustible mediante camión cisterna. Especificación.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 1761:1999.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 1815:2026.</td>
+          <td class="cuerpo_tabla_izq">Revestimientos de suelo resilientes, modulares con bloqueo mecánico (MMF) y laminados. Evaluación de la propensión a la acumulación de cargas electrostáticas.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 1815:2017.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 10253-4:2026.</td>
+          <td class="cuerpo_tabla_izq">Accesorios para tuberías soldados a tope. Parte 4: Aceros inoxidables forjados austeníticos y austeno-ferríticos con requisitos específicos de inspección.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 10253-4:2010.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 10378:2026.</td>
+          <td class="cuerpo_tabla_izq">Tubos soldados de acero inoxidable cuadrados y rectangulares para uso mecánico, de ingeniería y decorativo. Condiciones técnicas de suministro.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 12480:2026.</td>
+          <td class="cuerpo_tabla_izq">Contadores de gas. Contadores de gas de desplazamiento rotativo.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 12480:2018.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 13060:2026.</td>
+          <td class="cuerpo_tabla_izq">Esterilizadores para uso médico. Esterilizadores de vapor de agua pequeños. Requisitos y ensayos.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 13060:2015+A1:2019.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 13079:2026.</td>
+          <td class="cuerpo_tabla_izq">Dispositivos para prevenir la contaminación del agua potable por reflujo. Intervalo de aire con inyector. Familia A. Tipo D.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 13079:2004.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 14383-1:2026.</td>
+          <td class="cuerpo_tabla_izq">Prevención del crimen mediante el diseño de edificios, la planificación urbana y el mantenimiento de las ciudades. Parte 1: Vocabulario.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 14383-1:2008.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 15269-4:2026.</td>
+          <td class="cuerpo_tabla_izq">Extensión de la aplicación de los resultados de ensayo de resistencia al fuego y/o control de humos para puertas, persianas y ventanas practicables, incluyendo sus herrajes para la edificación. Parte 4: Resistencia al fuego de puertas batientes y pivotantes.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 16584-2:2026.</td>
+          <td class="cuerpo_tabla_izq">Aplicaciones ferroviarias. Diseño destinado al uso por PMR. Requisitos generales. Parte 2: Información.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 16584-2:2018.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 16585-2:2026.</td>
+          <td class="cuerpo_tabla_izq">Aplicaciones ferroviarias. Diseño destinado al uso por PMR. Equipos y componentes a bordo del material rodante. Parte 2: Elementos para sentarse, estar de pie y moverse.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 16585-2:2018.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 16585-3:2026.</td>
+          <td class="cuerpo_tabla_izq">Aplicaciones ferroviarias. Diseño destinado al uso por PMR. Equipos y componentes a bordo del material rodante. Parte 3: Pasillos y puertas interiores.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 16585-3:2018.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 16726:2026.</td>
+          <td class="cuerpo_tabla_izq">Infraestructura gasista. Calidad del gas. Grupo H.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 16726:2016+A1:2019.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 17272:2020+A1:2026.</td>
+          <td class="cuerpo_tabla_izq">Antisépticos y desinfectantes químicos. Métodos de desinfección de salas por vía aérea utilizando procesos automatizados. Determinación de actividades bactericidas, micobactericidas, esporicidas, fungicidas, levaduricidas, virucidas y fagocidas.</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 17272:2020.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 18025:2026.</td>
+          <td class="cuerpo_tabla_izq">Calidad del agua. Guía sobre un enfoque estratégico para la restauración de los ríos.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 18050:2026.</td>
+          <td class="cuerpo_tabla_izq">Requisitos de información para el usuario de vapeadores.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 18110:2026.</td>
+          <td class="cuerpo_tabla_izq">Calidad del agua. Evaluación de los daños causados a los peces que atraviesan estaciones de bombeo y centrales hidroeléctricas. Métodos basados en los ensayos de supervivencia al paso de peces vivos y el modelo de colisión con las palas.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 50731:2026.</td>
+          <td class="cuerpo_tabla_izq">Durabilidad. Método de medición para la evaluación de la fiabilidad de las lavadoras de uso doméstico.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 61000-4-34:2008/A2:2026.</td>
+          <td class="cuerpo_tabla_izq">Compatibilidad electromagnética (CEM). Parte 4-34: Técnicas de ensayo y de medida. Ensayos de inmunidad a los huecos de tensión, interrupciones breves y variaciones de tensión para equipos con una corriente de alimentación superior a 16 A por fase.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN 62606:2014/A11:2026.</td>
+          <td class="cuerpo_tabla_izq">Requisitos generales para dispositivos de detección de defectos por arco eléctrico (AFDD).</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 60269-1:2026.</td>
+          <td class="cuerpo_tabla_izq">Fusibles de baja tensión. Parte 1: Requisitos generales.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 60335-2-34:2023/A12:2026.</td>
+          <td class="cuerpo_tabla_izq">Aparatos electrodomésticos y análogos. Seguridad. Parte 2-34: Requisitos particulares para motocompresores.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 60335-2-120:2026.</td>
+          <td class="cuerpo_tabla_izq">Aparatos electrodomésticos y análogos. Seguridad. Parte 2-120: Requisitos particulares para la seguridad de los aparatos para la generación de aerosoles directamente inhalables.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 60335-2-120:2026/A11:2026.</td>
+          <td class="cuerpo_tabla_izq">Aparatos electrodomésticos y análogos. Seguridad. Parte 2-120: Requisitos particulares para la seguridad de los aparatos para la generación de aerosoles directamente inhalables.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 60350-1:2023/A1:2026.</td>
+          <td class="cuerpo_tabla_izq">Aparatos electrodomésticos de cocción. Parte 1: Cocinas, hornos, hornos de vapor y gratinadores. Métodos de medida de la aptitud a la función.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 60350-2:2026.</td>
+          <td class="cuerpo_tabla_izq">Aparatos electrodomésticos de cocción. Parte 2: Encimeras de cocción. Métodos de medida de la aptitud a la función.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 60879:2020/A1:2026.</td>
+          <td class="cuerpo_tabla_izq">Ventiladores y reguladores para usos domésticos y análogos. Método de medida de la aptitud para la función.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 60947-2:2026.</td>
+          <td class="cuerpo_tabla_izq">Aparamenta de baja tensión. Parte 2: Interruptores automáticos.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 62933-4-2:2026.</td>
+          <td class="cuerpo_tabla_izq">Sistemas de almacenamiento de energía eléctrica (EES). Parte 4-2: Orientación sobre temas medioambientales. Evaluación del impacto ambiental de un fallo en baterías de un sistema de almacenamiento electroquímico.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN IEC 63180:2021/A1:2026.</td>
+          <td class="cuerpo_tabla_izq">Métodos de medición y declaración del rango de detección de los detectores. Detectores infrarrojos pasivos para la detección de movimientos de gran y pequeña amplitud. Modificación 1.</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 1135-4:2026.</td>
+          <td class="cuerpo_tabla_izq">Equipo de transfusión para uso médico. Parte 4: Equipos de transfusión para un solo uso, alimentación por gravedad. (ISO 1135-4:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 1135-4:2016.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 1135-5:2026.</td>
+          <td class="cuerpo_tabla_izq">Equipo de transfusión para uso médico. Parte 5: Equipos de transfusión para un solo uso con aparatos de perfusión bajo presión. (ISO 1135-5:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 1135-5:2016.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 3506-7:2026.</td>
+          <td class="cuerpo_tabla_izq">Elementos de fijación. Características mecánicas de los elementos de fijación de acero inoxidable resistente a la corrosión. Parte 7: Arandelas planas con grados y clases de propiedades específicos (ISO 3506-7:2024).</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 4064-5:2026.</td>
+          <td class="cuerpo_tabla_izq">Contadores de agua para agua fría potable y agua caliente. Parte 5: Requisitos de instalación. (ISO 4064-5:2025).</td>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 4064-5:2018.</p>
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 4064-5:2018/A11:2023.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 5403-1:2026.</td>
+          <td class="cuerpo_tabla_izq">Cuero. Determinación de la resistencia al agua del cuero flexible. Parte 1: Compresión lineal repetida (penetrómetro). (ISO 5403-1:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 5403-1:2012.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 5530-1:2026.</td>
+          <td class="cuerpo_tabla_izq">Harina de trigo. Características físicas de las masas. Parte 1: Determinación de la absorción de agua y propiedades reológicas utilizando un farinógrafo. (ISO 5530-1:2026).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 5530-1:2025.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 6683:2026.</td>
+          <td class="cuerpo_tabla_izq">Maquinaria para movimiento de tierras. Cinturones de seguridad y sus anclajes. Requisitos de comportamiento y ensayos. (ISO 6683:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 6683:2008.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 10280:2026.</td>
+          <td class="cuerpo_tabla_izq">Aceros y fundiciones. Determinación del contenido de titanio. Método espectrofotométrico con diantipirilmetano. (ISO 10280:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 10280:1996.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 11642:2026.</td>
+          <td class="cuerpo_tabla_izq">Cuero. Ensayos de solidez del color. Solidez del color al agua. (ISO 11642:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 11642:2013.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 11970:2026.</td>
+          <td class="cuerpo_tabla_izq">Especificación y cualificación de procedimientos de soldeo para el soldeo de producción de moldeados de acero y a base de níquel. (ISO 11970:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 11970:2016.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 11980:2026.</td>
+          <td class="cuerpo_tabla_izq">Óptica oftálmica. Lentes de contacto y productos para el mantenimiento de las lentes de contacto. Requisitos y directrices para las investigaciones clínicas. (ISO 11980:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 11980:2013.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 13646:2026.</td>
+          <td class="cuerpo_tabla_izq">Calidad del agua. Determinación de estrógenos seleccionados en muestras de agua total. Método por extracción en fase sólida (SPE) seguida de cromatografía líquida (CL) o cromatografía de gases (CG) acoplada a la detección por espectrometría de masas (EM) (ISO 13646:2025).</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 15223-1:2022/A1:2026.</td>
+          <td class="cuerpo_tabla_izq">Productos sanitarios. Símbolos a utilizar con la información a suministrar por el fabricante. Parte 1: Requisitos generales. Modificación 1: Adición del término definido para representante autorizado y modificación del símbolo EC REP para que no sea específico de un país o región (ISO 15223 1:2021/Amd 1:2025).</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 15614-9:2026.</td>
+          <td class="cuerpo_tabla_izq">Especificación y cualificación de los procedimientos de soldeo para los materiales metálicos. Ensayo de procedimiento de soldeo. Parte 9: Soldeo húmedo hiperbárico subacuático. (ISO 15614-9:2025).</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 15614-11:2026.</td>
+          <td class="cuerpo_tabla_izq">Especificación y cualificación de los procedimientos de soldeo para los materiales metálicos. Ensayo de procedimiento de soldeo. Parte 11: Soldeo por láser y haz de electrones. (ISO 15614-11:2025, versión corregida 2026-05).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 15614-11:2002.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 15875-1:2026.</td>
+          <td class="cuerpo_tabla_izq">Sistemas de canalización en materiales plásticos para instalaciones de agua caliente y fría. Polietileno reticulado (PE-X). Parte 1: Generalidades. (ISO 15875-1:2025).</td>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-1:2004.</p>
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-1:2004/A1:2007.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 15875-2:2026.</td>
+          <td class="cuerpo_tabla_izq">Sistemas de canalización en materiales plásticos para instalaciones de agua caliente y fría. Polietileno reticulado (PE-X). Parte 2: Tubos. (ISO 15875-2:2025).</td>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-2:2004.</p>
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-2:2004/A2:2021.</p>
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-2:2004/A1:2007.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 15875-3:2026.</td>
+          <td class="cuerpo_tabla_izq">Sistemas de canalización en materiales plásticos para instalaciones de agua caliente y fría. Polietileno reticulado (PE-X). Parte 3: Accesorios. (ISO 15875-3:2025).</td>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-3:2004.</p>
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-3:2004/A2:2022.</p>
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-3:2004/A1:2021.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 15875-5:2026.</td>
+          <td class="cuerpo_tabla_izq">Sistemas de canalización en materiales plásticos para instalaciones de agua caliente y fría. Polietileno reticulado (PE-X). Parte 5: Aptitud al uso del sistema. (ISO 15875-5:2025).</td>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-5:2004/A1:2021.</p>
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 15875-5:2004.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 16094-2:2026.</td>
+          <td class="cuerpo_tabla_izq">Calidad del agua. Análisis de microplásticos en agua. Parte 2: Métodos de espectroscopía vibracional para aguas con bajo contenido de sólidos en suspensión, incluida el agua potable. (ISO 16094-2:2025).</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 16484-4:2026.</td>
+          <td class="cuerpo_tabla_izq">Sistemas de automatización y control de edificios (BACS). Parte 4: Aplicaciones de control. (ISO 16484-4:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN 17609:2023.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 17232:2026.</td>
+          <td class="cuerpo_tabla_izq">Cuero. Ensayos físicos y mecánicos. Determinación de la resistencia al calor del charol. (ISO 17232:2025).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 17232:2017.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 18724:2026.</td>
+          <td class="cuerpo_tabla_izq">Calidad del agua. Determinación del cromo (VI) disuelto en agua. Método fotométrico. (ISO 18724:2025).</td>
+          <td class="cuerpo_tabla_izq">
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 18412:2007.</p>
+            <p class="cuerpo_tabla_izq">UNE-EN ISO 23913:2010.</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 21805:2023/A1:2026.</td>
+          <td class="cuerpo_tabla_izq">Guía y recomendaciones para el diseño, selección e instalación de compuertas de venteo para alivio de presión para salvaguardar la integridad estructural de recintos protegidos con sistemas de extinción de incendios por agentes gaseosos. Modificación 1 (ISO 21805:2023/Amd 1:2025).</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO 52016-3:2024/A1:2026.</td>
+          <td class="cuerpo_tabla_izq">Eficiencia energética de los edificios. Necesidades energéticas para calefacción y refrigeración, temperaturas interiores y calor sensible y latente. Parte 3: Método de cálculo para elementos adaptables de la envolvente del edificio. Modificación 1: Escenarios de control de referencia para elementos adaptables de la envolvente de edificios con protección solar dinámica o acristalamiento cromogénico (ISO 52016-3:2023/Amd 1:2025).</td>
+          <td class="cuerpo_tabla_izq"> </td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO/IEC 17020:2026.</td>
+          <td class="cuerpo_tabla_izq">Evaluación de la conformidad. Requisitos para los organismos que realizan la inspección. (ISO/IEC 17020:2026, Versión corregida 2026-06).</td>
+          <td class="cuerpo_tabla_izq">UNE-EN ISO/IEC 17020:2012.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-ISO 34-2:2026.</td>
+          <td class="cuerpo_tabla_izq">Caucho, vulcanizado o termoplástico. Determinación de la resistencia al desgarro. Parte 2: Probetas pequeñas tipo Delft.</td>
+          <td class="cuerpo_tabla_izq">UNE-ISO 34-2:2011.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-ISO 1431-1:2026.</td>
+          <td class="cuerpo_tabla_izq">Caucho vulcanizado o termoplástico. Resistencia al agrietamiento por ozono. Parte 1: Ensayo de deformación en condiciones estáticas y dinámicas.</td>
+          <td class="cuerpo_tabla_izq">UNE-ISO 1431-1:2017.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-ISO 1795:2026.</td>
+          <td class="cuerpo_tabla_izq">Caucho bruto, natural y sintético. Procedimiento de toma de muestras y preparación posterior.</td>
+          <td class="cuerpo_tabla_izq">UNE-ISO 1795:2013.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-ISO 14092:2026.</td>
+          <td class="cuerpo_tabla_izq">Adaptación al cambio climático. Requisitos y orientación sobre la planificación de la adaptación para los gobiernos locales y las comunidades.</td>
+          <td class="cuerpo_tabla_izq">UNE-ISO/TS 14092:2021.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-ISO 14721:2026.</td>
+          <td class="cuerpo_tabla_izq">Prácticas de sistemas de datos espaciales. Modelo de referencia para un sistema abierto de información de archivo (OAIS).</td>
+          <td class="cuerpo_tabla_izq">UNE-ISO 14721:2015.</td>
+        </tr>
+        <tr>
+          <td class="cuerpo_tabla_izq">UNE-ISO 50003:2026.</td>
+          <td class="cuerpo_tabla_izq">Sistemas de gestión de la energía. Requisitos para los organismos que realizan la auditoría y la certificación de sistemas de gestión de la energía.</td>
+          <td class="cuerpo_tabla_izq">UNE-ISO 50003:2018.</td>
+        </tr>
+      </tbody>
+    </table>
+  </texto>
+</documento>
