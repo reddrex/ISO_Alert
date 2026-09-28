@@ -222,11 +222,28 @@ class Vista:
             if len(codigos) < 2:  # el tema solo cita familias: el diagrama las muestra enteras
                 codigos += [f["codigo"] for g in familias for f in g["normas"] if f["codigo"] not in codigos]
             por_codigo = {f["codigo"]: f for f in filas}
+            asociacion = [(por_codigo[c], idea) for c, idea in tema.asociacion if c in por_codigo]
+            # Una sola lista: primero la cadena de asociación (de lo general a lo específico),
+            # después las normas citadas que no están en ella.
+            en_cadena = {x["codigo"] for x, _ in asociacion}
+            lista = [{"norma": x, "idea": idea} for x, idea in asociacion]
+            lista += [{"norma": x, "idea": None} for x in normas if x["codigo"] not in en_cadena]
+            areas = []
+            for fila in lista:
+                area = fila["norma"]["area"]
+                if area and area not in areas:
+                    areas.append(area)
+            corto = titulo_corto(tema.titulo)
             resultado.append({
                 "tema": tema,
+                "corto": corto,
+                # El enunciado sin repetir la primera frase, que ya es el título de la página.
+                "resto_titulo": tema.titulo[len(corto):].lstrip(". ").strip() if tema.titulo.startswith(corto) else tema.titulo,
                 "familias": familias,
                 "normas": normas,
-                "asociacion": [(por_codigo[c], idea) for c, idea in tema.asociacion if c in por_codigo],
+                "asociacion": asociacion,
+                "lista": lista,
+                "areas": areas,
                 "diagrama": self.diagrama(codigos, filas),
             })
         return resultado

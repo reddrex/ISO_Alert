@@ -156,11 +156,16 @@ def test_fichas(paginas):
 
 def test_temario(paginas, config):
     indice = paginas["temario"]["index"]
-    assert len(re.findall(r"^\| \[\d+\]\(\d+\.md\)", indice, re.M)) == len(config.temario) == 38
+    # Un solo enlace por tema, y las normas con su código completo.
+    assert len(re.findall(r"^\| \[\d+ · [^]]+\]\(\d+\.md\) \|", indice, re.M)) == len(config.temario) == 38
+    assert "[ISO/IEC 27001](../normas/iso-iec-27001.md)" in indice and "+ familia [ISO/IEC 27000]" in indice
+    assert "[ASTIC](https://www.astic.es/)" in indice
     tema47 = paginas["temario"]["47"]
+    lista = tema47[tema47.index("## Normas del tema"):tema47.index("```")]
     for codigo in ("iso-iec-27001", "iso-iec-27002", "iso-iec-27005", "iso-31000"):
-        assert f"(../normas/{codigo}.md)" in tema47
-    assert "¿Cómo gestiono los riesgos?" in tema47  # pregunta de cada norma en la tabla
+        assert lista.count(f'href="../normas/{codigo}/"') == 1  # cada norma, una sola vez
+    assert "¿Cómo gestiono los riesgos?" in tema47  # pregunta de cada norma en la lista
+    assert "El color indica el área:" in lista
     assert "ISO/IEC 27017" not in tema47.split("```")[1]  # el diagrama solo usa las citadas una a una
     assert '<a href="46/" rel="prev">' in tema47 and '<a href="48/" rel="next">' in tema47
     assert "estado--vigente" not in tema47 and "estado--en_revision" in tema47  # ISO 31000

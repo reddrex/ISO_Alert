@@ -288,13 +288,15 @@
 }
 
 /* Asociación para el examen: cadena vertical de lo general a lo específico */
-.md-typeset ol.cadena {
+.md-typeset ol.cadena,
+.md-typeset ul.cadena {
   list-style: none;
   margin: 0.4em 0 1em;
   padding: 0;
   max-width: 34rem;
 }
-.md-typeset ol.cadena li {
+.md-typeset ol.cadena li,
+.md-typeset ul.cadena li {
   margin: 0 0 1.3em;
   padding: 0.35rem 0.7rem;
   border-left: 4px solid var(--area, var(--md-default-fg-color--lighter));
@@ -309,8 +311,16 @@
   bottom: -1.3em;
   color: var(--md-default-fg-color--light);
 }
-.md-typeset ol.cadena li a { font-weight: 600; margin-right: 0.6em; white-space: nowrap; }
-.md-typeset .cadena__idea { color: var(--md-default-fg-color); }
+.md-typeset .cadena li a { font-weight: 600; margin-right: 0.6em; white-space: nowrap; }
+.md-typeset .cadena__idea { color: var(--md-default-fg-color); margin-right: 0.5em; }
+.md-typeset ol.cadena li .estado { margin-right: 0.5em; }
+.md-typeset .cadena__detalle { display: block; font-size: 0.85em; color: var(--md-default-fg-color--light); }
+.md-typeset ol.cadena + .cadena--suelta { margin-top: -0.2em; }
+.md-typeset ul.cadena--suelta li { margin-bottom: 0.5em; }
+.md-typeset ul.cadena--suelta li::after { content: none; }
+.md-typeset .tema__enunciado { color: var(--md-default-fg-color--light); margin-top: -0.6em; }
+.md-typeset .tema__enunciado span { font-weight: 600; }
+.md-typeset .etiqueta-familia { white-space: nowrap; }
 
 .md-typeset .cadena-linea { line-height: 1.9; }
 .md-typeset .cadena-linea .actual { background: var(--md-accent-fg-color--transparent); padding: 0.05em 0.3em; border-radius: 0.2rem; }

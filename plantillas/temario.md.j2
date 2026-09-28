@@ -12,10 +12,10 @@ hide:
 
 Los {{ temario | length }} temas del temario TIC A1 que citan normas técnicas. Cada tema tiene su página con las normas que hay que saber, una **asociación para el examen** que las ordena de lo general a lo específico y cómo encajan entre sí.
 
-| Tema | Título | Normas que cita |
-|---:|---|---|
+| Tema | Normas que cita |
+|---|---|
 {% for t in temario %}
-| [{{ t.tema.numero }}]({{ t.tema.numero }}.md) | [{{ t.tema.titulo | titulo_corto }}]({{ t.tema.numero }}.md) | {% for x in t.normas %}{{ x.codigo.split(' ')[-1] }}{% if not loop.last %}, {% endif %}{% endfor %}{% for g in t.familias %}{{ ", " if t.normas or not loop.first else "" }}familia {{ g.familia.corto }}{% endfor %} |
+| [{{ t.tema.numero }} · {{ t.corto }}]({{ t.tema.numero }}.md) | {% for x in t.normas %}[{{ x.codigo }}](../normas/{{ x.ancla }}.md){% if not loop.last %} · {% endif %}{% endfor %}{% for g in t.familias %}{{ " · " if t.normas or not loop.first else "" }}<span class="etiqueta-familia">+ familia [{{ g.familia.corto }}](../familias/{{ g.familia.id }}.md)</span>{% endfor %} |
 {% endfor %}
 
-*Fuente de los temas: temario de la oposición TIC A1.*
+*Fuente de los temas: temario de la oposición TIC A1 publicado por [ASTIC](https://www.astic.es/), la Asociación Profesional del Cuerpo Superior de Sistemas y Tecnologías de la Información de la Administración del Estado.*

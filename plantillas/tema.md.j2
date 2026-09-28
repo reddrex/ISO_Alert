@@ -9,34 +9,45 @@ hide:
 [Por tema](index.md) › Tema {{ t.tema.numero }}
 {: .migas }
 
-# Tema {{ t.tema.numero }}. {{ t.tema.titulo | titulo_corto }}
+# Tema {{ t.tema.numero }}. {{ t.corto }}
 
-{% if (t.tema.titulo | titulo_corto) != t.tema.titulo.rstrip(".") %}
-<p class="ficha__nombre">{{ t.tema.titulo }}</p>
-
-{% endif %}
-{% if t.asociacion %}
-## Asociación para el examen
-
-De lo general a lo específico:
-
-<ol class="cadena">
-{% for x, idea in t.asociacion %}
-<li class="area--{{ x.area.id if x.area else 'ninguna' }}"><a href="../normas/{{ x.ancla }}/">{{ x.codigo }}</a><span class="cadena__idea">{{ idea }}</span></li>
-{% endfor %}
-</ol>
+{% if t.resto_titulo %}
+<p class="tema__enunciado"><span>Enunciado del temario:</span> {{ t.resto_titulo }}</p>
 
 {% endif %}
 ## Normas del tema
 
-| Norma | Qué es | Pregunta que responde |
-|---|---|---|
-{% for x in t.normas %}
-| <span class="marca area--{{ x.area.id if x.area else 'ninguna' }}" title="{{ x.area.nombre if x.area else '' }}" aria-hidden="true"></span>{{ ref(x) }} {{ aviso(x.estado, x.subestado) }} | {{ x.nombre }} | {{ x.pregunta or "—" }} |
-{% endfor %}
+{% set cadena = t.lista | selectattr("idea") | list %}
+{% set otras = t.lista | rejectattr("idea") | list %}
+{% if cadena %}
+{{ "Para el examen, de lo general a lo específico" if cadena | length > 1 else "Para el examen" }}{{ "; al final, las demás normas que cita el tema" if otras else "" }}.
+{% endif %}
 
+{% if t.areas %}
+<p class="leyenda">El color indica el área: {% for a in t.areas %}<span class="marca area--{{ a.id }}" aria-hidden="true"></span>{{ a.nombre }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+
+{% endif %}
+{% macro item(fila) -%}
+{% set x = fila.norma %}<li class="area--{{ x.area.id if x.area else 'ninguna' }}"><a href="../normas/{{ x.ancla }}/">{{ x.codigo }}</a>{% if fila.idea %}<span class="cadena__idea">{{ fila.idea }}</span>{% endif %}{{ aviso(x.estado, x.subestado) }}<span class="cadena__detalle">{{ x.nombre }}{% if x.pregunta %} · <em>{{ x.pregunta }}</em>{% endif %}</span></li>
+{%- endmacro %}
+{% if cadena %}
+<ol class="cadena">
+{% for fila in cadena %}
+{{ item(fila) }}
+{% endfor %}
+</ol>
+
+{% endif %}
+{% if otras %}
+<ul class="cadena cadena--suelta">
+{% for fila in otras %}
+{{ item(fila) }}
+{% endfor %}
+</ul>
+
+{% endif %}
 {% for g in t.familias %}
-El tema cita además la **[{{ g.familia.nombre }}](../familias/{{ g.familia.id }}.md)** en conjunto: {% for x in g.normas %}{{ ref(x) }}{% if not loop.last %}, {% endif %}{% endfor %}.
+El tema cita además la familia **{{ g.familia.corto }}** completa ({{ g.normas | length }} normas): [ver la familia](../familias/{{ g.familia.id }}.md).
 
 {% endfor %}
 {% if t.tema.relacion or t.diagrama %}
@@ -57,4 +68,4 @@ El tema cita además la **[{{ g.familia.nombre }}](../familias/{{ g.familia.id }
 
 ---
 
-*Las explicaciones son orientativas y no sustituyen al estudio del tema ni al texto de las normas. El color indica el área de cada norma en la vista [por ámbito](../index.md).*
+*Las explicaciones son orientativas y no sustituyen al estudio del tema ni al texto de las normas.*
