@@ -323,6 +323,8 @@
 .md-typeset .etiqueta-familia { white-space: nowrap; }
 
 .md-typeset .cadena-linea { line-height: 1.9; }
+.md-typeset .cadena-linea .sep { color: var(--md-default-fg-color--lighter); margin: 0 0.15em; }
+.md-typeset .resumen-une { font-size: 0.8rem; }
 .md-typeset .cadena-linea .actual { background: var(--md-accent-fg-color--transparent); padding: 0.05em 0.3em; border-radius: 0.2rem; }
 .md-typeset .ficha__pregunta { font-size: 0.95em; }
 

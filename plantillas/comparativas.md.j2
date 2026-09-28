@@ -1,4 +1,3 @@
-{% from "_macros.j2" import une_enlace %}
 {% macro n(codigo) -%}{% set x = por_codigo[codigo] %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){%- endmacro %}
 {% macro ed(codigo, parte=None) -%}{% set x = por_codigo[codigo] %}{% if parte %}{% set ps = (x.partes.citadas + x.partes.otras) | selectattr("parte", "equalto", parte) | list %}{{ ps[0].ultima.anio if ps and ps[0].ultima else "—" }}{% elif x.vigentes %}{{ x.vigentes[-1].anio }}{% else %}—{% endif %}{%- endmacro %}
 ---
@@ -9,9 +8,11 @@ hide:
 
 # Comparativas
 
-Tablas para ver de un vistazo qué tienen en común las normas y en qué se diferencian. Los años de edición se actualizan con los datos de ISO.
+Tablas para distinguir normas que se suelen confundir en el examen.
 
-## Normas de sistemas de gestión
+## Gestión
+
+### Sistemas de gestión
 
 Varias normas del temario definen un **sistema de gestión**: el conjunto de políticas, procesos y responsabilidades con que una organización gestiona un ámbito (la calidad, la seguridad, la continuidad…). Todas comparten la **estructura armonizada** de ISO, así que tienen las mismas cláusulas y se pueden integrar en un único sistema:
 
@@ -25,52 +26,28 @@ Varias normas del temario definen un **sistema de gestión**: el conjunto de pol
 | 9 | Evaluación del desempeño (seguimiento, auditoría interna, revisión por la dirección) | Verificar |
 | 10 | Mejora | Actuar |
 
-Las cláusulas 1 a 3 son el objeto, las referencias normativas y los términos. Con esa estructura común, estas son las normas de requisitos, todas certificables:
+Las cláusulas 1 a 3 son el objeto, las referencias normativas y los términos.
 
-| Norma | Sistema de gestión | Qué gestiona | Edición vigente |
-|---|---|---|---|
-| {{ n("ISO 9001") }} | SGC | Calidad | {{ ed("ISO 9001") }} |
-| {{ n("ISO 14001") }} | SGA | Medio ambiente | {{ ed("ISO 14001") }} |
-| {{ n("ISO/IEC 27001") }} | SGSI | Seguridad de la información | {{ ed("ISO/IEC 27001") }} |
-| {{ n("ISO/IEC 27701") }} | SGPI | Privacidad de la información | {{ ed("ISO/IEC 27701") }} |
-| {{ n("ISO 22301") }} | SGCN | Continuidad del negocio | {{ ed("ISO 22301") }} |
-| {{ n("ISO/IEC 20000") }}-1 | SGS | Servicios de TI | {{ ed("ISO/IEC 20000", "1") }} |
-| {{ n("ISO 30301") }} | SGD | Documentos | {{ ed("ISO 30301") }} |
-| {{ n("ISO/IEC 19770") }}-1 | Sistema de gestión de activos de TI | Activos de TI y licencias | {{ ed("ISO/IEC 19770", "1") }} |
+En cada ámbito hay una norma de **requisitos** (lo que se *debe* cumplir; es la única certificable), varias **guías** (lo que *conviene* hacer) y, a menudo, una de **vocabulario**. Confundirlas es un error habitual:
 
-Para auditar cualquiera de ellos se usa la {{ n("ISO 19011") }}. Quien certifica estos sistemas son organismos acreditados; los que certifican productos, procesos y servicios se acreditan según la {{ n("ISO/IEC 17065") }}.
+| Ámbito | Sistema | Requisitos (certificable) | Guías y directrices | Vocabulario y fundamentos |
+|---|---|---|---|---|
+| Calidad | SGC | {{ n("ISO 9001") }} ({{ ed("ISO 9001") }}) | {{ n("ISO 9004") }} | {{ n("ISO 9000") }} |
+| Seguridad de la información | SGSI | {{ n("ISO/IEC 27001") }} ({{ ed("ISO/IEC 27001") }}) | {{ n("ISO/IEC 27002") }}, {{ n("ISO/IEC 27005") }}, {{ n("ISO/IEC 27017") }}, {{ n("ISO/IEC 27018") }} | {{ n("ISO/IEC 27000") }} |
+| Privacidad | SGPI | {{ n("ISO/IEC 27701") }} ({{ ed("ISO/IEC 27701") }}) | {{ n("ISO/IEC 29151") }}, {{ n("ISO/IEC 29134") }} | {{ n("ISO/IEC 29100") }} |
+| Continuidad del negocio | SGCN | {{ n("ISO 22301") }} ({{ ed("ISO 22301") }}) | {{ n("ISO 31000") }}, para cualquier riesgo | — |
+| Servicios de TI | SGS | {{ n("ISO/IEC 20000") }}-1 ({{ ed("ISO/IEC 20000", "1") }}) | {{ n("ISO/IEC 20000") }}-2, -3 y -5 | — |
+| Documentos | SGD | {{ n("ISO 30301") }} ({{ ed("ISO 30301") }}) | {{ n("ISO 30302") }}, {{ n("ISO 15489") }} | {{ n("ISO 30300") }} |
+| Activos de TI | Sistema de gestión de activos de TI | {{ n("ISO/IEC 19770") }}-1 ({{ ed("ISO/IEC 19770", "1") }}) | — | {{ n("ISO/IEC 19770") }}-5 |
+| Medio ambiente | SGA | {{ n("ISO 14001") }} ({{ ed("ISO 14001") }}) | — | — |
 
-## Requisitos, guías y vocabulario
+Entre paréntesis, el año de la edición vigente. El gobierno de las TI y del dato ({{ n("ISO/IEC 38500") }}, {{ n("ISO/IEC 38505") }}) y la dirección de proyectos ({{ n("ISO 21500") }}) no tienen norma de requisitos: solo guías.
 
-En cada ámbito suele haber una norma de **requisitos** (lo que se *debe* cumplir, certificable), varias **guías** (lo que *conviene* hacer) y una de **vocabulario**. Confundirlas es un error habitual.
+Para auditar cualquiera de estos sistemas se usa la {{ n("ISO 19011") }}. Quien los certifica son organismos acreditados; los que certifican productos, procesos y servicios se acreditan según la {{ n("ISO/IEC 17065") }}.
 
-| Ámbito | Requisitos (certificable) | Guías y directrices | Vocabulario y fundamentos |
-|---|---|---|---|
-| Calidad | {{ n("ISO 9001") }} | {{ n("ISO 9004") }}, {{ n("ISO 19011") }} | {{ n("ISO 9000") }} |
-| Seguridad de la información | {{ n("ISO/IEC 27001") }} | {{ n("ISO/IEC 27002") }}, {{ n("ISO/IEC 27005") }}, {{ n("ISO/IEC 27017") }}, {{ n("ISO/IEC 27018") }} | {{ n("ISO/IEC 27000") }} |
-| Privacidad | {{ n("ISO/IEC 27701") }} | {{ n("ISO/IEC 29151") }}, {{ n("ISO/IEC 29134") }} | {{ n("ISO/IEC 29100") }} |
-| Riesgo y continuidad | {{ n("ISO 22301") }} | {{ n("ISO 31000") }} | — |
-| Servicios de TI | {{ n("ISO/IEC 20000") }}-1 | {{ n("ISO/IEC 20000") }}-2, -3 y -5 | — |
-| Documentos | {{ n("ISO 30301") }} | {{ n("ISO 30302") }}, {{ n("ISO 15489") }} | {{ n("ISO 30300") }} |
-| Activos de TI | {{ n("ISO/IEC 19770") }}-1 | — | {{ n("ISO/IEC 19770") }}-5 |
-| Medio ambiente | {{ n("ISO 14001") }} | — | — |
-| Gobierno de las TI y del dato | — | {{ n("ISO/IEC 38500") }}, {{ n("ISO/IEC 38505") }} | — |
-| Proyectos | — | {{ n("ISO 21500") }} | — |
+## Software
 
-## Qué tipo de documento es cada norma
-
-No todas las normas son de requisitos o guías: muchas son modelos, métodos o especificaciones técnicas.
-
-{% for clave, etiqueta in naturalezas.items() %}
-{% set grupo = filas | selectattr("naturaleza", "equalto", etiqueta) | list %}
-{% if grupo %}
-??? note "{{ etiqueta }} ({{ grupo | length }})"
-    {%+ for x in grupo | sort(attribute="codigo_orden") %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if x.certificable %} (certificable){% endif %}{% if not loop.last %} · {% endif %}{% endfor +%}
-
-{% endif %}
-{% endfor %}
-
-## Modelos de calidad del producto: ISO/IEC 9126 frente a ISO/IEC 25010
+### Modelos de calidad del producto: ISO/IEC 9126 frente a ISO/IEC 25010
 
 La {{ n("ISO/IEC 25010") }} sustituyó al modelo de la {{ n("ISO/IEC 9126") }}. Las características han cambiado de nombre y de número entre ediciones:
 
@@ -89,7 +66,7 @@ La {{ n("ISO/IEC 25010") }} sustituyó al modelo de la {{ n("ISO/IEC 9126") }}. 
 
 La calidad en uso, que la 25010 de 2011 incluía como segundo modelo, pasó en 2023 a la ISO/IEC 25019.
 
-## Métodos de medición del tamaño funcional
+### Métodos de medición del tamaño funcional
 
 Los tres métodos son conformes con la {{ n("ISO/IEC 14143") }}, que define qué es medir el tamaño funcional.
 
@@ -102,23 +79,3 @@ Los tres métodos son conformes con la {{ n("ISO/IEC 14143") }}, que define qué
 | Estimación temprana | — | — | Recuento indicativo y estimado |
 
 Las normas ISO de IFPUG y NESMA recogen los puntos de función **sin ajustar**: el factor de ajuste (VAF) no forma parte de la norma.
-
-## Códigos ISO y UNE
-
-La versión española de una norma suele publicarse después que la ISO, a veces pasando antes por una norma europea (EN). {% if une_cobertura %}Estas son las normas del temario con una UNE vigente según el BOE; «edición ISO anterior» indica que la UNE todavía adopta una edición ISO ya sustituida:
-
-| Norma ISO | Edición ISO vigente | Norma UNE vigente | ¿Adopta la edición vigente? |
-|---|---|---|---|
-{% for x in filas if x.une_boe and x.alcance == "norma" and x.une_boe.vigentes %}
-| [{{ x.codigo }}](normas/{{ x.ancla }}.md) | {{ ed(x.codigo) }} | {{ une_enlace(x.une_boe.vigentes[-1]) }} | {{ {"al_dia": "Sí", "anterior": "No, adopta la " ~ (x.une_boe.vigentes[-1].iso_adoptada or "anterior"), "sin_dato": "Sin dato"}[x.une_boe.vigentes[-1].estado] }} |
-{% endfor %}
-{% else %}Estas son las normas para las que el temario cita el código UNE:
-
-| Norma UNE citada | Norma ISO | Edición ISO vigente |
-|---|---|---|
-{% for x in filas if x.une %}
-| {{ x.une }} | [{{ x.codigo }}](normas/{{ x.ancla }}.md) | {{ ed(x.codigo) }} |
-{% endfor %}
-{% endif %}
-
-Cómo se lee el prefijo: `UNE-ISO` es una adopción directa de la norma ISO; `UNE-EN ISO`, una adopción de la versión europea. Consulta la [guía](guia.md) para más detalle.

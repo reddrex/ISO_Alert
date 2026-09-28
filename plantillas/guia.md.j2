@@ -1,3 +1,7 @@
+---
+title: Guía
+---
+
 # Guía rápida: cómo leer una norma técnica
 
 Esta guía explica lo básico para entender los códigos de las normas que aparecen en el temario y en esta web. No es una fuente oficial.
@@ -33,7 +37,7 @@ UNE publica normas propias, pero sobre todo **adopta** normas internacionales y 
 - **`UNE-ISO/IEC 20000-1`**: España adopta directamente la norma ISO/IEC.
 - **`UNE-EN ISO/IEC 27001`**: la norma ISO/IEC se adoptó primero como norma europea (EN) y después como norma española. Cuando una norma se convierte en EN, los países europeos están obligados a adoptarla y a retirar las normas nacionales que la contradigan.
 
-El contenido técnico es el mismo, pero **las fechas no coinciden**. La versión española suele salir meses o años después, así que es normal ver `ISO/IEC 27001:2022` y `UNE-EN ISO/IEC 27001:2023`. Por eso esta web muestra las dos: cuando ISO publica una edición nueva, sabes que la UNE llegará después.
+El contenido técnico es el mismo, pero **las fechas no coinciden**. La versión española suele salir meses o años después, así que es normal ver `ISO/IEC 27001:2022` y `UNE-EN ISO/IEC 27001:2023`. Por eso esta web muestra las dos: cuando ISO publica una edición nueva, sabes que la UNE llegará después. La pestaña [Estándares nacionales (UNE)](une.md) recoge la correspondencia de cada norma.
 
 Para saber si la UNE vigente está **al día**, la web mira qué edición ISO adopta. Casi siempre lo dice su título, entre paréntesis: el de `UNE-EN ISO/IEC 27001:2023` termina en «(ISO/IEC 27001:2022)». Si esa edición ya no es la vigente en ISO, la tabla de estado la marca como **edición ISO anterior**: la versión española todavía no ha recogido la última edición internacional.
 
@@ -68,7 +72,22 @@ Esta es la parte que más confunde, porque **ni siquiera el uso oficial es del t
   - la **familia ISO 9000**: 9000 (vocabulario), 9001 (requisitos), 9004 (éxito sostenido);
   - **SQuaRE**, las normas ISO/IEC 25000 a 25099, sobre calidad del software y de los datos.
 
+- **Grupo temático**: normas de un mismo tema que **no** forman una familia de ISO, pero que en esta web reunimos para estudiarlas juntas. Por ejemplo, el grupo *Ciclo de vida* (12207, 15288, 15289 y 14764) o el grupo *Conservación* (14721, 19005, 18492…). En el mapa llevan la etiqueta «grupo».
+
 Una regla práctica: si solo cambia lo que va **detrás del guion**, es la misma norma en varias partes. Si cambia **el número**, son normas distintas, aunque pertenezcan a la misma familia.
+
+## Qué tipo de documento es cada norma
+
+Además de las normas de requisitos y las guías, hay modelos, métodos, especificaciones técnicas y otros tipos. Así se clasifican las normas del temario:
+
+{% for clave, etiqueta in naturalezas.items() %}
+{% set grupo = filas | selectattr("naturaleza", "equalto", etiqueta) | list %}
+{% if grupo %}
+??? note "{{ etiqueta }} ({{ grupo | length }})"
+    {%+ for x in grupo | sort(attribute="codigo_orden") %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if x.certificable %} (certificable){% endif %}{% if not loop.last %} · {% endif %}{% endfor +%}
+
+{% endif %}
+{% endfor %}
 
 ## Cómo evoluciona una norma
 

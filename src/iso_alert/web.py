@@ -339,6 +339,8 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path,
         docs / "estado.md": env.get_template("estado.md.j2").render(**ctx),
         docs / TEMARIO / "index.md": env.get_template("temario.md.j2").render(**ctx),
         docs / "comparativas.md": env.get_template("comparativas.md.j2").render(**ctx),
+        docs / "une.md": env.get_template("une.md.j2").render(**ctx),
+        docs / "guia.md": env.get_template("guia.md.j2").render(**ctx),
         docs / "historial.md": env.get_template("historial.md.j2").render(**ctx),
         docs / "validacion.md": informe.a_markdown(validacion),
     }

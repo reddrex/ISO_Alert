@@ -334,9 +334,9 @@ def _fecha(e: dict) -> str:
 def _comparar(e: dict, iso_vigente: dict[tuple, str]) -> tuple[str, bool]:
     """¿La UNE adopta la edición ISO vigente? Devuelve (estado, deducido).
 
-    Primero, por la edición que cita su título. Si no la cita, por fechas: una UNE
-    aprobada antes del año de la ISO vigente no puede adoptarla, y una aprobada
-    después de que ISO la publicara casi seguro que sí (``deducido``).
+    Primero, por la edición que cita su título. Si no la cita, por fechas
+    (``deducido``): una UNE aprobada antes del año de la ISO vigente no puede
+    adoptarla, y una aprobada después de que ISO la publicara casi seguro que sí.
     ``iso_vigente`` da la fecha (AAAA-MM-DD o AAAA) de publicación de la ISO vigente.
     """
     iso_fecha = iso_vigente.get((e["numero"], e["parte"]))
@@ -348,7 +348,7 @@ def _comparar(e: dict, iso_vigente: dict[tuple, str]) -> tuple[str, bool]:
     if e["aprobada"]:
         aprobada = e["aprobada"]["fecha"]
         if aprobada[:4] < iso_fecha[:4]:
-            return "anterior", False
+            return "anterior", True
         if aprobada[:4] > iso_fecha[:4] or (len(iso_fecha) > 4 and aprobada > iso_fecha):
             return "al_dia", True
     return "sin_dato", False

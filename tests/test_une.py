@@ -181,6 +181,10 @@ def test_web_con_une(registro, config, indice, tmp_path):
     ficha = (tmp_path / web.FICHAS / "iso-14721.md").read_text(encoding="utf-8")
     assert "UNE-ISO 14721:2026" in ficha and "Historia de las normas UNE" in ficha
     assert "PNE-prEN ISO/IEC 29100" in (tmp_path / web.FICHAS / "iso-iec-29100.md").read_text(encoding="utf-8")
+    une_md = (tmp_path / "une.md").read_text(encoding="utf-8")
+    assert "| [ISO 14721](normas/iso-14721.md) |" in une_md and "UNE-ISO 14721:2026" in une_md
+    assert "## UNE en preparación" in une_md and "PNE-prEN ISO/IEC 29100" in une_md
+    assert 'href="estado/?une=sin_une"' in une_md
 
 
 def test_aviso_une(registro, config):

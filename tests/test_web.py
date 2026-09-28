@@ -20,7 +20,7 @@ CARPETAS = ("fichas", "familias", "temario")
 
 
 def test_paginas_generadas(paginas):
-    assert set(paginas) == {"index", "estado", "comparativas", "historial", "validacion", *CARPETAS}
+    assert set(paginas) == {"index", "estado", "comparativas", "une", "guia", "historial", "validacion", *CARPETAS}
     assert len(paginas["familias"]) == 21
     assert len(paginas["temario"]) == 39  # índice + 38 temas
     for nombre, texto in paginas.items():
@@ -178,8 +178,18 @@ def test_temario(paginas, config):
 
 def test_comparativas(paginas):
     md = paginas["comparativas"]
-    assert "| [ISO/IEC 20000](normas/iso-iec-20000.md)-1 | SGS | Servicios de TI | 2018 |" in md
-    assert "Activos de TI y licencias | 2017 |" in md
+    # Una sola tabla de sistemas de gestión, con la edición vigente de la norma certificable.
+    assert "| Servicios de TI | SGS | [ISO/IEC 20000](normas/iso-iec-20000.md)-1 (2018) |" in md
+    assert "| Activos de TI | Sistema de gestión de activos de TI | [ISO/IEC 19770](normas/iso-iec-19770.md)-1 (2017) |" in md
+    assert md.count("| Calidad | SGC |") == 1
+    # Lo que se ha llevado a otras páginas.
+    assert "Qué tipo de documento" not in md and "Códigos ISO y UNE" not in md
+    assert md.index("## Gestión") < md.index("## Software") < md.index("### Métodos de medición")
+
+
+def test_guia(paginas):
+    md = paginas["guia"]
+    assert "## Qué tipo de documento es cada norma" in md and "**Grupo temático**" in md
     # El contenido de los bloques plegables va sangrado.
     bloque = md[md.index('??? note "Norma de requisitos'):]
     assert bloque.split("\n")[1].startswith("    [ISO 9001]")

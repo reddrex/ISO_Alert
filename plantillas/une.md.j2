@@ -1,0 +1,65 @@
+{% from "_macros.j2" import enlace, une_enlace %}
+---
+title: Estándares nacionales (UNE)
+hide:
+  - navigation
+---
+
+# Estándares nacionales (UNE)
+
+UNE, la Asociación Española de Normalización, publica las versiones españolas de las normas internacionales. Esta página muestra, para cada norma del temario, la **norma UNE vigente** y si adopta la última edición ISO. Los datos salen de las relaciones mensuales de normas UNE aprobadas y anuladas que publica el BOE.
+
+{% if une_cobertura %}
+{% set con_une = filas | selectattr("une_boe.vigentes") | sort(attribute="codigo_orden") | list %}
+{% set sin_une = filas | rejectattr("une_boe.vigentes") | sort(attribute="codigo_orden") | list %}
+{% set proyectos = [] %}
+{% for x in filas %}{% for p in x.une_boe.proyectos %}{% set _ = proyectos.append((p, x)) %}{% endfor %}{% endfor %}
+<p class="resumen-une">BOE leído hasta el {{ une_cobertura.ultimo_dia }}. De las {{ filas | length }} normas: {% for valor, etiqueta in estados_une.items() %}{% set n = filas | selectattr("une_boe.estado", "equalto", valor) | list | length %}<a href="estado/?une={{ valor }}"><strong>{{ n }}</strong> {{ {"al_dia": "al día", "anterior": "con una edición ISO anterior", "sin_dato": "sin dato de edición", "sin_une": "sin UNE conocida"}[valor] }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.</p>
+
+## Correspondencias ISO–UNE
+
+«Al día» significa que la UNE vigente adopta la edición ISO vigente; «edición ISO anterior», que la versión española todavía no ha recogido la última edición internacional.
+
+| Norma ISO | Edición ISO vigente | Norma UNE vigente | ¿Adopta la edición ISO vigente? |
+|---|---|---|---|
+{% for x in con_une %}
+| [{{ x.codigo }}](normas/{{ x.ancla }}.md) | {% if x.alcance == "norma" and x.vigentes %}{{ enlace(x.vigentes[-1]) }}{% elif x.alcance == "serie" %}Varias partes{% else %}—{% endif %} | {% for e in x.une_boe.vigentes %}{{ une_enlace(e) }}{% if not loop.last %}<br>{% endif %}{% endfor %} | {% for e in x.une_boe.vigentes %}{% if e.estado == "al_dia" %}Sí{% if e.deducido %} (por fechas){% endif %}{% elif e.estado == "anterior" %}**No**{% if e.iso_adoptada %}: adopta la {{ e.iso_adoptada }}{% elif e.deducido %} (por fechas){% endif %}{% else %}Sin dato{% endif %}{% if not loop.last %}<br>{% endif %}{% endfor %} |
+{% endfor %}
+
+«Por fechas»: el título de la UNE no cita la edición ISO que adopta, así que se deduce de las fechas: si la UNE se aprobó después de que ISO publicara la edición vigente, la adopta; si se aprobó antes de ese año, no puede adoptarla. Cada código UNE enlaza a la resolución del BOE que lo publicó.
+
+{% if proyectos %}
+## UNE en preparación
+
+Proyectos de norma UNE (PNE) que el BOE ha sometido a información pública en los dos últimos años y que todavía no se han aprobado:
+
+| Proyecto | Norma ISO | Adoptará | Información pública |
+|---|---|---|---|
+{% for p, x in proyectos | sort(attribute="0.fecha", reverse=true) %}
+| <a href="{{ p.url }}">{{ p.codigo }}</a> | [{{ x.codigo }}](normas/{{ x.ancla }}.md) | {{ p.iso_adoptada or "—" }} | {{ p.mes or p.fecha[:7] }} |
+{% endfor %}
+
+{% endif %}
+## Normas sin UNE vigente conocida
+
+??? note "{{ sin_une | length }} normas"
+    {%+ for x in sin_une %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if x.une %} (el temario cita {{ x.une }}){% endif %}{% if not loop.last %} · {% endif %}{% endfor +%}
+
+Que no conste una UNE vigente puede deberse a tres cosas: que España no haya adoptado la norma, que la UNE se anulara (su historia está en la ficha de la norma) o que se aprobara en una relación del BOE publicada como imagen escaneada, que no se puede leer (casi todas las anteriores a 2004).
+
+{% else %}
+Todavía no hay datos del BOE.
+
+{% endif %}
+## Cómo se lee un código UNE
+
+- **`UNE-ISO/IEC 20000-1:2018`**: España adopta directamente la norma ISO/IEC.
+- **`UNE-EN ISO/IEC 27001:2023`**: la norma se adoptó primero como norma europea (EN) y después como española. El año es el de la UNE, no el de la ISO.
+- **`IN`** al final, como en `UNE-ISO/TR 13028:2011 IN`: es un informe (en ISO, un `TR`).
+- **`/1M`** o **`/A1`**: una modificación de la edición.
+
+Más detalle en la [guía](guia.md#que-diferencia-hay-entre-iso-y-une).
+
+---
+
+*Fuente: resoluciones mensuales de normas UNE del [Boletín Oficial del Estado](https://www.boe.es/datosabiertos/). Para comprar o consultar una norma UNE, [une.org](https://www.une.org).*
