@@ -1,21 +1,18 @@
 ---
 title: Guía
+hide:
+  - navigation
 ---
 
 # Guía rápida: cómo leer una norma técnica
 
-Esta guía explica lo básico para entender los códigos de las normas que aparecen en el temario y en esta web. No es una fuente oficial.
+Lo básico para entender las normas que cita el temario y cómo las presenta esta web. No es una fuente oficial.
 
 ## ¿Qué es una norma técnica?
 
 Es un documento que recoge una forma acordada de hacer algo: requisitos, buenas prácticas, vocabulario o métodos de ensayo. Las elaboran comités de expertos por consenso.
 
 Por sí mismas son **voluntarias**. Se vuelven obligatorias solo cuando una ley, un reglamento o un contrato las exige.
-
-Dentro de las normas hay dos tipos que conviene distinguir para el examen:
-
-- **Normas de requisitos**, como ISO/IEC 27001, ISO 9001 o ISO 22301. Dicen lo que se *debe* cumplir y permiten que una organización se **certifique**.
-- **Normas de guía o buenas prácticas**, como ISO/IEC 27002 o ISO 9004. Dicen lo que *conviene* hacer y **no son certificables**.
 
 ## ¿Quién hace cada norma?
 
@@ -30,17 +27,6 @@ Dentro de las normas hay dos tipos que conviene distinguir para el examen:
 
 Una aclaración sobre UNE y AENOR: hasta 2017 ambas cosas estaban en la misma entidad, AENOR. Ese año se separaron. Hoy **UNE** elabora y publica las normas y **AENOR** es una empresa de certificación.
 
-## ¿Qué diferencia hay entre ISO y UNE?
-
-UNE publica normas propias, pero sobre todo **adopta** normas internacionales y europeas, normalmente traducidas al español. El prefijo del código indica el camino que ha seguido cada norma:
-
-- **`UNE-ISO/IEC 20000-1`**: España adopta directamente la norma ISO/IEC.
-- **`UNE-EN ISO/IEC 27001`**: la norma ISO/IEC se adoptó primero como norma europea (EN) y después como norma española. Cuando una norma se convierte en EN, los países europeos están obligados a adoptarla y a retirar las normas nacionales que la contradigan.
-
-El contenido técnico es el mismo, pero **las fechas no coinciden**. La versión española suele salir meses o años después, así que es normal ver `ISO/IEC 27001:2022` y `UNE-EN ISO/IEC 27001:2023`. Por eso esta web muestra las dos: cuando ISO publica una edición nueva, sabes que la UNE llegará después. La pestaña [Estándares nacionales (UNE)](une.md) recoge la correspondencia de cada norma.
-
-Para saber si la UNE vigente está **al día**, la web mira qué edición ISO adopta. Casi siempre lo dice su título, entre paréntesis: el de `UNE-EN ISO/IEC 27001:2023` termina en «(ISO/IEC 27001:2022)». Si esa edición ya no es la vigente en ISO, la tabla de estado la marca como **edición ISO anterior**: la versión española todavía no ha recogido la última edición internacional.
-
 ## Cómo leer un código
 
 Tomemos como ejemplo `UNE-EN ISO/IEC 27001:2023`:
@@ -49,36 +35,40 @@ Tomemos como ejemplo `UNE-EN ISO/IEC 27001:2023`:
 - `EN`: que viene de una norma europea.
 - `ISO/IEC`: que a su vez procede de ISO e IEC (el comité conjunto de TI).
 - `27001`: el número de la norma.
-- `:2023`: el año de esta edición.
+- `:2023`: el año de esta edición (en una UNE, el de la UNE, no el de la ISO).
 
 Otros elementos que te puedes encontrar en un código:
 
 - **Parte**, como `-1` en `ISO/IEC 20000-1`. Algunas normas se dividen en varios documentos que comparten número: la parte 1 suele contener los requisitos y el resto guías o aspectos concretos.
 - **Tipo de documento**, como el `TR` de `ISO/TR 13028`. Los principales son:
-  - `IS`: norma internacional. Es el tipo normal y no suele escribirse.
-  - `TS`: especificación técnica. Es un acuerdo menos maduro que una norma.
-  - `TR`: informe técnico. Es informativo y no contiene requisitos.
-- **Modificación**, como `ISO/IEC 27001:2022/Amd 1:2024`. Es un documento que cambia partes de una edición sin publicar una nueva. En las normas UNE aparece como `/1M`.
+    - `IS`: norma internacional. Es el tipo normal y no suele escribirse.
+    - `TS`: especificación técnica. Es un acuerdo menos maduro que una norma.
+    - `TR`: informe técnico. Es informativo y no contiene requisitos. En las UNE se marca con `IN` al final, como en `UNE-ISO/TR 13028:2011 IN`.
+- **Modificación**, como `ISO/IEC 27001:2022/Amd 1:2024`. Es un documento que cambia partes de una edición sin publicar una nueva. En las normas UNE aparece como `/1M` o `/A1`.
 - **Corrección** (`Cor`): arregla errores de redacción, no de contenido.
-- **Borrador**, que se reconoce por prefijos como `NP`, `WD`, `CD`, `DIS` o `FDIS` (por ejemplo, `ISO/DIS 31700`). Indica que la norma **todavía no está publicada** y se encuentra en alguna fase de su elaboración.
+- **Borrador**, que se reconoce por prefijos como `NP`, `WD`, `CD`, `DIS` o `FDIS` (por ejemplo, `ISO/DIS 31700`). Indica que la norma **todavía no está publicada** y se encuentra en alguna fase de su elaboración. Los proyectos de norma UNE empiezan por `PNE`.
 
-## Parte, serie y familia
+## Parte, serie, familia y grupo
 
 Esta es la parte que más confunde, porque **ni siquiera el uso oficial es del todo consistente** y el temario mezcla los términos. En esta web los usamos así:
 
 - **Norma multiparte o serie**: un mismo número dividido en partes. Por ejemplo, ISO/IEC 20000-1, 20000-2, 20000-3… Cuando vigilamos una serie, vigilamos todas sus partes.
-- **Familia**: un grupo de normas **con números distintos** que tratan el mismo tema y se diseñan para usarse juntas. Por ejemplo:
-  - la **familia ISO/IEC 27000**: 27000 (vocabulario), 27001 (requisitos), 27002 (controles), 27005 (riesgos), 27701 (privacidad)…;
-  - la **familia ISO 9000**: 9000 (vocabulario), 9001 (requisitos), 9004 (éxito sostenido);
-  - **SQuaRE**, las normas ISO/IEC 25000 a 25099, sobre calidad del software y de los datos.
-
+- **Familia**: normas **con números distintos** que ISO agrupa con su numeración, porque tratan el mismo tema y se diseñan para usarse juntas. Por ejemplo:
+    - la **familia ISO/IEC 27000**: 27000 (vocabulario), 27001 (requisitos), 27002 (controles), 27005 (riesgos), 27701 (privacidad)…;
+    - la **familia ISO 9000**: 9000 (vocabulario), 9001 (requisitos), 9004 (éxito sostenido);
+    - **SQuaRE**, las normas ISO/IEC 25000 a 25099, sobre calidad del software y de los datos.
 - **Grupo temático**: normas de un mismo tema que **no** forman una familia de ISO, pero que en esta web reunimos para estudiarlas juntas. Por ejemplo, el grupo *Ciclo de vida* (12207, 15288, 15289 y 14764) o el grupo *Conservación* (14721, 19005, 18492…). En el mapa llevan la etiqueta «grupo».
 
 Una regla práctica: si solo cambia lo que va **detrás del guion**, es la misma norma en varias partes. Si cambia **el número**, son normas distintas, aunque pertenezcan a la misma familia.
 
-## Qué tipo de documento es cada norma
+## Tipos de documento
 
-Además de las normas de requisitos y las guías, hay modelos, métodos, especificaciones técnicas y otros tipos. Así se clasifican las normas del temario:
+Hay dos tipos que conviene distinguir para el examen:
+
+- **Normas de requisitos**, como ISO/IEC 27001, ISO 9001 o ISO 22301. Dicen lo que se *debe* cumplir y permiten que una organización se **certifique**.
+- **Normas de guía o buenas prácticas**, como ISO/IEC 27002 o ISO 9004. Dicen lo que *conviene* hacer y **no son certificables**.
+
+Además hay normas de vocabulario, modelos, métodos, especificaciones técnicas e informes. Así se clasifican las normas del temario:
 
 {% for clave, etiqueta in naturalezas.items() %}
 {% set grupo = filas | selectattr("naturaleza", "equalto", etiqueta) | list %}
@@ -88,6 +78,7 @@ Además de las normas de requisitos y las guías, hay modelos, métodos, especif
 
 {% endif %}
 {% endfor %}
+En [Comparativas](comparativas.md) está, para cada sistema de gestión, cuál es su norma de requisitos y cuáles sus guías.
 
 ## Cómo evoluciona una norma
 
@@ -116,6 +107,15 @@ Algunas normas vigentes llevan además una nota discreta:
 Cuando ISO publica una edición nueva, la anterior pasa a **sustituida**. Las **modificaciones** (`Amd`) no cambian el estado: se indican junto a la edición vigente.
 
 Algunas normas del temario aparecen como **anuladas o sustituidas a propósito**, como ISO/IEC 9126, ISO 13407 o ISO/IEC 15504. El temario las cita como antecesoras de las normas actuales. Que estén anuladas no es un error de la web.
+
+## ISO y UNE
+
+UNE publica normas propias, pero sobre todo **adopta** normas internacionales y europeas, normalmente traducidas al español. El prefijo indica el camino:
+
+- **`UNE-ISO/IEC 20000-1`**: España adopta directamente la norma ISO/IEC.
+- **`UNE-EN ISO/IEC 27001`**: la norma se adoptó primero como norma europea (EN) y después como española. Cuando una norma se convierte en EN, los países europeos están obligados a adoptarla y a retirar las normas nacionales que la contradigan.
+
+El contenido técnico es el mismo, pero **las fechas no coinciden**: la versión española suele salir meses o años después, así que es normal ver `ISO/IEC 27001:2022` y `UNE-EN ISO/IEC 27001:2023`. Qué UNE está vigente para cada norma, y si ya recoge la última edición ISO, está en [Estándares nacionales (UNE)](une.md).
 
 ## ¿Por qué no se puede leer la norma aquí?
 

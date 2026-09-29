@@ -205,7 +205,13 @@ def test_comparativas(paginas):
 
 def test_guia(paginas):
     md = paginas["guia"]
-    assert "## Qué tipo de documento es cada norma" in md and "**Grupo temático**" in md
+    assert "**Grupo temático**" in md
+    # Orden de aprendizaje, y requisitos frente a guías explicado una sola vez.
+    secciones = ["## ¿Qué es una norma técnica?", "## ¿Quién hace cada norma?", "## Cómo leer un código",
+                 "## Parte, serie, familia y grupo", "## Tipos de documento", "## Cómo evoluciona una norma",
+                 "## ISO y UNE", "## ¿Por qué no se puede leer la norma aquí?"]
+    assert [md.index(s) for s in secciones] == sorted(md.index(s) for s in secciones)
+    assert md.count("**Normas de requisitos**") == 1 and "al día" not in md
     # El contenido de los bloques plegables va sangrado.
     bloque = md[md.index('??? note "Norma de requisitos'):]
     assert bloque.split("\n")[1].startswith("    [ISO 9001]")
