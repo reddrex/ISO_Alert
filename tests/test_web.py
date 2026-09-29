@@ -38,8 +38,14 @@ def test_tabla_de_estado(paginas):
     # Una línea en blanco cortaría el bloque HTML y Markdown lo rompería.
     assert "\n\n" not in tabla
     fila = re.search(r'<tr data-estado="en_revision"[^>]*data-texto="iso 22301 [^"]*"', tabla)
-    assert fila and 'data-superada="1"' in fila.group(0)
+    assert fila and 'data-area="seguridad"' in fila.group(0)
     assert "ISO/CD 22301</a>, fase de comité (30.60)" in tabla
+    # Seis columnas (sin datos de UNE en este extracto, cinco); el resto va en el detalle.
+    assert tabla[:tabla.index("</thead>")].count("<th>") == 5
+    assert "superada" not in tabla and "col-sec" not in tabla
+    # Orden por número de norma.
+    codigos = re.findall(r'<td class="codigo" data-sort="([^"]+)"', tabla)
+    assert codigos == sorted(codigos)
 
 
 def test_filtros(paginas, config):
@@ -49,9 +55,14 @@ def test_filtros(paginas, config):
     anios = re.findall(r'<option value="(\d{4})">', filtros)
     assert anios and anios == sorted(anios, reverse=True)
     assert filtros.count("<option") == (
-        1 + 5 + 1 + len(config.categorias) + 1 + len(config.temario) + 1 + len(config.familias) + 1
+        1 + 5 + 1 + len(config.temario) + 1 + len(config.areas) + 1 + len(config.familias) + 1
         + 1 + len(anios) + 3
     )
+    # Los filtros secundarios van plegados.
+    mas = filtros[filtros.index('<details class="filtros__mas"'):]
+    for campo in ("f-area", "f-familia", "f-anio", "f-orden", "f-agrupar"):
+        assert f'id="{campo}"' in mas
+    assert 'id="f-superada"' not in filtros and 'id="f-categoria"' not in filtros
 
 
 def test_aprobacion(paginas):

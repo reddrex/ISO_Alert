@@ -1,6 +1,6 @@
 // Filtros, búsqueda, ordenación y agrupación de la tabla de estado.
 // Sin dependencias salvo Tablesort. Los filtros se reflejan en la URL
-// (?estado=en_revision&categoria=seguridad&anio=2022&orden=reciente) para poder compartir enlaces.
+// (?estado=en_revision&area=seguridad&anio=2022&orden=reciente) para poder compartir enlaces.
 
 document$.subscribe(function () {
   var tabla = document.getElementById("tabla-normas");
@@ -15,13 +15,12 @@ document$.subscribe(function () {
   var campos = {
     texto: document.getElementById("f-texto"),
     estado: document.getElementById("f-estado"),
-    categoria: document.getElementById("f-categoria"),
+    area: document.getElementById("f-area"),
     tema: document.getElementById("f-tema"),
     familia: document.getElementById("f-familia"),
     anio: document.getElementById("f-anio"),
     une: document.getElementById("f-une") || { value: "", addEventListener: function () {} },
     orden: document.getElementById("f-orden"),
-    superada: document.getElementById("f-superada"),
     agrupar: document.getElementById("f-agrupar")
   };
   var contador = document.getElementById("f-contador");
@@ -29,11 +28,14 @@ document$.subscribe(function () {
 
   // Estado inicial desde la URL.
   var params = new URLSearchParams(location.search);
-  ["texto", "estado", "categoria", "tema", "familia", "une", "anio", "orden"].forEach(function (k) {
+  ["texto", "estado", "area", "tema", "familia", "une", "anio", "orden"].forEach(function (k) {
     if (params.has(k)) campos[k].value = params.get(k);
   });
-  campos.superada.checked = params.get("superada") === "1";
   campos.agrupar.checked = params.get("agrupar") === "1";
+  // «Más filtros» se abre solo si alguno de sus filtros viene activo en la URL.
+  if (campos.area.value || campos.familia.value || campos.anio.value || campos.orden.value || campos.agrupar.checked) {
+    document.getElementById("f-mas").open = true;
+  }
   filtros.hidden = false;
 
   function normalizar(s) {
@@ -80,12 +82,11 @@ document$.subscribe(function () {
       var ok =
         (!texto || normalizar(f.dataset.texto).indexOf(texto) !== -1) &&
         (!campos.estado.value || f.dataset.estado === campos.estado.value) &&
-        (!campos.categoria.value || f.dataset.categoria === campos.categoria.value) &&
+        (!campos.area.value || f.dataset.area === campos.area.value) &&
         (!campos.tema.value || (" " + f.dataset.temas + " ").indexOf(" " + campos.tema.value + " ") !== -1) &&
         (!campos.familia.value || f.dataset.familia === campos.familia.value) &&
         (!campos.une.value || f.dataset.une === campos.une.value) &&
-        (!campos.anio.value || f.dataset.aprobacion.slice(0, 4) === campos.anio.value) &&
-        (!campos.superada.checked || f.dataset.superada === "1");
+        (!campos.anio.value || f.dataset.aprobacion.slice(0, 4) === campos.anio.value);
       f.hidden = !ok;
       if (ok) visibles++;
     });
@@ -144,10 +145,9 @@ document$.subscribe(function () {
 
   function guardarEnUrl() {
     var p = new URLSearchParams();
-    ["texto", "estado", "categoria", "tema", "familia", "une", "anio", "orden"].forEach(function (k) {
+    ["texto", "estado", "area", "tema", "familia", "une", "anio", "orden"].forEach(function (k) {
       if (campos[k].value) p.set(k, campos[k].value.trim());
     });
-    if (campos.superada.checked) p.set("superada", "1");
     if (campos.agrupar.checked) p.set("agrupar", "1");
     var q = p.toString();
     history.replaceState(null, "", location.pathname + (q ? "?" + q : "") + location.hash);
@@ -169,7 +169,7 @@ document$.subscribe(function () {
   });
 
   campos.texto.addEventListener("input", aplicar);
-  ["estado", "categoria", "tema", "familia", "une", "anio", "orden", "superada", "agrupar"].forEach(function (k) {
+  ["estado", "area", "tema", "familia", "une", "anio", "orden", "agrupar"].forEach(function (k) {
     campos[k].addEventListener("change", aplicar);
   });
   aplicar();

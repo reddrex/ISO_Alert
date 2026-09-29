@@ -88,6 +88,48 @@
   margin: 0 0 0 auto;
   font-weight: 600;
 }
+/* Filtros secundarios, plegados bajo «Más filtros» (sin el aspecto de admonición de Material). */
+.md-typeset details.filtros__mas {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: none;
+  font-size: inherit;
+}
+.md-typeset details.filtros__mas > summary {
+  flex-basis: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-weight: 600;
+  color: var(--md-typeset-a-color);
+  cursor: pointer;
+}
+.md-typeset details.filtros__mas > summary::before { content: none; }
+.md-typeset details.filtros__mas > summary::after {
+  position: static;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.2em;
+  background-color: currentColor;
+}
+.md-typeset .filtros__mas-cuerpo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  align-items: flex-end;
+  margin: 0.6rem 0 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
 
 .md-typeset #tabla-normas { font-size: 0.68rem; }
 .md-typeset #tabla-normas td { vertical-align: top; }
