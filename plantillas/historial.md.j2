@@ -1,32 +1,22 @@
-{% from "_macros.j2" import estado %}
+{# Plural de cada estado para la línea de situación: (singular, plural). #}
+{% set nombres = {
+  "vigente": ("vigente", "vigentes"),
+  "en_revision": ("en revisión", "en revisión"),
+  "sustituida": ("sustituida", "sustituidas"),
+  "anulada": ("anulada", "anuladas"),
+  "no_publicada": ("no publicada", "no publicadas"),
+} %}
 ---
 title: Cambios
 hide:
   - navigation
 ---
 
-# Cambios detectados
+# Cambios
 
-Aquí queda cada cambio en una norma vigilada, de ISO o de UNE. Las fechas son las del día en que se **detectó** el cambio, que puede ser posterior al cambio real. Cada cuánto se comprueba se explica en [Acerca de](acerca.md#frecuencia-de-actualizacion).
+Cada cambio detectado en una norma del temario, de ISO o de UNE, con la fecha en que se **detectó**, que puede ser posterior al cambio real. Cada cuánto se comprueba se explica en [Acerca de](acerca.md#frecuencia-de-actualizacion).
 
-## Situación actual
-
-Estado de las normas según ISO ({% if resumen.dato_fecha %}datos del **{{ resumen.dato_fecha }}**, {% endif %}comprobados el **{{ resumen.comprobado }}**). Pulsa un estado para ver sus normas en la tabla.
-
-<table>
-  <thead><tr><th>Estado</th><th>Normas</th></tr></thead>
-  <tbody>
-    {% for e, n in resumen.por_estado if n %}
-    <tr><td><a href="estado/?estado={{ e.value }}">{{ estado(e) }}</a></td><td>{{ n }}</td></tr>
-    {% endfor %}
-  </tbody>
-</table>
-
-{% if resumen.revision_periodica %}
-Además, {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.revision_periodica == 1 else "normas vigentes están" }} en revisión periódica, que casi siempre acaba en confirmación.
-{% endif %}
-
-## Historial
+## Últimos cambios
 
 {% if cambios %}
 | Detectado | Norma | Cambio | Detalle |
@@ -35,7 +25,7 @@ Además, {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.re
 | {{ c.detectado }} | {% for x in c.filas %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if not loop.last %}, {% endif %}{% endfor %} | {{ ("**" ~ c.etiqueta ~ "**") if c.notificable else c.etiqueta }} | {{ c.resumen }} |
 {% endfor %}
 
-En negrita, los cambios que generan aviso: ediciones nuevas, modificaciones y anulaciones (ISO o UNE) de las normas y partes que cita el temario.
+En negrita, los cambios que generan aviso.
 {% else %}
 Todavía no se ha detectado ningún cambio desde que empezó la vigilancia. Cuando lo haya, aparecerá aquí.
 {% endif %}
@@ -45,21 +35,28 @@ Todavía no se ha detectado ningún cambio desde que empezó la vigilancia. Cuan
 No hace falta registrarse ni dar ningún dato personal:
 
 - **Todos los avisos por RSS/Atom:** añade [este feed]({{ sitio }}feed.xml) a tu lector de feeds. Incluye las ediciones nuevas, modificaciones y anulaciones, de ISO y de UNE.
-- **Solo las normas que te interesan:** cada ficha de norma tiene su propio feed, con todos sus cambios, en el enlace «Suscribirse a los cambios de esta norma».
+- **Solo las normas que te interesan:** cada ficha de norma tiene su propio feed, con todos sus cambios, en el botón «Suscribirse a los cambios de esta norma».
 - **Por correo:** muchos lectores de feeds, y los servicios que convierten un feed en correo, pueden enviarte los avisos por email. Solo tienes que darles la dirección del feed.
+
+## Situación actual
+
+<p class="situacion">Datos ISO {% if resumen.dato_fecha %}del {{ resumen.dato_fecha }} {% endif %}(comprobados el {{ resumen.comprobado }}): {% for e, n in resumen.por_estado if n %}<a href="estado/?estado={{ e.value }}"><strong>{{ n }}</strong> {{ nombres[e.value][0 if n == 1 else 1] }}</a>{% if not loop.last %} · {% endif %}{% endfor %}.{% if resumen.revision_periodica %} {{ resumen.revision_periodica }} {{ "norma vigente está" if resumen.revision_periodica == 1 else "normas vigentes están" }} en revisión periódica, que casi siempre acaba en confirmación.{% endif %}</p>
 
 ## Qué se considera un cambio
 
-| Cambio | Cuándo | ¿Genera aviso? |
-|---|---|---|
-| Edición nueva | ISO publica una edición que sustituye a la vigilada | Sí |
-| Modificación publicada | ISO publica una modificación (`Amd`) | Sí |
-| Anulación | ISO anula la norma sin sustituirla | Sí |
-| Parte nueva | ISO publica una parte nueva de una serie | Solo en series sin partes citadas |
-| Revisión iniciada, proyecto que avanza o se cancela | Hay una edición nueva en preparación | No |
-| Revisión periódica, confirmada, anulación propuesta | Revisión quinquenal y sus resultados | No |
-| Norma UNE nueva | El BOE publica una UNE que adopta la norma (edición nueva o modificación) | Sí |
-| Anulación (UNE) | El BOE publica la anulación de la UNE sin otra que la sustituya | Sí |
-| Proyecto UNE en información pública | El BOE somete a información pública un proyecto (PNE) de la norma | No |
+Generan aviso las ediciones nuevas, las modificaciones y las anulaciones, de ISO o de UNE, de las normas y partes que cita el temario. El resto de cambios solo se registra.
 
-Los cambios en partes de una serie que no cita el temario se registran, pero no generan aviso. Las normas UNE se leen de las relaciones mensuales del BOE, así que llegan con un mes o dos de retraso respecto a su aprobación.
+??? note "Todos los tipos de cambio"
+    | Cambio | Cuándo | ¿Genera aviso? |
+    |---|---|---|
+    | Edición nueva | ISO publica una edición que sustituye a la vigilada | Sí |
+    | Modificación publicada | ISO publica una modificación (`Amd`) | Sí |
+    | Anulación | ISO anula la norma sin sustituirla | Sí |
+    | Parte nueva | ISO publica una parte nueva de una serie | Solo en series sin partes citadas |
+    | Revisión iniciada, proyecto que avanza o se cancela | Hay una edición nueva en preparación | No |
+    | Revisión periódica, confirmada, anulación propuesta | Revisión quinquenal y sus resultados | No |
+    | Norma UNE nueva | El BOE publica una UNE que adopta la norma (edición nueva o modificación) | Sí |
+    | Anulación (UNE) | El BOE publica la anulación de la UNE sin otra que la sustituya | Sí |
+    | Proyecto UNE en información pública | El BOE somete a información pública un proyecto (PNE) de la norma | No |
+
+    Los cambios en partes de una serie que no cita el temario se registran, pero no generan aviso. Las normas UNE se leen de las relaciones mensuales del BOE, así que llegan con uno o dos meses de retraso respecto a su aprobación.

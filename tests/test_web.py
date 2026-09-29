@@ -82,7 +82,12 @@ def test_inicio(paginas):
     assert "Seguimiento de cambios" not in md and "md-button" not in md
     # La situación actual está ahora en Cambios.
     assert 'href="estado/?estado=en_revision"' in paginas["historial"]
-    assert "## Situación actual" in paginas["historial"]
+    cambios = paginas["historial"]
+    assert "## Situación actual" in cambios
+    # Primero los cambios; la situación, en una sola línea; los tipos de cambio, plegados.
+    assert cambios.index("## Últimos cambios") < cambios.index("## Cómo suscribirse") < cambios.index("## Situación actual")
+    assert re.search(r'<a href="estado/\?estado=vigente"><strong>\d+</strong> vigentes</a>', cambios)
+    assert "<table>" not in cambios and '??? note "Todos los tipos de cambio"' in cambios
 
 
 def test_escapado(config, indice, tmp_path):
