@@ -1,6 +1,6 @@
 {
   "version_esquema": 1,
-  "generado": "2026-09-28T11:44:13+00:00",
+  "generado": "2026-09-29T11:24:02+00:00",
   "fuentes": {
     "iso": {
       "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
@@ -33158,7 +33158,7 @@
       "contexto": null
     },
     "ISO/IEC 13335": {
-      "nombre": "Gestión de la seguridad de las TIC (serie antigua)",
+      "nombre": "Gestión de la seguridad de las TIC (GMITS)",
       "alcance": "serie",
       "categoria": "seguridad",
       "familia": "iso-27000",
@@ -34538,7 +34538,7 @@
       "contexto": null
     },
     "ISO/IEC 9126": {
-      "nombre": "Calidad del producto software (antecesora de SQuaRE)",
+      "nombre": "Calidad del producto software",
       "alcance": "serie",
       "categoria": "calidad-software",
       "familia": "square",
@@ -34724,7 +34724,7 @@
       "contexto": "Citada como antecesora de la serie 25000"
     },
     "ISO/IEC 14598": {
-      "nombre": "Evaluación del producto software (antecesora de SQuaRE)",
+      "nombre": "Evaluación del producto software",
       "alcance": "serie",
       "categoria": "calidad-software",
       "familia": "square",
@@ -35563,7 +35563,7 @@
       "contexto": null
     },
     "ISO 9003": {
-      "nombre": "Aseguramiento de la calidad en inspección y ensayos finales (histórica)",
+      "nombre": "Aseguramiento de la calidad en inspección y ensayos finales",
       "alcance": "norma",
       "categoria": "calidad",
       "familia": "iso-9000",
@@ -36174,7 +36174,7 @@
       "contexto": "Se vigila también su sucesora, la serie ISO/IEC 39794"
     },
     "ISO/IEC 39794": {
-      "nombre": "Formatos extensibles de intercambio de datos biométricos (sucesora de la 19794)",
+      "nombre": "Formatos extensibles de intercambio de datos biométricos",
       "alcance": "serie",
       "categoria": "biometria",
       "familia": "formatos-biometricos",
@@ -38792,7 +38792,7 @@
       "contexto": null
     },
     "ISO 13407": {
-      "nombre": "Diseño centrado en el usuario (histórica)",
+      "nombre": "Diseño centrado en el usuario",
       "alcance": "norma",
       "categoria": "usabilidad",
       "familia": "ergonomia",
@@ -38816,7 +38816,7 @@
       "contexto": "El temario indica que la sustituyó la ISO 9241-210"
     },
     "ISO 13406": {
-      "nombre": "Ergonomía de pantallas planas (histórica)",
+      "nombre": "Ergonomía de pantallas planas",
       "alcance": "serie",
       "categoria": "usabilidad",
       "familia": "ergonomia",
