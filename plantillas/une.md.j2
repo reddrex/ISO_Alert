@@ -40,17 +40,19 @@ Proyectos de norma UNE (PNE) que el BOE ha sometido a información pública en l
 {% endfor %}
 
 {% endif %}
-## Normas sin UNE vigente conocida
-
-??? note "{{ sin_une | length }} normas"
-    {%+ for x in sin_une %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if x.une %} (el temario cita {{ x.une }}){% endif %}{% if not loop.last %} · {% endif %}{% endfor +%}
-
-Que no conste una UNE vigente puede deberse a tres cosas: que España no haya adoptado la norma, que la UNE se anulara (su historia está en la ficha de la norma) o que se aprobara en una relación del BOE publicada como imagen escaneada, que no se puede leer (casi todas las anteriores a 2004).
-
 {% else %}
 Todavía no hay datos del BOE.
 
 {% endif %}
+## Normas sin UNE vigente conocida
+
+{% if une_cobertura %}
+??? note "{{ sin_une | length }} normas"
+    {%+ for x in sin_une %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){% if x.une %} (el temario cita {{ x.une }}){% endif %}{% if not loop.last %} · {% endif %}{% endfor +%}
+
+{% endif %}
+Que no conste una UNE vigente puede deberse a tres cosas: que España no haya adoptado la norma, que la UNE se anulara (su historia está en la ficha de la norma) o que se aprobara en una relación del BOE publicada como imagen escaneada, que no se puede leer (casi todas las anteriores a 2004).
+
 Cómo se lee un código UNE (`UNE-ISO`, `UNE-EN ISO`, `IN`, `/1M`…): en la [guía](guia.md#como-leer-un-codigo).
 
 ---
