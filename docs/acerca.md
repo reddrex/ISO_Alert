@@ -1,3 +1,9 @@
+---
+title: Acerca de
+hide:
+  - navigation
+---
+
 # Acerca de
 
 !!! warning "No es una fuente oficial"
@@ -27,3 +33,9 @@ La web comprueba **cada día**, hacia las 7:15 (hora peninsular), los datos de I
 ## Calidad de la lista de normas
 
 La lista de normas se extrajo del temario y se revisó contra los datos de ISO. El [informe de validación](validacion.md) indica, para cada norma, si se encontró, cuál es su edición vigente y si la edición que cita el temario sigue en vigor.
+
+## Comunicar un error o una sugerencia
+
+¿Has visto un dato incorrecto en alguna norma, algo que falla en la web o tienes una idea para mejorarla? Cuéntalo en este formulario. No hace falta registrarse ni dar ningún dato personal.
+
+[Abrir el formulario](https://docs.google.com/forms/d/e/1FAIpQLSe1HzgumdFSYUKNSPRk5YVvtMLgxSKNDfdRz1egnbz8g56Yow/viewform){ .md-button .md-button--primary target="_blank" rel="noopener" }
