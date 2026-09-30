@@ -5,25 +5,24 @@
 
 ## Qué hace
 
-Cada día descarga los metadatos públicos de las normas ISO y comprueba si alguna de las normas del temario ha cambiado: una edición nueva, una revisión en marcha o una anulación. También lee el BOE para saber qué versión española (UNE) está vigente, si adopta la edición ISO actual y si hay una nueva en preparación.
+- **Vigila las normas ISO:** cada día comprueba si alguna de las normas del temario ha cambiado: una edición nueva, una revisión en marcha o una anulación.
+- **Lee el BOE:** para saber qué versión española (UNE) está vigente, si adopta la última edición ISO y si hay una nueva en preparación.
+- **Publica los cambios:** los registra en [Cambios](historial.md) y avisa de las ediciones nuevas, modificaciones y anulaciones por feed Atom.
 
-Solo se muestran metadatos públicos: código, título, estado y fechas. El contenido de las normas está protegido por derechos de autor y no se reproduce aquí.
+Solo muestra metadatos públicos, no el texto de las normas: [por qué](guia.md#por-que-no-se-puede-leer-la-norma-aqui).
+
+## Frecuencia y fechas
+
+La web comprueba **cada día**, hacia las 7:15 (hora peninsular), los datos de ISO y las normas UNE que publica el BOE.
+
+- **ISO** no actualiza sus datos abiertos todos los días, así que un cambio puede tardar unos días en aparecer. Además, los datos indican la etapa en la que está cada norma, pero no desde cuándo: por eso las fechas de [Cambios](historial.md) son las del día en que esta web **detectó** el cambio, no las del cambio real.
+- **UNE**: el BOE publica cada mes la relación de normas aprobadas y anuladas del mes anterior, así que las normas UNE llegan con uno o dos meses de retraso sobre su aprobación. La web lee el BOE hasta el día anterior.
 
 ## Fuentes y atribución
 
-- **ISO Open Data**, dataset *ISO deliverables metadata*, © ISO, publicado con licencia [Open Data Commons Attribution License (ODC-By) 1.0](https://opendatacommons.org/licenses/by/1-0/). Fuente: <https://www.iso.org/open-data.html>. Los títulos oficiales, las etapas y las relaciones entre ediciones proceden de este dataset.
-- **[Boletín Oficial del Estado](https://www.boe.es/datosabiertos/)** (API de datos abiertos), para las normas UNE. Cada mes el BOE publica la relación de normas UNE aprobadas (con la norma a la que sustituyen), la de anuladas y los proyectos en información pública. La web las lee desde el año 2000; los anexos anteriores a 2004, más o menos, son imágenes escaneadas y no se pueden leer. Por eso una UNE aprobada antes solo se conoce si una posterior la sustituye o si se anula.
-
-## Frecuencia de actualización
-
-La web comprueba **cada día** (hacia las 7:15, hora peninsular) los datos de ISO y las normas UNE que publica el BOE. Los cambios quedan en el [historial](historial.md), y las ediciones nuevas, modificaciones y anulaciones generan un aviso.
-
-- **ISO** no actualiza sus datos abiertos todos los días, así que un cambio puede tardar unos días en aparecer.
-- **UNE**: el BOE publica cada mes la relación de normas aprobadas y anuladas del mes anterior, así que las normas UNE llegan con uno o dos meses de retraso sobre su aprobación. La web lee el BOE hasta el día anterior.
-
-## Cómo leer las fechas
-
-El dataset de ISO indica la etapa en la que está cada norma, pero no desde cuándo. Por eso las fechas del historial son las del día en que esta web **detectó** el cambio, no las del cambio real. Además, ISO no siempre actualiza el dataset a diario.
+- **ISO Open Data**, dataset *ISO deliverables metadata*, © ISO, publicado con licencia [Open Data Commons Attribution License (ODC-By) 1.0](https://opendatacommons.org/licenses/by/1-0/). Fuente: <https://www.iso.org/open-data.html>. De aquí salen los títulos oficiales, las etapas y las relaciones entre ediciones.
+- **[Boletín Oficial del Estado](https://www.boe.es/datosabiertos/)**, a través de su API de datos abiertos: las relaciones mensuales de normas UNE aprobadas, anuladas y en información pública. Qué cubren y qué no, en [Estándares nacionales (UNE)](une.md#normas-sin-une-vigente-conocida).
+- **Temario** de la oposición TIC A1 publicado por [ASTIC](https://www.astic.es/), del que sale la lista de normas y temas.
 
 ## Calidad de la lista de normas
 
