@@ -1,13 +1,13 @@
 {
   "version_esquema": 1,
-  "generado": "2026-09-29T11:24:02+00:00",
+  "generado": "2026-09-30T11:11:59+00:00",
   "fuentes": {
     "iso": {
       "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-      "last_modified": "2026-09-23T00:41:03+00:00",
-      "etag": "0x8DF190B588C03B6",
-      "sha256": "4f92d4aa640031c3b81a2ba63f26aa92b537a17e3e36a35c5b5ff62cf39d4faf",
-      "registros": 81478
+      "last_modified": "2026-09-30T00:40:50+00:00",
+      "etag": "0x8DF1E8B79AB18BD",
+      "sha256": "ba910b397efe496006123f59956b47e8ac158b2e0d1eab7cc44c49e3a2138177",
+      "registros": 81545
     }
   },
   "entregables": {
@@ -11543,7 +11543,7 @@
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 9099,
+      "etapa": 9520,
       "edicion": 1,
       "publicacion": "2008-12-15",
       "titulo_en": "Information technology — Biometrics — BioAPI Interworking Protocol",
@@ -24259,14 +24259,16 @@
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 9060,
+      "etapa": 9092,
       "edicion": 2,
       "publicacion": "2021-03-16",
       "titulo_en": "Project, programme and portfolio management — Context and concepts",
       "replaces": [
         50003
       ],
-      "replaced_by": [],
+      "replaced_by": [
+        95367
+      ],
       "normas": [
         "ISO 21500"
       ]
@@ -30345,12 +30347,12 @@
       ]
     },
     "89908": {
-      "referencia": "ISO/IEC/IEEE FDIS 29119-8",
+      "referencia": "ISO/IEC/IEEE 29119-8",
       "numero": "29119",
       "parte": "8",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5060,
+      "etapa": 6000,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Software and systems engineering — Software testing — Part 8: Model-based testing",
@@ -30504,7 +30506,7 @@
       "parte": "930",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3020,
+      "etapa": 3060,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Ergonomics of human-computer interaction — Part 930: Part 930: Multimodality in tactile and haptic interaction",
@@ -31294,15 +31296,15 @@
       ]
     },
     "92868": {
-      "referencia": "ISO/IEC PWI 31700-4",
+      "referencia": "ISO/IEC PWI 31700-5",
       "numero": "31700",
-      "parte": "4",
+      "parte": "5",
       "tipo": "IS",
       "suplemento": false,
       "etapa": 99,
       "edicion": 1,
       "publicacion": null,
-      "titulo_en": "Consumer protection — Privacy by design for consumer goods and services — Part 4: Usage of privacy enhancing technologies",
+      "titulo_en": "Consumer protection — Privacy by design for consumer goods and services — Part 5: Usage of privacy enhancing technologies",
       "replaces": [],
       "replaced_by": [],
       "normas": [
@@ -31691,12 +31693,12 @@
       ]
     },
     "93888": {
-      "referencia": "ISO/IEC FDIS 19785-3",
+      "referencia": "ISO/IEC 19785-3",
       "numero": "19785",
       "parte": "3",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5020,
+      "etapa": 6000,
       "edicion": 5,
       "publicacion": null,
       "titulo_en": "Information technology — Common Biometric Exchange Formats Framework — Part 3: Patron format specifications",
@@ -31940,7 +31942,7 @@
       "parte": "16",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 1020,
+      "etapa": 1060,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Software and systems engineering — Software testing — Part 16: Software testing ontology",
@@ -32000,6 +32002,40 @@
       "replaced_by": [],
       "normas": [
         "ISO 31700"
+      ]
+    },
+    "95361": {
+      "referencia": "ISO/IEC 11801-6:2017/Amd 1:2026",
+      "numero": "11801",
+      "parte": "6",
+      "tipo": "IS",
+      "suplemento": true,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2026-09-29",
+      "titulo_en": "Information technology — Generic cabling for customer premises — Part 6: Distributed building services — Amendment 1",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 11801"
+      ]
+    },
+    "95367": {
+      "referencia": "ISO/CD 21500",
+      "numero": "21500",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 3000,
+      "edicion": 3,
+      "publicacion": null,
+      "titulo_en": "Project, programme and portfolio management — Context and concepts",
+      "replaces": [
+        75704
+      ],
+      "replaced_by": [],
+      "normas": [
+        "ISO 21500"
       ]
     }
   },
@@ -32997,7 +33033,7 @@
           "sustituida_por": []
         },
         {
-          "parte": "4",
+          "parte": "5",
           "citada": true,
           "estado": "no_publicada",
           "subestado": null,
@@ -35639,18 +35675,20 @@
       "alcance": "norma",
       "categoria": "proyectos",
       "familia": null,
-      "estado": "vigente",
-      "subestado": "revision_periodica",
+      "estado": "en_revision",
+      "subestado": null,
       "titulo_en": "Project, programme and portfolio management — Context and concepts",
       "vigentes": [
         75704
       ],
-      "en_desarrollo": [],
+      "en_desarrollo": [
+        95367
+      ],
       "sustituida_por": [],
       "suplementos": [],
       "partes": null,
       "recuento": {
-        "vigente": 1
+        "en_revision": 1
       },
       "edicion_citada": null,
       "codigo_actual": null,
@@ -39566,7 +39604,8 @@
         82865,
         75701,
         75702,
-        75703
+        75703,
+        95361
       ],
       "partes": [
         {
@@ -39660,7 +39699,8 @@
           "ultima": 65446,
           "proyectos": [],
           "suplementos": [
-            75703
+            75703,
+            95361
           ],
           "sustituida_por": []
         },

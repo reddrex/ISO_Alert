@@ -1,16 +1,16 @@
 {
-  "generado": "2026-09-29T11:24:07+00:00",
+  "generado": "2026-09-30T11:12:03+00:00",
   "fuente": {
     "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-    "last_modified": "2026-09-23T00:41:03+00:00",
-    "sha256": "4f92d4aa640031c3b81a2ba63f26aa92b537a17e3e36a35c5b5ff62cf39d4faf",
-    "registros": 81478
+    "last_modified": "2026-09-30T00:40:50+00:00",
+    "sha256": "ba910b397efe496006123f59956b47e8ac158b2e0d1eab7cc44c49e3a2138177",
+    "registros": 81545
   },
   "resumen": {
     "total": 99,
     "por_estado": {
-      "en_revision": 27,
-      "vigente": 65,
+      "en_revision": 28,
+      "vigente": 64,
       "sustituida": 6,
       "no_publicada": 1
     },
@@ -924,10 +924,10 @@
         },
         {
           "iso_id": 92868,
-          "referencia": "ISO/IEC PWI 31700-4",
+          "referencia": "ISO/IEC PWI 31700-5",
           "anio": null,
           "etapa": "00.99",
-          "titulo_en": "Consumer protection — Privacy by design for consumer goods and services — Part 4: Usage of privacy enhancing technologies",
+          "titulo_en": "Consumer protection — Privacy by design for consumer goods and services — Part 5: Usage of privacy enhancing technologies",
           "url": "https://www.iso.org/standard/92868.html"
         }
       ],
@@ -3221,21 +3221,30 @@
       "categoria": "proyectos",
       "familia": null,
       "encontrada": true,
-      "estado": "vigente",
-      "estado_txt": "Vigente",
-      "subestado": "revision_periodica",
-      "subestado_txt": "Revisión periódica",
+      "estado": "en_revision",
+      "estado_txt": "En revisión",
+      "subestado": null,
+      "subestado_txt": null,
       "vigentes": [
         {
           "iso_id": 75704,
           "referencia": "ISO 21500:2021",
           "anio": "2021",
-          "etapa": "90.60",
+          "etapa": "90.92",
           "titulo_en": "Project, programme and portfolio management — Context and concepts",
           "url": "https://www.iso.org/standard/75704.html"
         }
       ],
-      "en_desarrollo": [],
+      "en_desarrollo": [
+        {
+          "iso_id": 95367,
+          "referencia": "ISO/CD 21500",
+          "anio": null,
+          "etapa": "30.00",
+          "titulo_en": "Project, programme and portfolio management — Context and concepts",
+          "url": "https://www.iso.org/standard/95367.html"
+        }
+      ],
       "sustituida_por": [],
       "suplementos": [],
       "partes": null,
@@ -3439,9 +3448,9 @@
       "en_desarrollo": [
         {
           "iso_id": 93888,
-          "referencia": "ISO/IEC FDIS 19785-3",
+          "referencia": "ISO/IEC 19785-3",
           "anio": null,
-          "etapa": "50.20",
+          "etapa": "60.00",
           "titulo_en": "Information technology — Common Biometric Exchange Formats Framework — Part 3: Patron format specifications",
           "url": "https://www.iso.org/standard/93888.html"
         }
@@ -4065,7 +4074,7 @@
           "iso_id": 43611,
           "referencia": "ISO/IEC 24708:2008",
           "anio": "2008",
-          "etapa": "90.99",
+          "etapa": "95.20",
           "titulo_en": "Information technology — Biometrics — BioAPI Interworking Protocol",
           "url": "https://www.iso.org/standard/43611.html"
         }
@@ -6243,6 +6252,14 @@
           "etapa": "60.60",
           "titulo_en": "Information technology — Generic cabling for customer premises — Part 6: Distributed building services — Technical Corrigendum 1",
           "url": "https://www.iso.org/standard/75703.html"
+        },
+        {
+          "iso_id": 95361,
+          "referencia": "ISO/IEC 11801-6:2017/Amd 1:2026",
+          "anio": "2017",
+          "etapa": "60.60",
+          "titulo_en": "Information technology — Generic cabling for customer premises — Part 6: Distributed building services — Amendment 1",
+          "url": "https://www.iso.org/standard/95361.html"
         }
       ],
       "partes": {

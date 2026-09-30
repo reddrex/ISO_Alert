@@ -1,1 +1,180 @@
-[]
+[
+  {
+    "id": "f8d288b88ef462d9",
+    "tipo": "revision_iniciada",
+    "normas": [
+      "ISO 21500"
+    ],
+    "resumen": "ISO ha decidido revisar ISO 21500:2021.",
+    "notificable": false,
+    "detectado": "2026-09-30",
+    "dato_fecha": "2026-09-30",
+    "fuente": "iso",
+    "entregable": {
+      "id": 75704,
+      "referencia": "ISO 21500:2021"
+    },
+    "sustituye": [
+      {
+        "id": 50003,
+        "referencia": "ISO 21500:2012",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 9060,
+    "etapa_nueva": 9092,
+    "issue": null
+  },
+  {
+    "id": "f4f560b9b9df01eb",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO/IEC/IEEE 29119"
+    ],
+    "resumen": "El proyecto ISO/IEC/IEEE NP 29119-16 está en fase de propuesta (10.60).",
+    "notificable": false,
+    "detectado": "2026-09-30",
+    "dato_fecha": "2026-09-30",
+    "fuente": "iso",
+    "entregable": {
+      "id": 94758,
+      "referencia": "ISO/IEC/IEEE NP 29119-16"
+    },
+    "sustituye": [],
+    "etapa_anterior": 1020,
+    "etapa_nueva": 1060,
+    "issue": null
+  },
+  {
+    "id": "a0a106a824e584b6",
+    "tipo": "modificacion_publicada",
+    "normas": [
+      "ISO/IEC 11801"
+    ],
+    "resumen": "ISO publica la modificación ISO/IEC 11801-6:2017/Amd 1:2026.",
+    "notificable": true,
+    "detectado": "2026-09-30",
+    "dato_fecha": "2026-09-30",
+    "fuente": "iso",
+    "entregable": {
+      "id": 95361,
+      "referencia": "ISO/IEC 11801-6:2017/Amd 1:2026"
+    },
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": 6060,
+    "issue": 1
+  },
+  {
+    "id": "9b3615afdc4a166e",
+    "tipo": "anulacion_propuesta",
+    "normas": [
+      "ISO/IEC 24708"
+    ],
+    "resumen": "Se ha propuesto anular ISO/IEC 24708:2008 (95.20).",
+    "notificable": false,
+    "detectado": "2026-09-30",
+    "dato_fecha": "2026-09-30",
+    "fuente": "iso",
+    "entregable": {
+      "id": 43611,
+      "referencia": "ISO/IEC 24708:2008"
+    },
+    "sustituye": [],
+    "etapa_anterior": 9099,
+    "etapa_nueva": 9520,
+    "issue": null
+  },
+  {
+    "id": "86237e9d02203227",
+    "tipo": "publicacion_inminente",
+    "normas": [
+      "ISO/IEC 19785"
+    ],
+    "resumen": "El proyecto ISO/IEC 19785-3 está en en publicación (60.00).",
+    "notificable": false,
+    "detectado": "2026-09-30",
+    "dato_fecha": "2026-09-30",
+    "fuente": "iso",
+    "entregable": {
+      "id": 93888,
+      "referencia": "ISO/IEC 19785-3"
+    },
+    "sustituye": [
+      {
+        "id": 88377,
+        "referencia": "ISO/IEC 19785-3:2025",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 5020,
+    "etapa_nueva": 6000,
+    "issue": null
+  },
+  {
+    "id": "50edc98417df1d03",
+    "tipo": "publicacion_inminente",
+    "normas": [
+      "ISO/IEC/IEEE 29119"
+    ],
+    "resumen": "El proyecto ISO/IEC/IEEE 29119-8 está en en publicación (60.00).",
+    "notificable": false,
+    "detectado": "2026-09-30",
+    "dato_fecha": "2026-09-30",
+    "fuente": "iso",
+    "entregable": {
+      "id": 89908,
+      "referencia": "ISO/IEC/IEEE 29119-8"
+    },
+    "sustituye": [],
+    "etapa_anterior": 5060,
+    "etapa_nueva": 6000,
+    "issue": null
+  },
+  {
+    "id": "42d1169490f5170b",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 9241"
+    ],
+    "resumen": "El proyecto ISO/CD 9241-930 está en fase de comité (30.60).",
+    "notificable": false,
+    "detectado": "2026-09-30",
+    "dato_fecha": "2026-09-30",
+    "fuente": "iso",
+    "entregable": {
+      "id": 90500,
+      "referencia": "ISO/CD 9241-930"
+    },
+    "sustituye": [],
+    "etapa_anterior": 3020,
+    "etapa_nueva": 3060,
+    "issue": null
+  },
+  {
+    "id": "3ba874fbd2a683a3",
+    "tipo": "revision_iniciada",
+    "normas": [
+      "ISO 21500"
+    ],
+    "resumen": "El proyecto ISO/CD 21500 está en fase de comité (30.00).",
+    "notificable": false,
+    "detectado": "2026-09-30",
+    "dato_fecha": "2026-09-30",
+    "fuente": "iso",
+    "entregable": {
+      "id": 95367,
+      "referencia": "ISO/CD 21500"
+    },
+    "sustituye": [
+      {
+        "id": 75704,
+        "referencia": "ISO 21500:2021",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": null,
+    "etapa_nueva": 3000,
+    "issue": null
+  }
+]
