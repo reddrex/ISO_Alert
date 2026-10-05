@@ -310,17 +310,21 @@ def _cambios(historial: list[dict], por_codigo: dict[str, dict]) -> list[dict]:
 
 
 def generar(estado: dict, validacion: dict, config: Config, docs: Path,
-            historial: list[dict] | None = None, registro_une: dict | None = None) -> list[Path]:
+            historial: list[dict] | None = None, registro_une: dict | None = None,
+            comprobado: str | None = None) -> list[Path]:
     env = _entorno()
     vista = Vista(estado, config, registro_une)
     filas = vista.filas()
     por_codigo = {f["codigo"]: f for f in filas}
     historial = historial or []
     cambios = _cambios(historial, por_codigo)
+    resumen = vista.resumen(filas)
+    if comprobado and comprobado[:10] > resumen["comprobado"]:
+        resumen["comprobado"] = comprobado[:10]
     ctx = {
         "filas": filas,
         "por_codigo": por_codigo,
-        "resumen": vista.resumen(filas),
+        "resumen": resumen,
         "familias": list(config.familias.values()),
         "categorias": list(config.categorias.values()),
         "temario": vista.temario(filas),
@@ -335,7 +339,8 @@ def generar(estado: dict, validacion: dict, config: Config, docs: Path,
         "estados_une": une.ESTADOS_UNE,
     }
     salidas = {
-        docs / "index.md": env.get_template("index.md.j2").render(**ctx),
+        docs / "index.md": env.get_template("inicio.md.j2").render(**ctx),
+        docs / "ambito.md": env.get_template("ambito.md.j2").render(**ctx),
         docs / "estado.md": env.get_template("estado.md.j2").render(**ctx),
         docs / TEMARIO / "index.md": env.get_template("temario.md.j2").render(**ctx),
         docs / "comparativas.md": env.get_template("comparativas.md.j2").render(**ctx),

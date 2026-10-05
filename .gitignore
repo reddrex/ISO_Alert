@@ -8,6 +8,7 @@ site/
 
 # Páginas generadas a partir de data/ en cada build (python -m iso_alert web)
 docs/index.md
+docs/ambito.md
 docs/estado.md
 docs/familias/
 docs/temario/

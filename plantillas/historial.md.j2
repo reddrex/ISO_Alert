@@ -16,6 +16,8 @@ hide:
 
 Cada cambio detectado en una norma del temario, de ISO o de UNE, con la fecha en que se **detectó**, que puede ser posterior al cambio real. Cada cuánto se comprueba se explica en [Acerca de](acerca.md#frecuencia-y-fechas).
 
+<p class="situacion"><strong>Última comprobación: {{ resumen.comprobado }}.</strong> {% if cambios %}El último cambio se detectó el {{ cambios[0].detectado }}{% if cambios[0].detectado < resumen.comprobado %}; en las comprobaciones posteriores no ha habido cambios{% endif %}.{% else %}Sin cambios hasta ahora.{% endif %}</p>
+
 ## Últimos cambios
 
 {% if cambios %}

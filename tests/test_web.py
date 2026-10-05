@@ -20,7 +20,7 @@ CARPETAS = ("fichas", "familias", "temario")
 
 
 def test_paginas_generadas(paginas):
-    assert set(paginas) == {"index", "estado", "comparativas", "une", "guia", "historial", "validacion", *CARPETAS}
+    assert set(paginas) == {"index", "ambito", "estado", "comparativas", "une", "guia", "historial", "validacion", *CARPETAS}
     assert len(paginas["familias"]) == 21
     assert len(paginas["temario"]) == 39  # índice + 38 temas
     for nombre, texto in paginas.items():
@@ -76,7 +76,11 @@ def test_aprobacion(paginas):
 
 
 def test_inicio(paginas):
-    md = paginas["index"]
+    inicio = paginas["index"]
+    assert inicio.startswith("---\ntitle: Inicio\n")
+    for destino in ("ambito/", "temario/", "comparativas/", "guia/", "estado/", "historial/", "une/"):
+        assert f'class="inicio__tarjeta" href="{destino}"' in inicio
+    md = paginas["ambito"]
     assert "# Estándares por ámbito" in md and 'aria-current="page">Por ámbito' in md
     assert "Ediciones del temario que ya no son las vigentes" not in md
     assert "Seguimiento de cambios" not in md and "md-button" not in md
@@ -99,7 +103,7 @@ def test_escapado(config, indice, tmp_path):
 
 
 def test_mapa(paginas, config):
-    md = paginas["index"]
+    md = paginas["ambito"]
     mapa = md[md.index('<div class="mapa">'):md.index("</div>", md.index('<div class="mapa">'))]
     assert "\n\n" not in mapa  # una línea en blanco rompería el bloque HTML
     assert mapa.count('<section class="mapa__area') == len(config.areas) == 9
@@ -125,14 +129,14 @@ def test_familias(paginas):
     assert "| [ISO/IEC 27002](../normas/iso-iec-27002.md) <br>" in fam and "¿Qué controles puedo aplicar?" in fam
     # Solo se destacan los estados que requieren atención.
     assert "estado--vigente" not in fam and "estado--sustituida" in fam
-    assert fam.split("\n---\n", 1)[1].lstrip().startswith("[Por ámbito](../index.md) › [Seguridad y privacidad]")
+    assert fam.split("\n---\n", 1)[1].lstrip().startswith("[Por ámbito](../ambito.md) › [Seguridad y privacidad]")
     ciclo = paginas["familias"]["ciclo-vida"]
     orden = ["12207", "14764", "15288", "15289"]
     posiciones = [ciclo.index(f"<strong>{n}</strong>") for n in orden]
     assert posiciones == sorted(posiciones)
     assert "Familia oficial" in fam and "Grupo temático" in ciclo
     assert "En gris, las normas que ya no están en vigor" in fam  # 13335
-    mapa = paginas["index"]
+    mapa = paginas["ambito"]
     assert 'Ciclo de vida <span class="mapa__tipo">grupo</span>' in mapa
     assert 'ISO/IEC 27000 <span class="mapa__tipo">' not in mapa
 
@@ -166,7 +170,7 @@ def test_fichas(paginas):
     # Enlaces HTML entre fichas: relativos a la carpeta normas/ (Zensical añade el «../»).
     assert '<a href="iso-iec-27000/"' in f and 'href="../iso-iec-27000/"' not in f
     assert '<a href="iso-iec-27000/" rel="prev">' in f and '<a href="iso-iec-27002/" rel="next">' in f
-    assert "[Por ámbito](../index.md) › [Seguridad y privacidad](../index.md#area-seguridad) › [ISO/IEC 27000]" in f
+    assert "[Por ámbito](../ambito.md) › [Seguridad y privacidad](../ambito.md#area-seguridad) › [ISO/IEC 27000]" in f
     # Cada elemento de lista en su propia línea (trim_blocks no debe pegarlos).
     assert ")- **" not in f
     # Series: partes citadas con la descripción del temario.
@@ -224,3 +228,17 @@ def test_feeds_legibles_en_el_navegador(config, indice, tmp_path):
     assert "Observatorio de estándares TIC · avisos" in general
     norma = (tmp_path / web.FEEDS / "iso-iec-27001.xml").read_text(encoding="utf-8")
     assert '<?xml-stylesheet type="text/xsl" href="../feed.xsl"?>' in norma
+
+
+def test_ultima_comprobacion(config, indice, tmp_path):
+    """La fecha de la última comprobación puede ser posterior a la de data/estado.json."""
+    datos = estado.construir(config, indice, None)
+    historial = [{"detectado": "2000-01-01", "tipo": "revision_iniciada", "normas": [], "resumen": "x", "notificable": False}]
+    web.generar(datos, informe.construir(config, indice, None), config, tmp_path, historial, comprobado="2999-12-31")
+    md = (tmp_path / "historial.md").read_text(encoding="utf-8")
+    assert "<strong>Última comprobación: 2999-12-31.</strong> El último cambio se detectó el 2000-01-01; en las comprobaciones posteriores no ha habido cambios." in md
+    assert "(comprobados el 2999-12-31)" in md
+    assert "Datos comprobados el 2999-12-31" in (tmp_path / "index.md").read_text(encoding="utf-8")
+    # Una fecha anterior a la de los datos no la sustituye.
+    web.generar(datos, informe.construir(config, indice, None), config, tmp_path, comprobado="1999-01-01")
+    assert "1999-01-01" not in (tmp_path / "historial.md").read_text(encoding="utf-8")

@@ -233,8 +233,11 @@ def generar_web(args) -> int:
     datos = Path(args.datos)
     leer = lambda nombre: json.loads((datos / nombre).read_text(encoding="utf-8"))  # noqa: E731
     historial = _leer_json(datos / "historial.json", [])
+    # La comprobación diaria solo guarda data/ si algo cambia: la fecha de la última sale de
+    # last_checked.json (fresco en la ejecución diaria) o de --comprobado (en los push).
+    comprobado = args.comprobado or (_leer_json(datos / "last_checked.json", {}).get("ejecucion") or "")[:10] or None
     rutas = web.generar(leer("estado.json"), leer("validacion.json"), config, Path(args.docs), historial,
-                        _leer_json(datos / "une.json", None))
+                        _leer_json(datos / "une.json", None), comprobado)
     carpetas = (web.FICHAS, web.FAMILIAS, web.TEMARIO, web.FEEDS)
     for ruta in rutas:
         if ruta.parent.name not in carpetas:
@@ -278,6 +281,7 @@ def main(argv: list[str] | None = None) -> int:
     w.add_argument("--normas", default="normas.yaml")
     w.add_argument("--datos", default="data")
     w.add_argument("--docs", default="docs")
+    w.add_argument("--comprobado", help="fecha (AAAA-MM-DD) de la última comprobación, si es posterior a data/")
     w.set_defaults(func=generar_web)
 
     args = p.parse_args(argv)

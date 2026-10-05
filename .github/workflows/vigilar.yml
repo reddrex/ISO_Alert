@@ -17,6 +17,7 @@ on:
         default: false
 
 permissions:
+  actions: read
   contents: write
   issues: write
   pages: write
@@ -60,8 +61,19 @@ jobs:
             echo "Sin cambios en los datos; no se hace commit (último hace $edad días)."
           fi
 
+      # En los push, data/last_checked.json es el del último commit de datos, que puede ser
+      # anterior: la fecha de la última comprobación sale de la última ejecución diaria correcta.
+      - name: Fecha de la última comprobación
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          fecha=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow vigilar.yml --event schedule \
+            --status success --limit 1 --json createdAt --jq '.[0].createdAt // ""' | cut -c1-10) || fecha=""
+          echo "COMPROBADO=$fecha" >> "$GITHUB_ENV"
+
       - name: Páginas generadas
-        run: python -m iso_alert web
+        run: python -m iso_alert web ${COMPROBADO:+--comprobado "$COMPROBADO"}
       - name: Build
         run: zensical build
       - name: Enlaces internos

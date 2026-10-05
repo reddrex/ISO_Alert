@@ -500,3 +500,25 @@
 
 /* Foco visible en enlaces de bloque */
 .md-typeset a.mapa__familia:focus-visible { outline: 2px solid var(--md-accent-fg-color); outline-offset: 1px; }
+
+/* Inicio: tarjetas que llevan a cada sección */
+.md-typeset .inicio {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 0.8rem;
+  margin: 1em 0 1.5em;
+}
+.md-typeset a.inicio__tarjeta {
+  display: block;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-left: 4px solid var(--md-primary-fg-color);
+  border-radius: 0.2rem;
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+}
+.md-typeset a.inicio__tarjeta:hover,
+.md-typeset a.inicio__tarjeta:focus { background: var(--md-default-fg-color--lightest); }
+.md-typeset a.inicio__tarjeta:focus-visible { outline: 2px solid var(--md-accent-fg-color); outline-offset: 1px; }
+.md-typeset .inicio__tarjeta strong { display: block; color: var(--md-typeset-a-color); }
+.md-typeset .inicio__tarjeta span { display: block; font-size: 0.72rem; color: var(--md-default-fg-color--light); margin-top: 0.2em; }

@@ -62,8 +62,9 @@ extra_javascript:
   - javascripts/estado.js
 
 nav:
+  - Inicio: index.md
   - Estándares internacionales:
-      - Por ámbito: index.md
+      - Por ámbito: ambito.md
       - Por tema: temario/index.md
   - Estándares nacionales (UNE): une.md
   - Trucos de examen: comparativas.md

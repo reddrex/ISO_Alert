@@ -30,5 +30,5 @@
 
 {# Subpestañas de «Estándares internacionales». ``raiz`` es la ruta hasta la raíz del sitio. #}
 {% macro subpestanas(activa, raiz="") -%}
-<nav class="subpestanas" aria-label="Estándares internacionales"><a href="{{ raiz or './' }}"{% if activa == "ambito" %} aria-current="page"{% endif %}>Por ámbito</a><a href="{{ raiz }}temario/"{% if activa == "tema" %} aria-current="page"{% endif %}>Por tema</a></nav>
+<nav class="subpestanas" aria-label="Estándares internacionales"><a href="{{ raiz }}ambito/"{% if activa == "ambito" %} aria-current="page"{% endif %}>Por ámbito</a><a href="{{ raiz }}temario/"{% if activa == "tema" %} aria-current="page"{% endif %}>Por tema</a></nav>
 {%- endmacro %}
