@@ -1,34 +1,83 @@
 {% macro n(codigo) -%}{% set x = por_codigo[codigo] %}[{{ x.codigo }}](normas/{{ x.ancla }}.md){%- endmacro %}
 {% macro ed(codigo, parte=None) -%}{% set x = por_codigo[codigo] %}{% if parte %}{% set ps = (x.partes.citadas + x.partes.otras) | selectattr("parte", "equalto", parte) | list %}{{ ps[0].ultima.anio if ps and ps[0].ultima else "—" }}{% elif x.vigentes %}{{ x.vigentes[-1].anio }}{% else %}—{% endif %}{%- endmacro %}
 ---
-title: Comparativas
+title: Trucos de examen
 hide:
   - navigation
 ---
 
-# Comparativas
+# Trucos de examen
 
-Tablas para distinguir normas que se suelen confundir en el examen.
+Reglas para memorizar la numeración y la estructura de las normas, y tablas para distinguir las que se suelen confundir.
+
+## Para memorizar familias
+
+Las familias de **sistemas de gestión** reparten su numeración en bloques. Si los conoces, sabrás para qué sirve una norma con solo ver cómo termina su número.
+
+### Los cuatro bloques
+
+| Terminación | Bloque | Qué contiene | Ejemplos |
+|---|---|---|---|
+| **…000** | Fundamentos y vocabulario | El diccionario de la familia: conceptos y términos para que todas las normas hablen el mismo idioma. | {{ n("ISO 9000") }}, {{ n("ISO/IEC 27000") }}, {{ n("ISO 30300") }} |
+| **…001** | Requisitos (certificable) | La norma central: los «debe» que hay que cumplir. Es con la que una organización **se certifica**. | {{ n("ISO 9001") }}, {{ n("ISO 14001") }}, {{ n("ISO/IEC 27001") }}, {{ n("ISO 30301") }} |
+| **…002 a …009** | Directrices y guías | El manual de instrucciones: la 001 dice *qué* hacer y estas explican *cómo*. | {{ n("ISO/IEC 27002") }} (controles), {{ n("ISO/IEC 27005") }} (riesgos), {{ n("ISO 9004") }} (éxito sostenido), {{ n("ISO 30302") }} (implantación) |
+| **…010 en adelante** | Ámbitos y sectores concretos | Adaptaciones de la familia a un sector o tecnología. | {{ n("ISO/IEC 27017") }} (nube), {{ n("ISO/IEC 27018") }} (datos personales en la nube) |
+
+Dos matices para no equivocarse:
+
+- **La 001 no siempre es la única certificable.** En la familia 27000 también lo es la {{ n("ISO/IEC 27701") }} (privacidad).
+- **La auditoría no tiene un bloque propio.** La guía general de auditoría de sistemas de gestión es la {{ n("ISO 19011") }}, que no pertenece a ninguna familia: el 11 final es casualidad. Dentro de la 27000, la auditoría va en la 27006 y la 27007.
+
+### El ejemplo de la familia ISO/IEC 27000
+
+- **27000**: vocabulario y visión general (¿qué es un activo de información?).
+- **27001**: requisitos del sistema de gestión (SGSI). Certificable.
+- **27002**: catálogo de controles de seguridad (contraseñas, accesos, copias…).
+- **27003**: guía para implantar el SGSI.
+- **27004**: seguimiento y medición (cómo saber si la seguridad funciona).
+- **27005**: gestión de riesgos de seguridad de la información.
+
+La web solo vigila las que cita el temario, así que la 27003 y la 27004 no tienen ficha.
+
+### Qué familias siguen el patrón y cuáles no
+
+El truco funciona en las familias de sistemas de gestión. En el resto, la numeración se organiza de otra forma:
+
+| Familia | ¿Sigue el patrón? | Cómo se organiza |
+|---|---|---|
+| [ISO/IEC 27000](familias/iso-27000.md) | **Sí** | 27000 vocabulario, 27001 requisitos, 27002 controles, 27005 riesgos, 27017 y 27018 nube. |
+| [ISO 9000](familias/iso-9000.md) | **Sí** | 9000 vocabulario, 9001 requisitos, 9004 guía. La antigua 9003 era otra norma de requisitos, integrada en la 9001 en el año 2000. |
+| [ISO 30300](familias/iso-30300.md) | **Sí** | 30300 vocabulario, 30301 requisitos, 30302 guía de implantación. |
+| [ISO/IEC 330xx](familias/iso-33000.md) | **No: desplazada una posición** | 33001 es el vocabulario y 33002 los requisitos para evaluar, y no es certificable. No hay 33000. |
+| [SQuaRE (ISO/IEC 25000)](familias/square.md) | **No: por decenas** | Cada decena es una división: 2500n gestión de la calidad, 2501n modelos (25010, 25012), 2502n medición (25024), 2503n requisitos, 2504n evaluación (25040). |
+| [ISO/IEC 38500](familias/gobierno-ti.md) | **No** | 38500 son los principios del gobierno de TI y las demás los aplican a ámbitos concretos, como el dato (38505). No hay norma certificable. |
+| [ISO 9241](familias/ergonomia.md) | **No: por partes** | Es un único número dividido en partes (9241-11 usabilidad, 9241-210 diseño centrado en las personas). |
+| {{ n("ISO/IEC 20000") }}, {{ n("ISO/IEC 19770") }} | **No: por partes** | Los requisitos certificables están en la parte 1 (20000-1, 19770-1) y las guías en las demás partes. |
+| {{ n("ISO 14001") }}, {{ n("ISO 22301") }} | **En parte** | Son la norma de requisitos de su familia (14000, 22300), pero el resto de esas familias no sigue el patrón al pie de la letra. |
+
+Los **grupos temáticos** de esta web (ciclo de vida, conservación, biometría…) no son familias de ISO, así que sus números no siguen ninguna pauta.
+
+## Para memorizar capítulos de una norma
+
+Las normas de requisitos de sistemas de gestión ({{ n("ISO 9001") }}, {{ n("ISO 14001") }}, {{ n("ISO/IEC 27001") }}, {{ n("ISO 22301") }}, {{ n("ISO/IEC 20000") }}-1, {{ n("ISO 30301") }}…) comparten los mismos **10 capítulos**. ISO la llamó primero *Estructura de Alto Nivel* (HLS, del Anexo SL) y desde 2021 *Estructura Armonizada*. Se recuerda bien con el ciclo **PHVA** (Planificar, Hacer, Verificar, Actuar):
+
+| Bloque | Capítulos |
+|---|---|
+| Introducción | 1. Objeto y campo de aplicación · 2. Referencias normativas · 3. Términos y definiciones |
+| **Planificar** | 4. Contexto de la organización · 5. Liderazgo · 6. Planificación (riesgos y oportunidades, objetivos) |
+| **Hacer** | 7. Apoyo (recursos, competencia, documentación) · 8. Operación |
+| **Verificar** | 9. Evaluación del desempeño (seguimiento, auditoría interna y revisión por la dirección) |
+| **Actuar** | 10. Mejora |
+
+Gracias a esta estructura, una organización puede integrar varios sistemas de gestión (calidad, seguridad, medio ambiente…) en uno solo.
 
 ## Gestión
 
 ### Sistemas de gestión
 
-Varias normas del temario definen un **sistema de gestión**: el conjunto de políticas, procesos y responsabilidades con que una organización gestiona un ámbito (la calidad, la seguridad, la continuidad…). Todas comparten la **estructura armonizada** de ISO, así que tienen las mismas cláusulas y se pueden integrar en un único sistema:
+Varias normas del temario definen un **sistema de gestión**: el conjunto de políticas, procesos y responsabilidades con que una organización gestiona un ámbito (la calidad, la seguridad, la continuidad…). Todos comparten los [mismos capítulos](#para-memorizar-capitulos-de-una-norma).
 
-| Cláusula | Contenido | Ciclo de mejora |
-|---|---|---|
-| 4 | Contexto de la organización | Planificar |
-| 5 | Liderazgo | Planificar |
-| 6 | Planificación (riesgos y oportunidades, objetivos) | Planificar |
-| 7 | Apoyo (recursos, competencia, documentación) | Planificar |
-| 8 | Operación | Hacer |
-| 9 | Evaluación del desempeño (seguimiento, auditoría interna, revisión por la dirección) | Verificar |
-| 10 | Mejora | Actuar |
-
-Las cláusulas 1 a 3 son el objeto, las referencias normativas y los términos.
-
-En cada ámbito hay una norma de **requisitos** (lo que se *debe* cumplir; es la única certificable), varias **guías** (lo que *conviene* hacer) y, a menudo, una de **vocabulario**. Confundirlas es un error habitual:
+En cada ámbito hay una norma de **requisitos** (lo que se *debe* cumplir; es la que se certifica), varias **guías** (lo que *conviene* hacer) y, a menudo, una de **vocabulario**. Confundirlas es un error habitual:
 
 | Ámbito | Sistema | Requisitos (certificable) | Guías y directrices | Vocabulario y fundamentos |
 |---|---|---|---|---|
