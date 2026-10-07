@@ -1,13 +1,13 @@
 {
   "version_esquema": 1,
-  "generado": "2026-09-30T11:11:59+00:00",
+  "generado": "2026-10-07T11:49:27+00:00",
   "fuentes": {
     "iso": {
       "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-      "last_modified": "2026-09-30T00:40:50+00:00",
-      "etag": "0x8DF1E8B79AB18BD",
-      "sha256": "ba910b397efe496006123f59956b47e8ac158b2e0d1eab7cc44c49e3a2138177",
-      "registros": 81545
+      "last_modified": "2026-10-07T00:41:48+00:00",
+      "etag": "0x8DF240BC533ACCC",
+      "sha256": "3d0bc2fa20af65f6f95a98641869304b104d182b7415287d16d8db5172ceba3e",
+      "registros": 81585
     }
   },
   "entregables": {
@@ -30585,14 +30585,14 @@
       ]
     },
     "91036": {
-      "referencia": "ISO/IEC TS 20000-18",
+      "referencia": "ISO/IEC TS 20000-18:2026",
       "numero": "20000",
       "parte": "18",
       "tipo": "TS",
       "suplemento": false,
-      "etapa": 6000,
+      "etapa": 6060,
       "edicion": 1,
-      "publicacion": null,
+      "publicacion": "2026-10-06",
       "titulo_en": "Information technology — Service management — Part 18: Guidance on the use of experience management in a service management system",
       "replaces": [],
       "replaced_by": [],
@@ -35257,13 +35257,11 @@
         {
           "parte": "18",
           "citada": false,
-          "estado": "no_publicada",
+          "estado": "vigente",
           "subestado": null,
-          "vigente": null,
-          "ultima": null,
-          "proyectos": [
-            91036
-          ],
+          "vigente": 91036,
+          "ultima": 91036,
+          "proyectos": [],
           "suplementos": [],
           "sustituida_por": []
         },

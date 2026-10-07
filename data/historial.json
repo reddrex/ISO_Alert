@@ -1,5 +1,25 @@
 [
   {
+    "id": "dec531f4c58c7cd9",
+    "tipo": "parte_nueva",
+    "normas": [
+      "ISO/IEC 20000"
+    ],
+    "resumen": "ISO publica una parte nueva de la serie: ISO/IEC TS 20000-18:2026.",
+    "notificable": false,
+    "detectado": "2026-10-07",
+    "dato_fecha": "2026-10-07",
+    "fuente": "iso",
+    "entregable": {
+      "id": 91036,
+      "referencia": "ISO/IEC TS 20000-18:2026"
+    },
+    "sustituye": [],
+    "etapa_anterior": 6000,
+    "etapa_nueva": 6060,
+    "issue": null
+  },
+  {
     "id": "f8d288b88ef462d9",
     "tipo": "revision_iniciada",
     "normas": [
