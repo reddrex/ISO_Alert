@@ -1,10 +1,10 @@
 {
   "version_esquema": 1,
-  "generado": "2026-10-07T11:49:29+00:00",
+  "generado": "2026-10-14T10:17:02+00:00",
   "cobertura": {
     "desde": "2000-01-01",
     "primera_tabla": "2000-01-18",
-    "ultimo_dia": "2026-10-06",
+    "ultimo_dia": "2026-10-13",
     "dias_fallidos": [
       "2000-08-05"
     ]
@@ -7665,6 +7665,30 @@
       "tipo": "info_publica",
       "mes": "2026-08",
       "filas": 5
+    },
+    "BOE-A-2026-21299": {
+      "fecha": "2026-10-13",
+      "tipo": "aprobadas",
+      "mes": "2026-09",
+      "filas": 106
+    },
+    "BOE-A-2026-21298": {
+      "fecha": "2026-10-13",
+      "tipo": "anuladas",
+      "mes": "2026-09",
+      "filas": 85
+    },
+    "BOE-A-2026-21301": {
+      "fecha": "2026-10-13",
+      "tipo": "info_publica",
+      "mes": "2026-09",
+      "filas": 10
+    },
+    "BOE-A-2026-21302": {
+      "fecha": "2026-10-13",
+      "tipo": "info_publica",
+      "mes": "2026-09",
+      "filas": 199
     }
   },
   "normas": {
@@ -9326,7 +9350,9 @@
         "UNE-EN ISO 9001:",
         "2008/AC:2009"
       ],
-      "sustituida_por": [],
+      "sustituida_por": [
+        "UNE-EN ISO 9001:2026"
+      ],
       "anulada": null,
       "anulacion_evaluada": false
     },
@@ -10652,7 +10678,9 @@
         "mes": "2024-09"
       },
       "sustituye": [],
-      "sustituida_por": [],
+      "sustituida_por": [
+        "UNE-EN ISO 9001:2026"
+      ],
       "anulada": null,
       "anulacion_evaluada": false
     },
@@ -10806,6 +10834,27 @@
       },
       "sustituye": [
         "UNE-ISO 14721:2015"
+      ],
+      "sustituida_por": [],
+      "anulada": null,
+      "anulacion_evaluada": false
+    },
+    "UNE-EN ISO 9001:2026": {
+      "codigo": "UNE-EN ISO 9001:2026",
+      "numero": "9001",
+      "parte": null,
+      "anio": "2026",
+      "suplemento": false,
+      "titulo": "Sistemas de gestión de la calidad. Requisitos. (ISO 9001:2026).",
+      "iso_adoptada": "ISO 9001:2026",
+      "aprobada": {
+        "boe": "BOE-A-2026-21299",
+        "fecha": "2026-10-13",
+        "mes": "2026-09"
+      },
+      "sustituye": [
+        "UNE-EN ISO 9001:2015",
+        "UNE-EN ISO 9001:2015/A1:2024"
       ],
       "sustituida_por": [],
       "anulada": null,

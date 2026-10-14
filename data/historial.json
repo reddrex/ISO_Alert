@@ -1,5 +1,104 @@
 [
   {
+    "id": "8fae595773a8a660",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO/IEC/IEEE 29119"
+    ],
+    "resumen": "El proyecto ISO/IEC/IEEE AWI 29119-16 está en fase preparatoria (20.00).",
+    "notificable": false,
+    "detectado": "2026-10-14",
+    "dato_fecha": "2026-10-14",
+    "fuente": "iso",
+    "entregable": {
+      "id": 94758,
+      "referencia": "ISO/IEC/IEEE AWI 29119-16"
+    },
+    "sustituye": [],
+    "etapa_anterior": 1060,
+    "etapa_nueva": 2000,
+    "issue": null
+  },
+  {
+    "id": "8065b2450593a68e",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO/IEC 2382-37"
+    ],
+    "resumen": "El proyecto ISO/IEC DIS 2382-37 está en consulta pública (40.20).",
+    "notificable": false,
+    "detectado": "2026-10-14",
+    "dato_fecha": "2026-10-14",
+    "fuente": "iso",
+    "entregable": {
+      "id": 91305,
+      "referencia": "ISO/IEC DIS 2382-37"
+    },
+    "sustituye": [
+      {
+        "id": 73514,
+        "referencia": "ISO/IEC 2382-37:2022",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 4000,
+    "etapa_nueva": 4020,
+    "issue": null
+  },
+  {
+    "id": "69a70d932e6242f2",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 30300"
+    ],
+    "resumen": "El proyecto ISO/CD 30300 está en fase de comité (30.20).",
+    "notificable": false,
+    "detectado": "2026-10-14",
+    "dato_fecha": "2026-10-14",
+    "fuente": "iso",
+    "entregable": {
+      "id": 92792,
+      "referencia": "ISO/CD 30300"
+    },
+    "sustituye": [
+      {
+        "id": 74291,
+        "referencia": "ISO 30300:2020",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 2000,
+    "etapa_nueva": 3020,
+    "issue": null
+  },
+  {
+    "id": "1532f5dc21f47d26",
+    "tipo": "adopcion_une",
+    "normas": [
+      "ISO 9001"
+    ],
+    "resumen": "UNE publica UNE-EN ISO 9001:2026 (adopta la ISO 9001:2026), que sustituye a UNE-EN ISO 9001:2015, UNE-EN ISO 9001:2015/A1:2024.",
+    "notificable": true,
+    "detectado": "2026-10-14",
+    "dato_fecha": "2026-10-13",
+    "fuente": "une",
+    "entregable": {
+      "referencia": "UNE-EN ISO 9001:2026",
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-21299"
+    },
+    "sustituye": [
+      {
+        "referencia": "UNE-EN ISO 9001:2015"
+      },
+      {
+        "referencia": "UNE-EN ISO 9001:2015/A1:2024"
+      }
+    ],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": 2
+  },
+  {
     "id": "dec531f4c58c7cd9",
     "tipo": "parte_nueva",
     "normas": [
