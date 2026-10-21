@@ -1,5 +1,123 @@
 [
   {
+    "id": "b5bdc59a5abbe3a3",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 31700"
+    ],
+    "resumen": "El proyecto ISO/IEC AWI TR 31700-2 está en fase preparatoria (20.00).",
+    "notificable": false,
+    "detectado": "2026-10-21",
+    "dato_fecha": "2026-10-21",
+    "fuente": "iso",
+    "entregable": {
+      "id": 95316,
+      "referencia": "ISO/IEC AWI TR 31700-2"
+    },
+    "sustituye": [
+      {
+        "id": 91874,
+        "referencia": "ISO/IEC TR 31700-2:2026",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 1099,
+    "etapa_nueva": 2000,
+    "issue": null
+  },
+  {
+    "id": "ac3fd04292b89993",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 31700"
+    ],
+    "resumen": "El proyecto ISO/IEC NP TS 31700-5 está en fase de propuesta (10.20).",
+    "notificable": false,
+    "detectado": "2026-10-21",
+    "dato_fecha": "2026-10-21",
+    "fuente": "iso",
+    "entregable": {
+      "id": 92868,
+      "referencia": "ISO/IEC NP TS 31700-5"
+    },
+    "sustituye": [],
+    "etapa_anterior": 99,
+    "etapa_nueva": 1020,
+    "issue": null
+  },
+  {
+    "id": "68c1d4ad777cf460",
+    "tipo": "publicacion_inminente",
+    "normas": [
+      "ISO/IEC 39794"
+    ],
+    "resumen": "El proyecto ISO/IEC 39794-2:2023/Amd 1 está en en publicación (60.00).",
+    "notificable": false,
+    "detectado": "2026-10-21",
+    "dato_fecha": "2026-10-21",
+    "fuente": "iso",
+    "entregable": {
+      "id": 88949,
+      "referencia": "ISO/IEC 39794-2:2023/Amd 1"
+    },
+    "sustituye": [],
+    "etapa_anterior": 5020,
+    "etapa_nueva": 6000,
+    "issue": null
+  },
+  {
+    "id": "05b6a967440b3a73",
+    "tipo": "publicacion_inminente",
+    "normas": [
+      "ISO 9241"
+    ],
+    "resumen": "El proyecto ISO 9241-130 está en en publicación (60.00).",
+    "notificable": false,
+    "detectado": "2026-10-21",
+    "dato_fecha": "2026-10-21",
+    "fuente": "iso",
+    "entregable": {
+      "id": 80772,
+      "referencia": "ISO 9241-130"
+    },
+    "sustituye": [
+      {
+        "id": 16885,
+        "referencia": "ISO 9241-13:1998",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 5020,
+    "etapa_nueva": 6000,
+    "issue": null
+  },
+  {
+    "id": "0328babc37cf5fca",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO/IEC 19795"
+    ],
+    "resumen": "El proyecto ISO/IEC CD 19795-10 está en fase de comité (30.60).",
+    "notificable": false,
+    "detectado": "2026-10-21",
+    "dato_fecha": "2026-10-21",
+    "fuente": "iso",
+    "entregable": {
+      "id": 91306,
+      "referencia": "ISO/IEC CD 19795-10"
+    },
+    "sustituye": [
+      {
+        "id": 81223,
+        "referencia": "ISO/IEC 19795-10:2024",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 3020,
+    "etapa_nueva": 3060,
+    "issue": null
+  },
+  {
     "id": "8fae595773a8a660",
     "tipo": "proyecto_avanza",
     "normas": [
