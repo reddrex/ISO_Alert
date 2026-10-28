@@ -1,10 +1,10 @@
 {
-  "generado": "2026-10-21T10:14:25+00:00",
+  "generado": "2026-10-28T11:23:13+00:00",
   "fuente": {
     "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-    "last_modified": "2026-10-21T00:42:37+00:00",
-    "sha256": "8d95f8ca6f84943fd75e57077e27c3acdebae8c424bfc242b75359923544ad0f",
-    "registros": 81670
+    "last_modified": "2026-10-28T00:41:08+00:00",
+    "sha256": "946d63cf4f7c7627af3f4fd19f00e2750dce4489b04ba79a06036355e1c9a7bc",
+    "registros": 81719
   },
   "resumen": {
     "total": 99,
@@ -1212,7 +1212,7 @@
           "iso_id": 88574,
           "referencia": "ISO/CD 31000",
           "anio": null,
-          "etapa": "30.60",
+          "etapa": "30.99",
           "titulo_en": "Risk management — Guidelines",
           "url": "https://www.iso.org/standard/88574.html"
         }
@@ -1311,7 +1311,7 @@
           "iso_id": 94443,
           "referencia": "ISO/IEC FDIS 17065",
           "anio": null,
-          "etapa": "50.20",
+          "etapa": "50.60",
           "titulo_en": "Conformity assessment — Requirements for bodies certifying products, processes and services",
           "url": "https://www.iso.org/standard/94443.html"
         }
@@ -1423,9 +1423,9 @@
       "en_desarrollo": [
         {
           "iso_id": 94699,
-          "referencia": "ISO/IEC/IEEE CD 15289",
+          "referencia": "ISO/IEC/IEEE DIS 15289",
           "anio": null,
-          "etapa": "30.99",
+          "etapa": "40.00",
           "titulo_en": "Systems and software engineering — Content of life-cycle information items (documentation)",
           "url": "https://www.iso.org/standard/94699.html"
         }
@@ -1700,9 +1700,9 @@
       "en_desarrollo": [
         {
           "iso_id": 90135,
-          "referencia": "ISO/IEC FDIS 33063",
+          "referencia": "ISO/IEC 33063",
           "anio": null,
-          "etapa": "50.20",
+          "etapa": "60.00",
           "titulo_en": "Information technology — Process assessment — Process assessment model for software testing",
           "url": "https://www.iso.org/standard/90135.html"
         }
@@ -2948,7 +2948,7 @@
           "iso_id": 89909,
           "referencia": "ISO/IEC CD TS 30105-6",
           "anio": null,
-          "etapa": "30.20",
+          "etapa": "30.60",
           "titulo_en": "Information technology — IT Enabled Services-Business Process Outsourcing (ITES-BPO) lifecycle processes — Part 6: Guidelines on risk management",
           "url": "https://www.iso.org/standard/89909.html"
         },
@@ -3606,7 +3606,7 @@
           "iso_id": 91307,
           "referencia": "ISO/IEC CD 19794-14",
           "anio": null,
-          "etapa": "30.60",
+          "etapa": "30.99",
           "titulo_en": "Information technology — Biometric data interchange formats — Part 14: DNA data",
           "url": "https://www.iso.org/standard/91307.html"
         }
@@ -4853,7 +4853,7 @@
           "iso_id": 93049,
           "referencia": "ISO/AWI 7372",
           "anio": null,
-          "etapa": "10.99",
+          "etapa": "20.00",
           "titulo_en": "Trade data interchange — Trade data elements directory",
           "url": "https://www.iso.org/standard/93049.html"
         }
@@ -5928,9 +5928,9 @@
       "en_desarrollo": [
         {
           "iso_id": 87660,
-          "referencia": "ISO/IEC PRF 19770-5",
+          "referencia": "ISO/IEC 19770-5",
           "anio": null,
-          "etapa": "50.20",
+          "etapa": "60.00",
           "titulo_en": "Information technology — IT asset management — Part 5: Vocabulary",
           "url": "https://www.iso.org/standard/87660.html"
         }

@@ -1,14 +1,14 @@
 {
-  "ejecucion": "2026-10-21T10:14:12+00:00",
-  "run_url": "https://github.com/reddrex/ISO_Alert/actions/runs/39583044913",
+  "ejecucion": "2026-10-28T11:22:57+00:00",
+  "run_url": "https://github.com/reddrex/ISO_Alert/actions/runs/40679469855",
   "resultado": "ok",
   "iso": {
-    "last_modified": "2026-10-21T00:42:37+00:00",
-    "sha256": "8d95f8ca6f84943fd75e57077e27c3acdebae8c424bfc242b75359923544ad0f"
+    "last_modified": "2026-10-28T00:41:08+00:00",
+    "sha256": "946d63cf4f7c7627af3f4fd19f00e2750dce4489b04ba79a06036355e1c9a7bc"
   },
   "boe": {
-    "ultimo_dia": "2026-10-20"
+    "ultimo_dia": "2026-10-27"
   },
-  "eventos_nuevos": 5,
+  "eventos_nuevos": 9,
   "avisos": 0
 }

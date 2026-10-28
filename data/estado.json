@@ -1,13 +1,13 @@
 {
   "version_esquema": 1,
-  "generado": "2026-10-21T10:14:20+00:00",
+  "generado": "2026-10-28T11:23:08+00:00",
   "fuentes": {
     "iso": {
       "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-      "last_modified": "2026-10-21T00:42:37+00:00",
-      "etag": "0x8DF2F0C34AB9ACE",
-      "sha256": "8d95f8ca6f84943fd75e57077e27c3acdebae8c424bfc242b75359923544ad0f",
-      "registros": 81670
+      "last_modified": "2026-10-28T00:41:08+00:00",
+      "etag": "0x8DF348C28132C2E",
+      "sha256": "946d63cf4f7c7627af3f4fd19f00e2750dce4489b04ba79a06036355e1c9a7bc",
+      "registros": 81719
     }
   },
   "entregables": {
@@ -29215,12 +29215,12 @@
       ]
     },
     "87660": {
-      "referencia": "ISO/IEC PRF 19770-5",
+      "referencia": "ISO/IEC 19770-5",
       "numero": "19770",
       "parte": "5",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5020,
+      "etapa": 6000,
       "edicion": 3,
       "publicacion": null,
       "titulo_en": "Information technology — IT asset management — Part 5: Vocabulary",
@@ -29743,7 +29743,7 @@
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3060,
+      "etapa": 3099,
       "edicion": 3,
       "publicacion": null,
       "titulo_en": "Risk management — Guidelines",
@@ -30025,12 +30025,12 @@
       ]
     },
     "88837": {
-      "referencia": "ISO/IEC/IEEE CD 29119-14",
+      "referencia": "ISO/IEC/IEEE DIS 29119-14",
       "numero": "29119",
       "parte": "14",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3060,
+      "etapa": 4000,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Software and systems engineering — Software testing — Part 14: Data migration testing",
@@ -30368,7 +30368,7 @@
       "parte": "6",
       "tipo": "TS",
       "suplemento": false,
-      "etapa": 3020,
+      "etapa": 3060,
       "edicion": 2,
       "publicacion": null,
       "titulo_en": "Information technology — IT Enabled Services-Business Process Outsourcing (ITES-BPO) lifecycle processes — Part 6: Guidelines on risk management",
@@ -30399,12 +30399,12 @@
       ]
     },
     "90135": {
-      "referencia": "ISO/IEC FDIS 33063",
+      "referencia": "ISO/IEC 33063",
       "numero": "33063",
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5020,
+      "etapa": 6000,
       "edicion": 2,
       "publicacion": null,
       "titulo_en": "Information technology — Process assessment — Process assessment model for software testing",
@@ -30778,7 +30778,7 @@
       "parte": "14",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3060,
+      "etapa": 3099,
       "edicion": 3,
       "publicacion": null,
       "titulo_en": "Information technology — Biometric data interchange formats — Part 14: DNA data",
@@ -31335,7 +31335,7 @@
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 1099,
+      "etapa": 2000,
       "edicion": 4,
       "publicacion": null,
       "titulo_en": "Trade data interchange — Trade data elements directory",
@@ -31856,7 +31856,7 @@
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5020,
+      "etapa": 5060,
       "edicion": 2,
       "publicacion": null,
       "titulo_en": "Conformity assessment — Requirements for bodies certifying products, processes and services",
@@ -31887,12 +31887,12 @@
       ]
     },
     "94699": {
-      "referencia": "ISO/IEC/IEEE CD 15289",
+      "referencia": "ISO/IEC/IEEE DIS 15289",
       "numero": "15289",
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3099,
+      "etapa": 4000,
       "edicion": 5,
       "publicacion": null,
       "titulo_en": "Systems and software engineering — Content of life-cycle information items (documentation)",
