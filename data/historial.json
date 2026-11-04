@@ -1,5 +1,219 @@
 [
   {
+    "id": "f5e287067b17b931",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO/IEC/IEEE 29119"
+    ],
+    "resumen": "El proyecto ISO/IEC/IEEE CD 29119-14 está en fase de comité (30.99).",
+    "notificable": false,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 88837,
+      "referencia": "ISO/IEC/IEEE CD 29119-14"
+    },
+    "sustituye": [],
+    "etapa_anterior": 4000,
+    "etapa_nueva": 3099,
+    "issue": null
+  },
+  {
+    "id": "f5093745d437d9ac",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 8000"
+    ],
+    "resumen": "El proyecto ISO/DIS 8000-200 está en consulta pública (40.60).",
+    "notificable": false,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 90857,
+      "referencia": "ISO/DIS 8000-200"
+    },
+    "sustituye": [],
+    "etapa_anterior": 4020,
+    "etapa_nueva": 4060,
+    "issue": null
+  },
+  {
+    "id": "e773c553cf4d08b8",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 8000"
+    ],
+    "resumen": "El proyecto ISO/PRF TR 8000-320 está en fase de aprobación (50.00).",
+    "notificable": false,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 88287,
+      "referencia": "ISO/PRF TR 8000-320"
+    },
+    "sustituye": [],
+    "etapa_anterior": 3099,
+    "etapa_nueva": 5000,
+    "issue": null
+  },
+  {
+    "id": "d7190e8029b68741",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 31000"
+    ],
+    "resumen": "El proyecto ISO/DIS 31000 está en consulta pública (40.00).",
+    "notificable": false,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 88574,
+      "referencia": "ISO/DIS 31000"
+    },
+    "sustituye": [
+      {
+        "id": 65694,
+        "referencia": "ISO 31000:2018",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 3099,
+    "etapa_nueva": 4000,
+    "issue": null
+  },
+  {
+    "id": "cf071d0bc9b1caf4",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 9241"
+    ],
+    "resumen": "El proyecto ISO/NP 9241-250 está en fase de propuesta (10.60).",
+    "notificable": false,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 88172,
+      "referencia": "ISO/NP 9241-250"
+    },
+    "sustituye": [],
+    "etapa_anterior": 1020,
+    "etapa_nueva": 1060,
+    "issue": null
+  },
+  {
+    "id": "40b25c1266eead9a",
+    "tipo": "modificacion_publicada",
+    "normas": [
+      "ISO/IEC 39794"
+    ],
+    "resumen": "ISO publica la modificación ISO/IEC 39794-2:2023/Amd 1:2026.",
+    "notificable": true,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 88949,
+      "referencia": "ISO/IEC 39794-2:2023/Amd 1:2026"
+    },
+    "sustituye": [],
+    "etapa_anterior": 6000,
+    "etapa_nueva": 6060,
+    "issue": 3
+  },
+  {
+    "id": "3ea43480951842a0",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO/IEC 19794"
+    ],
+    "resumen": "El proyecto ISO/IEC DIS 19794-14 está en consulta pública (40.00).",
+    "notificable": false,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 91307,
+      "referencia": "ISO/IEC DIS 19794-14"
+    },
+    "sustituye": [
+      {
+        "id": 86510,
+        "referencia": "ISO/IEC 19794-14:2022/Amd 1:2025",
+        "suplemento": true
+      },
+      {
+        "id": 75402,
+        "referencia": "ISO/IEC 19794-14:2022",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 3099,
+    "etapa_nueva": 4000,
+    "issue": null
+  },
+  {
+    "id": "30ec41a0a2328534",
+    "tipo": "publicacion_inminente",
+    "normas": [
+      "ISO/IEC 17065"
+    ],
+    "resumen": "El proyecto ISO/IEC 17065 está en en publicación (60.00).",
+    "notificable": false,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 94443,
+      "referencia": "ISO/IEC 17065"
+    },
+    "sustituye": [
+      {
+        "id": 46568,
+        "referencia": "ISO/IEC 17065:2012",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 5060,
+    "etapa_nueva": 6000,
+    "issue": null
+  },
+  {
+    "id": "2d8aef8d74d29eb1",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 30301"
+    ],
+    "resumen": "El proyecto ISO/PRF 30301 está en fase de aprobación (50.20).",
+    "notificable": false,
+    "detectado": "2026-11-04",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": {
+      "id": 89772,
+      "referencia": "ISO/PRF 30301"
+    },
+    "sustituye": [
+      {
+        "id": 88415,
+        "referencia": "ISO 30301:2019/Amd 1:2024",
+        "suplemento": true
+      },
+      {
+        "id": 74292,
+        "referencia": "ISO 30301:2019",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 5000,
+    "etapa_nueva": 5020,
+    "issue": null
+  },
+  {
     "id": "d9a1713be72a36d0",
     "tipo": "proyecto_avanza",
     "normas": [

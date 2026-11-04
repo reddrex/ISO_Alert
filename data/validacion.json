@@ -1,10 +1,10 @@
 {
-  "generado": "2026-10-28T11:23:13+00:00",
+  "generado": "2026-11-04T13:02:11+00:00",
   "fuente": {
     "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-    "last_modified": "2026-10-28T00:41:08+00:00",
-    "sha256": "946d63cf4f7c7627af3f4fd19f00e2750dce4489b04ba79a06036355e1c9a7bc",
-    "registros": 81719
+    "last_modified": "2026-11-04T00:41:47+00:00",
+    "sha256": "6a3b3ff4c131304f4c6abf0bf9ebbf7001ef83224b4b65e40027627ac5f41bc7",
+    "registros": 81768
   },
   "resumen": {
     "total": 99,
@@ -1210,9 +1210,9 @@
       "en_desarrollo": [
         {
           "iso_id": 88574,
-          "referencia": "ISO/CD 31000",
+          "referencia": "ISO/DIS 31000",
           "anio": null,
-          "etapa": "30.99",
+          "etapa": "40.00",
           "titulo_en": "Risk management — Guidelines",
           "url": "https://www.iso.org/standard/88574.html"
         }
@@ -1309,9 +1309,9 @@
       "en_desarrollo": [
         {
           "iso_id": 94443,
-          "referencia": "ISO/IEC FDIS 17065",
+          "referencia": "ISO/IEC 17065",
           "anio": null,
-          "etapa": "50.60",
+          "etapa": "60.00",
           "titulo_en": "Conformity assessment — Requirements for bodies certifying products, processes and services",
           "url": "https://www.iso.org/standard/94443.html"
         }
@@ -2058,7 +2058,7 @@
           "referencia": "ISO/IEC 29110-5-6-1",
           "anio": null,
           "etapa": "60.00",
-          "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-6-1: System engineering guidelines for the generic Entry profile",
+          "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-6-1: System engineering guidelines for the generic entry profile",
           "url": "https://www.iso.org/standard/86341.html"
         },
         {
@@ -3604,9 +3604,9 @@
       "en_desarrollo": [
         {
           "iso_id": 91307,
-          "referencia": "ISO/IEC CD 19794-14",
+          "referencia": "ISO/IEC DIS 19794-14",
           "anio": null,
-          "etapa": "30.99",
+          "etapa": "40.00",
           "titulo_en": "Information technology — Biometric data interchange formats — Part 14: DNA data",
           "url": "https://www.iso.org/standard/91307.html"
         }
@@ -3890,6 +3890,14 @@
       ],
       "sustituida_por": [],
       "suplementos": [
+        {
+          "iso_id": 88949,
+          "referencia": "ISO/IEC 39794-2:2023/Amd 1:2026",
+          "anio": "2023",
+          "etapa": "60.60",
+          "titulo_en": "Information technology — Extensible biometric data interchange formats — Part 2: Finger minutiae data — Amendment 1: Handling of the on-card biometric comparison format",
+          "url": "https://www.iso.org/standard/88949.html"
+        },
         {
           "iso_id": 84623,
           "referencia": "ISO/IEC 39794-4:2019/Amd 1:2023",
@@ -4993,7 +5001,7 @@
           "iso_id": 89772,
           "referencia": "ISO/PRF 30301",
           "anio": null,
-          "etapa": "50.00",
+          "etapa": "50.20",
           "titulo_en": "Information and documentation — Management systems for records — Requirements",
           "url": "https://www.iso.org/standard/89772.html"
         }

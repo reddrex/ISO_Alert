@@ -1,13 +1,13 @@
 {
   "version_esquema": 1,
-  "generado": "2026-10-28T11:23:08+00:00",
+  "generado": "2026-11-04T13:02:04+00:00",
   "fuentes": {
     "iso": {
       "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-      "last_modified": "2026-10-28T00:41:08+00:00",
-      "etag": "0x8DF348C28132C2E",
-      "sha256": "946d63cf4f7c7627af3f4fd19f00e2750dce4489b04ba79a06036355e1c9a7bc",
-      "registros": 81719
+      "last_modified": "2026-11-04T00:41:47+00:00",
+      "etag": "0x8DF3A0C68498C64",
+      "sha256": "6a3b3ff4c131304f4c6abf0bf9ebbf7001ef83224b4b65e40027627ac5f41bc7",
+      "registros": 81768
     }
   },
   "entregables": {
@@ -28758,7 +28758,7 @@
       "etapa": 6000,
       "edicion": 1,
       "publicacion": null,
-      "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-6-1: System engineering guidelines for the generic Entry profile",
+      "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-6-1: System engineering guidelines for the generic entry profile",
       "replaces": [
         66342
       ],
@@ -29426,17 +29426,70 @@
         "ISO/IEC 29151"
       ]
     },
+    "88170": {
+      "referencia": "ISO/PWI 9241-1",
+      "numero": "9241",
+      "parte": "1",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 98,
+      "edicion": 3,
+      "publicacion": null,
+      "titulo_en": "Ergonomic requirements for office work with visual display terminals (VDTs) — Part 1: General introduction",
+      "replaces": [
+        31246,
+        21922
+      ],
+      "replaced_by": [],
+      "normas": [
+        "ISO 9241"
+      ]
+    },
+    "88171": {
+      "referencia": "ISO/PWI 9241-381",
+      "numero": "9241",
+      "parte": "381",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 98,
+      "edicion": 1,
+      "publicacion": null,
+      "titulo_en": "Ergonomics of human-system interaction — Part 381: Inter-ocular optical properties of head-mounted displays related to human-system interaction",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO 9241"
+      ]
+    },
     "88172": {
       "referencia": "ISO/NP 9241-250",
       "numero": "9241",
       "parte": "250",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 1020,
+      "etapa": 1060,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Ergonomics of human-system interaction — Part 250: Stakeholder engagement in IT Governance during specification, procurement and operation — Relationship between the ISO 9241 series of standards and ISO/IEC 38500:2024",
       "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO 9241"
+      ]
+    },
+    "88173": {
+      "referencia": "ISO/PWI 9241-2",
+      "numero": "9241",
+      "parte": "2",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 98,
+      "edicion": 2,
+      "publicacion": null,
+      "titulo_en": "Ergonomics of human-system interaction — Part 2: Applying user tasks in designing and evaluating interactive systems",
+      "replaces": [
+        16874
+      ],
       "replaced_by": [],
       "normas": [
         "ISO 9241"
@@ -29461,12 +29514,12 @@
       ]
     },
     "88287": {
-      "referencia": "ISO/CD TR 8000-320",
+      "referencia": "ISO/PRF TR 8000-320",
       "numero": "8000",
       "parte": "320",
       "tipo": "TR",
       "suplemento": false,
-      "etapa": 3099,
+      "etapa": 5000,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Data quality — Part 320: AI training data quality for smart manufacturing",
@@ -29738,12 +29791,12 @@
       ]
     },
     "88574": {
-      "referencia": "ISO/CD 31000",
+      "referencia": "ISO/DIS 31000",
       "numero": "31000",
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3099,
+      "etapa": 4000,
       "edicion": 3,
       "publicacion": null,
       "titulo_en": "Risk management — Guidelines",
@@ -30025,12 +30078,12 @@
       ]
     },
     "88837": {
-      "referencia": "ISO/IEC/IEEE DIS 29119-14",
+      "referencia": "ISO/IEC/IEEE CD 29119-14",
       "numero": "29119",
       "parte": "14",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 4000,
+      "etapa": 3099,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Software and systems engineering — Software testing — Part 14: Data migration testing",
@@ -30075,14 +30128,14 @@
       ]
     },
     "88949": {
-      "referencia": "ISO/IEC 39794-2:2023/Amd 1",
+      "referencia": "ISO/IEC 39794-2:2023/Amd 1:2026",
       "numero": "39794",
       "parte": "2",
       "tipo": "IS",
       "suplemento": true,
-      "etapa": 6000,
+      "etapa": 6060,
       "edicion": 1,
-      "publicacion": null,
+      "publicacion": "2026-11-04",
       "titulo_en": "Information technology — Extensible biometric data interchange formats — Part 2: Finger minutiae data — Amendment 1: Handling of the on-card biometric comparison format",
       "replaces": [],
       "replaced_by": [],
@@ -30315,7 +30368,7 @@
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5000,
+      "etapa": 5020,
       "edicion": 3,
       "publicacion": null,
       "titulo_en": "Information and documentation — Management systems for records — Requirements",
@@ -30538,7 +30591,7 @@
       "parte": "200",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 4020,
+      "etapa": 4060,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Data quality — Part 200: Transaction data: Quality of transaction data",
@@ -30773,12 +30826,12 @@
       ]
     },
     "91307": {
-      "referencia": "ISO/IEC CD 19794-14",
+      "referencia": "ISO/IEC DIS 19794-14",
       "numero": "19794",
       "parte": "14",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3099,
+      "etapa": 4000,
       "edicion": 3,
       "publicacion": null,
       "titulo_en": "Information technology — Biometric data interchange formats — Part 14: DNA data",
@@ -31851,12 +31904,12 @@
       ]
     },
     "94443": {
-      "referencia": "ISO/IEC FDIS 17065",
+      "referencia": "ISO/IEC 17065",
       "numero": "17065",
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5060,
+      "etapa": 6000,
       "edicion": 2,
       "publicacion": null,
       "titulo_en": "Conformity assessment — Requirements for bodies certifying products, processes and services",
@@ -36232,6 +36285,7 @@
       ],
       "sustituida_por": [],
       "suplementos": [
+        88949,
         84623
       ],
       "partes": [
@@ -36254,7 +36308,9 @@
           "vigente": 72153,
           "ultima": 72153,
           "proyectos": [],
-          "suplementos": [],
+          "suplementos": [
+            88949
+          ],
           "sustituida_por": []
         },
         {
