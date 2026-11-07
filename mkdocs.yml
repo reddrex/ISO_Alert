@@ -57,6 +57,11 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
+extra:
+  # Código de GoatCounter (estadísticas de visitas sin cookies): el «xxx» de xxx.goatcounter.com.
+  # Vacío = sin estadísticas.
+  goatcounter: "observatorio-tic"
+
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/estado.js

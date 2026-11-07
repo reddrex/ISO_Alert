@@ -3,6 +3,10 @@
 {# Descubrimiento automático: basta con pegar la dirección de la web en un lector de feeds. #}
 {% block extrahead %}
 <link rel="alternate" type="application/atom+xml" title="{{ config.site_name }} · avisos" href="{{ config.site_url }}feed.xml">
+{# Estadísticas de visitas sin cookies (GoatCounter): solo si hay código en extra.goatcounter. #}
+{% if config.extra.goatcounter %}
+<script data-goatcounter="https://{{ config.extra.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+{% endif %}
 {% endblock %}
 
 {% block announce %}

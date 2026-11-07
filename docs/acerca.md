@@ -28,11 +28,15 @@ La web comprueba **cada día**, hacia las 7:15 (hora peninsular), los datos de I
 
 - **ISO Open Data**, dataset *ISO deliverables metadata*, © ISO, publicado con licencia [Open Data Commons Attribution License (ODC-By) 1.0](https://opendatacommons.org/licenses/by/1-0/). Fuente: <https://www.iso.org/open-data.html>. De aquí salen los títulos oficiales, las etapas y las relaciones entre ediciones.
 - **[Boletín Oficial del Estado](https://www.boe.es/datosabiertos/)**, a través de su API de datos abiertos: las relaciones mensuales de normas UNE aprobadas, anuladas y en información pública. Qué cubren y qué no, en [Estándares nacionales (UNE)](une.md#normas-sin-une-vigente-conocida).
-- **Temario** de la oposición TIC A1 publicado por [ASTIC](https://www.astic.es/), del que sale la lista de normas y temas.
+- **Temario** de la oposición TIC A1 publicado por [ASTIC](https://www.astic.es/), del que sale la lista de normas y temas. Las normas de inteligencia artificial son una ampliación que el temario no cita, y cada ficha lo indica.
 
 ## Calidad de la lista de normas
 
 La lista de normas se extrajo del temario y se revisó contra los datos de ISO. El [informe de validación](validacion.md) indica, para cada norma, si se encontró, cuál es su edición vigente y si la edición que cita el temario sigue en vigor.
+
+## Estadísticas de visitas
+
+La web cuenta las visitas con [GoatCounter](https://www.goatcounter.com/), un servicio de código abierto que no usa cookies ni guarda datos personales: solo registra qué página se visita, desde qué web se llega y datos generales como el país o el tipo de dispositivo, sin identificar a nadie. Las estadísticas son públicas: [ver las estadísticas de visitas](https://observatorio-tic.goatcounter.com/){ target="_blank" rel="noopener" }.
 
 ## Comunicar un error o una sugerencia
 
