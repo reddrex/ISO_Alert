@@ -21,7 +21,7 @@ CARPETAS = ("fichas", "familias", "temario")
 
 def test_paginas_generadas(paginas):
     assert set(paginas) == {"index", "ambito", "estado", "comparativas", "une", "guia", "historial", "validacion", *CARPETAS}
-    assert len(paginas["familias"]) == 21
+    assert len(paginas["familias"]) == 22
     assert len(paginas["temario"]) == 39  # índice + 38 temas
     for nombre, texto in paginas.items():
         if nombre not in CARPETAS:
@@ -34,7 +34,7 @@ def test_paginas_generadas(paginas):
 def test_tabla_de_estado(paginas):
     md = paginas["estado"]
     tabla = md[md.index('<table id="tabla-normas">'):md.index("</table>")]
-    assert tabla.count("<tr data-estado=") == 99
+    assert tabla.count("<tr data-estado=") == 114
     # Una línea en blanco cortaría el bloque HTML y Markdown lo rompería.
     assert "\n\n" not in tabla
     fila = re.search(r'<tr data-estado="en_revision"[^>]*data-texto="iso 22301 [^"]*"', tabla)
@@ -106,13 +106,13 @@ def test_mapa(paginas, config):
     md = paginas["ambito"]
     mapa = md[md.index('<div class="mapa">'):md.index("</div>", md.index('<div class="mapa">'))]
     assert "\n\n" not in mapa  # una línea en blanco rompería el bloque HTML
-    assert mapa.count('<section class="mapa__area') == len(config.areas) == 9
+    assert mapa.count('<section class="mapa__area') == len(config.areas) == 10
     # Todas las familias, enlazadas a su página, y todas las normas, en familia o sueltas.
     assert mapa.count('class="mapa__familia"') == len(config.familias)
     assert 'href="familias/iso-27000/"' in mapa
     sueltas = mapa.count('<a href="normas/')
     en_familia = sum(1 for n in config.normas if n.familia)
-    assert sueltas + en_familia == 99
+    assert sueltas + en_familia == 114
     # 25012 es de la categoría de datos pero se estudia en SQuaRE (área Software).
     software = mapa[mapa.index("area--software"):mapa.index("area--datos")]
     assert "25012" in software
@@ -157,7 +157,7 @@ def test_enlace_desde_la_tabla(paginas):
 
 def test_fichas(paginas):
     fichas = paginas["fichas"]
-    assert len(fichas) == 99
+    assert len(fichas) == 114
     f = fichas["iso-iec-27001"]
     assert f.startswith('---\ntitle: "ISO/IEC 27001 · SGSI: requisitos"')
     assert "## Claves para el examen" in f and "93 controles" in f
@@ -242,3 +242,17 @@ def test_ultima_comprobacion(config, indice, tmp_path):
     # Una fecha anterior a la de los datos no la sustituye.
     web.generar(datos, informe.construir(config, indice, None), config, tmp_path, comprobado="1999-01-01")
     assert "1999-01-01" not in (tmp_path / "historial.md").read_text(encoding="utf-8")
+
+
+def test_ampliacion_fuera_del_temario(paginas):
+    """Las normas de IA no las cita el temario: se muestran como ampliación, sin decir que las cita."""
+    f = paginas["fichas"]["iso-iec-42001"]
+    assert '!!! info "Ampliación: el temario no la cita"' in f
+    assert "- [Tema 71 · Ciencia de datos](../temario/71.md) *(relacionada; el tema no la cita)*" in f
+    tema = paginas["temario"]["71"]
+    normas, ampliacion = tema.split("### Ampliación", 1)
+    assert "iso-iec-42001" not in normas  # no entra en las normas del tema
+    assert '<a href="../normas/iso-iec-42001/">ISO/IEC 42001</a>' in ampliacion.split("## Cómo encajan")[0]
+    assert "99 normas citadas en el temario y 15 de ampliación" in paginas["estado"]
+    # Las normas citadas no muestran el aviso de ampliación.
+    assert "Ampliación" not in paginas["fichas"]["iso-iec-27001"]

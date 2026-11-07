@@ -13,7 +13,7 @@ def datos(config, indice):
 def test_esquema(datos):
     json.dumps(datos)
     assert datos["version_esquema"] == estado.VERSION_ESQUEMA
-    assert len(datos["normas"]) == 99
+    assert len(datos["normas"]) == 114
 
 
 def test_referencias_resueltas(datos):

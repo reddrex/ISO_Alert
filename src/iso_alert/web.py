@@ -125,6 +125,9 @@ class Vista:
                 "claves": list(n.claves),
                 "temas": [temario[t] for t in sorted(n.temas) if t in temario],
                 "temas_familia": [temario[t] for t in sorted(temas_familia) if t in temario],
+                "temas_relacionados": [temario[t] for t in sorted(n.temas_relacionados) if t in temario],
+                # Ampliación: el temario no la cita, ni sola ni con su familia.
+                "ampliacion": not n.temas and not temas_familia,
                 "alcance": n.alcance,
                 "numero": n.numero,
                 "titulo_en": d["titulo_en"],
@@ -233,6 +236,14 @@ class Vista:
                 area = fila["norma"]["area"]
                 if area and area not in areas:
                     areas.append(area)
+            # Ampliación: normas relacionadas con el tema que el temario no cita.
+            ampliacion = ordenar([
+                f for f in filas
+                if any(t.numero == tema.numero for t in f["temas_relacionados"]) and f["codigo"] not in codigos
+            ])
+            for x in ampliacion:
+                if x["area"] and x["area"] not in areas:
+                    areas.append(x["area"])
             corto = titulo_corto(tema.titulo)
             resultado.append({
                 "tema": tema,
@@ -243,6 +254,7 @@ class Vista:
                 "normas": normas,
                 "asociacion": asociacion,
                 "lista": lista,
+                "ampliacion": ampliacion,
                 "areas": areas,
                 "diagrama": self.diagrama(codigos, filas),
             })
@@ -278,6 +290,8 @@ class Vista:
         iso = self.estado["fuentes"]["iso"] or {}
         return {
             "total": len(filas),
+            "citadas": sum(1 for f in filas if not f["ampliacion"]),
+            "ampliacion": sum(1 for f in filas if f["ampliacion"]),
             "por_estado": [(e, sum(1 for f in filas if f["estado"] == e)) for e in ORDEN_ESTADOS],
             "revision_periodica": sum(1 for f in filas if f["subestado"] == Subestado.REVISION_PERIODICA),
             "dato_fecha": (iso.get("last_modified") or "")[:10] or None,

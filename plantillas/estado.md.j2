@@ -8,7 +8,7 @@ hide:
 
 # Estado de las normas
 
-{{ resumen.total }} normas citadas en el temario. Datos ISO{% if resumen.dato_fecha %} del {{ resumen.dato_fecha }}{% endif %}, comprobados el {{ resumen.comprobado }}. Pulsa el nombre de una norma para ver sus ediciones, partes y proyectos en marcha.
+{{ resumen.citadas }} normas citadas en el temario{% if resumen.ampliacion %} y {{ resumen.ampliacion }} de ampliación, que el temario no cita{% endif %}. Datos ISO{% if resumen.dato_fecha %} del {{ resumen.dato_fecha }}{% endif %}, comprobados el {{ resumen.comprobado }}. Pulsa el nombre de una norma para ver sus ediciones, partes y proyectos en marcha.
 
 !!! note "ISO y UNE"
     La tabla muestra las ediciones **ISO**; la columna **UNE**, la versión española vigente. El detalle está en [Estándares nacionales (UNE)](une.md).
@@ -90,7 +90,7 @@ hide:
   </thead>
   <tbody>
     {% for f in filas | sort(attribute="codigo_orden") %}
-    <tr data-estado="{{ f.estado.value }}" data-area="{{ f.area.id if f.area else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sueltas' }}" data-aprobacion="{{ f.aprobacion or '' }}" data-une="{{ f.une_boe.estado if f.une_boe else '' }}" data-temas="{{ (f.temas + f.temas_familia) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
+    <tr data-estado="{{ f.estado.value }}" data-area="{{ f.area.id if f.area else '' }}" data-familia="{{ f.familia.id if f.familia else '-' }}" data-familia-orden="{{ f.familia_orden }}" data-familia-nombre="{{ f.familia.nombre if f.familia else 'Normas sueltas' }}" data-aprobacion="{{ f.aprobacion or '' }}" data-une="{{ f.une_boe.estado if f.une_boe else '' }}" data-temas="{{ (f.temas + f.temas_familia + f.temas_relacionados) | map(attribute='numero') | join(' ') }}" data-texto="{{ f.texto }}">
       <td class="codigo" data-sort="{{ f.codigo_orden }}">{{ f.codigo }}</td>
       <td class="nombre">
         <details class="detalle">
@@ -156,6 +156,9 @@ hide:
             {% endif %}
             {% if f.temas or f.temas_familia %}
             <dt>Temas del temario</dt><dd>{% for t in f.temas + f.temas_familia %}<a href="temario/{{ t.numero }}/">{{ t.numero }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</dd>
+            {% endif %}
+            {% if f.ampliacion %}
+            <dt>Temario</dt><dd>No la cita: es de ampliación{% if f.temas_relacionados %}, relacionada con {% for t in f.temas_relacionados %}<a href="temario/{{ t.numero }}/">{{ t.numero }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}</dd>
             {% endif %}
             {% if f.contexto %}
             <dt>Nota</dt><dd>{{ f.contexto }}</dd>

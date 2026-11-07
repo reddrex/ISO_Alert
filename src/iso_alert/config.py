@@ -13,7 +13,7 @@ from .referencias import ReferenciaInvalida, parse
 ALCANCES = {"norma", "serie"}
 CAMPOS = {
     "codigo", "nombre", "resumen", "concepto", "pregunta", "descripcion", "ejemplo", "alcance", "familia", "partes_citadas", "edicion_citada",
-    "une", "categoria", "contexto", "revisar", "naturaleza", "certificable", "temas", "claves",
+    "une", "categoria", "contexto", "revisar", "naturaleza", "certificable", "temas", "temas_relacionados", "claves",
     "relaciones", "partes_descripcion",
 }
 
@@ -131,6 +131,8 @@ class Norma:
     naturaleza: str | None = None
     certificable: bool = False
     temas: tuple[int, ...] = ()
+    # Temas con los que se relaciona aunque el temario no la cite (ampliación).
+    temas_relacionados: tuple[int, ...] = ()
     claves: tuple[str, ...] = ()
     relaciones: tuple[Relacion, ...] = ()
     partes_descripcion: tuple[tuple[str, str], ...] = ()
@@ -289,6 +291,7 @@ def validar(datos: dict) -> Config:
             naturaleza=n.get("naturaleza"),
             certificable=bool(n.get("certificable")),
             temas=_temas(n.get("temas"), donde, temario, errores),
+            temas_relacionados=_temas(n.get("temas_relacionados"), donde, temario, errores),
             claves=tuple(n.get("claves") or ()),
             relaciones=tuple(relaciones),
             partes_descripcion=tuple((str(k), v) for k, v in partes_desc.items()),

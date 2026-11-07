@@ -9,7 +9,7 @@ from .conftest import norma
 def test_informe(config, indice):
     datos = informe.construir(config, indice, None)
     json.dumps(datos)  # serializable
-    assert datos["resumen"]["total"] == 99
+    assert datos["resumen"]["total"] == 114
     por = {n["codigo"]: n for n in datos["normas"]}
     assert por["ISO 22301"]["vigentes"][0]["url"] == "https://www.iso.org/standard/75106.html"
     assert por["ISO/IEC 39794"]["encontrada"]

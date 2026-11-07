@@ -51,6 +51,18 @@ hide:
 El tema cita además {{ nombre }} **{{ g.familia.corto }}** {{ "completa" if g.familia.es_familia else "completo" }} ({{ g.normas | length }} normas): [ver {{ nombre }}](../familias/{{ g.familia.id }}.md).
 
 {% endfor %}
+{% if t.ampliacion %}
+### Ampliación
+
+Normas relacionadas con el tema que el temario **no cita**. Pueden servir para preguntas de actualidad.
+
+<ul class="cadena cadena--suelta">
+{% for x in t.ampliacion %}
+{{ item({"norma": x, "idea": None}) }}
+{% endfor %}
+</ul>
+
+{% endif %}
 {% if t.tema.relacion or t.diagrama %}
 ## Cómo encajan
 

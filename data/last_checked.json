@@ -1,14 +1,14 @@
 {
-  "ejecucion": "2026-11-04T13:01:55+00:00",
-  "run_url": "https://github.com/reddrex/ISO_Alert/actions/runs/41834350317",
+  "ejecucion": "2026-11-07T20:56:09+00:00",
+  "run_url": null,
   "resultado": "ok",
   "iso": {
     "last_modified": "2026-11-04T00:41:47+00:00",
     "sha256": "6a3b3ff4c131304f4c6abf0bf9ebbf7001ef83224b4b65e40027627ac5f41bc7"
   },
   "boe": {
-    "ultimo_dia": "2026-11-03"
+    "ultimo_dia": "2026-11-06"
   },
-  "eventos_nuevos": 9,
-  "avisos": 1
+  "eventos_nuevos": 15,
+  "avisos": 0
 }

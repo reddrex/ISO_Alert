@@ -1,5 +1,260 @@
 [
   {
+    "id": "dc3d8d882880758b",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 23053"
+    ],
+    "resumen": "ISO/IEC 23053 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "bff9433e426cf89b",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 42006"
+    ],
+    "resumen": "ISO/IEC 42006 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "a693ef9621971f00",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC TS 6254"
+    ],
+    "resumen": "ISO/IEC TS 6254 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "7022656004570fb3",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC TR 24028"
+    ],
+    "resumen": "ISO/IEC TR 24028 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "6c6839f3139a4537",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC TR 24027"
+    ],
+    "resumen": "ISO/IEC TR 24027 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "602a5ef79136df4d",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 42005"
+    ],
+    "resumen": "ISO/IEC 42005 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "5b7c769aaa5d22c3",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 38507"
+    ],
+    "resumen": "ISO/IEC 38507 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "56ea6c95e2be8030",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 12792"
+    ],
+    "resumen": "ISO/IEC 12792 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "521850edeca5e4ed",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 5259"
+    ],
+    "resumen": "ISO/IEC 5259 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "49a73c53e9d3fd27",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 5338"
+    ],
+    "resumen": "ISO/IEC 5338 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "43e70a90e16213bc",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 23894"
+    ],
+    "resumen": "ISO/IEC 23894 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "28cccc12841f1f05",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 42001"
+    ],
+    "resumen": "ISO/IEC 42001 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "1da804c6e9e1fc52",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 8183"
+    ],
+    "resumen": "ISO/IEC 8183 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "16759384891665fc",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 25059"
+    ],
+    "resumen": "ISO/IEC 25059 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
+    "id": "14b12821ab3ca279",
+    "tipo": "alta_vigilancia",
+    "normas": [
+      "ISO/IEC 22989"
+    ],
+    "resumen": "ISO/IEC 22989 se añade a la lista de normas vigiladas.",
+    "notificable": false,
+    "detectado": "2026-11-07",
+    "dato_fecha": "2026-11-04",
+    "fuente": "iso",
+    "entregable": null,
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
     "id": "f5e287067b17b931",
     "tipo": "proyecto_avanza",
     "normas": [

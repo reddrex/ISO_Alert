@@ -178,6 +178,13 @@ familias:
     corto: "IoT"
     categoria: iot
     descripcion: "Normas del comité ISO/IEC JTC 1/SC 41 sobre Internet de las cosas: vocabulario común (20924, que desde 2024 incluye los gemelos digitales), arquitectura de referencia (30141) e interoperabilidad entre sistemas IoT (21823)."
+  # --- ia ---
+  - id: ia
+    tipo: grupo
+    nombre: "Inteligencia artificial (ISO/IEC JTC 1/SC 42)"
+    corto: "Normas de IA"
+    categoria: ia
+    descripcion: "Normas del comité ISO/IEC JTC 1/SC 42 sobre inteligencia artificial. El temario no las cita: son de ampliación, por su relación con la ciencia de datos (tema 71). La base es el vocabulario (22989) y el marco de los sistemas de aprendizaje automático (23053). Sobre ella se construye el sistema de gestión de la IA (42001, certificable), con su evaluación de impacto (42005), los requisitos de quien lo certifica (42006), la gestión del riesgo (23894) y el gobierno por la dirección (38507). Otras normas tratan el ciclo de vida (5338), los datos (8183 y la serie 5259), la calidad del sistema (25059) y su confiabilidad: sesgo, explicabilidad y transparencia."
 
 # Áreas del mapa de estudio: agrupan las categorías y dan color a cada bloque.
 areas:
@@ -191,6 +198,8 @@ areas:
     nombre: "Software"
   - id: datos
     nombre: "Datos"
+  - id: ia
+    nombre: "Inteligencia artificial"
   - id: gestion
     nombre: "Gobierno, servicios y proyectos"
   - id: documentacion
@@ -210,6 +219,9 @@ categorias:
   - id: datos
     nombre: "Gobierno y calidad de datos"
     area: datos
+  - id: ia
+    nombre: "Inteligencia artificial"
+    area: ia
   - id: ingenieria-software
     nombre: "Ingeniería de software"
     area: software
@@ -1915,3 +1927,263 @@ normas:
     temas: [117]
     claves:
       - "Indicadores de servicios urbanos y calidad de vida para ciudades sostenibles."
+
+  # --- Inteligencia artificial (ampliación: el temario no las cita) ---
+  - codigo: ISO/IEC 22989
+    nombre: "IA: conceptos y terminología"
+    resumen: "Vocabulario y conceptos básicos de la inteligencia artificial."
+    concepto: "vocabulario de la IA"
+    pregunta: "¿Qué significa cada término de IA?"
+    descripcion: "Define los términos y conceptos comunes de la inteligencia artificial (agente, modelo, aprendizaje automático, entrenamiento, inferencia, confiabilidad…) y describe el ecosistema y el ciclo de vida de un sistema de IA. Es la base terminológica del resto de normas del SC 42."
+    ejemplo: "Un pliego para contratar un asistente conversacional remite a la ISO/IEC 22989 para dejar claro qué se entiende por «sistema de IA», «modelo» o «datos de entrenamiento»."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: vocabulario
+    temas_relacionados: [71]
+    claves:
+      - "Es el «000» de la IA: el vocabulario común de las normas del SC 42."
+    relaciones:
+      - {tipo: vocabulario_de, norma: "ISO/IEC 42001"}
+
+  - codigo: ISO/IEC 23053
+    nombre: "IA: marco para sistemas de aprendizaje automático"
+    resumen: "Marco de referencia de los sistemas de IA basados en aprendizaje automático."
+    concepto: "marco del aprendizaje automático"
+    pregunta: "¿De qué piezas se compone un sistema de aprendizaje automático?"
+    descripcion: "Describe los componentes y funciones de un sistema de IA que usa aprendizaje automático: datos, modelo, entrenamiento, evaluación e inferencia, y los tipos de aprendizaje (supervisado, no supervisado, por refuerzo)."
+    ejemplo: "El equipo de ciencia de datos de un ministerio documenta la arquitectura de su modelo de clasificación de expedientes siguiendo los componentes que describe la ISO/IEC 23053."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: modelo
+    temas_relacionados: [71]
+    claves:
+      - "Junto con la 22989 es la base conceptual: la 22989 da los términos y la 23053 el marco del aprendizaje automático."
+    relaciones:
+      - {tipo: se_apoya_en, norma: "ISO/IEC 22989"}
+
+  - codigo: ISO/IEC 42001
+    nombre: "Sistema de gestión de la inteligencia artificial"
+    resumen: "Requisitos de un sistema de gestión de la inteligencia artificial (SGIA)."
+    concepto: "sistema de gestión de la IA"
+    pregunta: "¿Cómo gestiono de forma responsable los sistemas de IA que desarrollo o uso?"
+    descripcion: "Fija los requisitos para establecer, implantar, mantener y mejorar un sistema de gestión de la IA en organizaciones que desarrollan, ofrecen o usan sistemas de IA. Sigue la estructura armonizada de los sistemas de gestión, como la ISO/IEC 27001, e incluye un anexo de controles con su guía de aplicación."
+    ejemplo: "Una empresa que ofrece a la Administración un servicio de análisis de imágenes con IA se certifica en la ISO/IEC 42001 para demostrar que gestiona sus riesgos, sus datos y su impacto."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: requisitos
+    certificable: true
+    temas_relacionados: [71]
+    claves:
+      - "Es la norma certificable de la IA, publicada en 2023: el «001» de la IA."
+      - "Usa los 10 capítulos de la estructura armonizada, como la 9001 y la 27001, así que se puede integrar con ellas."
+      - "Exige evaluar el impacto de los sistemas de IA; la ISO/IEC 42005 explica cómo hacerlo."
+      - "Ayuda a organizar el cumplimiento del Reglamento europeo de IA (Reglamento (UE) 2024/1689), pero no es por sí sola una norma armonizada de ese Reglamento."
+    relaciones:
+      - {tipo: complementa, norma: "ISO/IEC 27001"}
+
+  - codigo: ISO/IEC 42005
+    nombre: "IA: evaluación de impacto de los sistemas de IA"
+    resumen: "Guía para evaluar el impacto de un sistema de IA en las personas y la sociedad."
+    concepto: "evaluación de impacto"
+    pregunta: "¿Cómo evalúo el impacto de un sistema de IA en las personas?"
+    descripcion: "Orienta sobre cómo y cuándo evaluar los efectos, positivos y negativos, que un sistema de IA puede tener en personas, grupos y la sociedad a lo largo de su ciclo de vida, y cómo documentarlos."
+    ejemplo: "Antes de usar un modelo que prioriza solicitudes de ayudas, el organismo evalúa con la ISO/IEC 42005 si puede perjudicar a algún colectivo y qué medidas aplicar."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: guia
+    temas_relacionados: [71]
+    claves:
+      - "Es a la IA lo que la evaluación de impacto en la privacidad (ISO/IEC 29134) es a los datos personales."
+    relaciones:
+      - {tipo: guia_de, norma: "ISO/IEC 42001"}
+      - {tipo: complementa, norma: "ISO/IEC 29134"}
+
+  - codigo: ISO/IEC 42006
+    nombre: "IA: requisitos para los organismos que certifican el SGIA"
+    resumen: "Requisitos para los organismos que auditan y certifican sistemas de gestión de la IA."
+    concepto: "quién certifica el SGIA"
+    pregunta: "¿Qué debe cumplir quien audita y certifica un sistema de gestión de la IA?"
+    descripcion: "Fija requisitos adicionales para los organismos que auditan y certifican sistemas de gestión de la IA conforme a la ISO/IEC 42001: competencia de los auditores, duración y desarrollo de las auditorías."
+    ejemplo: "Una entidad de certificación que quiere emitir certificados ISO/IEC 42001 se acredita ante ENAC demostrando que cumple la ISO/IEC 42006."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: requisitos
+    temas_relacionados: [50]
+    claves:
+      - "No la cumple la organización usuaria, sino el organismo de certificación: es a la 42001 lo que la 27006 es a la 27001."
+    relaciones:
+      - {tipo: audita, norma: "ISO/IEC 42001"}
+
+  - codigo: ISO/IEC 23894
+    nombre: "IA: gestión del riesgo"
+    resumen: "Guía para gestionar los riesgos específicos de la inteligencia artificial."
+    concepto: "riesgos de la IA"
+    pregunta: "¿Cómo gestiono los riesgos propios de un sistema de IA?"
+    descripcion: "Aplica los principios y el proceso de gestión del riesgo de la ISO 31000 a la inteligencia artificial, con los riesgos propios de estos sistemas, como el sesgo, la falta de transparencia o el comportamiento inesperado del modelo."
+    ejemplo: "Al incorporar un modelo de detección de fraude, el equipo identifica y trata con la ISO/IEC 23894 el riesgo de falsos positivos que afecten a ciudadanos."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: guia
+    temas_relacionados: [47, 71]
+    claves:
+      - "No es certificable: es una guía, como la ISO 31000 en la que se basa."
+    relaciones:
+      - {tipo: aplica, norma: "ISO 31000"}
+
+  - codigo: ISO/IEC 38507
+    nombre: "IA: gobierno del uso de la IA"
+    resumen: "Implicaciones para el gobierno corporativo del uso de la IA."
+    concepto: "gobierno de la IA"
+    pregunta: "¿Qué debe decidir y supervisar la dirección cuando la organización usa IA?"
+    descripcion: "Aplica el modelo de gobierno de la ISO/IEC 38500 (Evaluar-Dirigir-Supervisar) al uso de la inteligencia artificial: qué responsabilidades tiene el órgano de gobierno, qué políticas debe fijar y cómo supervisar el uso de la IA."
+    ejemplo: "El comité de dirección de una agencia pública aprueba una política de uso de la IA que asigna responsables y fija cómo se revisan los sistemas en servicio, siguiendo la ISO/IEC 38507."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: guia
+    temas_relacionados: [22]
+    claves:
+      - "Es de la familia 38500, como la 38505 para el dato: gobierno, no gestión."
+    relaciones:
+      - {tipo: aplica, norma: "ISO/IEC 38500"}
+
+  - codigo: ISO/IEC 5338
+    nombre: "IA: procesos del ciclo de vida de los sistemas de IA"
+    resumen: "Procesos del ciclo de vida de los sistemas de IA."
+    concepto: "ciclo de vida de la IA"
+    pregunta: "¿Qué procesos sigue un sistema de IA desde su concepción hasta su retirada?"
+    descripcion: "Adapta los procesos del ciclo de vida de sistemas (ISO/IEC/IEEE 15288) y de software (ISO/IEC/IEEE 12207) a los sistemas de IA, y añade procesos propios, como la adquisición y preparación de los datos o el seguimiento continuo del modelo en producción."
+    ejemplo: "Un proyecto de MLOps define cómo se reentrena y se vuelve a validar un modelo cuando cambian los datos, apoyándose en los procesos de la ISO/IEC 5338."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: procesos
+    temas_relacionados: [71, 86]
+    claves:
+      - "Parte de la 15288 y la 12207 y añade lo específico de la IA, como los datos y el reentrenamiento del modelo."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC/IEEE 15288"}
+      - {tipo: amplia, norma: "ISO/IEC/IEEE 12207"}
+
+  - codigo: ISO/IEC 8183
+    nombre: "IA: marco del ciclo de vida de los datos"
+    resumen: "Etapas del ciclo de vida de los datos en los sistemas de IA."
+    concepto: "ciclo de vida de los datos"
+    pregunta: "¿Por qué etapas pasan los datos de un sistema de IA?"
+    descripcion: "Describe las etapas por las que pasan los datos en un sistema de IA y de análisis de datos, desde su concepción y adquisición hasta su preparación, uso para entrenar y evaluar, conservación y retirada."
+    ejemplo: "La oficina del dato de un organismo documenta de dónde salen y cómo se preparan los datos de entrenamiento de un modelo, etapa a etapa, según la ISO/IEC 8183."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: modelo
+    temas_relacionados: [71, 76]
+    relaciones:
+      - {tipo: complementa, norma: "ISO/IEC 5338"}
+
+  - codigo: ISO/IEC 5259
+    nombre: "IA: calidad de los datos para analítica y aprendizaje automático"
+    resumen: "Serie sobre la calidad de los datos usados en analítica y aprendizaje automático."
+    concepto: "calidad de los datos de entrenamiento"
+    pregunta: "¿Cómo aseguro la calidad de los datos con los que se entrena un modelo?"
+    descripcion: "Serie que adapta la calidad de los datos al aprendizaje automático: terminología, medidas de calidad, requisitos para gestionarla, un marco de procesos y otro de gobierno."
+    ejemplo: "Antes de entrenar un modelo con datos de registros administrativos, el equipo mide su completitud, su representatividad y su etiquetado con las medidas de la ISO/IEC 5259-2."
+    familia: ia
+    alcance: serie
+    categoria: ia
+    naturaleza: modelo
+    temas_relacionados: [71, 76]
+    partes_descripcion:
+      "1": "Visión general, terminología y ejemplos."
+      "2": "Medidas de calidad de los datos."
+      "3": "Requisitos y directrices para gestionar la calidad de los datos."
+      "4": "Marco de procesos de calidad de los datos."
+      "5": "Marco de gobierno de la calidad de los datos."
+    claves:
+      - "Lleva a la IA el modelo de calidad de los datos de la ISO/IEC 25012, con medidas propias, como la representatividad o la calidad del etiquetado."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC 25012"}
+
+  - codigo: ISO/IEC 25059
+    nombre: "IA: modelo de calidad de los sistemas de IA (SQuaRE)"
+    resumen: "Modelo de calidad para sistemas de IA dentro de SQuaRE."
+    concepto: "calidad de un sistema de IA"
+    pregunta: "¿Qué características de calidad tiene un sistema de IA?"
+    descripcion: "Adapta el modelo de calidad de la ISO/IEC 25010 a los sistemas de IA. Añade características y subcaracterísticas como la robustez, la transparencia, la controlabilidad por el usuario, la adaptabilidad funcional y la capacidad de intervención, y en la calidad en uso, la mitigación de riesgos sociales y éticos."
+    ejemplo: "Al fijar los criterios de aceptación de un sistema de IA, el responsable de calidad añade a las características de la 25010 la robustez y la transparencia que define la ISO/IEC 25059."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: modelo
+    temas_relacionados: [98]
+    claves:
+      - "Pertenece a SQuaRE (ISO/IEC 25000) aunque no a la decena de los modelos: amplía la 25010 para la IA."
+    relaciones:
+      - {tipo: amplia, norma: "ISO/IEC 25010"}
+
+  - codigo: ISO/IEC TR 24028
+    nombre: "IA: visión general de la confiabilidad"
+    resumen: "Informe técnico sobre la confiabilidad (trustworthiness) de la IA."
+    concepto: "confiabilidad"
+    pregunta: "¿Qué hace que un sistema de IA sea digno de confianza?"
+    descripcion: "Repasa qué hace confiable un sistema de IA (transparencia, explicabilidad, controlabilidad, robustez, seguridad, privacidad), las amenazas y vulnerabilidades que la debilitan y las medidas para reforzarla."
+    ejemplo: "Para preparar la estrategia de IA de un organismo, el equipo usa la ISO/IEC TR 24028 como lista de aspectos de confianza que deben cubrir sus sistemas."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: informe
+    temas_relacionados: [71]
+    claves:
+      - "Es un informe técnico (TR): informativo, no fija requisitos."
+    relaciones:
+      - {tipo: se_apoya_en, norma: "ISO/IEC 22989"}
+
+  - codigo: ISO/IEC TR 24027
+    nombre: "IA: sesgo en los sistemas de IA"
+    resumen: "Informe técnico sobre el sesgo en los sistemas de IA y en las decisiones asistidas por IA."
+    concepto: "sesgo"
+    pregunta: "¿De dónde viene el sesgo de un sistema de IA y cómo se detecta?"
+    descripcion: "Describe las fuentes de sesgo no deseado en los sistemas de IA (los datos, el diseño, el uso humano), cómo medirlo y técnicas para tratarlo a lo largo del ciclo de vida."
+    ejemplo: "Un equipo comprueba con las métricas que recoge la ISO/IEC TR 24027 si su modelo de selección de candidatos acierta por igual con hombres y con mujeres."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: informe
+    temas_relacionados: [71]
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC TR 24028"}
+
+  - codigo: ISO/IEC TS 6254
+    nombre: "IA: explicabilidad e interpretabilidad"
+    resumen: "Objetivos y enfoques para que los sistemas de aprendizaje automático sean explicables."
+    concepto: "explicabilidad"
+    pregunta: "¿Cómo explico por qué un modelo ha tomado una decisión?"
+    descripcion: "Describe los objetivos de la explicabilidad y la interpretabilidad de los modelos de aprendizaje automático, a quién va dirigida cada explicación y los enfoques y métodos para conseguirla."
+    ejemplo: "Para que un ciudadano entienda por qué se ha denegado su solicitud, el organismo elige con la ISO/IEC TS 6254 un método que muestre qué datos pesaron más en la decisión del modelo."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: especificacion
+    temas_relacionados: [71]
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC TR 24028"}
+
+  - codigo: ISO/IEC 12792
+    nombre: "IA: taxonomía de la transparencia"
+    resumen: "Taxonomía de la información que hay que dar para que un sistema de IA sea transparente."
+    concepto: "transparencia"
+    pregunta: "¿Qué información debo dar sobre un sistema de IA para que sea transparente?"
+    descripcion: "Clasifica los elementos de información que permiten que un sistema de IA sea transparente para sus distintas partes interesadas: su finalidad, sus datos, su funcionamiento, sus limitaciones y quién responde de él."
+    ejemplo: "Un organismo publica una ficha de cada algoritmo que usa, con los apartados que propone la ISO/IEC 12792: finalidad, datos, funcionamiento y limitaciones."
+    familia: ia
+    alcance: norma
+    categoria: ia
+    naturaleza: modelo
+    temas_relacionados: [71]
+    relaciones:
+      - {tipo: desarrolla, norma: "ISO/IEC TR 24028"}

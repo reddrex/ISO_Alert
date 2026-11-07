@@ -1,6 +1,6 @@
 {
   "version_esquema": 1,
-  "generado": "2026-11-04T13:02:04+00:00",
+  "generado": "2026-11-07T20:56:19+00:00",
   "fuentes": {
     "iso": {
       "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
@@ -11967,6 +11967,38 @@
         "ISO/IEC 13249"
       ]
     },
+    "44545": {
+      "referencia": "ISO/IEC 42005:2025",
+      "numero": "42005",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2025-05-28",
+      "titulo_en": "Information technology — Artificial intelligence (AI) — AI system impact assessment",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 42005"
+      ]
+    },
+    "44546": {
+      "referencia": "ISO/IEC 42006:2025",
+      "numero": "42006",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2025-07-07",
+      "titulo_en": "Information technology — Artificial intelligence — Requirements for bodies providing audit and certification of artificial intelligence management systems",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 42006"
+      ]
+    },
     "44691": {
       "referencia": "ISO 11064-5:2008",
       "numero": "11064",
@@ -16620,6 +16652,22 @@
       ],
       "normas": [
         "ISO/IEC 38505"
+      ]
+    },
+    "56641": {
+      "referencia": "ISO/IEC 38507:2022",
+      "numero": "38507",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2022-04-08",
+      "titulo_en": "Information technology — Governance of IT — Governance implications of the use of artificial intelligence by organizations",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 38507"
       ]
     },
     "56643": {
@@ -23722,6 +23770,22 @@
         "ISO 30301"
       ]
     },
+    "74296": {
+      "referencia": "ISO/IEC 22989:2022",
+      "numero": "22989",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2022-07-19",
+      "titulo_en": "Information technology — Artificial intelligence — Artificial intelligence concepts and terminology",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 22989"
+      ]
+    },
     "74310": {
       "referencia": "ISO/IEC/IEEE 8802-11:2018/Amd 2:2019",
       "numero": "8802",
@@ -23812,6 +23876,22 @@
       ],
       "normas": [
         "ISO/IEC/IEEE 8802"
+      ]
+    },
+    "74438": {
+      "referencia": "ISO/IEC 23053:2022",
+      "numero": "23053",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2022-06-20",
+      "titulo_en": "Framework for Artificial Intelligence (AI) Systems Using Machine Learning (ML)",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 23053"
       ]
     },
     "74465": {
@@ -25089,6 +25169,22 @@
         "ISO 8000"
       ]
     },
+    "77304": {
+      "referencia": "ISO/IEC 23894:2023",
+      "numero": "23894",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2023-02-06",
+      "titulo_en": "Information technology — Artificial intelligence — Guidance on risk management",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 23894"
+      ]
+    },
     "77480": {
       "referencia": "ISO/IEC NP 29110-4-6",
       "numero": "29110",
@@ -25170,6 +25266,38 @@
       "replaced_by": [],
       "normas": [
         "ISO 9241"
+      ]
+    },
+    "77607": {
+      "referencia": "ISO/IEC TR 24027:2021",
+      "numero": "24027",
+      "parte": null,
+      "tipo": "TR",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2021-11-05",
+      "titulo_en": "Information technology — Artificial intelligence (AI) — Bias in AI systems and AI aided decision making",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC TR 24027"
+      ]
+    },
+    "77608": {
+      "referencia": "ISO/IEC TR 24028:2020",
+      "numero": "24028",
+      "parte": null,
+      "tipo": "TR",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2020-05-28",
+      "titulo_en": "Information technology — Artificial intelligence — Overview of trustworthiness in artificial intelligence",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC TR 24028"
       ]
     },
     "77615": {
@@ -26230,6 +26358,24 @@
         "ISO/IEC 13335"
       ]
     },
+    "80655": {
+      "referencia": "ISO/IEC 25059:2023",
+      "numero": "25059",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 9092,
+      "edicion": 1,
+      "publicacion": "2023-06-28",
+      "titulo_en": "Software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Quality model for AI systems",
+      "replaces": [],
+      "replaced_by": [
+        88234
+      ],
+      "normas": [
+        "ISO/IEC 25059"
+      ]
+    },
     "80709": {
       "referencia": "ISO 9241-20:2021",
       "numero": "9241",
@@ -26420,6 +26566,70 @@
         "ISO/IEC 21823"
       ]
     },
+    "81088": {
+      "referencia": "ISO/IEC 5259-1:2024",
+      "numero": "5259",
+      "parte": "1",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2024-07-02",
+      "titulo_en": "Artificial intelligence — Data quality for analytics and machine learning (ML) — Part 1: Overview, terminology, and examples",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 5259"
+      ]
+    },
+    "81092": {
+      "referencia": "ISO/IEC 5259-3:2024",
+      "numero": "5259",
+      "parte": "3",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2024-07-02",
+      "titulo_en": "Artificial intelligence — Data quality for analytics and machine learning (ML) — Part 3: Data quality management requirements and guidelines",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 5259"
+      ]
+    },
+    "81093": {
+      "referencia": "ISO/IEC 5259-4:2024",
+      "numero": "5259",
+      "parte": "4",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2024-07-15",
+      "titulo_en": "Artificial intelligence — Data quality for analytics and machine learning (ML) — Part 4: Data quality process framework",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 5259"
+      ]
+    },
+    "81118": {
+      "referencia": "ISO/IEC 5338:2023",
+      "numero": "5338",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2023-12-20",
+      "titulo_en": "Information technology — Artificial intelligence — AI system life cycle processes",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 5338"
+      ]
+    },
     "81164": {
       "referencia": "ISO/IEC TS 20000-5:2022",
       "numero": "20000",
@@ -26556,6 +26766,22 @@
       ],
       "normas": [
         "ISO/IEC 19795"
+      ]
+    },
+    "81230": {
+      "referencia": "ISO/IEC 42001:2023",
+      "numero": "42001",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2023-12-18",
+      "titulo_en": "Information technology — Artificial intelligence — Management system",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 42001"
       ]
     },
     "81291": {
@@ -26805,6 +27031,22 @@
         "ISO 8000"
       ]
     },
+    "81860": {
+      "referencia": "ISO/IEC 5259-2:2024",
+      "numero": "5259",
+      "parte": "2",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2024-11-05",
+      "titulo_en": "Artificial intelligence — Data quality for analytics and machine learning (ML) — Part 2: Data quality measures",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 5259"
+      ]
+    },
     "82038": {
       "referencia": "ISO/IEC/IEEE 8802-22:2022",
       "numero": "8802",
@@ -26911,6 +27153,22 @@
       ],
       "normas": [
         "ISO/IEC/IEEE 8802"
+      ]
+    },
+    "82148": {
+      "referencia": "ISO/IEC TS 6254:2025",
+      "numero": "6254",
+      "parte": null,
+      "tipo": "TS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2025-09-05",
+      "titulo_en": "Information technology — Artificial intelligence — Objectives and approaches for explainability and interpretability of machine learning (ML) models and artificial intelligence (AI) systems",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC TS 6254"
       ]
     },
     "82272": {
@@ -27388,6 +27646,22 @@
         "ISO/IEC 27017"
       ]
     },
+    "83002": {
+      "referencia": "ISO/IEC 8183:2023",
+      "numero": "8183",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2023-07-26",
+      "titulo_en": "Information technology — Artificial intelligence — Data life cycle framework",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 8183"
+      ]
+    },
     "83104": {
       "referencia": "ISO 8000-114:2024",
       "numero": "8000",
@@ -27741,6 +28015,22 @@
         "ISO/IEC/IEEE 8802"
       ]
     },
+    "84111": {
+      "referencia": "ISO/IEC 12792:2025",
+      "numero": "12792",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2025-11-11",
+      "titulo_en": "Information technology — Artificial intelligence (AI) — Transparency taxonomy of AI systems",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 12792"
+      ]
+    },
     "84119": {
       "referencia": "ISO/IEC 9594-12:2025",
       "numero": "9594",
@@ -27755,6 +28045,22 @@
       "replaced_by": [],
       "normas": [
         "ISO/IEC 9594"
+      ]
+    },
+    "84150": {
+      "referencia": "ISO/IEC 5259-5:2025",
+      "numero": "5259",
+      "parte": "5",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2025-02-12",
+      "titulo_en": "Artificial intelligence — Data quality for analytics and machine learning (ML) — Part 5: Data quality governance framework",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 5259"
       ]
     },
     "84220": {
@@ -28821,6 +29127,22 @@
         "ISO/IEC 19794"
       ]
     },
+    "86532": {
+      "referencia": "ISO/IEC TR 5259-6:2026",
+      "numero": "5259",
+      "parte": "6",
+      "tipo": "TR",
+      "suplemento": false,
+      "etapa": 6060,
+      "edicion": 1,
+      "publicacion": "2026-05-04",
+      "titulo_en": "Artificial intelligence — Data quality for analytics and machine learning (ML) — Part 6: Visualization framework for data quality",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 5259"
+      ]
+    },
     "86588": {
       "referencia": "ISO/IEC TS 19770-10:2025",
       "numero": "19770",
@@ -29390,6 +29712,38 @@
         "ISO/IEC 18045"
       ]
     },
+    "88145": {
+      "referencia": "ISO/IEC 22989:2022/FDAmd 1",
+      "numero": "22989",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": true,
+      "etapa": 5000,
+      "edicion": 1,
+      "publicacion": null,
+      "titulo_en": "Information technology — Artificial intelligence — Artificial intelligence concepts and terminology — Amendment 1: Generative AI",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 22989"
+      ]
+    },
+    "88149": {
+      "referencia": "ISO/IEC 23053:2022/FDAmd 1",
+      "numero": "23053",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": true,
+      "etapa": 5000,
+      "edicion": 1,
+      "publicacion": null,
+      "titulo_en": "Framework for Artificial Intelligence (AI) Systems Using Machine Learning (ML) — Amendment 1: Generative AI",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 23053"
+      ]
+    },
     "88150": {
       "referencia": "ISO/IEC 27018:2025",
       "numero": "27018",
@@ -29511,6 +29865,24 @@
       ],
       "normas": [
         "ISO 14001"
+      ]
+    },
+    "88234": {
+      "referencia": "ISO/IEC FDIS 25059",
+      "numero": "25059",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 5000,
+      "edicion": 2,
+      "publicacion": null,
+      "titulo_en": "Software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Quality models for AI systems",
+      "replaces": [
+        80655
+      ],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 25059"
       ]
     },
     "88287": {
@@ -31414,6 +31786,38 @@
       "replaced_by": [],
       "normas": [
         "ISO/IEC/IEEE 8802"
+      ]
+    },
+    "93144": {
+      "referencia": "ISO/IEC 22989:2022/CD Amd 2",
+      "numero": "22989",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": true,
+      "etapa": 3060,
+      "edicion": 1,
+      "publicacion": null,
+      "titulo_en": "Information technology — Artificial intelligence — Artificial intelligence concepts and terminology — Amendment 2",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 22989"
+      ]
+    },
+    "93146": {
+      "referencia": "ISO/IEC 23053:2022/AWI Amd 2",
+      "numero": "23053",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": true,
+      "etapa": 2000,
+      "edicion": 1,
+      "publicacion": null,
+      "titulo_en": "Framework for Artificial Intelligence (AI) Systems Using Machine Learning (ML) — Amendment 2",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 23053"
       ]
     },
     "93334": {
@@ -40794,6 +41198,440 @@
       "partes_citadas": [],
       "une": "UNE-ISO 37120",
       "contexto": "El año 2015 es el de la UNE-ISO 37120; las ediciones ISO son de 2014 y 2018"
+    },
+    "ISO/IEC 22989": {
+      "nombre": "IA: conceptos y terminología",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence — Artificial intelligence concepts and terminology",
+      "vigentes": [
+        74296
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 23053": {
+      "nombre": "IA: marco para sistemas de aprendizaje automático",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Framework for Artificial Intelligence (AI) Systems Using Machine Learning (ML)",
+      "vigentes": [
+        74438
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 42001": {
+      "nombre": "Sistema de gestión de la inteligencia artificial",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence — Management system",
+      "vigentes": [
+        81230
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 42005": {
+      "nombre": "IA: evaluación de impacto de los sistemas de IA",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence (AI) — AI system impact assessment",
+      "vigentes": [
+        44545
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 42006": {
+      "nombre": "IA: requisitos para los organismos que certifican el SGIA",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence — Requirements for bodies providing audit and certification of artificial intelligence management systems",
+      "vigentes": [
+        44546
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 23894": {
+      "nombre": "IA: gestión del riesgo",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence — Guidance on risk management",
+      "vigentes": [
+        77304
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 38507": {
+      "nombre": "IA: gobierno del uso de la IA",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Governance of IT — Governance implications of the use of artificial intelligence by organizations",
+      "vigentes": [
+        56641
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 5338": {
+      "nombre": "IA: procesos del ciclo de vida de los sistemas de IA",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence — AI system life cycle processes",
+      "vigentes": [
+        81118
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 8183": {
+      "nombre": "IA: marco del ciclo de vida de los datos",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence — Data life cycle framework",
+      "vigentes": [
+        83002
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 5259": {
+      "nombre": "IA: calidad de los datos para analítica y aprendizaje automático",
+      "alcance": "serie",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Artificial intelligence — Data quality for analytics and machine learning (ML)",
+      "vigentes": [
+        81088,
+        81860,
+        81092,
+        81093,
+        84150,
+        86532
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": [
+        {
+          "parte": "1",
+          "citada": true,
+          "estado": "vigente",
+          "subestado": null,
+          "vigente": 81088,
+          "ultima": 81088,
+          "proyectos": [],
+          "suplementos": [],
+          "sustituida_por": []
+        },
+        {
+          "parte": "2",
+          "citada": true,
+          "estado": "vigente",
+          "subestado": null,
+          "vigente": 81860,
+          "ultima": 81860,
+          "proyectos": [],
+          "suplementos": [],
+          "sustituida_por": []
+        },
+        {
+          "parte": "3",
+          "citada": true,
+          "estado": "vigente",
+          "subestado": null,
+          "vigente": 81092,
+          "ultima": 81092,
+          "proyectos": [],
+          "suplementos": [],
+          "sustituida_por": []
+        },
+        {
+          "parte": "4",
+          "citada": true,
+          "estado": "vigente",
+          "subestado": null,
+          "vigente": 81093,
+          "ultima": 81093,
+          "proyectos": [],
+          "suplementos": [],
+          "sustituida_por": []
+        },
+        {
+          "parte": "5",
+          "citada": true,
+          "estado": "vigente",
+          "subestado": null,
+          "vigente": 84150,
+          "ultima": 84150,
+          "proyectos": [],
+          "suplementos": [],
+          "sustituida_por": []
+        },
+        {
+          "parte": "6",
+          "citada": true,
+          "estado": "vigente",
+          "subestado": null,
+          "vigente": 86532,
+          "ultima": 86532,
+          "proyectos": [],
+          "suplementos": [],
+          "sustituida_por": []
+        }
+      ],
+      "recuento": {
+        "vigente": 6
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 25059": {
+      "nombre": "IA: modelo de calidad de los sistemas de IA (SQuaRE)",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "en_revision",
+      "subestado": null,
+      "titulo_en": "Software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Quality model for AI systems",
+      "vigentes": [
+        80655
+      ],
+      "en_desarrollo": [
+        88234
+      ],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "en_revision": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC TR 24028": {
+      "nombre": "IA: visión general de la confiabilidad",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence — Overview of trustworthiness in artificial intelligence",
+      "vigentes": [
+        77608
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC TR 24027": {
+      "nombre": "IA: sesgo en los sistemas de IA",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence (AI) — Bias in AI systems and AI aided decision making",
+      "vigentes": [
+        77607
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC TS 6254": {
+      "nombre": "IA: explicabilidad e interpretabilidad",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence — Objectives and approaches for explainability and interpretability of machine learning (ML) models and artificial intelligence (AI) systems",
+      "vigentes": [
+        82148
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
+    },
+    "ISO/IEC 12792": {
+      "nombre": "IA: taxonomía de la transparencia",
+      "alcance": "norma",
+      "categoria": "ia",
+      "familia": "ia",
+      "estado": "vigente",
+      "subestado": null,
+      "titulo_en": "Information technology — Artificial intelligence (AI) — Transparency taxonomy of AI systems",
+      "vigentes": [
+        84111
+      ],
+      "en_desarrollo": [],
+      "sustituida_por": [],
+      "suplementos": [],
+      "partes": null,
+      "recuento": {
+        "vigente": 1
+      },
+      "edicion_citada": null,
+      "codigo_actual": null,
+      "partes_citadas": [],
+      "une": null,
+      "contexto": null
     }
   }
 }

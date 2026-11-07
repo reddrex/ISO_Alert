@@ -32,6 +32,11 @@ hide:
     {{ f.ejemplo }}
 
 {% endif %}
+{% if f.ampliacion %}
+!!! info "Ampliación: el temario no la cita"
+    Se incluye porque complementa {% if f.temas_relacionados %}{% for t in f.temas_relacionados %}el [tema {{ t.numero }}](../temario/{{ t.numero }}.md){% if loop.revindex == 2 %} y {% elif not loop.last %}, {% endif %}{% endfor %}{% else %}lo que pide el temario{% endif %}. Puede servir para preguntas de actualidad, pero no es materia citada.
+
+{% endif %}
 {% if f.superada %}
 !!! warning "El temario cita la edición de {{ f.edicion_citada.anio }}"
     {% if f.edicion_citada.resultado == "superada" %}Esa edición ya no es la vigente{% elif f.une_boe and f.une_boe.anios.get(f.edicion_citada.anio) %}No hay edición ISO de ese año: es el año de la {{ f.une_boe.anios[f.edicion_citada.anio] }}{% else %}No hay edición ISO de ese año; probablemente es el año de la versión UNE{% endif %}{% if f.vigentes %}: la vigente es {{ enlace(f.vigentes[-1]) }}{% endif %}.
@@ -49,7 +54,7 @@ hide:
 {% endfor %}
 
 {% endif %}
-{% if f.temas or f.temas_familia %}
+{% if f.temas or f.temas_familia or f.temas_relacionados %}
 ## Dónde aparece en el temario
 
 {% for t in f.temas %}
@@ -57,6 +62,9 @@ hide:
 {% endfor %}
 {% for t in f.temas_familia %}
 - [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md) *(cita {{ "la familia" if f.familia.es_familia else "el grupo" }} {{ f.familia.corto }} en conjunto)*
+{% endfor %}
+{% for t in f.temas_relacionados %}
+- [Tema {{ t.numero }} · {{ t.titulo | titulo_corto }}](../temario/{{ t.numero }}.md) *(relacionada; el tema no la cita)*
 {% endfor %}
 
 {% endif %}

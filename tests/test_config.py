@@ -6,14 +6,14 @@ from iso_alert.config import ConfigError, validar
 
 
 def test_normas_yaml_real(config):
-    assert len(config.normas) == 99
+    assert len(config.normas) == 114
     assert not any(n.revisar for n in config.normas)
-    assert len(config.familias) == 21
+    assert len(config.familias) == 22
     assert config.familias["square"].corto == "SQuaRE"
     assert all(f.categoria and f.descripcion for f in config.familias.values())
     assert all(n.descripcion for n in config.normas)
     assert config.familias["ciclo-vida"].categoria == "ingenieria-software"
-    assert len(config.categorias) == 16
+    assert len(config.categorias) == 17
     assert {n.categoria for n in config.normas} == set(config.categorias)
     n = next(n for n in config.normas if n.codigo == "ISO/IEC 2382-37")
     assert (n.numero, n.parte) == ("2382", "37")
@@ -76,9 +76,9 @@ def test_temario_y_relaciones(config):
     assert config.temario[47].titulo.startswith("Seguridad de sistemas (1)")
     n = next(n for n in config.normas if n.codigo == "ISO/IEC 27002")
     assert ("desarrolla", "ISO/IEC 27001") in [(r.tipo, r.norma) for r in n.relaciones]
-    assert sum(n.certificable for n in config.normas) == 8
+    assert sum(n.certificable for n in config.normas) == 9
     assert all(n.naturaleza for n in config.normas)
-    assert len(config.areas) == 9 and all(c.area for c in config.categorias.values())
+    assert len(config.areas) == 10 and all(c.area for c in config.categorias.values())
     assert all(n.concepto for n in config.normas)
     assert config.temario[47].asociacion[0] == ("ISO 31000", "riesgo en general")
 

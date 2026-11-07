@@ -91,7 +91,7 @@ def test_desaparicion_es_un_error(base, nuevo, config):
 def test_primera_ejecucion_es_linea_base(nuevo, config):
     vacio = {"entregables": {}, "normas": {}, "fuentes": {}}
     evs = comparar(vacio, nuevo, config, HOY)
-    assert len(evs) == 99 and {e.tipo for e in evs} == {"alta_vigilancia"}
+    assert len(evs) == 114 and {e.tipo for e in evs} == {"alta_vigilancia"}
     assert not any(e.notificable for e in evs)
 
 

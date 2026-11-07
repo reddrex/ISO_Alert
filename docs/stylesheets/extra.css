@@ -263,6 +263,7 @@
 .area--documentacion { --area: #5b3fa8; }
 .area--interaccion   { --area: #c25100; }
 .area--redes         { --area: #6d4c41; }
+.area--ia            { --area: #3949ab; }
 [data-md-color-scheme="slate"] .area--calidad       { --area: #7fb0e8; }
 [data-md-color-scheme="slate"] .area--seguridad     { --area: #f08a84; }
 [data-md-color-scheme="slate"] .area--identidad     { --area: #d68bc8; }
@@ -272,6 +273,7 @@
 [data-md-color-scheme="slate"] .area--documentacion { --area: #b39ddb; }
 [data-md-color-scheme="slate"] .area--interaccion   { --area: #f5a25d; }
 [data-md-color-scheme="slate"] .area--redes         { --area: #bcaaa4; }
+[data-md-color-scheme="slate"] .area--ia            { --area: #9fa8da; }
 
 .md-typeset .marca {
   display: inline-block;
