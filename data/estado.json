@@ -1,13 +1,13 @@
 {
   "version_esquema": 1,
-  "generado": "2026-11-07T20:56:19+00:00",
+  "generado": "2026-11-11T12:45:24+00:00",
   "fuentes": {
     "iso": {
       "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-      "last_modified": "2026-11-04T00:41:47+00:00",
-      "etag": "0x8DF3A0C68498C64",
-      "sha256": "6a3b3ff4c131304f4c6abf0bf9ebbf7001ef83224b4b65e40027627ac5f41bc7",
-      "registros": 81768
+      "last_modified": "2026-11-11T00:40:54+00:00",
+      "etag": "0x8DF3F8C71D2F891",
+      "sha256": "92784e9aa3071d1eb7477d80b08fbb0cdbc6bb298187174282c7ea74e8f02184",
+      "registros": 81817
     }
   },
   "entregables": {
@@ -18986,14 +18986,16 @@
       "parte": "1",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 9093,
+      "etapa": 9092,
       "edicion": 2,
       "publicacion": "2016-04-07",
       "titulo_en": "Information and documentation — Records management — Part 1: Concepts and principles",
       "replaces": [
         31908
       ],
-      "replaced_by": [],
+      "replaced_by": [
+        95702
+      ],
       "normas": [
         "ISO 15489"
       ]
@@ -25290,12 +25292,14 @@
       "parte": null,
       "tipo": "TR",
       "suplemento": false,
-      "etapa": 6060,
+      "etapa": 9092,
       "edicion": 1,
       "publicacion": "2020-05-28",
       "titulo_en": "Information technology — Artificial intelligence — Overview of trustworthiness in artificial intelligence",
       "replaces": [],
-      "replaced_by": [],
+      "replaced_by": [
+        95686
+      ],
       "normas": [
         "ISO/IEC TR 24028"
       ]
@@ -29097,7 +29101,7 @@
       "parte": "5-6-3",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5000,
+      "etapa": 5020,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-6-3: System engineering guidelines for the generic Intermediate profile",
@@ -29952,12 +29956,12 @@
       ]
     },
     "88374": {
-      "referencia": "ISO/CD 9241-812",
+      "referencia": "ISO/CD TS 9241-812.2",
       "numero": "9241",
       "parte": "812",
-      "tipo": "IS",
+      "tipo": "TS",
       "suplemento": false,
-      "etapa": 3060,
+      "etapa": 3099,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Ergonomics of human-system interaction — Part 812: Guidance on artificial intelligence systems",
@@ -30450,12 +30454,12 @@
       ]
     },
     "88837": {
-      "referencia": "ISO/IEC/IEEE CD 29119-14",
+      "referencia": "ISO/IEC/IEEE DIS 29119-14",
       "numero": "29119",
       "parte": "14",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3099,
+      "etapa": 4000,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Software and systems engineering — Software testing — Part 14: Data migration testing",
@@ -30667,15 +30671,15 @@
       ]
     },
     "89526": {
-      "referencia": "ISO/IEC CD 29115.2",
+      "referencia": "ISO/IEC DIS 29115",
       "numero": "29115",
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 3060,
+      "etapa": 4000,
       "edicion": 2,
       "publicacion": null,
-      "titulo_en": "Information security, cybersecurity and privacy protection – Entity authentication assurance framework",
+      "titulo_en": "Information security, cybersecurity and privacy protection — Entity authentication assurance framework",
       "replaces": [
         45138
       ],
@@ -30908,12 +30912,12 @@
       ]
     },
     "90316": {
-      "referencia": "ISO/WD 37120",
+      "referencia": "ISO/DIS 37120",
       "numero": "37120",
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 2099,
+      "etapa": 4000,
       "edicion": 3,
       "publicacion": null,
       "titulo_en": "Sustainable cities and communities — Indicators for city services and quality of life",
@@ -31805,12 +31809,12 @@
       ]
     },
     "93146": {
-      "referencia": "ISO/IEC 23053:2022/AWI Amd 2",
+      "referencia": "ISO/IEC 23053:2022/WD Amd 2",
       "numero": "23053",
       "parte": null,
       "tipo": "IS",
       "suplemento": true,
-      "etapa": 2000,
+      "etapa": 2098,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Framework for Artificial Intelligence (AI) Systems Using Machine Learning (ML) — Amendment 2",
@@ -32415,7 +32419,7 @@
       "parte": "521",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 1020,
+      "etapa": 1060,
       "edicion": 1,
       "publicacion": null,
       "titulo_en": "Ergonomics of human-system interaction — Part 521: Ergonomic requirements for Activity-based working(ABW)",
@@ -32493,6 +32497,42 @@
       "replaced_by": [],
       "normas": [
         "ISO 21500"
+      ]
+    },
+    "95686": {
+      "referencia": "ISO/IEC AWI TR 24028",
+      "numero": "24028",
+      "parte": null,
+      "tipo": "TR",
+      "suplemento": false,
+      "etapa": 2000,
+      "edicion": 2,
+      "publicacion": null,
+      "titulo_en": "Information technology — Artificial intelligence — Trustworthiness characteristics of AI systems",
+      "replaces": [
+        77608
+      ],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC TR 24028"
+      ]
+    },
+    "95702": {
+      "referencia": "ISO/AWI 15489-1",
+      "numero": "15489",
+      "parte": "1",
+      "tipo": "IS",
+      "suplemento": false,
+      "etapa": 2000,
+      "edicion": 3,
+      "publicacion": null,
+      "titulo_en": "Information and documentation — Records management — Part 1: Concepts and principles",
+      "replaces": [
+        62542
+      ],
+      "replaced_by": [],
+      "normas": [
+        "ISO 15489"
       ]
     }
   },
@@ -37789,24 +37829,28 @@
       "alcance": "serie",
       "categoria": "documental",
       "familia": "gestion-documentos",
-      "estado": "vigente",
+      "estado": "en_revision",
       "subestado": null,
       "titulo_en": "Information and documentation — Records management",
       "vigentes": [
         62542
       ],
-      "en_desarrollo": [],
+      "en_desarrollo": [
+        95702
+      ],
       "sustituida_por": [],
       "suplementos": [],
       "partes": [
         {
           "parte": "1",
           "citada": true,
-          "estado": "vigente",
+          "estado": "en_revision",
           "subestado": null,
           "vigente": 62542,
           "ultima": 62542,
-          "proyectos": [],
+          "proyectos": [
+            95702
+          ],
           "suplementos": [],
           "sustituida_por": []
         },
@@ -37867,7 +37911,7 @@
         }
       ],
       "recuento": {
-        "vigente": 1,
+        "en_revision": 1,
         "anulada": 1
       },
       "edicion_citada": null,
@@ -41542,18 +41586,20 @@
       "alcance": "norma",
       "categoria": "ia",
       "familia": "ia",
-      "estado": "vigente",
+      "estado": "en_revision",
       "subestado": null,
       "titulo_en": "Information technology — Artificial intelligence — Overview of trustworthiness in artificial intelligence",
       "vigentes": [
         77608
       ],
-      "en_desarrollo": [],
+      "en_desarrollo": [
+        95686
+      ],
       "sustituida_por": [],
       "suplementos": [],
       "partes": null,
       "recuento": {
-        "vigente": 1
+        "en_revision": 1
       },
       "edicion_citada": null,
       "codigo_actual": null,

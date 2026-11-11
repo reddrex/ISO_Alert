@@ -1,5 +1,241 @@
 [
   {
+    "id": "ecf4684082e6dcb7",
+    "tipo": "revision_iniciada",
+    "normas": [
+      "ISO 15489"
+    ],
+    "resumen": "ISO ha decidido revisar ISO 15489-1:2016.",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 62542,
+      "referencia": "ISO 15489-1:2016"
+    },
+    "sustituye": [
+      {
+        "id": 31908,
+        "referencia": "ISO 15489-1:2001",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 9093,
+    "etapa_nueva": 9092,
+    "issue": null
+  },
+  {
+    "id": "e98487a47e443a7e",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO/IEC 29110"
+    ],
+    "resumen": "El proyecto ISO/IEC FDIS 29110-5-6-3 está en fase de aprobación (50.20).",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 86343,
+      "referencia": "ISO/IEC FDIS 29110-5-6-3"
+    },
+    "sustituye": [
+      {
+        "id": 72897,
+        "referencia": "ISO/IEC TR 29110-5-6-3:2019",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 5000,
+    "etapa_nueva": 5020,
+    "issue": null
+  },
+  {
+    "id": "e23bb68cdac98111",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 37120"
+    ],
+    "resumen": "El proyecto ISO/DIS 37120 está en consulta pública (40.00).",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 90316,
+      "referencia": "ISO/DIS 37120"
+    },
+    "sustituye": [
+      {
+        "id": 68498,
+        "referencia": "ISO 37120:2018",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 2099,
+    "etapa_nueva": 4000,
+    "issue": null
+  },
+  {
+    "id": "bd5f0e5e0f021d1c",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 9241"
+    ],
+    "resumen": "El proyecto ISO/CD TS 9241-812.2 está en fase de comité (30.99).",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 88374,
+      "referencia": "ISO/CD TS 9241-812.2"
+    },
+    "sustituye": [],
+    "etapa_anterior": 3060,
+    "etapa_nueva": 3099,
+    "issue": null
+  },
+  {
+    "id": "b4401d7b48fe8b2c",
+    "tipo": "revision_iniciada",
+    "normas": [
+      "ISO/IEC TR 24028"
+    ],
+    "resumen": "ISO ha decidido revisar ISO/IEC TR 24028:2020.",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 77608,
+      "referencia": "ISO/IEC TR 24028:2020"
+    },
+    "sustituye": [],
+    "etapa_anterior": 6060,
+    "etapa_nueva": 9092,
+    "issue": null
+  },
+  {
+    "id": "893b4fe0f7d53295",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO/IEC 29115"
+    ],
+    "resumen": "El proyecto ISO/IEC DIS 29115 está en consulta pública (40.00).",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 89526,
+      "referencia": "ISO/IEC DIS 29115"
+    },
+    "sustituye": [
+      {
+        "id": 45138,
+        "referencia": "ISO/IEC 29115:2013",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 3060,
+    "etapa_nueva": 4000,
+    "issue": null
+  },
+  {
+    "id": "7d4bbd1b85dd2c4f",
+    "tipo": "revision_iniciada",
+    "normas": [
+      "ISO 15489"
+    ],
+    "resumen": "El proyecto ISO/AWI 15489-1 está en fase preparatoria (20.00).",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 95702,
+      "referencia": "ISO/AWI 15489-1"
+    },
+    "sustituye": [
+      {
+        "id": 62542,
+        "referencia": "ISO 15489-1:2016",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": null,
+    "etapa_nueva": 2000,
+    "issue": null
+  },
+  {
+    "id": "7bc5b90233f258ac",
+    "tipo": "proyecto_avanza",
+    "normas": [
+      "ISO 9241"
+    ],
+    "resumen": "El proyecto ISO/NP 9241-521 está en fase de propuesta (10.60).",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 95153,
+      "referencia": "ISO/NP 9241-521"
+    },
+    "sustituye": [],
+    "etapa_anterior": 1020,
+    "etapa_nueva": 1060,
+    "issue": null
+  },
+  {
+    "id": "2af4e4a63f999d37",
+    "tipo": "revision_iniciada",
+    "normas": [
+      "ISO/IEC TR 24028"
+    ],
+    "resumen": "El proyecto ISO/IEC AWI TR 24028 está en fase preparatoria (20.00).",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 95686,
+      "referencia": "ISO/IEC AWI TR 24028"
+    },
+    "sustituye": [
+      {
+        "id": 77608,
+        "referencia": "ISO/IEC TR 24028:2020",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": null,
+    "etapa_nueva": 2000,
+    "issue": null
+  },
+  {
+    "id": "29e67d428bdbdbbf",
+    "tipo": "proyecto_cancelado",
+    "normas": [
+      "ISO/IEC 23053"
+    ],
+    "resumen": "ISO cancela el proyecto ISO/IEC 23053:2022/WD Amd 2.",
+    "notificable": false,
+    "detectado": "2026-11-11",
+    "dato_fecha": "2026-11-11",
+    "fuente": "iso",
+    "entregable": {
+      "id": 93146,
+      "referencia": "ISO/IEC 23053:2022/WD Amd 2"
+    },
+    "sustituye": [],
+    "etapa_anterior": 2000,
+    "etapa_nueva": 2098,
+    "issue": null
+  },
+  {
     "id": "dc3d8d882880758b",
     "tipo": "alta_vigilancia",
     "normas": [

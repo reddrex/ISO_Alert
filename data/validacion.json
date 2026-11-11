@@ -1,16 +1,16 @@
 {
-  "generado": "2026-11-07T20:56:19+00:00",
+  "generado": "2026-11-11T12:45:27+00:00",
   "fuente": {
     "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-    "last_modified": "2026-11-04T00:41:47+00:00",
-    "sha256": "6a3b3ff4c131304f4c6abf0bf9ebbf7001ef83224b4b65e40027627ac5f41bc7",
-    "registros": 81768
+    "last_modified": "2026-11-11T00:40:54+00:00",
+    "sha256": "92784e9aa3071d1eb7477d80b08fbb0cdbc6bb298187174282c7ea74e8f02184",
+    "registros": 81817
   },
   "resumen": {
     "total": 114,
     "por_estado": {
-      "en_revision": 29,
-      "vigente": 78,
+      "en_revision": 31,
+      "vigente": 76,
       "sustituida": 6,
       "no_publicada": 1
     },
@@ -976,10 +976,10 @@
       "en_desarrollo": [
         {
           "iso_id": 89526,
-          "referencia": "ISO/IEC CD 29115.2",
+          "referencia": "ISO/IEC DIS 29115",
           "anio": null,
-          "etapa": "30.60",
-          "titulo_en": "Information security, cybersecurity and privacy protection – Entity authentication assurance framework",
+          "etapa": "40.00",
+          "titulo_en": "Information security, cybersecurity and privacy protection — Entity authentication assurance framework",
           "url": "https://www.iso.org/standard/89526.html"
         }
       ],
@@ -2073,7 +2073,7 @@
           "iso_id": 86343,
           "referencia": "ISO/IEC FDIS 29110-5-6-3",
           "anio": null,
-          "etapa": "50.00",
+          "etapa": "50.20",
           "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-6-3: System engineering guidelines for the generic Intermediate profile",
           "url": "https://www.iso.org/standard/86343.html"
         }
@@ -4884,8 +4884,8 @@
       "categoria": "documental",
       "familia": "gestion-documentos",
       "encontrada": true,
-      "estado": "vigente",
-      "estado_txt": "Vigente",
+      "estado": "en_revision",
+      "estado_txt": "En revisión",
       "subestado": null,
       "subestado_txt": null,
       "vigentes": [
@@ -4893,12 +4893,21 @@
           "iso_id": 62542,
           "referencia": "ISO 15489-1:2016",
           "anio": "2016",
-          "etapa": "90.93",
+          "etapa": "90.92",
           "titulo_en": "Information and documentation — Records management — Part 1: Concepts and principles",
           "url": "https://www.iso.org/standard/62542.html"
         }
       ],
-      "en_desarrollo": [],
+      "en_desarrollo": [
+        {
+          "iso_id": 95702,
+          "referencia": "ISO/AWI 15489-1",
+          "anio": null,
+          "etapa": "20.00",
+          "titulo_en": "Information and documentation — Records management — Part 1: Concepts and principles",
+          "url": "https://www.iso.org/standard/95702.html"
+        }
+      ],
       "sustituida_por": [],
       "suplementos": [],
       "partes": {
@@ -4909,13 +4918,13 @@
           "TR 2"
         ],
         "recuento": {
-          "vigente": 1,
+          "en_revision": 1,
           "anulada": 1
         },
         "detalle_citadas": [
           {
             "parte": "1",
-            "estado_txt": "Vigente",
+            "estado_txt": "En revisión",
             "referencia": "ISO 15489-1:2016"
           },
           {
@@ -6857,9 +6866,9 @@
       "en_desarrollo": [
         {
           "iso_id": 90316,
-          "referencia": "ISO/WD 37120",
+          "referencia": "ISO/DIS 37120",
           "anio": null,
-          "etapa": "20.99",
+          "etapa": "40.00",
           "titulo_en": "Sustainable cities and communities — Indicators for city services and quality of life",
           "url": "https://www.iso.org/standard/90316.html"
         }
@@ -7310,8 +7319,8 @@
       "categoria": "ia",
       "familia": "ia",
       "encontrada": true,
-      "estado": "vigente",
-      "estado_txt": "Vigente",
+      "estado": "en_revision",
+      "estado_txt": "En revisión",
       "subestado": null,
       "subestado_txt": null,
       "vigentes": [
@@ -7319,12 +7328,21 @@
           "iso_id": 77608,
           "referencia": "ISO/IEC TR 24028:2020",
           "anio": "2020",
-          "etapa": "60.60",
+          "etapa": "90.92",
           "titulo_en": "Information technology — Artificial intelligence — Overview of trustworthiness in artificial intelligence",
           "url": "https://www.iso.org/standard/77608.html"
         }
       ],
-      "en_desarrollo": [],
+      "en_desarrollo": [
+        {
+          "iso_id": 95686,
+          "referencia": "ISO/IEC AWI TR 24028",
+          "anio": null,
+          "etapa": "20.00",
+          "titulo_en": "Information technology — Artificial intelligence — Trustworthiness characteristics of AI systems",
+          "url": "https://www.iso.org/standard/95686.html"
+        }
+      ],
       "sustituida_por": [],
       "suplementos": [],
       "partes": null,
