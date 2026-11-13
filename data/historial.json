@@ -1,5 +1,25 @@
 [
   {
+    "id": "b58b371ff1d424ef",
+    "tipo": "proyecto_une_info_publica",
+    "normas": [
+      "ISO/IEC 2382-37"
+    ],
+    "resumen": "El proyecto PNE-prEN ISO/IEC 2382-37, que adopta la ISO/IEC DIS 2382-37:2026, está en información pública. Plazo de alegaciones: 30 días.",
+    "notificable": false,
+    "detectado": "2026-11-13",
+    "dato_fecha": "2026-11-12",
+    "fuente": "une",
+    "entregable": {
+      "referencia": "PNE-prEN ISO/IEC 2382-37",
+      "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-23733"
+    },
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": null,
+    "issue": null
+  },
+  {
     "id": "ecf4684082e6dcb7",
     "tipo": "revision_iniciada",
     "normas": [

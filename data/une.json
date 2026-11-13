@@ -1,10 +1,10 @@
 {
   "version_esquema": 1,
-  "generado": "2026-11-11T12:45:25+00:00",
+  "generado": "2026-11-13T13:10:17+00:00",
   "cobertura": {
     "desde": "2000-01-01",
     "primera_tabla": "2000-01-18",
-    "ultimo_dia": "2026-11-10",
+    "ultimo_dia": "2026-11-12",
     "dias_fallidos": [
       "2000-08-05"
     ]
@@ -7689,6 +7689,30 @@
       "tipo": "info_publica",
       "mes": "2026-09",
       "filas": 199
+    },
+    "BOE-A-2026-23732": {
+      "fecha": "2026-11-12",
+      "tipo": "aprobadas",
+      "mes": "2026-10",
+      "filas": 55
+    },
+    "BOE-A-2026-23731": {
+      "fecha": "2026-11-12",
+      "tipo": "anuladas",
+      "mes": "2026-10",
+      "filas": 27
+    },
+    "BOE-A-2026-23733": {
+      "fecha": "2026-11-12",
+      "tipo": "info_publica",
+      "mes": "2026-10",
+      "filas": 130
+    },
+    "BOE-A-2026-23734": {
+      "fecha": "2026-11-12",
+      "tipo": "info_publica",
+      "mes": "2026-10",
+      "filas": 11
     }
   },
   "normas": {
@@ -12395,12 +12419,12 @@
       "codigo": "PNE-prEN ISO/IEC 2382-37",
       "numero": "2382",
       "parte": "37",
-      "titulo": "Tecnología de la información. Vocabulario. Parte 37: Biometría (ISO/IEC 2382-37:2022).",
-      "iso_adoptada": "ISO/IEC 2382-37:2022",
+      "titulo": "Tecnología de la información. Vocabulario. Parte 37: Biometría (ISO/IEC DIS 2382-37:2026).",
+      "iso_adoptada": "ISO/IEC DIS 2382-37:2026",
       "plazo": "30",
-      "boe": "BOE-A-2023-13919",
-      "fecha": "2023-06-12",
-      "mes": "2023-05"
+      "boe": "BOE-A-2026-23733",
+      "fecha": "2026-11-12",
+      "mes": "2026-10"
     },
     "PNE-prEN ISO 9241-115": {
       "codigo": "PNE-prEN ISO 9241-115",
