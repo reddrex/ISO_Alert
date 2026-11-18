@@ -1,10 +1,10 @@
 {
   "version_esquema": 1,
-  "generado": "2026-11-13T13:10:17+00:00",
+  "generado": "2026-11-18T14:05:45+00:00",
   "cobertura": {
     "desde": "2000-01-01",
     "primera_tabla": "2000-01-18",
-    "ultimo_dia": "2026-11-12",
+    "ultimo_dia": "2026-11-17",
     "dias_fallidos": [
       "2000-08-05"
     ]

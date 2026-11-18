@@ -1,5 +1,76 @@
 [
   {
+    "id": "ee61142c22f08204",
+    "tipo": "parte_nueva",
+    "normas": [
+      "ISO/IEC 29110"
+    ],
+    "resumen": "ISO publica una parte nueva de la serie: ISO/IEC 29110-5-5:2026.",
+    "notificable": true,
+    "detectado": "2026-11-18",
+    "dato_fecha": "2026-11-18",
+    "fuente": "iso",
+    "entregable": {
+      "id": 76641,
+      "referencia": "ISO/IEC 29110-5-5:2026"
+    },
+    "sustituye": [],
+    "etapa_anterior": 6000,
+    "etapa_nueva": 6060,
+    "issue": 4
+  },
+  {
+    "id": "95592f114521066b",
+    "tipo": "publicacion_inminente",
+    "normas": [
+      "ISO 30301"
+    ],
+    "resumen": "El proyecto ISO 30301 está en en publicación (60.00).",
+    "notificable": false,
+    "detectado": "2026-11-18",
+    "dato_fecha": "2026-11-18",
+    "fuente": "iso",
+    "entregable": {
+      "id": 89772,
+      "referencia": "ISO 30301"
+    },
+    "sustituye": [
+      {
+        "id": 88415,
+        "referencia": "ISO 30301:2019/Amd 1:2024",
+        "suplemento": true
+      },
+      {
+        "id": 74292,
+        "referencia": "ISO 30301:2019",
+        "suplemento": false
+      }
+    ],
+    "etapa_anterior": 5020,
+    "etapa_nueva": 6000,
+    "issue": null
+  },
+  {
+    "id": "60e498c3e6c77a56",
+    "tipo": "revision_iniciada",
+    "normas": [
+      "ISO/IEC 25059"
+    ],
+    "resumen": "El proyecto ISO/IEC FDIS 25059/AWI Amd 1 está en fase preparatoria (20.00).",
+    "notificable": false,
+    "detectado": "2026-11-18",
+    "dato_fecha": "2026-11-18",
+    "fuente": "iso",
+    "entregable": {
+      "id": 95789,
+      "referencia": "ISO/IEC FDIS 25059/AWI Amd 1"
+    },
+    "sustituye": [],
+    "etapa_anterior": null,
+    "etapa_nueva": 2000,
+    "issue": null
+  },
+  {
     "id": "b58b371ff1d424ef",
     "tipo": "proyecto_une_info_publica",
     "normas": [

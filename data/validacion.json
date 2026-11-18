@@ -1,10 +1,10 @@
 {
-  "generado": "2026-11-11T12:45:27+00:00",
+  "generado": "2026-11-18T14:05:49+00:00",
   "fuente": {
     "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-    "last_modified": "2026-11-11T00:40:54+00:00",
-    "sha256": "92784e9aa3071d1eb7477d80b08fbb0cdbc6bb298187174282c7ea74e8f02184",
-    "registros": 81817
+    "last_modified": "2026-11-18T00:41:44+00:00",
+    "sha256": "8e84f92f07435b62ed4c803be22ac08b28ba1cb4ee51e72d8db60b2de774c8d5",
+    "registros": 81856
   },
   "resumen": {
     "total": 114,
@@ -1980,6 +1980,14 @@
           "url": "https://www.iso.org/standard/82668.html"
         },
         {
+          "iso_id": 76641,
+          "referencia": "ISO/IEC 29110-5-5:2026",
+          "anio": "2026",
+          "etapa": "60.60",
+          "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-5: Agile/DevOps guidelines",
+          "url": "https://www.iso.org/standard/76641.html"
+        },
+        {
           "iso_id": 66342,
           "referencia": "ISO/IEC TR 29110-5-6-1:2015",
           "anio": "2015",
@@ -2044,14 +2052,6 @@
           "etapa": "60.00",
           "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-3: Service delivery guidelines",
           "url": "https://www.iso.org/standard/86302.html"
-        },
-        {
-          "iso_id": 76641,
-          "referencia": "ISO/IEC 29110-5-5",
-          "anio": null,
-          "etapa": "60.00",
-          "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-5: Agile/DevOps guidelines",
-          "url": "https://www.iso.org/standard/76641.html"
         },
         {
           "iso_id": 86341,
@@ -2135,9 +2135,9 @@
         "relevantes": 34,
         "citadas": [],
         "recuento": {
-          "no_publicada": 8,
+          "no_publicada": 7,
           "sustituida": 3,
-          "vigente": 17,
+          "vigente": 18,
           "en_revision": 6
         },
         "detalle_citadas": []
@@ -5008,9 +5008,9 @@
       "en_desarrollo": [
         {
           "iso_id": 89772,
-          "referencia": "ISO/PRF 30301",
+          "referencia": "ISO 30301",
           "anio": null,
-          "etapa": "50.20",
+          "etapa": "60.00",
           "titulo_en": "Information and documentation — Management systems for records — Requirements",
           "url": "https://www.iso.org/standard/89772.html"
         }

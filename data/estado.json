@@ -1,13 +1,13 @@
 {
   "version_esquema": 1,
-  "generado": "2026-11-11T12:45:24+00:00",
+  "generado": "2026-11-18T14:05:42+00:00",
   "fuentes": {
     "iso": {
       "url": "https://isopublicstorageprod.blob.core.windows.net/opendata/_latest/iso_deliverables_metadata/json/iso_deliverables_metadata.jsonl",
-      "last_modified": "2026-11-11T00:40:54+00:00",
-      "etag": "0x8DF3F8C71D2F891",
-      "sha256": "92784e9aa3071d1eb7477d80b08fbb0cdbc6bb298187174282c7ea74e8f02184",
-      "registros": 81817
+      "last_modified": "2026-11-18T00:41:44+00:00",
+      "etag": "0x8DF450CB8894842",
+      "sha256": "8e84f92f07435b62ed4c803be22ac08b28ba1cb4ee51e72d8db60b2de774c8d5",
+      "registros": 81856
     }
   },
   "entregables": {
@@ -24882,14 +24882,14 @@
       ]
     },
     "76641": {
-      "referencia": "ISO/IEC 29110-5-5",
+      "referencia": "ISO/IEC 29110-5-5:2026",
       "numero": "29110",
       "parte": "5-5",
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 6000,
+      "etapa": 6060,
       "edicion": 1,
-      "publicacion": null,
+      "publicacion": "2026-11-16",
       "titulo_en": "Systems and software engineering — Life cycle profiles for very small entities (VSEs) — Part 5-5: Agile/DevOps guidelines",
       "replaces": [],
       "replaced_by": [],
@@ -30739,12 +30739,12 @@
       ]
     },
     "89772": {
-      "referencia": "ISO/PRF 30301",
+      "referencia": "ISO 30301",
       "numero": "30301",
       "parte": null,
       "tipo": "IS",
       "suplemento": false,
-      "etapa": 5020,
+      "etapa": 6000,
       "edicion": 3,
       "publicacion": null,
       "titulo_en": "Information and documentation — Management systems for records — Requirements",
@@ -32533,6 +32533,22 @@
       "replaced_by": [],
       "normas": [
         "ISO 15489"
+      ]
+    },
+    "95789": {
+      "referencia": "ISO/IEC FDIS 25059/AWI Amd 1",
+      "numero": "25059",
+      "parte": null,
+      "tipo": "IS",
+      "suplemento": true,
+      "etapa": 2000,
+      "edicion": 2,
+      "publicacion": null,
+      "titulo_en": "Software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Quality models for AI systems — Amendment 1",
+      "replaces": [],
+      "replaced_by": [],
+      "normas": [
+        "ISO/IEC 25059"
       ]
     }
   },
@@ -34454,6 +34470,7 @@
         86301,
         69049,
         82668,
+        76641,
         66342,
         63371,
         72897,
@@ -34464,7 +34481,6 @@
         86298,
         86299,
         86302,
-        76641,
         86341,
         86342,
         86343
@@ -34797,13 +34813,11 @@
         {
           "parte": "5-5",
           "citada": true,
-          "estado": "no_publicada",
+          "estado": "vigente",
           "subestado": null,
-          "vigente": null,
-          "ultima": null,
-          "proyectos": [
-            76641
-          ],
+          "vigente": 76641,
+          "ultima": 76641,
+          "proyectos": [],
           "suplementos": [],
           "sustituida_por": []
         },
@@ -34881,9 +34895,9 @@
         }
       ],
       "recuento": {
-        "no_publicada": 8,
+        "no_publicada": 7,
         "sustituida": 3,
-        "vigente": 17,
+        "vigente": 18,
         "en_revision": 6
       },
       "edicion_citada": null,
